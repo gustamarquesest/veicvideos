@@ -1,545 +1,1274 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>VEIC Vídeos | Bares & Cervejarias</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-font-family:'Montserrat',sans-serif;
-background:#060606;
-color:white;
-overflow-x:hidden;
-}
-
-/* HERO */
-
-.hero{
-position:relative;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-overflow:hidden;
-}
-
-.hero::before{
-content:"";
-position:absolute;
-inset:0;
-background:url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1974&auto=format&fit=crop') center center/cover;
-filter:brightness(.25);
-transform:scale(1.05);
-}
-
-.hero-overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(to bottom, rgba(0,0,0,.4), rgba(0,0,0,.95));
-}
-
-.hero-content{
-position:relative;
-z-index:2;
-max-width:1000px;
-}
-
-.hero h1{
-font-size:clamp(52px,10vw,120px);
-font-weight:800;
-line-height:.95;
-letter-spacing:-4px;
-margin-bottom:25px;
-}
-
-.hero p{
-font-size:clamp(18px,3vw,28px);
-font-weight:300;
-opacity:.8;
-max-width:800px;
-margin:auto;
-line-height:1.6;
-}
-
-.hero-button{
-display:inline-block;
-margin-top:40px;
-padding:18px 38px;
-border-radius:100px;
-background:white;
-color:black;
-text-decoration:none;
-font-weight:700;
-transition:.3s;
-}
-
-.hero-button:hover{
-transform:translateY(-3px);
-}
-
-/* SECTION */
-
-.section{
-padding:120px 20px;
-}
-
-.container{
-max-width:1350px;
-margin:auto;
-}
-
-.section-label{
-font-size:14px;
-letter-spacing:3px;
-text-transform:uppercase;
-opacity:.5;
-margin-bottom:20px;
-}
-
-.section-title{
-font-size:clamp(38px,6vw,80px);
-font-weight:800;
-line-height:1;
-margin-bottom:30px;
-letter-spacing:-3px;
-}
-
-.section-description{
-font-size:20px;
-line-height:1.9;
-max-width:850px;
-opacity:.75;
-}
-
-/* DIFFERENTIALS */
-
-.differentials{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-margin-top:70px;
-}
-
-.diff-card{
-background:#111;
-border:1px solid rgba(255,255,255,.05);
-padding:35px;
-border-radius:28px;
-transition:.3s;
-}
-
-.diff-card:hover{
-transform:translateY(-6px);
-background:#181818;
-}
-
-.diff-card h3{
-font-size:24px;
-margin-bottom:15px;
-}
-
-.diff-card p{
-opacity:.7;
-line-height:1.7;
-}
-
-/* VIDEOS */
-
-.video-section{
-padding-top:60px;
-}
-
-.video-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:30px;
-margin-top:70px;
-}
-
-.video-card{
-background:#111;
-border-radius:32px;
-overflow:hidden;
-transition:.4s;
-border:1px solid rgba(255,255,255,.05);
-}
-
-.video-card:hover{
-transform:translateY(-8px);
-}
-
-.video-wrapper{
-position:relative;
-aspect-ratio:9/16;
-background:black;
-}
-
-.video-wrapper iframe{
-position:absolute;
-width:100%;
-height:100%;
-border:none;
-top:0;
-left:0;
-}
-
-.video-info{
-padding:25px;
-}
-
-.video-info h3{
-font-size:22px;
-margin-bottom:12px;
-}
-
-.video-info p{
-opacity:.65;
-line-height:1.7;
-}
-
-/* CTA */
-
-.cta{
-padding:140px 20px;
-text-align:center;
-}
-
-.cta-box{
-max-width:1100px;
-margin:auto;
-background:linear-gradient(145deg,#111,#1b1b1b);
-padding:80px 30px;
-border-radius:40px;
-border:1px solid rgba(255,255,255,.05);
-}
-
-.cta h2{
-font-size:clamp(42px,7vw,90px);
-line-height:1;
-margin-bottom:25px;
-letter-spacing:-3px;
-}
-
-.cta p{
-max-width:700px;
-margin:auto;
-line-height:1.9;
-font-size:20px;
-opacity:.75;
-}
-
-.cta a{
-display:inline-block;
-margin-top:40px;
-padding:20px 44px;
-background:white;
-color:black;
-text-decoration:none;
-font-weight:700;
-border-radius:100px;
-transition:.3s;
-}
-
-.cta a:hover{
-transform:scale(1.04);
-}
-
-/* FOOTER */
-
-.footer{
-padding:60px 20px;
-text-align:center;
-opacity:.4;
-font-size:14px;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero{
-height:auto;
-padding:160px 20px 120px;
-}
-
-.section{
-padding:90px 20px;
-}
-
-.section-description{
-font-size:17px;
-}
-
-.video-grid{
-grid-template-columns:1fr 1fr;
-gap:18px;
-}
-
-.video-info{
-padding:18px;
-}
-
-.video-info h3{
-font-size:18px;
-}
-
-.cta-box{
-padding:60px 25px;
-}
-
-.cta p{
-font-size:17px;
-}
-
-}
-
-@media(max-width:520px){
-
-.video-grid{
-grid-template-columns:1fr;
-}
-
-.hero h1{
-letter-spacing:-2px;
-}
-
-.section-title{
-letter-spacing:-2px;
-}
-
-}
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veic Vídeos — Vídeos Estratégicos para Bares & Cervejarias</title>
+  <meta name="description" content="Produzimos vídeos estratégicos que transmitem posicionamento e autoridade para bares, cervejarias e choperias." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Impact&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────── */
+    :root {
+      --black:   #131210;
+      --cream:   #FEFBF3;
+      --gold:    #FFB600;
+      --gold-dk: #cc9200;
+      --gray:    #2a2924;
+      --gray2:   #3d3b34;
+
+      --ff-title: 'Impact', 'Arial Black', sans-serif;
+      --ff-body:  'Inter', sans-serif;
+      --ff-script:'Alex Brush', cursive;
+
+      --max: 1200px;
+      --radius: 4px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--ff-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITIES ──────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--ff-body);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      font-family: var(--ff-body);
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      text-decoration: none;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn--gold {
+      background: var(--gold);
+      color: var(--black);
+      box-shadow: 0 4px 24px rgba(255,182,0,.35);
+    }
+    .btn--gold:hover {
+      background: #ffc51a;
+      box-shadow: 0 8px 32px rgba(255,182,0,.5);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--cream);
+      border: 2px solid rgba(254,251,243,.3);
+    }
+    .btn--outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ─── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.scrolled {
+      background: rgba(19,18,16,.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(255,182,0,.15);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo svg {
+      width: 36px;
+      height: 36px;
+    }
+    .nav-logo-text {
+      font-family: var(--ff-title);
+      font-size: 20px;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-cta { display: flex; gap: 12px; align-items: center; }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+
+    /* noise grain overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* diagonal gold accent */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle at center, rgba(255,182,0,.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: var(--ff-title);
+      font-size: clamp(44px, 6vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-title .line-gold { color: var(--gold); display: block; }
+    .hero-title .line-script {
+      font-family: var(--ff-script);
+      font-size: clamp(36px, 4.5vw, 60px);
+      color: var(--cream);
+      text-transform: none;
+      font-weight: normal;
+      display: block;
+      line-height: 1.2;
+      margin: 4px 0;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(254,251,243,.7);
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* hero phone mockup */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .phone-stack {
+      position: relative;
+      width: 260px;
+      height: 480px;
+    }
+
+    .phone-card {
+      position: absolute;
+      width: 200px;
+      height: 360px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255,182,0,.3);
+      box-shadow: 0 24px 80px rgba(0,0,0,.8);
+    }
+    .phone-card:nth-child(1) {
+      left: 0; top: 60px;
+      transform: rotate(-6deg);
+      z-index: 1;
+    }
+    .phone-card:nth-child(2) {
+      right: 0; top: 30px;
+      transform: rotate(4deg);
+      z-index: 2;
+      border-color: var(--gold);
+    }
+    .phone-card:nth-child(3) {
+      left: 30px; top: 10px;
+      transform: rotate(-1deg);
+      z-index: 3;
+    }
+
+    .phone-card-inner {
+      width: 100%; height: 100%;
+      background: var(--gray);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+      position: relative;
+    }
+
+    .phone-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px; height: 48px;
+      background: rgba(255,182,0,.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .phone-play svg { width: 18px; height: 18px; fill: var(--black); margin-left: 3px; }
+
+    .phone-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .phone-label-sub {
+      font-size: 10px;
+      color: rgba(254,251,243,.6);
+      margin-top: 2px;
+    }
+
+    /* phone bg patterns */
+    .phone-bg-1 { background: linear-gradient(135deg, #1e1c18 0%, #2d2a22 100%); }
+    .phone-bg-2 { background: linear-gradient(135deg, #2a2418 0%, #1a1712 100%); }
+    .phone-bg-3 { background: linear-gradient(135deg, #18181e 0%, #222228 100%); }
+
+    .phone-icon {
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 12px;
+      opacity: 0.6;
+    }
+
+    /* ─── PAIN SECTION ───────────────────────────────── */
+    .pain {
+      padding: 100px 0;
+      background: var(--cream);
+      color: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pain::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gold);
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .pain-title {
+      font-family: var(--ff-title);
+      font-size: clamp(32px, 4vw, 52px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .pain-title em {
+      font-style: normal;
+      color: var(--gold-dk);
+    }
+
+    .pain-text {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(19,18,16,.75);
+      margin-bottom: 16px;
+    }
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pain-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .pain-list .icon {
+      width: 28px; height: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .pain-list .icon svg { width: 14px; height: 14px; fill: var(--black); }
+    .pain-list-label {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--black);
+      display: block;
+    }
+    .pain-list-sub {
+      font-size: 14px;
+      color: rgba(19,18,16,.6);
+    }
+
+    /* ─── PROPOSTA ───────────────────────────────────── */
+    .proposta {
+      padding: 120px 0;
+      background: var(--black);
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .section-title {
+      font-family: var(--ff-title);
+      font-size: clamp(32px, 4.5vw, 56px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-top: 16px;
+    }
+    .section-title .gold { color: var(--gold); }
+
+    .section-sub {
+      margin-top: 16px;
+      font-size: 16px;
+      color: rgba(254,251,243,.6);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--gray);
+      border: 1px solid rgba(255,182,0,.1);
+      border-radius: 8px;
+      padding: 36px 28px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      border-color: rgba(255,182,0,.5);
+      transform: translateY(-4px);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: left;
+    }
+    .card:hover::before { transform: scaleX(1); }
+
+    .card-num {
+      font-family: var(--ff-title);
+      font-size: 60px;
+      color: rgba(255,182,0,.12);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-family: var(--ff-body);
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(254,251,243,.6);
+    }
+
+    /* ─── VIDEOS ─────────────────────────────────────── */
+    .videos {
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--black) 0%, #1a1812 100%);
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 56px;
+    }
+
+    .video-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      background: var(--gray2);
+      cursor: pointer;
+      group: true;
+    }
+
+    .video-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .video-card:hover .video-thumb { transform: scale(1.05); }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(19,18,16,.9) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px 16px;
+      transition: background 0.3s ease;
+    }
+    .video-card:hover .video-overlay {
+      background: linear-gradient(to top, rgba(19,18,16,.95) 0%, rgba(19,18,16,.3) 100%);
+    }
+
+    .video-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 56px; height: 56px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 0.85;
+    }
+    .video-play-btn svg { width: 20px; height: 20px; fill: var(--black); margin-left: 4px; }
+    .video-card:hover .video-play-btn {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .video-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--cream);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .video-client {
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── DEPOIMENTOS / SOCIAL PROOF ─────────────────── */
+    .proof {
+      padding: 120px 0;
+      background: var(--cream);
+      color: var(--black);
+    }
+
+    .proof .section-title { color: var(--black); }
+    .proof .section-sub { color: rgba(19,18,16,.6); }
+
+    .proof-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 80px;
+      background: rgba(19,18,16,.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .proof-num-item {
+      background: var(--cream);
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    .proof-num {
+      font-family: var(--ff-title);
+      font-size: clamp(42px, 5vw, 64px);
+      color: var(--black);
+      line-height: 1;
+      display: block;
+    }
+    .proof-num span { color: var(--gold-dk); }
+
+    .proof-num-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(19,18,16,.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 8px;
+    }
+
+    /* ─── COMO FUNCIONA ──────────────────────────────── */
+    .processo {
+      padding: 120px 0;
+      background: var(--black);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 60px;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(12.5% + 8px);
+      right: calc(12.5% + 8px);
+      height: 2px;
+      background: linear-gradient(to right, var(--gold) 0%, rgba(255,182,0,.1) 100%);
+    }
+
+    .step {
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .step-num {
+      width: 72px; height: 72px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-title);
+      font-size: 28px;
+      color: var(--black);
+      margin: 0 auto 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-title {
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .step-text {
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(254,251,243,.5);
+    }
+
+    /* ─── CTA FINAL ──────────────────────────────────── */
+    .cta-section {
+      padding: 120px 0;
+      background: var(--gold);
+      color: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: 'VÍDEOS';
+      position: absolute;
+      font-family: var(--ff-title);
+      font-size: 220px;
+      font-weight: 900;
+      opacity: 0.08;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .cta-script {
+      font-family: var(--ff-script);
+      font-size: clamp(28px, 4vw, 52px);
+      color: rgba(19,18,16,.7);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .cta-title {
+      font-family: var(--ff-title);
+      font-size: clamp(40px, 6vw, 80px);
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: rgba(19,18,16,.7);
+      margin-bottom: 48px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn--dark {
+      background: var(--black);
+      color: var(--cream);
+      box-shadow: 0 4px 24px rgba(19,18,16,.4);
+    }
+    .btn--dark:hover {
+      background: #1e1c18;
+      box-shadow: 0 8px 32px rgba(19,18,16,.6);
+    }
+
+    .btn--ghost-dark {
+      background: transparent;
+      color: var(--black);
+      border: 2px solid rgba(19,18,16,.3);
+    }
+    .btn--ghost-dark:hover {
+      border-color: var(--black);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: #0c0b09;
+      padding: 60px 0 32px;
+      border-top: 1px solid rgba(255,182,0,.1);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand .nav-logo-text {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(254,251,243,.4);
+      max-width: 240px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .footer-col-title {
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul li a {
+      font-size: 14px;
+      color: rgba(254,251,243,.5);
+      transition: color 0.15s;
+    }
+    .footer-col ul li a:hover { color: var(--cream); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(254,251,243,.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(254,251,243,.3);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 36px; height: 36px;
+      background: rgba(254,251,243,.06);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+    }
+    .social-btn:hover { background: var(--gold); }
+    .social-btn:hover svg { fill: var(--black); }
+    .social-btn svg { width: 16px; height: 16px; fill: rgba(254,251,243,.5); }
+
+    /* ─── WHATSAPP FLOAT ─────────────────────────────── */
+    .wpp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      width: 60px; height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: wpp-pulse 3s infinite;
+    }
+    .wpp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 32px rgba(37,211,102,.6);
+    }
+    .wpp-float svg { width: 30px; height: 30px; fill: white; }
+
+    @keyframes wpp-pulse {
+      0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,.4), 0 0 0 0 rgba(37,211,102,.3); }
+      50%       { box-shadow: 0 4px 24px rgba(37,211,102,.4), 0 0 0 12px rgba(37,211,102,0); }
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* stagger delays */
+    .fade-up:nth-child(1) { transition-delay: 0s; }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-sub { margin: 0 auto 40px; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { display: none; }
+
+      .pain-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .cards-grid { grid-template-columns: 1fr; }
+
+      .videos-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .proof-numbers { grid-template-columns: 1fr; }
+      .proof-num-item { border-bottom: 1px solid rgba(19,18,16,.08); }
+      .proof-num-item:last-child { border-bottom: none; }
+
+      .steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .steps::before { display: none; }
+
+      .footer-inner { flex-direction: column; }
+      .footer-links { gap: 32px; }
+    }
+
+    @media (max-width: 600px) {
+      .videos-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: 1fr; }
+      .nav-cta .btn--outline { display: none; }
+
+      .cta-section::before { font-size: 120px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- HERO -->
+  <!-- ─── NAV ────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" aria-label="Veic Vídeos">
+          <!-- Logo SVG inline simplificado baseado na identidade -->
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 8 C6 6.9 6.9 6 8 6 L14 6 C15.1 6 16 6.9 16 8 L16 28 C16 29.1 15.1 30 14 30 L8 30 C6.9 30 6 29.1 6 28 Z" fill="none" stroke="#FFB600" stroke-width="2.5"/>
+            <path d="M20 10 L30 18 L20 26 Z" fill="#FFB600"/>
+          </svg>
+          <span class="nav-logo-text">Veic <span>VÍDEOS</span></span>
+        </a>
+        <div class="nav-cta">
+          <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener" class="btn btn--outline" style="padding:10px 20px;font-size:13px;">@veicvideos</a>
+          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20cervejaria!" target="_blank" rel="noopener" class="btn btn--gold" style="padding:10px 20px;font-size:13px;">Falar no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-<section class="hero">
+  <!-- ─── HERO ────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
 
-<div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="tag">Para Bares, Cervejarias &amp; Choperias</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="line-gold">Seu Bar</span>
+            <span class="line-script">merece aparecer</span>
+            COM AUTORIDADE
+          </h1>
+          <p class="hero-sub">
+            Produzimos vídeos estratégicos que revelam a identidade do seu negócio,
+            atraem clientes certos e constroem posicionamento de verdade no digital.
+          </p>
+          <div class="hero-actions">
+            <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20cervejaria!" target="_blank" rel="noopener" class="btn btn--gold">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Quero vídeos pra minha cervejaria
+            </a>
+            <a href="#videos" class="btn btn--outline">Ver produções</a>
+          </div>
+        </div>
 
-<div class="hero-content">
+        <!-- Phone Mockup Visual -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="phone-stack">
+            <div class="phone-card">
+              <div class="phone-card-inner phone-bg-1">
+                <div class="phone-icon">🍺</div>
+                <div class="phone-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="phone-label">Rótulos de Chopp</div>
+                <div class="phone-label-sub">Short • 47K views</div>
+              </div>
+            </div>
+            <div class="phone-card">
+              <div class="phone-card-inner phone-bg-2">
+                <div class="phone-icon">🎬</div>
+                <div class="phone-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="phone-label">Gastronomia</div>
+                <div class="phone-label-sub">Short • 23K views</div>
+              </div>
+            </div>
+            <div class="phone-card">
+              <div class="phone-card-inner phone-bg-3">
+                <div class="phone-icon">🍻</div>
+                <div class="phone-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="phone-label">Dia dos Namorados</div>
+                <div class="phone-label-sub">Short • 31K views</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<h1>
-VEIC<br>
-VÍDEOS
-</h1>
+      </div>
+    </div>
+  </section>
 
-<p>
-Vídeos estratégicos e cinematográficos para bares, cervejarias e choperias que desejam fortalecer posicionamento, experiência e presença digital.
-</p>
+  <!-- ─── PAIN ─────────────────────────────────── -->
+  <section class="pain">
+    <div class="container">
+      <div class="pain-grid">
+        <div class="fade-up">
+          <h2 class="pain-title">Seu bar é incrível,<br/>mas o<em> Instagram</em><br/>não mostra isso.</h2>
+          <p class="pain-text">
+            Você investe em produto, ambiente e experiência. Mas nas redes sociais,
+            parece que o concorrente aparece mais — mesmo sendo pior que você.
+          </p>
+          <p class="pain-text">
+            O problema não é o seu negócio. É como ele está sendo comunicado.
+            Vídeo estratégico resolve isso.
+          </p>
+        </div>
 
-<a class="hero-button" href="#videos">
-Ver Produções
-</a>
+        <ul class="pain-list fade-up">
+          <li>
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div>
+              <span class="pain-list-label">Clientes que buscam lugar de qualidade</span>
+              <span class="pain-list-sub">Se você aparece bem, você atrai quem valoriza o que você oferece.</span>
+            </div>
+          </li>
+          <li>
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div>
+              <span class="pain-list-label">Posicionamento como referência do segmento</span>
+              <span class="pain-list-sub">Vídeo bem feito constrói autoridade que post de foto nunca constrói.</span>
+            </div>
+          </li>
+          <li>
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div>
+              <span class="pain-list-label">Conteúdo que continua trabalhando por você</span>
+              <span class="pain-list-sub">Seus vídeos ficam no ar e atraem clientes enquanto você cuida do seu negócio.</span>
+            </div>
+          </li>
+          <li>
+            <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div>
+              <span class="pain-list-label">Diferenciação real da concorrência</span>
+              <span class="pain-list-sub">Na hora de escolher onde ir, quem aparece mais e melhor ganha.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <!-- ─── PROPOSTA ──────────────────────────────── -->
+  <section class="proposta" id="proposta">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">O que entregamos</span>
+        <h2 class="section-title">Vídeos que fazem seu<br/><span class="gold">negócio vender</span></h2>
+        <p class="section-sub">Cada produção é pensada estrategicamente para comunicar o que torna sua cervejaria única.</p>
+      </div>
 
-</section>
+      <div class="cards-grid">
+        <div class="card fade-up">
+          <div class="card-num">01</div>
+          <div class="card-icon">🎯</div>
+          <h3 class="card-title">Estratégia de conteúdo</h3>
+          <p class="card-text">Antes de filmar qualquer coisa, entendemos o seu negócio, seu público e o que precisa ser comunicado para gerar resultado real.</p>
+        </div>
+        <div class="card fade-up">
+          <div class="card-num">02</div>
+          <div class="card-icon">🎬</div>
+          <h3 class="card-title">Produção profissional</h3>
+          <p class="card-text">Captação com equipamento profissional, direção criativa e toda a parte técnica para que seus vídeos tenham qualidade de marca.</p>
+        </div>
+        <div class="card fade-up">
+          <div class="card-num">03</div>
+          <div class="card-icon">✂️</div>
+          <h3 class="card-title">Edição com identidade</h3>
+          <p class="card-text">Edição estratégica com legendas, trilha, cor e ritmo certo para prender a atenção e comunicar autoridade nos primeiros segundos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ABOUT -->
+  <!-- ─── VIDEOS ───────────────────────────────── -->
+  <section class="videos" id="videos">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Produções Veic Vídeos</span>
+        <h2 class="section-title">Veja o que<br/><span class="gold">já produzimos</span></h2>
+        <p class="section-sub">Clique em qualquer vídeo para assistir no YouTube.</p>
+      </div>
 
-<section class="section">
+      <div class="videos-grid">
+        <!-- substitua os href pelos links reais dos seus Shorts -->
+        <a href="https://youtube.com/@veicvideos" target="_blank" rel="noopener" class="video-card fade-up">
+          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#2a2418 0%,#1a1208 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">🍺</div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Rótulos de Chopp APA</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </a>
+        <a href="https://youtube.com/@veicvideos" target="_blank" rel="noopener" class="video-card fade-up">
+          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#1e2818 0%,#0e1808 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">🍻</div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Session IPA no preço da Pilsen</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </a>
+        <a href="https://youtube.com/@veicvideos" target="_blank" rel="noopener" class="video-card fade-up">
+          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#281820 0%,#180c12 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">💑</div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Brumanus Dia dos Namorados</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </a>
+        <a href="https://youtube.com/@veicvideos" target="_blank" rel="noopener" class="video-card fade-up">
+          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#281c10 0%,#18100a 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">🍽️</div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Gastronomia Brumadinho</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-<div class="container">
+  <!-- ─── PROOF ────────────────────────────────── -->
+  <section class="proof">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag" style="background:var(--black);color:var(--gold);">Números reais</span>
+        <h2 class="section-title">Resultado que<br/>aparece nas métricas</h2>
+      </div>
 
-<div class="section-label">
-POSICIONAMENTO DIGITAL
-</div>
+      <div class="proof-numbers fade-up">
+        <div class="proof-num-item">
+          <span class="proof-num">+<span>50</span></span>
+          <div class="proof-num-label">Vídeos produzidos</div>
+        </div>
+        <div class="proof-num-item">
+          <span class="proof-num"><span>100</span>%</span>
+          <div class="proof-num-label">Foco em posicionamento</div>
+        </div>
+        <div class="proof-num-item">
+          <span class="proof-num"><span>1</span>ª</span>
+          <div class="proof-num-label">Reunião sem compromisso</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h2 class="section-title">
-Sua marca precisa ser lembrada.
-</h2>
+  <!-- ─── PROCESSO ──────────────────────────────── -->
+  <section class="processo" id="processo">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Como funciona</span>
+        <h2 class="section-title">Do contato ao<br/><span class="gold">vídeo no ar</span></h2>
+        <p class="section-sub">Um processo simples e transparente, do início ao fim.</p>
+      </div>
 
-<p class="section-description">
-A VEIC cria produções audiovisuais voltadas para experiência, branding e presença digital. Nosso objetivo é transformar ambientes, bebidas e atendimento em conteúdo visual que gere desejo, reconhecimento e posicionamento premium.
-</p>
+      <div class="steps">
+        <div class="step fade-up">
+          <div class="step-num">1</div>
+          <div class="step-title">Conversa inicial</div>
+          <p class="step-text">Entendemos o seu negócio, seus objetivos e o que precisa ser comunicado. Sem compromisso.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">2</div>
+          <div class="step-title">Planejamento</div>
+          <p class="step-text">Criamos a estratégia de conteúdo e o roteiro baseado no que vai gerar resultado para você.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">3</div>
+          <div class="step-title">Gravação</div>
+          <p class="step-text">Dia de produção no seu espaço. Cuidamos de tudo: câmera, luz, direção e captação de som.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">4</div>
+          <div class="step-title">Entrega</div>
+          <p class="step-text">Vídeos editados, legendados e prontos para publicar com a identidade da sua marca.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="differentials">
+  <!-- ─── CTA FINAL ─────────────────────────────── -->
+  <section class="cta-section" id="contato">
+    <div class="container">
+      <div class="cta-inner fade-up">
+        <span class="cta-script">pronto para</span>
+        <h2 class="cta-title">Revelar sua marca<br/>no digital?</h2>
+        <p class="cta-sub">
+          Fale com a gente agora. Uma conversa rápida pelo WhatsApp já é suficiente para
+          entendermos como podemos ajudar sua cervejaria a se posicionar de verdade.
+        </p>
+        <div class="cta-actions">
+          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20cervejaria!" target="_blank" rel="noopener" class="btn btn--dark" style="font-size:16px;padding:18px 36px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Falar no WhatsApp agora
+          </a>
+          <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener" class="btn btn--ghost-dark">
+            Ver nosso Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="diff-card">
-<h3>Visual Cinematográfico</h3>
-<p>
-Produções com estética moderna, social-first e linguagem premium para destacar sua marca.
-</p>
-</div>
+  <!-- ─── FOOTER ────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo-text" style="font-family:'Impact',sans-serif;font-size:20px;margin-bottom:8px;">Veic <span style="color:var(--gold)">VÍDEOS</span></div>
+          <p class="footer-tagline">Produzimos vídeos estratégicos que transmitem posicionamento e autoridade para bares, cervejarias e choperias.</p>
+        </div>
 
-<div class="diff-card">
-<h3>Conteúdo Estratégico</h3>
-<p>
-Vídeos pensados para atrair atenção, gerar percepção de valor e fortalecer presença digital.
-</p>
-</div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col-title">Navegação</div>
+            <ul>
+              <li><a href="#proposta">O que entregamos</a></li>
+              <li><a href="#videos">Produções</a></li>
+              <li><a href="#processo">Como funciona</a></li>
+              <li><a href="#contato">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Contato</div>
+            <ul>
+              <li><a href="https://wa.me/5531983335876" target="_blank" rel="noopener">(31) 98333-5876</a></li>
+              <li><a href="https://instagram.com/veicvideos" target="_blank" rel="noopener">@veicvideos</a></li>
+              <li><a href="https://veicvideos.com" target="_blank" rel="noopener">veicvideos.com</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-<div class="diff-card">
-<h3>Experiência</h3>
-<p>
-Mostramos atmosfera, público, produto e energia do ambiente de forma imersiva.
-</p>
-</div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Veic Vídeos. Todos os direitos reservados.</span>
+        <div class="footer-social">
+          <!-- Instagram -->
+          <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/5531983335876" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-<div class="diff-card">
-<h3>Social Media</h3>
-<p>
-Conteúdo otimizado para Instagram Reels, TikTok e Shorts com forte impacto visual.
-</p>
-</div>
+  <!-- WhatsApp Flutuante -->
+  <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20cervejaria!" target="_blank" rel="noopener" class="wpp-float" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
 
-</div>
+  <!-- ─── JS ────────────────────────────────────── -->
+  <script>
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
 
-</div>
+    // Intersection Observer para fade-up
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
 
-</section>
-
-<!-- VIDEOS -->
-
-<section class="section video-section" id="videos">
-
-<div class="container">
-
-<div class="section-label">
-PRODUÇÕES
-</div>
-
-<h2 class="section-title">
-Experiência visual em formato vertical.
-</h2>
-
-<p class="section-description">
-Produções desenvolvidas para consumo mobile, foco em retenção e fortalecimento de marca nas redes sociais.
-</p>
-
-<div class="video-grid">
-
-<!-- VIDEO 1 -->
-
-<div class="video-card">
-
-<div class="video-wrapper">
-<iframe src="https://www.youtube.com/embed/VIDEO1"
-allowfullscreen></iframe>
-</div>
-
-<div class="video-info">
-<h3>Produção 01</h3>
-<p>
-Experiência visual para bares e cervejarias.
-</p>
-</div>
-
-</div>
-
-<!-- VIDEO 2 -->
-
-<div class="video-card">
-
-<div class="video-wrapper">
-<iframe src="https://www.youtube.com/embed/VIDEO2"
-allowfullscreen></iframe>
-</div>
-
-<div class="video-info">
-<h3>Produção 02</h3>
-<p>
-Conteúdo vertical cinematográfico.
-</p>
-</div>
-
-</div>
-
-<!-- VIDEO 3 -->
-
-<div class="video-card">
-
-<div class="video-wrapper">
-<iframe src="https://www.youtube.com/embed/VIDEO3"
-allowfullscreen></iframe>
-</div>
-
-<div class="video-info">
-<h3>Produção 03</h3>
-<p>
-Posicionamento digital para marcas.
-</p>
-</div>
-
-</div>
-
-<!-- VIDEO 4 -->
-
-<div class="video-card">
-
-<div class="video-wrapper">
-<iframe src="https://www.youtube.com/embed/VIDEO4"
-allowfullscreen></iframe>
-</div>
-
-<div class="video-info">
-<h3>Produção 04</h3>
-<p>
-Experiência premium e branding visual.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CTA -->
-
-<section class="cta">
-
-<div class="cta-box">
-
-<h2>
-Sua marca<br>
-merece presença.
-</h2>
-
-<p>
-Transforme seu posicionamento digital através de vídeos estratégicos com estética cinematográfica e foco em impacto visual.
-</p>
-
-<a href="https://wa.me/5531999999999" target="_blank">
-Solicitar orçamento
-</a>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="footer">
-VEIC Vídeos © 2026
-</footer>
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
