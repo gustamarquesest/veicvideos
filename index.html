@@ -621,6 +621,9 @@
       text-align: center;
     }
 
+    /* wrapper usado no mobile para layout em linha */
+    .step-content { display: contents; }
+
     .step-num {
       width: 72px; height: 72px;
       background: var(--gold);
@@ -871,33 +874,33 @@
 
       /* HERO */
       .hero { padding: 100px 0 60px; }
-      .hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
       .hero-sub { margin: 0 auto 40px; }
       .hero-actions { justify-content: center; }
       .hero-visual { display: none; }
 
-      /* PAIN (legacy) */
+      /* PAIN */
       .pain-grid { grid-template-columns: 1fr; gap: 40px; }
 
-      /* POSICIONE-SE */
-      .posicione { padding: 48px 0; }
+      /* POSICIONE-SE — título menor, vídeo grande abaixo */
+      .posicione { padding: 40px 0 48px; }
       .posicione-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        text-align: center;
-        align-items: center;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 28px !important;
+        text-align: center !important;
       }
-      .posicione-title { font-size: clamp(20px, 6vw, 34px); line-height: 1.05; }
-      .posicione-right { align-items: center; order: 2; width: 100%; }
-      .posicione-left { order: 1; }
-      /* Vídeo ocupa 55% da tela — proporção 9:16 mantida */
+      .posicione-left { order: 1; width: 100%; }
+      .posicione-right { order: 2; width: 100%; display: flex; justify-content: center; }
+      .posicione-title {
+        font-size: 28px !important;
+        line-height: 1.1 !important;
+      }
       .posicione-video-wrap {
-        width: 55vw;
-        max-width: 55vw;
-        margin: 0 auto;
+        width: 52vw !important;
+        max-width: 220px !important;
+        margin: 0 auto !important;
       }
 
       /* PROPOSTA */
@@ -906,24 +909,55 @@
       /* VÍDEOS */
       .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
-      /* PROJETOS — empilhado com tag centralizada como título */
+      /* PROJETOS */
       .projetos { padding: 64px 0; }
       .projetos-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        text-align: center;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 32px !important;
       }
-      .projetos-left { display: flex; flex-direction: column; align-items: center; }
-      .projetos-left .btn { width: 100%; justify-content: center; }
-      .projetos-right { width: 100%; }
-      .projetos-tipos-label { text-align: center; }
-      .projetos-tags { justify-content: center; }
+      .projetos-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+      }
+      .projetos-right { width: 100%; overflow: hidden; }
+      .projetos-tipos-label { text-align: left; }
+      .projetos-tags { justify-content: flex-start; flex-wrap: wrap; }
+      .proj-tag { font-size: 12px; }
 
-      /* PROCESSO — todos empilhados em coluna única */
-      .steps { grid-template-columns: 1fr; gap: 32px; }
+      /* PROCESSO — linhas horizontais: número à esq, texto à dir */
+      .processo { padding: 64px 0; }
+      .steps,
+      .steps-5 {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        margin-top: 40px;
+      }
       .steps::before { display: none; }
-      .steps-5 { grid-template-columns: 1fr !important; gap: 32px !important; }
-      .step { padding: 0; text-align: center; max-width: 100%; }
+      .step {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        padding: 20px 0 !important;
+        border-bottom: 1px solid rgba(255,182,0,.12);
+        text-align: left !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .step:last-child { border-bottom: none; }
+      .step-content { display: block !important; flex: 1; }
+      .step-num {
+        width: 52px !important;
+        height: 52px !important;
+        font-size: 20px !important;
+        flex-shrink: 0 !important;
+        margin: 0 !important;
+      }
+      .step-content { flex: 1; }
 
       /* FOOTER */
       .footer-inner { flex-direction: column; }
@@ -934,10 +968,7 @@
     }
 
     @media (max-width: 600px) {
-      /* GERAL */
       .container { padding: 0 16px; }
-
-      /* NAV */
       nav { padding: 12px 0; }
 
       /* HERO */
@@ -948,11 +979,11 @@
       .hero-actions .btn { width: 100%; justify-content: center; }
 
       /* POSICIONE-SE */
-      .posicione { padding: 40px 0; }
-      .posicione-title { font-size: clamp(18px, 5.5vw, 28px); }
+      .posicione { padding: 36px 0 44px; }
+      .posicione-title { font-size: 24px !important; }
       .posicione-video-wrap {
-        width: 60vw;
-        max-width: 60vw;
+        width: 56vw !important;
+        max-width: 200px !important;
       }
 
       /* PROPOSTA */
@@ -965,15 +996,14 @@
       .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 
       /* PROJETOS */
-      .projetos-title { font-size: clamp(28px, 8vw, 44px); }
+      .projetos-title { font-size: clamp(26px, 8vw, 40px); }
       .projetos-tags { gap: 8px; }
       .proj-tag { font-size: 11px; padding: 6px 12px; }
+      .projetos-left .btn { width: 100%; justify-content: center; text-align: center; }
 
       /* PROCESSO */
-      .processo { padding: 60px 0; }
-      .steps-5 { grid-template-columns: 1fr !important; gap: 28px !important; }
-      .step { padding: 0; }
-      .step-num { width: 52px; height: 52px; font-size: 20px; }
+      .step { gap: 16px !important; padding: 16px 0 !important; }
+      .step-num { width: 44px !important; height: 44px !important; font-size: 18px !important; }
 
       /* CTA */
       .cta-section { padding: 70px 0; }
@@ -1391,28 +1421,38 @@
       <div class="steps steps-5">
         <div class="step fade-up">
           <div class="step-num">01</div>
-          <div class="step-title">Levantamento</div>
-          <p class="step-text">Levantamos a demanda de comunicação, objetivos e público da sua marca.</p>
+          <div class="step-content">
+            <div class="step-title">Levantamento</div>
+            <p class="step-text">Levantamos a demanda de comunicação, objetivos e público da sua marca.</p>
+          </div>
         </div>
         <div class="step fade-up">
           <div class="step-num">02</div>
-          <div class="step-title">Direção de Roteiro</div>
-          <p class="step-text">Criamos o roteiro e a estratégia de conteúdo alinhados à identidade da marca.</p>
+          <div class="step-content">
+            <div class="step-title">Direção de Roteiro</div>
+            <p class="step-text">Criamos o roteiro e a estratégia de conteúdo alinhados à identidade da marca.</p>
+          </div>
         </div>
         <div class="step fade-up">
           <div class="step-num">03</div>
-          <div class="step-title">Gravação com Direção</div>
-          <p class="step-text">Gravamos com equipamento profissional e direção cuidadosa de cada cena e performance.</p>
+          <div class="step-content">
+            <div class="step-title">Gravação com Direção</div>
+            <p class="step-text">Gravamos com equipamento profissional e direção cuidadosa de cada cena e performance.</p>
+          </div>
         </div>
         <div class="step fade-up">
           <div class="step-num">04</div>
-          <div class="step-title">Edição</div>
-          <p class="step-text">Edição profissional com motion, legendas, trilha e identidade visual da marca.</p>
+          <div class="step-content">
+            <div class="step-title">Edição</div>
+            <p class="step-text">Edição profissional com motion, legendas, trilha e identidade visual da marca.</p>
+          </div>
         </div>
         <div class="step fade-up">
           <div class="step-num">05</div>
-          <div class="step-title">Entrega do Vídeo</div>
-          <p class="step-text">Entrega nos formatos ideais para cada plataforma, prontos para publicar.</p>
+          <div class="step-content">
+            <div class="step-title">Entrega do Vídeo</div>
+            <p class="step-text">Entrega nos formatos ideais para cada plataforma, prontos para publicar.</p>
+          </div>
         </div>
       </div>
     </div>
