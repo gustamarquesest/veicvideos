@@ -865,6 +865,11 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 900px) {
+      /* NAV */
+      .nav-cta .btn--outline { display: none; }
+
+      /* HERO */
+      .hero { padding: 100px 0 60px; }
       .hero-inner {
         grid-template-columns: 1fr;
         text-align: center;
@@ -873,30 +878,216 @@
       .hero-actions { justify-content: center; }
       .hero-visual { display: none; }
 
+      /* PAIN (legacy) */
       .pain-grid { grid-template-columns: 1fr; gap: 40px; }
 
+      /* POSICIONE-SE */
+      .posicione { padding: 60px 0; }
+      .posicione-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      .posicione-right { align-items: center; }
+      .posicione-video-wrap { max-width: 260px; }
+
+      /* PROPOSTA */
       .cards-grid { grid-template-columns: 1fr; }
 
-      .videos-grid { grid-template-columns: repeat(2, 1fr); }
+      /* VÍDEOS */
+      .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
-      .proof-numbers { grid-template-columns: 1fr; }
-      .proof-num-item { border-bottom: 1px solid rgba(19,18,16,.08); }
-      .proof-num-item:last-child { border-bottom: none; }
+      /* PROJETOS */
+      .projetos { padding: 80px 0; }
+      .projetos-grid { grid-template-columns: 1fr; gap: 40px; }
 
+      /* PROCESSO */
       .steps { grid-template-columns: 1fr 1fr; gap: 40px; }
       .steps::before { display: none; }
+      .steps-5 { grid-template-columns: 1fr 1fr !important; }
 
+      /* FOOTER */
       .footer-inner { flex-direction: column; }
       .footer-links { gap: 32px; }
+
+      /* CTA */
+      .cta-section::before { font-size: 120px; }
     }
 
     @media (max-width: 600px) {
-      .videos-grid { grid-template-columns: repeat(2, 1fr); }
-      .steps { grid-template-columns: 1fr; }
-      .nav-cta .btn--outline { display: none; }
+      /* GERAL */
+      .container { padding: 0 16px; }
 
-      .cta-section::before { font-size: 120px; }
+      /* NAV */
+      nav { padding: 12px 0; }
+
+      /* HERO */
+      .hero { padding: 90px 0 50px; min-height: auto; }
+      .hero-title { font-size: clamp(36px, 10vw, 56px); }
+      .hero-sub { font-size: 15px; }
+      .hero-actions { flex-direction: column; align-items: center; gap: 12px; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+
+      /* POSICIONE-SE */
+      .posicione { padding: 50px 0; }
+      .posicione-title { font-size: clamp(32px, 10vw, 52px); }
+      .posicione-video-wrap { max-width: 220px; }
+
+      /* PROPOSTA */
+      .proposta { padding: 60px 0; }
+      .section-title { font-size: clamp(28px, 8vw, 44px); }
+      .card { padding: 28px 20px; }
+
+      /* VÍDEOS */
+      .videos { padding: 60px 0; }
+      .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+      /* PROJETOS */
+      .projetos-title { font-size: clamp(28px, 8vw, 44px); }
+      .projetos-tags { gap: 8px; }
+      .proj-tag { font-size: 11px; padding: 6px 12px; }
+
+      /* PROCESSO */
+      .processo { padding: 60px 0; }
+      .steps-5 { grid-template-columns: 1fr !important; gap: 32px; }
+      .step { padding: 0 8px; }
+      .step-num { width: 52px; height: 52px; font-size: 20px; }
+
+      /* CTA */
+      .cta-section { padding: 70px 0; }
+      .cta-title { font-size: clamp(32px, 10vw, 56px); }
+      .cta-actions { flex-direction: column; align-items: center; gap: 12px; }
+      .cta-actions .btn { width: 100%; justify-content: center; }
+      .cta-section::before { font-size: 80px; }
+      .cta-contact-info { flex-wrap: wrap; justify-content: center; font-size: 13px; }
+
+      /* FOOTER */
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-social { justify-content: center; }
     }
+
+    /* ─── POSICIONE-SE ───────────────────────────── */
+    .posicione {
+      padding: 100px 0;
+      background: var(--gold);
+      color: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .posicione-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .posicione-title {
+      font-family: var(--ff-title);
+      font-size: clamp(36px, 5vw, 68px);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .posicione-title .gold { color: #FEFBF3; }
+    .posicione-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* Wrapper com proporção 9:16 para o Short */
+    .posicione-video-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 9 / 16;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(19,18,16,.35);
+    }
+    .posicione-video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ─── PROJETOS ───────────────────────────────── */
+    .projetos {
+      padding: 120px 0;
+      background: var(--black);
+      color: var(--cream);
+    }
+    .projetos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .projetos-title {
+      font-family: var(--ff-title);
+      font-size: clamp(32px, 4vw, 52px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 24px;
+      margin-top: 16px;
+    }
+    .projetos-title .gold { color: var(--gold); }
+    .projetos-text {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(254,251,243,.65);
+    }
+    .projetos-tipos-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .projetos-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .proj-tag {
+      background: rgba(255,182,0,.1);
+      border: 1px solid rgba(255,182,0,.3);
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .proj-tag:hover {
+      background: rgba(255,182,0,.2);
+      border-color: var(--gold);
+    }
+
+    /* ─── STEPS 5 ────────────────────────────────── */
+    .steps-5 {
+      grid-template-columns: repeat(5, 1fr) !important;
+    }
+    .steps-5::before {
+      left: calc(10% + 8px);
+      right: calc(10% + 8px);
+    }
+
+    /* ─── CTA CONTACT INFO ───────────────────────── */
+    .cta-contact-info {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 15px;
+      color: rgba(19,18,16,.65);
+    }
+    .cta-contact-info svg { flex-shrink: 0; }
+    .cta-contact-info a { font-weight: 700; color: var(--black); }
+
   </style>
 </head>
 <body>
@@ -906,12 +1097,7 @@
     <div class="container">
       <div class="nav-inner">
         <a href="#" class="nav-logo" aria-label="Veic Vídeos">
-          <!-- Logo SVG inline simplificado baseado na identidade -->
-          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 8 C6 6.9 6.9 6 8 6 L14 6 C15.1 6 16 6.9 16 8 L16 28 C16 29.1 15.1 30 14 30 L8 30 C6.9 30 6 29.1 6 28 Z" fill="none" stroke="#FFB600" stroke-width="2.5"/>
-            <path d="M20 10 L30 18 L20 26 Z" fill="#FFB600"/>
-          </svg>
-          <span class="nav-logo-text">Veic <span>VÍDEOS</span></span>
+          <img src="LOGO-PRINCIPAL-Amarelo-Branco.svg" alt="Veic Vídeos" style="height:36px;width:auto;" />
         </a>
         <div class="nav-cta">
           <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener" class="btn btn--outline" style="padding:10px 20px;font-size:13px;">@veicvideos</a>
@@ -936,8 +1122,8 @@
             COM AUTORIDADE
           </h1>
           <p class="hero-sub">
-            Produzimos vídeos estratégicos que revelam a identidade do seu negócio,
-            atraem clientes certos e constroem posicionamento de verdade no digital.
+            Produzimos vídeos estratégicos que valorizam a imagem de negócios, profissionais e
+            projetos que precisam comunicar com autoridade e posicionamento.
           </p>
           <div class="hero-actions">
             <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20cervejaria!" target="_blank" rel="noopener" class="btn btn--gold">
@@ -988,52 +1174,78 @@
     </div>
   </section>
 
-  <!-- ─── PAIN ─────────────────────────────────── -->
-  <section class="pain">
+  <!-- ─── POSICIONE-SE ──────────────────────────── -->
+  <section class="posicione" id="posicione">
     <div class="container">
-      <div class="pain-grid">
-        <div class="fade-up">
-          <h2 class="pain-title">Seu bar é incrível,<br/>mas o<em> Instagram</em><br/>não mostra isso.</h2>
-          <p class="pain-text">
-            Você investe em produto, ambiente e experiência. Mas nas redes sociais,
-            parece que o concorrente aparece mais — mesmo sendo pior que você.
-          </p>
-          <p class="pain-text">
-            O problema não é o seu negócio. É como ele está sendo comunicado.
-            Vídeo estratégico resolve isso.
-          </p>
+      <div class="posicione-grid">
+        <div class="posicione-left fade-up">
+          <h2 class="posicione-title">POSICIONE-SE<br/>ATRAVÉS DE<br/>VÍDEOS<br/><span class="gold">ESTRATÉGICOS</span></h2>
         </div>
+        <div class="posicione-right fade-up">
+          <div class="posicione-video-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/nrzURq_4LPk?rel=0&modestbranding=1"
+              title="Qual é o diferencial — Veic Vídeos"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <ul class="pain-list fade-up">
-          <li>
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-            <div>
-              <span class="pain-list-label">Clientes que buscam lugar de qualidade</span>
-              <span class="pain-list-sub">Se você aparece bem, você atrai quem valoriza o que você oferece.</span>
-            </div>
-          </li>
-          <li>
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-            <div>
-              <span class="pain-list-label">Posicionamento como referência do segmento</span>
-              <span class="pain-list-sub">Vídeo bem feito constrói autoridade que post de foto nunca constrói.</span>
-            </div>
-          </li>
-          <li>
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-            <div>
-              <span class="pain-list-label">Conteúdo que continua trabalhando por você</span>
-              <span class="pain-list-sub">Seus vídeos ficam no ar e atraem clientes enquanto você cuida do seu negócio.</span>
-            </div>
-          </li>
-          <li>
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-            <div>
-              <span class="pain-list-label">Diferenciação real da concorrência</span>
-              <span class="pain-list-sub">Na hora de escolher onde ir, quem aparece mais e melhor ganha.</span>
-            </div>
-          </li>
-        </ul>
+  <!-- ─── VIDEOS ───────────────────────────────── -->
+  <section class="videos" id="videos">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Produções Veic Vídeos</span>
+        <h2 class="section-title">Veja o que<br/><span class="gold">já produzimos</span></h2>
+        <p class="section-sub">Clique em qualquer vídeo para assistir aqui mesmo.</p>
+      </div>
+
+      <!-- Modal de vídeo -->
+      <div id="video-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.88);align-items:center;justify-content:center;">
+        <div style="position:relative;width:100%;max-width:380px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.8);">
+          <iframe id="video-modal-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+        </div>
+        <button onclick="closeVideoModal()" style="position:fixed;top:20px;right:24px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);transition:background .2s;" onmouseover="this.style.background='rgba(255,182,0,.7)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">&times;</button>
+      </div>
+
+      <div class="videos-grid">
+        <div class="video-card fade-up" onclick="openVideoModal('SIpWQ_e89oo')">
+          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#2a2418 0%,#1a1208 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">🍺</div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Rótulos de Chopp APA</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </div>
+        <div class="video-card fade-up" onclick="openVideoModal('4uQWPJ84uNk')">
+          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#1e2818 0%,#0e1808 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">🍻</div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Session IPA no preço da Pilsen</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </div>
+        <div class="video-card fade-up" onclick="openVideoModal('gjDVDluYpII')">
+          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#281820 0%,#180c12 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">💑</div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Brumanus Dia dos Namorados</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </div>
+        <div class="video-card fade-up" onclick="openVideoModal('4Hn9ngjpB6w')">
+          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#281c10 0%,#18100a 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">🍽️</div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Gastronomia Brumadinho</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1043,8 +1255,8 @@
     <div class="container">
       <div class="section-header fade-up">
         <span class="tag">O que entregamos</span>
-        <h2 class="section-title">Vídeos que fazem seu<br/><span class="gold">negócio vender</span></h2>
-        <p class="section-sub">Cada produção é pensada estrategicamente para comunicar o que torna sua cervejaria única.</p>
+        <h2 class="section-title">Vídeos que<br/><span class="gold">valorizam sua marca</span></h2>
+        <p class="section-sub">Cada produção é pensada estrategicamente para comunicar o que torna seu negócio único.</p>
       </div>
 
       <div class="cards-grid">
@@ -1070,73 +1282,32 @@
     </div>
   </section>
 
-  <!-- ─── VIDEOS ───────────────────────────────── -->
-  <section class="videos" id="videos">
+  <!-- ─── PROJETOS ───────────────────────────────── -->
+  <section class="projetos" id="projetos">
     <div class="container">
-      <div class="section-header fade-up">
-        <span class="tag">Produções Veic Vídeos</span>
-        <h2 class="section-title">Veja o que<br/><span class="gold">já produzimos</span></h2>
-        <p class="section-sub">Clique em qualquer vídeo para assistir no YouTube.</p>
-      </div>
-
-      <div class="videos-grid">
-        <!-- substitua os href pelos links reais dos seus Shorts -->
-        <a href="https://youtube.com/@veicvideos" target="_blank" rel="noopener" class="video-card fade-up">
-          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#2a2418 0%,#1a1208 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">🍺</div>
-          <div class="video-overlay">
-            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <div class="video-title">Rótulos de Chopp APA</div>
-            <div class="video-client">Brumanus</div>
-          </div>
-        </a>
-        <a href="https://youtube.com/@veicvideos" target="_blank" rel="noopener" class="video-card fade-up">
-          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#1e2818 0%,#0e1808 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">🍻</div>
-          <div class="video-overlay">
-            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <div class="video-title">Session IPA no preço da Pilsen</div>
-            <div class="video-client">Brumanus</div>
-          </div>
-        </a>
-        <a href="https://youtube.com/@veicvideos" target="_blank" rel="noopener" class="video-card fade-up">
-          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#281820 0%,#180c12 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">💑</div>
-          <div class="video-overlay">
-            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <div class="video-title">Brumanus Dia dos Namorados</div>
-            <div class="video-client">Brumanus</div>
-          </div>
-        </a>
-        <a href="https://youtube.com/@veicvideos" target="_blank" rel="noopener" class="video-card fade-up">
-          <div class="video-thumb" style="width:100%;height:100%;background:linear-gradient(135deg,#281c10 0%,#18100a 100%);display:flex;align-items:center;justify-content:center;font-size:60px;">🍽️</div>
-          <div class="video-overlay">
-            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <div class="video-title">Gastronomia Brumadinho</div>
-            <div class="video-client">Brumanus</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── PROOF ────────────────────────────────── -->
-  <section class="proof">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="tag" style="background:var(--black);color:var(--gold);">Números reais</span>
-        <h2 class="section-title">Resultado que<br/>aparece nas métricas</h2>
-      </div>
-
-      <div class="proof-numbers fade-up">
-        <div class="proof-num-item">
-          <span class="proof-num">+<span>50</span></span>
-          <div class="proof-num-label">Vídeos produzidos</div>
+      <div class="projetos-grid fade-up">
+        <div class="projetos-left">
+          <span class="tag" style="background:transparent;color:var(--gold);border:1px solid var(--gold);margin-bottom:20px;">Forma de trabalho</span>
+          <h2 class="projetos-title">Trabalhamos por<br/><span class="gold">Projetos</span></h2>
+          <p class="projetos-text">Desenvolvemos projetos completos de comunicação em vídeo conforme a necessidade de cada cliente. Cada projeto é orçado individualmente, com estratégia personalizada.</p>
+          <p class="projetos-text" style="margin-top:12px;">Não vendemos "pacotes fechados" — entregamos o que sua marca realmente precisa.</p>
+          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener" class="btn btn--gold" style="margin-top:32px;">Solicitar Orçamento via WhatsApp</a>
         </div>
-        <div class="proof-num-item">
-          <span class="proof-num"><span>100</span>%</span>
-          <div class="proof-num-label">Foco em posicionamento</div>
-        </div>
-        <div class="proof-num-item">
-          <span class="proof-num"><span>1</span>ª</span>
-          <div class="proof-num-label">Reunião sem compromisso</div>
+        <div class="projetos-right">
+          <div class="projetos-tipos-label">Tipos de Projeto</div>
+          <div class="projetos-tags">
+            <span class="proj-tag">Vitrine no Instagram</span>
+            <span class="proj-tag">Vídeos Comerciais</span>
+            <span class="proj-tag">Cases de Sucesso</span>
+            <span class="proj-tag">Institucionais</span>
+            <span class="proj-tag">Campanhas</span>
+            <span class="proj-tag">Anúncios</span>
+            <span class="proj-tag">Divulgação</span>
+            <span class="proj-tag">Apresentação Profissional</span>
+            <span class="proj-tag">Ações</span>
+            <span class="proj-tag">Feiras</span>
+            <span class="proj-tag">Eventos</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1151,26 +1322,31 @@
         <p class="section-sub">Um processo simples e transparente, do início ao fim.</p>
       </div>
 
-      <div class="steps">
+      <div class="steps steps-5">
         <div class="step fade-up">
-          <div class="step-num">1</div>
-          <div class="step-title">Conversa inicial</div>
-          <p class="step-text">Entendemos o seu negócio, seus objetivos e o que precisa ser comunicado. Sem compromisso.</p>
+          <div class="step-num">01</div>
+          <div class="step-title">Levantamento</div>
+          <p class="step-text">Levantamos a demanda de comunicação, objetivos e público da sua marca.</p>
         </div>
         <div class="step fade-up">
-          <div class="step-num">2</div>
-          <div class="step-title">Planejamento</div>
-          <p class="step-text">Criamos a estratégia de conteúdo e o roteiro baseado no que vai gerar resultado para você.</p>
+          <div class="step-num">02</div>
+          <div class="step-title">Direção de Roteiro</div>
+          <p class="step-text">Criamos o roteiro e a estratégia de conteúdo alinhados à identidade da marca.</p>
         </div>
         <div class="step fade-up">
-          <div class="step-num">3</div>
-          <div class="step-title">Gravação</div>
-          <p class="step-text">Dia de produção no seu espaço. Cuidamos de tudo: câmera, luz, direção e captação de som.</p>
+          <div class="step-num">03</div>
+          <div class="step-title">Gravação com Direção</div>
+          <p class="step-text">Gravamos com equipamento profissional e direção cuidadosa de cada cena e performance.</p>
         </div>
         <div class="step fade-up">
-          <div class="step-num">4</div>
-          <div class="step-title">Entrega</div>
-          <p class="step-text">Vídeos editados, legendados e prontos para publicar com a identidade da sua marca.</p>
+          <div class="step-num">04</div>
+          <div class="step-title">Edição</div>
+          <p class="step-text">Edição profissional com motion, legendas, trilha e identidade visual da marca.</p>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">05</div>
+          <div class="step-title">Entrega do Vídeo</div>
+          <p class="step-text">Entrega nos formatos ideais para cada plataforma, prontos para publicar.</p>
         </div>
       </div>
     </div>
@@ -1180,20 +1356,25 @@
   <section class="cta-section" id="contato">
     <div class="container">
       <div class="cta-inner fade-up">
-        <span class="cta-script">pronto para</span>
-        <h2 class="cta-title">Revelar sua marca<br/>no digital?</h2>
+        <span class="tag" style="background:rgba(19,18,16,.15);color:var(--black);margin-bottom:20px;">Vamos trabalhar juntos?</span>
+        <h2 class="cta-title">Pronto para<br/>Revelar sua Marca?</h2>
         <p class="cta-sub">
-          Fale com a gente agora. Uma conversa rápida pelo WhatsApp já é suficiente para
-          entendermos como podemos ajudar sua cervejaria a se posicionar de verdade.
+          Entre em contato e vamos conversar sobre como posicionar
+          seu negócio no digital com vídeos estratégicos que realmente funcionam.
         </p>
         <div class="cta-actions">
-          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20cervejaria!" target="_blank" rel="noopener" class="btn btn--dark" style="font-size:16px;padding:18px 36px;">
+          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20quero%20conversar%20sobre%20v%C3%ADdeos%20para%20meu%20neg%C3%B3cio!" target="_blank" rel="noopener" class="btn btn--dark" style="font-size:16px;padding:18px 36px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-            Falar no WhatsApp agora
+            WhatsApp
           </a>
           <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener" class="btn btn--ghost-dark">
-            Ver nosso Instagram
+            @veicvideos →
           </a>
+        </div>
+        <div class="cta-contact-info">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          <a href="https://wa.me/5531983335876" target="_blank" rel="noopener">(31) 98333-5876</a>
+          <span>· Atendimento via WhatsApp</span>
         </div>
       </div>
     </div>
@@ -1252,6 +1433,32 @@
 
   <!-- ─── JS ────────────────────────────────────── -->
   <script>
+    // Modal de vídeo
+    const videoModal = document.getElementById('video-modal');
+    const videoModalIframe = document.getElementById('video-modal-iframe');
+
+    function openVideoModal(videoId) {
+      videoModalIframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+      videoModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+      videoModal.style.display = 'none';
+      videoModalIframe.src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Fechar ao clicar no fundo escuro
+    videoModal.addEventListener('click', function(e) {
+      if (e.target === videoModal) closeVideoModal();
+    });
+
+    // Fechar com Esc
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+
     // Nav scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
