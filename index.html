@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VEIC Vídeos</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>VEIC Vídeos | Bares & Cervejarias</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -13,110 +20,312 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
-font-family:Arial,sans-serif;
-background:#0d0d0d;
+font-family:'Montserrat',sans-serif;
+background:#060606;
 color:white;
 overflow-x:hidden;
 }
 
+/* HERO */
+
 .hero{
+position:relative;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
-background:#111;
+overflow:hidden;
 }
 
-.hero-content h1{
-font-size:60px;
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1974&auto=format&fit=crop') center center/cover;
+filter:brightness(.25);
+transform:scale(1.05);
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to bottom, rgba(0,0,0,.4), rgba(0,0,0,.95));
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:1000px;
+}
+
+.hero h1{
+font-size:clamp(52px,10vw,120px);
+font-weight:800;
+line-height:.95;
+letter-spacing:-4px;
+margin-bottom:25px;
+}
+
+.hero p{
+font-size:clamp(18px,3vw,28px);
+font-weight:300;
+opacity:.8;
+max-width:800px;
+margin:auto;
+line-height:1.6;
+}
+
+.hero-button{
+display:inline-block;
+margin-top:40px;
+padding:18px 38px;
+border-radius:100px;
+background:white;
+color:black;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+}
+
+.hero-button:hover{
+transform:translateY(-3px);
+}
+
+/* SECTION */
+
+.section{
+padding:120px 20px;
+}
+
+.container{
+max-width:1350px;
+margin:auto;
+}
+
+.section-label{
+font-size:14px;
+letter-spacing:3px;
+text-transform:uppercase;
+opacity:.5;
 margin-bottom:20px;
 }
 
-.hero-content p{
-font-size:22px;
-opacity:.8;
-}
-
-.section{
-padding:80px 20px;
-max-width:1200px;
-margin:auto;
-}
-
 .section-title{
-font-size:42px;
+font-size:clamp(38px,6vw,80px);
+font-weight:800;
+line-height:1;
 margin-bottom:30px;
-text-align:center;
+letter-spacing:-3px;
 }
 
-.description{
-text-align:center;
-max-width:800px;
-margin:auto;
+.section-description{
+font-size:20px;
+line-height:1.9;
+max-width:850px;
+opacity:.75;
+}
+
+/* DIFFERENTIALS */
+
+.differentials{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:70px;
+}
+
+.diff-card{
+background:#111;
+border:1px solid rgba(255,255,255,.05);
+padding:35px;
+border-radius:28px;
+transition:.3s;
+}
+
+.diff-card:hover{
+transform:translateY(-6px);
+background:#181818;
+}
+
+.diff-card h3{
+font-size:24px;
+margin-bottom:15px;
+}
+
+.diff-card p{
+opacity:.7;
 line-height:1.7;
-opacity:.8;
+}
+
+/* VIDEOS */
+
+.video-section{
+padding-top:60px;
 }
 
 .video-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-margin-top:50px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;
+margin-top:70px;
 }
 
 .video-card{
-background:#1a1a1a;
-border-radius:20px;
+background:#111;
+border-radius:32px;
 overflow:hidden;
+transition:.4s;
+border:1px solid rgba(255,255,255,.05);
 }
 
-.video-card iframe{
+.video-card:hover{
+transform:translateY(-8px);
+}
+
+.video-wrapper{
+position:relative;
+aspect-ratio:9/16;
+background:black;
+}
+
+.video-wrapper iframe{
+position:absolute;
 width:100%;
-aspect-ratio:16/9;
+height:100%;
 border:none;
+top:0;
+left:0;
 }
 
 .video-info{
-padding:20px;
+padding:25px;
 }
 
+.video-info h3{
+font-size:22px;
+margin-bottom:12px;
+}
+
+.video-info p{
+opacity:.65;
+line-height:1.7;
+}
+
+/* CTA */
+
 .cta{
+padding:140px 20px;
 text-align:center;
-padding:100px 20px;
+}
+
+.cta-box{
+max-width:1100px;
+margin:auto;
+background:linear-gradient(145deg,#111,#1b1b1b);
+padding:80px 30px;
+border-radius:40px;
+border:1px solid rgba(255,255,255,.05);
+}
+
+.cta h2{
+font-size:clamp(42px,7vw,90px);
+line-height:1;
+margin-bottom:25px;
+letter-spacing:-3px;
+}
+
+.cta p{
+max-width:700px;
+margin:auto;
+line-height:1.9;
+font-size:20px;
+opacity:.75;
 }
 
 .cta a{
 display:inline-block;
-margin-top:30px;
-padding:18px 40px;
+margin-top:40px;
+padding:20px 44px;
 background:white;
 color:black;
 text-decoration:none;
+font-weight:700;
 border-radius:100px;
-font-weight:bold;
+transition:.3s;
 }
 
-.footer{
-text-align:center;
-padding:40px;
-opacity:.5;
+.cta a:hover{
+transform:scale(1.04);
 }
+
+/* FOOTER */
+
+.footer{
+padding:60px 20px;
+text-align:center;
+opacity:.4;
+font-size:14px;
+}
+
+/* MOBILE */
 
 @media(max-width:768px){
 
-.hero-content h1{
-font-size:42px;
+.hero{
+height:auto;
+padding:160px 20px 120px;
 }
 
-.hero-content p{
+.section{
+padding:90px 20px;
+}
+
+.section-description{
+font-size:17px;
+}
+
+.video-grid{
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.video-info{
+padding:18px;
+}
+
+.video-info h3{
 font-size:18px;
 }
 
+.cta-box{
+padding:60px 25px;
+}
+
+.cta p{
+font-size:17px;
+}
+
+}
+
+@media(max-width:520px){
+
+.video-grid{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+letter-spacing:-2px;
+}
+
 .section-title{
-font-size:32px;
+letter-spacing:-2px;
 }
 
 }
@@ -126,72 +335,211 @@ font-size:32px;
 
 <body>
 
+<!-- HERO -->
+
 <section class="hero">
+
+<div class="hero-overlay"></div>
+
 <div class="hero-content">
-<h1>VEIC Vídeos</h1>
-<p>Posicionamento através de vídeos estratégicos.</p>
+
+<h1>
+VEIC<br>
+VÍDEOS
+</h1>
+
+<p>
+Vídeos estratégicos e cinematográficos para bares, cervejarias e choperias que desejam fortalecer posicionamento, experiência e presença digital.
+</p>
+
+<a class="hero-button" href="#videos">
+Ver Produções
+</a>
+
 </div>
+
 </section>
+
+<!-- ABOUT -->
 
 <section class="section">
 
+<div class="container">
+
+<div class="section-label">
+POSICIONAMENTO DIGITAL
+</div>
+
 <h2 class="section-title">
-Produções
+Sua marca precisa ser lembrada.
 </h2>
 
-<p class="description">
-Vídeos cinematográficos para fortalecer marcas e experiências.
+<p class="section-description">
+A VEIC cria produções audiovisuais voltadas para experiência, branding e presença digital. Nosso objetivo é transformar ambientes, bebidas e atendimento em conteúdo visual que gere desejo, reconhecimento e posicionamento premium.
+</p>
+
+<div class="differentials">
+
+<div class="diff-card">
+<h3>Visual Cinematográfico</h3>
+<p>
+Produções com estética moderna, social-first e linguagem premium para destacar sua marca.
+</p>
+</div>
+
+<div class="diff-card">
+<h3>Conteúdo Estratégico</h3>
+<p>
+Vídeos pensados para atrair atenção, gerar percepção de valor e fortalecer presença digital.
+</p>
+</div>
+
+<div class="diff-card">
+<h3>Experiência</h3>
+<p>
+Mostramos atmosfera, público, produto e energia do ambiente de forma imersiva.
+</p>
+</div>
+
+<div class="diff-card">
+<h3>Social Media</h3>
+<p>
+Conteúdo otimizado para Instagram Reels, TikTok e Shorts com forte impacto visual.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- VIDEOS -->
+
+<section class="section video-section" id="videos">
+
+<div class="container">
+
+<div class="section-label">
+PRODUÇÕES
+</div>
+
+<h2 class="section-title">
+Experiência visual em formato vertical.
+</h2>
+
+<p class="section-description">
+Produções desenvolvidas para consumo mobile, foco em retenção e fortalecimento de marca nas redes sociais.
 </p>
 
 <div class="video-grid">
 
-<div class="video-card">
-<iframe src="https://www.youtube.com/embed/VIDEO1"></iframe>
-<div class="video-info">
-<h3>Produção 1</h3>
-</div>
-</div>
+<!-- VIDEO 1 -->
 
 <div class="video-card">
-<iframe src="https://www.youtube.com/embed/VIDEO2"></iframe>
-<div class="video-info">
-<h3>Produção 2</h3>
-</div>
+
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/VIDEO1"
+allowfullscreen></iframe>
 </div>
 
-<div class="video-card">
-<iframe src="https://www.youtube.com/embed/VIDEO3"></iframe>
 <div class="video-info">
-<h3>Produção 3</h3>
-</div>
+<h3>Produção 01</h3>
+<p>
+Experiência visual para bares e cervejarias.
+</p>
 </div>
 
-<div class="video-card">
-<iframe src="https://www.youtube.com/embed/VIDEO4"></iframe>
-<div class="video-info">
-<h3>Produção 4</h3>
 </div>
+
+<!-- VIDEO 2 -->
+
+<div class="video-card">
+
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/VIDEO2"
+allowfullscreen></iframe>
+</div>
+
+<div class="video-info">
+<h3>Produção 02</h3>
+<p>
+Conteúdo vertical cinematográfico.
+</p>
+</div>
+
+</div>
+
+<!-- VIDEO 3 -->
+
+<div class="video-card">
+
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/VIDEO3"
+allowfullscreen></iframe>
+</div>
+
+<div class="video-info">
+<h3>Produção 03</h3>
+<p>
+Posicionamento digital para marcas.
+</p>
+</div>
+
+</div>
+
+<!-- VIDEO 4 -->
+
+<div class="video-card">
+
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/VIDEO4"
+allowfullscreen></iframe>
+</div>
+
+<div class="video-info">
+<h3>Produção 04</h3>
+<p>
+Experiência premium e branding visual.
+</p>
+</div>
+
+</div>
+
 </div>
 
 </div>
 
 </section>
+
+<!-- CTA -->
 
 <section class="cta">
 
-<h2 class="section-title">
-Vamos posicionar sua marca?
+<div class="cta-box">
+
+<h2>
+Sua marca<br>
+merece presença.
 </h2>
 
-<a href="https://wa.me/5531999999999">
-Falar no WhatsApp
+<p>
+Transforme seu posicionamento digital através de vídeos estratégicos com estética cinematográfica e foco em impacto visual.
+</p>
+
+<a href="https://wa.me/5531999999999" target="_blank">
+Solicitar orçamento
 </a>
+
+</div>
 
 </section>
 
-<div class="footer">
-VEIC Vídeos
-</div>
+<!-- FOOTER -->
+
+<footer class="footer">
+VEIC Vídeos © 2026
+</footer>
 
 </body>
 </html>
