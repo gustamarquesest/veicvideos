@@ -889,7 +889,7 @@
         text-align: center;
       }
       .posicione-right { align-items: center; }
-      .posicione-video-wrap { max-width: 260px; }
+      .posicione-video-wrap { max-width: 320px; width: 80%; }
 
       /* PROPOSTA */
       .cards-grid { grid-template-columns: 1fr; }
@@ -931,7 +931,7 @@
       /* POSICIONE-SE */
       .posicione { padding: 50px 0; }
       .posicione-title { font-size: clamp(32px, 10vw, 52px); }
-      .posicione-video-wrap { max-width: 220px; }
+      .posicione-video-wrap { max-width: 300px; width: 85%; }
 
       /* PROPOSTA */
       .proposta { padding: 60px 0; }
@@ -1008,6 +1008,29 @@
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    /* Botão play sobre o thumbnail */
+    .posicione-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.95);
+      width: 72px; height: 72px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 2;
+    }
+    .posicione-video-wrap:hover .posicione-play-btn {
+      transform: translate(-50%, -50%) scale(1.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    }
+    .posicione-video-wrap:hover .posicione-video-overlay {
+      background: rgba(19,18,16,.15) !important;
     }
 
     /* ─── PROJETOS ───────────────────────────────── */
@@ -1182,14 +1205,19 @@
           <h2 class="posicione-title">POSICIONE-SE<br/>ATRAVÉS DE<br/>VÍDEOS<br/><span class="gold">ESTRATÉGICOS</span></h2>
         </div>
         <div class="posicione-right fade-up">
-          <div class="posicione-video-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/nrzURq_4LPk?rel=0&modestbranding=1"
-              title="Qual é o diferencial — Veic Vídeos"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+          <div class="posicione-video-wrap" onclick="openVideoModal('nrzURq_4LPk')" style="cursor:pointer;">
+            <!-- Thumbnail do YouTube -->
+            <img
+              src="https://i.ytimg.com/vi/nrzURq_4LPk/hqdefault.jpg"
+              alt="Qual é o diferencial — Veic Vídeos"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+            />
+            <!-- Overlay escuro -->
+            <div style="position:absolute;inset:0;background:rgba(19,18,16,.35);transition:background .2s;" class="posicione-video-overlay"></div>
+            <!-- Botão play -->
+            <div class="posicione-play-btn">
+              <svg viewBox="0 0 24 24" style="width:26px;height:26px;fill:#131210;margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
+            </div>
           </div>
         </div>
       </div>
