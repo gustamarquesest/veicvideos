@@ -1402,7 +1402,7 @@
       <!-- Modal de vídeo -->
       <div id="video-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.88);align-items:center;justify-content:center;">
         <div style="position:relative;width:100%;max-width:380px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.8);">
-          <iframe id="video-modal-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+          <div id="yt-player-container" style="position:absolute;inset:0;width:100%;height:100%;"></div>
         </div>
         <button onclick="closeVideoModal()" style="position:fixed;top:20px;right:24px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);transition:background .2s;" onmouseover="this.style.background='rgba(255,182,0,.7)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">&times;</button>
       </div>
@@ -1638,22 +1638,88 @@
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
   </a>
 
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
   <!-- ─── JS ────────────────────────────────────── -->
   <script>
+    // ── YouTube IFrame API ──────────────────────────
+    let ytPlayer = null;
+    let ytReady = false;
+    let pendingVideoId = null;
+
+    function onYouTubeIframeAPIReady() {
+      ytReady = true;
+      if (pendingVideoId) {
+        _createPlayer(pendingVideoId);
+        pendingVideoId = null;
+      }
+    }
+
+    function _createPlayer(videoId) {
+      // Destroy existing player if any
+      if (ytPlayer) {
+        ytPlayer.destroy();
+        ytPlayer = null;
+      }
+      // Recreate container div (destroy removes the element)
+      const wrap = document.querySelector('#yt-player-container').parentElement;
+      const container = document.createElement('div');
+      container.id = 'yt-player-container';
+      container.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+      wrap.appendChild(container);
+
+      ytPlayer = new YT.Player('yt-player-container', {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+          vq: 'hd1080'
+        },
+        events: {
+          onReady: function(e) {
+            e.target.setPlaybackQuality('hd1080');
+            e.target.playVideo();
+          },
+          onPlaybackQualityChange: function(e) {
+            // If quality drops below hd720, force it back up
+            const q = e.target.getPlaybackQuality();
+            if (q !== 'hd1080' && q !== 'hd720') {
+              e.target.setPlaybackQuality('hd1080');
+            }
+          }
+        }
+      });
+    }
+
     // Modal de vídeo
     const videoModal = document.getElementById('video-modal');
-    const videoModalIframe = document.getElementById('video-modal-iframe');
 
     function openVideoModal(videoId) {
-      videoModalIframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&vq=hd1080&hd=1&quality=hd1080';
       videoModal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      if (ytReady) {
+        _createPlayer(videoId);
+      } else {
+        pendingVideoId = videoId;
+      }
     }
 
     function closeVideoModal() {
       videoModal.style.display = 'none';
-      videoModalIframe.src = '';
       document.body.style.overflow = '';
+      if (ytPlayer) {
+        ytPlayer.stopVideo();
+        ytPlayer.destroy();
+        ytPlayer = null;
+        // Recreate empty container for next open
+        const wrap = document.querySelector('#video-modal > div');
+        const container = document.createElement('div');
+        container.id = 'yt-player-container';
+        container.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+        wrap.appendChild(container);
+      }
     }
 
     // Fechar ao clicar no fundo escuro
