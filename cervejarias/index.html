@@ -1600,328 +1600,155 @@
 
   <!-- ─── BACKSTAGE ───────────────────────────────── -->
   <section class="backstage" id="backstage">
-    <!-- Cabeçalho fora do rolo, dentro de container normal -->
     <div class="container">
       <div class="bs-header fade-up">
-        <div class="bs-header-left">
+        <div>
           <span class="tag" style="background:transparent;color:var(--gold);border:1px solid var(--gold);margin-bottom:16px;display:inline-block;">Por dentro da Veic</span>
-          <h2 class="section-title">Nossa equipe<br/><span style="color:var(--gold);">em campo</span></h2>
-          <p class="section-sub" style="max-width:360px;margin-top:12px;">Bastidores de quem vive o vídeo de perto.</p>
-        </div>
-        <div class="bs-nav">
-          <button class="bs-btn" id="bs-prev" aria-label="Anterior">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button class="bs-btn" id="bs-next" aria-label="Próximo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Film strip — full width, sem container -->
-    <div class="bs-film-wrap">
-      <!-- Perfurações laterais estilo rolo de filme -->
-      <div class="bs-perfs bs-perfs-top">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-
-      <div class="bs-strip" id="bs-strip">
-        <!-- bs1 vertical -->
-        <div class="bs-frame bs-frame--v">
-          <img src="bs1.jpg" alt="Backstage Veic — equipe em campo" loading="lazy"/>
-          <div class="bs-frame-overlay"></div>
-        </div>
-        <!-- bs3 horizontal -->
-        <div class="bs-frame bs-frame--h">
-          <img src="bs3.jpg" alt="Circuito Cultural Barreiro — bastidores" loading="lazy"/>
-          <div class="bs-frame-overlay"></div>
-        </div>
-        <!-- bs2 vertical -->
-        <div class="bs-frame bs-frame--v">
-          <img src="bs2.jpg" alt="Backstage Veic — gravação" loading="lazy"/>
-          <div class="bs-frame-overlay"></div>
-        </div>
-        <!-- bs4 horizontal -->
-        <div class="bs-frame bs-frame--h">
-          <img src="bs4.jpg" alt="Circuito Cultural Barreiro — equipe" loading="lazy"/>
-          <div class="bs-frame-overlay"></div>
-        </div>
-        <!-- bs5 vertical -->
-        <div class="bs-frame bs-frame--v">
-          <img src="bs5.jpg" alt="Backstage Veic — evento" loading="lazy"/>
-          <div class="bs-frame-overlay"></div>
-        </div>
-        <!-- bs6 horizontal -->
-        <div class="bs-frame bs-frame--h">
-          <img src="bs6.jpg" alt="Backstage Veic — fotógrafa" loading="lazy"/>
-          <div class="bs-frame-overlay"></div>
-        </div>
-        <!-- bs7 vertical -->
-        <div class="bs-frame bs-frame--v">
-          <img src="bs7.jpg" alt="Backstage Veic — equipe" loading="lazy"/>
-          <div class="bs-frame-overlay"></div>
-        </div>
-        <!-- bs8 horizontal -->
-        <div class="bs-frame bs-frame--h">
-          <img src="bs8.jpg" alt="Backstage Veic — produção" loading="lazy"/>
-          <div class="bs-frame-overlay"></div>
-        </div>
-        <!-- bs9 horizontal -->
-        <div class="bs-frame bs-frame--h">
-          <img src="bs9.jpg" alt="Circuito Cultural Barreiro — bastidores" loading="lazy"/>
-          <div class="bs-frame-overlay"></div>
+          <h2 class="section-title" style="margin-top:12px;">Nossa equipe<br/><span style="color:var(--gold);">em campo</span></h2>
+          <p class="section-sub" style="margin-top:10px;">Bastidores de quem vive o vídeo de perto.</p>
         </div>
       </div>
 
-      <div class="bs-perfs bs-perfs-bottom">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-    </div>
+      <!-- Mosaico Pinterest: 3 colunas, cada foto na proporção natural -->
+      <div class="bs-masonry fade-up">
 
-    <!-- Indicador de progresso -->
-    <div class="container">
-      <div class="bs-progress-wrap">
-        <div class="bs-progress-bar"><div class="bs-progress-fill" id="bs-progress"></div></div>
-        <span class="bs-drag-hint">← arraste para explorar →</span>
+        <!-- Coluna 1 -->
+        <div class="bs-col">
+          <!-- bs1 vertical 675x1200 -->
+          <div class="bs-card">
+            <img src="bs1.jpg" alt="Backstage Veic" loading="lazy"/>
+          </div>
+          <!-- bs4 horizontal 800x543 -->
+          <div class="bs-card">
+            <img src="bs4.jpg" alt="Circuito Cultural Barreiro" loading="lazy"/>
+          </div>
+          <!-- bs5 vertical 675x1200 -->
+          <div class="bs-card">
+            <img src="bs5.jpg" alt="Backstage Veic" loading="lazy"/>
+          </div>
+        </div>
+
+        <!-- Coluna 2 -->
+        <div class="bs-col">
+          <!-- bs3 horizontal 800x533 -->
+          <div class="bs-card">
+            <img src="bs3.jpg" alt="Circuito Cultural Barreiro" loading="lazy"/>
+          </div>
+          <!-- bs2 vertical 675x1200 -->
+          <div class="bs-card">
+            <img src="bs2.jpg" alt="Backstage Veic — gravação" loading="lazy"/>
+          </div>
+          <!-- bs6 horizontal 800x533 -->
+          <div class="bs-card">
+            <img src="bs6.jpg" alt="Backstage Veic — fotógrafa" loading="lazy"/>
+          </div>
+        </div>
+
+        <!-- Coluna 3 -->
+        <div class="bs-col">
+          <!-- bs7 horizontal 800x533 -->
+          <div class="bs-card">
+            <img src="bs7.jpg" alt="Backstage Veic — equipe" loading="lazy"/>
+          </div>
+          <!-- bs8 horizontal 800x533 -->
+          <div class="bs-card">
+            <img src="bs8.jpg" alt="Backstage Veic — produção" loading="lazy"/>
+          </div>
+          <!-- bs9 horizontal 800x533 -->
+          <div class="bs-card">
+            <img src="bs9.jpg" alt="Circuito Cultural Barreiro" loading="lazy"/>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <style>
-    /* ── BACKSTAGE ─────────────────────────────────────── */
     .backstage {
-      background: #0a0a08;
-      padding: 80px 0 60px;
-      overflow: hidden;
+      background: #0d0d0b;
+      padding: 80px 0 96px;
     }
 
-    /* Cabeçalho com título + botões lado a lado */
     .bs-header {
+      margin-bottom: 48px;
+    }
+
+    /* Mosaico Pinterest: 3 colunas flex independentes */
+    .bs-masonry {
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 40px;
-      gap: 24px;
+      gap: 14px;
+      align-items: flex-start;
     }
 
-    .bs-nav {
+    .bs-col {
+      flex: 1;
       display: flex;
-      gap: 10px;
-      flex-shrink: 0;
+      flex-direction: column;
+      gap: 14px;
+      min-width: 0;
     }
 
-    .bs-btn {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,182,0,.4);
-      background: transparent;
-      color: var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: background .2s, border-color .2s, transform .15s;
-    }
-    .bs-btn:hover {
-      background: var(--gold);
-      color: var(--black);
-      border-color: var(--gold);
-      transform: scale(1.08);
-    }
-    .bs-btn:active { transform: scale(.96); }
-
-    /* Wrapper do rolo — borda dourada superior e inferior */
-    .bs-film-wrap {
+    /* Cada card: a imagem define a altura naturalmente */
+    .bs-card {
       position: relative;
-      background: #111109;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Perfurações estilo rolo de filme */
-    .bs-perfs {
-      display: flex;
-      gap: 0;
-      padding: 0 8px;
-      height: 22px;
-      align-items: center;
+      border-radius: 10px;
       overflow: hidden;
-    }
-    .bs-perfs-top { border-bottom: 1px solid rgba(255,182,0,.12); }
-    .bs-perfs-bottom { border-top: 1px solid rgba(255,182,0,.12); }
-    .bs-perfs span {
-      display: inline-block;
-      width: 22px; height: 14px;
-      border-radius: 3px;
-      border: 1.5px solid rgba(255,182,0,.25);
-      margin-right: 18px;
-      flex-shrink: 0;
+      cursor: pointer;
+      background: #1a1a17;
     }
 
-    /* Faixa horizontal rolável */
-    .bs-strip {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-behavior: smooth;
-      padding: 16px 48px;
-      cursor: grab;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
+    .bs-card img {
+      width: 100%;
+      height: auto;         /* <-- chave do Pinterest: auto, não 100% */
+      display: block;
+      transition: transform 0.45s ease;
     }
-    .bs-strip::-webkit-scrollbar { display: none; }
-    .bs-strip.dragging { cursor: grabbing; scroll-behavior: auto; }
 
-    /* Gradientes de borda para suavizar saída */
-    .bs-film-wrap::before,
-    .bs-film-wrap::after {
+    /* Overlay dourado sutil no hover */
+    .bs-card::after {
       content: '';
       position: absolute;
-      top: 22px; bottom: 22px;
-      width: 80px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .bs-film-wrap::before {
-      left: 0;
-      background: linear-gradient(to right, #111109, transparent);
-    }
-    .bs-film-wrap::after {
-      right: 0;
-      background: linear-gradient(to left, #111109, transparent);
-    }
-
-    /* Frames individuais */
-    .bs-frame {
-      position: relative;
-      flex-shrink: 0;
-      border-radius: 2px;
-      overflow: hidden;
-      border: 1.5px solid rgba(255,182,0,.15);
-      transition: border-color .3s, transform .3s;
-    }
-    .bs-frame:hover {
-      border-color: rgba(255,182,0,.55);
-      transform: scale(1.025);
-      z-index: 1;
-    }
-
-    /* Vertical: proporção 2:3 */
-    .bs-frame--v {
-      width: 280px;
-      height: 420px;
-    }
-
-    /* Horizontal: proporção 3:2 */
-    .bs-frame--h {
-      width: 500px;
-      height: 340px;
-    }
-
-    .bs-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform .5s ease;
-    }
-    .bs-frame:hover img { transform: scale(1.04); }
-
-    .bs-frame-overlay {
-      position: absolute;
       inset: 0;
-      background: linear-gradient(160deg, transparent 50%, rgba(0,0,0,.45));
-      pointer-events: none;
+      background: rgba(255,182,0,0);
+      transition: background 0.3s ease;
+      border-radius: 10px;
     }
 
-    /* Barra de progresso e hint */
-    .bs-progress-wrap {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-top: 28px;
-    }
-    .bs-progress-bar {
-      flex: 1;
-      height: 2px;
-      background: rgba(255,182,0,.15);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .bs-progress-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--gold);
-      border-radius: 2px;
-      transition: width .15s linear;
-    }
-    .bs-drag-hint {
-      font-size: 11px;
-      color: rgba(254,251,243,.35);
-      letter-spacing: .08em;
-      white-space: nowrap;
-      flex-shrink: 0;
+    .bs-card:hover img {
+      transform: scale(1.04);
     }
 
+    .bs-card:hover::after {
+      background: rgba(255,182,0,0.08);
+    }
+
+    /* Mobile: 2 colunas */
     @media (max-width: 768px) {
-      .bs-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .bs-frame--v { width: 200px; height: 300px; }
-      .bs-frame--h { width: 340px; height: 230px; }
-      .bs-strip { padding: 12px 24px; gap: 5px; }
-      .bs-drag-hint { display: none; }
+      .bs-masonry {
+        gap: 10px;
+      }
+      .bs-col {
+        gap: 10px;
+      }
+    }
+
+    /* Mobile pequeno: 1 coluna */
+    @media (max-width: 480px) {
+      .bs-masonry {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .bs-col {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .bs-card {
+        flex: 1 1 calc(50% - 5px);
+        min-width: 140px;
+      }
     }
   </style>
-
-  <script>
-    (function() {
-      const strip = document.getElementById('bs-strip');
-      const progress = document.getElementById('bs-progress');
-      const btnPrev = document.getElementById('bs-prev');
-      const btnNext = document.getElementById('bs-next');
-
-      // Progresso
-      function updateProgress() {
-        const max = strip.scrollWidth - strip.clientWidth;
-        const pct = max > 0 ? (strip.scrollLeft / max) * 100 : 0;
-        progress.style.width = pct + '%';
-      }
-      strip.addEventListener('scroll', updateProgress, { passive: true });
-
-      // Botões de nav — avança/retrocede ~80% da largura visível
-      btnNext.addEventListener('click', () => {
-        strip.scrollBy({ left: strip.clientWidth * 0.8, behavior: 'smooth' });
-      });
-      btnPrev.addEventListener('click', () => {
-        strip.scrollBy({ left: -strip.clientWidth * 0.8, behavior: 'smooth' });
-      });
-
-      // Drag para arrastar com mouse
-      let isDragging = false, startX = 0, scrollStart = 0;
-      strip.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.pageX - strip.offsetLeft;
-        scrollStart = strip.scrollLeft;
-        strip.classList.add('dragging');
-      });
-      document.addEventListener('mouseup', () => {
-        isDragging = false;
-        strip.classList.remove('dragging');
-      });
-      document.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.pageX - strip.offsetLeft;
-        strip.scrollLeft = scrollStart - (x - startX);
-      });
-    })();
-  </script>
 
   <!-- ─── PROJETOS ───────────────────────────────── -->
   <section class="projetos" id="projetos">
