@@ -1667,6 +1667,29 @@
 
     @media (max-width: 768px) {
       .video-card--wide { grid-column: span 1; aspect-ratio: 16/9 !important; }
+
+      /* Eventos mobile: 2 colunas com o 3º card centralizado */
+      .eventos .videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+      }
+      .eventos .videos-grid .video-card:last-child {
+        grid-column: 1 / -1;
+        max-width: calc(50% - 6px);
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .eventos .videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .eventos .videos-grid .video-card:last-child {
+        grid-column: 1 / -1;
+        max-width: calc(50% - 5px);
+        margin: 0 auto;
+      }
     }
   </style>
 
