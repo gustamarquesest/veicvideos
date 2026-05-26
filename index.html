@@ -1599,7 +1599,7 @@
 
 
   <!-- ─── BACKSTAGE ───────────────────────────────── -->
-  <section class="backstage" id="backstage" style="background:#0d0d0b;padding:80px 0;">
+  <section class="backstage" id="backstage">
     <div class="container">
       <div class="section-header fade-up" style="text-align:center;margin-bottom:48px;">
         <span class="tag" style="background:transparent;color:var(--gold);border:1px solid var(--gold);">Por dentro da Veic</span>
@@ -1607,84 +1607,111 @@
         <p class="section-sub">Bastidores de quem vive o vídeo de perto.</p>
       </div>
 
-      <div class="bs-carousel-wrap" style="position:relative;">
-        <div class="bs-carousel" id="bsCarousel" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:8px;">
-          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
-            <img src="bs1.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
-          </div>
-          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
-            <img src="bs2.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
-          </div>
-          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
-            <img src="bs3.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Circuito Cultural Barreiro"/>
-          </div>
-          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
-            <img src="bs4.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Circuito Cultural Barreiro"/>
-          </div>
-          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
-            <img src="bs5.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
-          </div>
-          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
-            <img src="bs6.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
-          </div>
-          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
-            <img src="bs7.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
-          </div>
-          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
-            <img src="bs8.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
-          </div>
-          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
-            <img src="bs9.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
-          </div>
+      <div class="bs-grid fade-up">
+        <!-- Vertical (linha 1 + linha 2 da col 1) -->
+        <div class="bs-item bs-tall">
+          <img src="bs1.jpg" alt="Backstage Veic"/>
+          <div class="bs-hover"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
         </div>
-
-        <!-- Botões de navegação -->
-        <button onclick="bsScroll(-1)" style="position:absolute;left:-20px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.4);">‹</button>
-        <button onclick="bsScroll(1)"  style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.4);">›</button>
+        <!-- Horizontais col 2 -->
+        <div class="bs-item">
+          <img src="bs3.jpg" alt="Circuito Cultural Barreiro"/>
+          <div class="bs-hover"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+        </div>
+        <div class="bs-item">
+          <img src="bs4.jpg" alt="Circuito Cultural Barreiro"/>
+          <div class="bs-hover"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+        </div>
+        <!-- Vertical col 3 -->
+        <div class="bs-item bs-tall">
+          <img src="bs2.jpg" alt="Backstage Veic"/>
+          <div class="bs-hover"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+        </div>
+        <!-- Horizontais linha 3 -->
+        <div class="bs-item">
+          <img src="bs6.jpg" alt="Backstage Veic"/>
+          <div class="bs-hover"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+        </div>
+        <div class="bs-item">
+          <img src="bs7.jpg" alt="Backstage Veic"/>
+          <div class="bs-hover"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+        </div>
+        <div class="bs-item">
+          <img src="bs8.jpg" alt="Backstage Veic"/>
+          <div class="bs-hover"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+        </div>
+        <div class="bs-item">
+          <img src="bs9.jpg" alt="Backstage Veic"/>
+          <div class="bs-hover"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+        </div>
+        <!-- Última vertical centralizada -->
+        <div class="bs-item bs-tall bs-center-tall">
+          <img src="bs5.jpg" alt="Backstage Veic"/>
+          <div class="bs-hover"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+        </div>
       </div>
-
-      <!-- Indicadores -->
-      <div style="display:flex;justify-content:center;gap:8px;margin-top:24px;" id="bsDots"></div>
     </div>
   </section>
 
   <style>
-    #bsCarousel::-webkit-scrollbar { display:none; }
-    @media(max-width:768px) {
-      .bs-slide { flex: 0 0 calc(80% - 8px) !important; }
+    .backstage { background: #0d0d0b; padding: 80px 0; }
+
+    .bs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 12px;
+    }
+
+    .bs-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .bs-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .bs-item:hover img { transform: scale(1.06); }
+
+    .bs-hover {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 182, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(2px);
+    }
+
+    .bs-item:hover .bs-hover { opacity: 1; }
+
+    /* Verticais ocupam 2 linhas */
+    .bs-tall { grid-row: span 2; }
+
+    @media (max-width: 768px) {
+      .bs-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bs-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 240px;
+      }
+      .bs-tall { grid-row: span 2; }
     }
   </style>
-
-  <script>
-    (function(){
-      const c = document.getElementById('bsCarousel');
-      const dotsWrap = document.getElementById('bsDots');
-      const slides = c.querySelectorAll('.bs-slide');
-      const visibleCount = window.innerWidth < 768 ? 1 : 3;
-      const total = Math.ceil(slides.length / visibleCount);
-
-      // Criar dots
-      for(let i=0;i<total;i++){
-        const d = document.createElement('div');
-        d.style.cssText = 'width:8px;height:8px;border-radius:50%;background:'+(i===0?'var(--gold)':'rgba(255,255,255,.3)')+';cursor:pointer;transition:background .3s;';
-        d.addEventListener('click',()=>{ c.scrollTo({left: c.offsetWidth * i, behavior:'smooth'}); });
-        dotsWrap.appendChild(d);
-      }
-
-      // Atualizar dots no scroll
-      c.addEventListener('scroll',()=>{
-        const idx = Math.round(c.scrollLeft / c.offsetWidth);
-        dotsWrap.querySelectorAll('div').forEach((d,i)=>{
-          d.style.background = i===idx ? 'var(--gold)' : 'rgba(255,255,255,.3)';
-        });
-      });
-
-      window.bsScroll = function(dir){
-        const slideW = c.querySelector('.bs-slide').offsetWidth + 16;
-        c.scrollBy({ left: dir * slideW * visibleCount, behavior:'smooth' });
-      };
-    })();
-  </script>
 
   <!-- ─── PROJETOS ───────────────────────────────── -->
   <section class="projetos" id="projetos">
