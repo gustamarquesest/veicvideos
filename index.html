@@ -1,1323 +1,1936 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Veic Vídeos — Produtora de Vídeos Estratégicos | veicvideos.com</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --black: #131210;
-    --cream: #FEFBF3;
-    --yellow: #FFB600;
-    --yellow-dark: #CC9200;
-    --gray-mid: #2a2820;
-    --gray-light: #1e1c1a;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--black);
-    color: var(--cream);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-  }
-
-  /* NAVIGATION */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 1.2rem 4rem;
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(19,18,16,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,182,0,0.15);
-    transition: all 0.3s;
-  }
-
-  .nav-logo {
-    display: flex; align-items: center; gap: 10px;
-    text-decoration: none;
-  }
-
-  .nav-logo svg { width: 32px; height: auto; }
-
-  .logo-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.15rem; font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--cream);
-  }
-
-  .logo-text span { color: var(--yellow); }
-
-  .nav-links {
-    display: flex; gap: 2.5rem; list-style: none;
-    align-items: center;
-  }
-
-  .nav-links a {
-    color: rgba(254,251,243,0.7);
-    text-decoration: none;
-    font-size: 0.875rem; font-weight: 500;
-    letter-spacing: 0.02em;
-    transition: color 0.2s;
-    text-transform: uppercase;
-  }
-
-  .nav-links a:hover { color: var(--yellow); }
-
-  .nav-cta {
-    background: var(--yellow) !important;
-    color: var(--black) !important;
-    padding: 0.55rem 1.4rem;
-    border-radius: 4px;
-    font-weight: 700 !important;
-    transition: background 0.2s !important;
-  }
-
-  .nav-cta:hover { background: var(--yellow-dark) !important; color: var(--black) !important; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 8rem 4rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-bg-isotipo {
-    position: absolute; right: -6%; top: 50%; transform: translateY(-50%);
-    width: 52%; opacity: 0.05;
-    pointer-events: none;
-  }
-
-  .hero-content { max-width: 680px; position: relative; z-index: 2; }
-
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,182,0,0.12);
-    border: 1px solid rgba(255,182,0,0.3);
-    color: var(--yellow);
-    font-size: 0.78rem; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 0.4rem 1rem; border-radius: 100px;
-    margin-bottom: 2rem;
-  }
-
-  .hero-badge::before {
-    content: ''; width: 6px; height: 6px;
-    background: var(--yellow); border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%,100% { opacity: 1; } 50% { opacity: 0.3; }
-  }
-
-  h1 {
-    font-family: Impact, 'Inter', sans-serif;
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 900;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    color: var(--cream);
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    -webkit-text-stroke: 2px var(--black);
-    paint-order: stroke fill;
-  }
-
-  h1 .accent { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
-
-  .hero-sub {
-    font-size: 1.15rem; color: rgba(254,251,243,0.65);
-    line-height: 1.7; margin-bottom: 2.5rem;
-    max-width: 520px;
-    font-weight: 400;
-  }
-
-  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-
-  .btn-primary {
-    background: var(--yellow); color: var(--black);
-    padding: 1rem 2rem; border-radius: 4px;
-    font-weight: 700; font-size: 0.95rem;
-    text-decoration: none; display: inline-flex;
-    align-items: center; gap: 8px;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-2px); }
-
-  .btn-secondary {
-    color: var(--cream); padding: 1rem 2rem;
-    border: 1px solid rgba(254,251,243,0.2);
-    border-radius: 4px; font-weight: 500; font-size: 0.95rem;
-    text-decoration: none; display: inline-flex;
-    align-items: center; gap: 8px;
-    transition: border-color 0.2s, transform 0.15s;
-  }
-
-  .btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-2px); }
-
-  .hero-stats {
-    display: flex; gap: 3rem; margin-top: 4rem;
-    padding-top: 2.5rem;
-    border-top: 1px solid rgba(255,182,0,0.15);
-  }
-
-  .stat-item { display: flex; flex-direction: column; }
-
-  .stat-num {
-    font-family: Impact, sans-serif;
-    font-size: 2.2rem; color: var(--yellow);
-    line-height: 1; font-weight: 900;
-  }
-
-  .stat-label {
-    font-size: 0.78rem; color: rgba(254,251,243,0.5);
-    text-transform: uppercase; letter-spacing: 0.05em;
-    margin-top: 4px;
-  }
-
-  /* VIDEO REEL BANNER */
-  .reel-section {
-    padding: 5rem 0;
-    background: var(--gray-light);
-    border-top: 1px solid rgba(255,182,0,0.1);
-    border-bottom: 1px solid rgba(255,182,0,0.1);
-    overflow: hidden;
-  }
-
-  .reel-label {
-    text-align: center;
-    font-size: 0.75rem; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--yellow); margin-bottom: 2.5rem;
-  }
-
-  .video-scroll-track {
-    display: flex; gap: 1rem;
-    animation: scroll-left 45s linear infinite;
-    width: max-content;
-  }
-
-  .video-scroll-track:hover { animation-play-state: paused; }
-
-  @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  .video-thumb {
-    flex-shrink: 0;
-    border-radius: 8px; overflow: hidden;
-    position: relative; cursor: pointer;
-    border: 1px solid rgba(255,182,0,0.1);
-    transition: border-color 0.2s, transform 0.2s;
-  }
-
-  .video-thumb:hover { border-color: var(--yellow); transform: scale(1.03); }
-
-  .video-thumb.vertical { width: 140px; height: 250px; }
-  .video-thumb.horizontal { width: 310px; height: 175px; }
-
-  .video-thumb-inner {
-    width: 100%; height: 100%;
-    background: var(--gray-mid);
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-  }
-
-  .thumb-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(19,18,16,0.8) 0%, transparent 50%);
-    display: flex; align-items: flex-end; padding: 10px;
-  }
-
-  .thumb-play {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 40px; height: 40px;
-    background: rgba(255,182,0,0.9);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity 0.2s;
-  }
-
-  .video-thumb:hover .thumb-play { opacity: 1; }
-
-  .thumb-play svg { width: 16px; fill: var(--black); margin-left: 3px; }
-
-  .thumb-label {
-    font-size: 0.7rem; color: var(--cream);
-    font-weight: 600; line-height: 1.2;
-  }
-
-  .thumb-niche {
-    position: absolute; top: 8px; left: 8px;
-    background: var(--yellow); color: var(--black);
-    font-size: 0.6rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.05em;
-    padding: 2px 7px; border-radius: 3px;
-  }
-
-  /* ABOUT / PROPÓSITO */
-  .purpose-section {
-    padding: 7rem 4rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
-    align-items: center; max-width: 1400px; margin: 0 auto;
-  }
-
-  .section-eyebrow {
-    font-size: 0.75rem; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--yellow); margin-bottom: 1.2rem;
-  }
-
-  h2 {
-    font-family: Impact, sans-serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    text-transform: uppercase;
-    line-height: 1; letter-spacing: -0.01em;
-    color: var(--cream); margin-bottom: 1.5rem;
-    -webkit-text-stroke: 2px var(--black);
-    paint-order: stroke fill;
-  }
-
-  h2 .accent { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
-
-  .body-text {
-    font-size: 1.05rem; color: rgba(254,251,243,0.65);
-    line-height: 1.8; margin-bottom: 1.5rem;
-  }
-
-  .purpose-visual {
-    position: relative;
-    aspect-ratio: 4/3;
-    background: var(--gray-light);
-    border-radius: 8px;
-    border: 1px solid rgba(255,182,0,0.15);
-    overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .purpose-visual-isotipo {
-    width: 60%; opacity: 0.12;
-  }
-
-  .purpose-cards {
-    display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem;
-  }
-
-  .purpose-card {
-    background: rgba(255,182,0,0.06);
-    border: 1px solid rgba(255,182,0,0.15);
-    border-radius: 8px; padding: 1.2rem 1.5rem;
-    display: flex; align-items: flex-start; gap: 1rem;
-  }
-
-  .purpose-card-icon {
-    width: 40px; height: 40px; flex-shrink: 0;
-    background: rgba(255,182,0,0.15);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .purpose-card-icon svg { width: 20px; fill: var(--yellow); }
-
-  .purpose-card h4 {
-    font-size: 0.95rem; font-weight: 700;
-    color: var(--cream); margin-bottom: 4px;
-  }
-
-  .purpose-card p {
-    font-size: 0.84rem; color: rgba(254,251,243,0.55); line-height: 1.5;
-  }
-
-  /* PORTFOLIO SECTION */
-  .portfolio-section {
-    padding: 7rem 4rem;
-    background: var(--gray-light);
-  }
-
-  .section-header {
-    display: flex; align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 3rem;
-  }
-
-  .filter-tabs {
-    display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;
-  }
-
-  .filter-tab {
-    padding: 0.4rem 1rem;
-    background: transparent;
-    border: 1px solid rgba(254,251,243,0.15);
-    color: rgba(254,251,243,0.55);
-    border-radius: 100px;
-    font-size: 0.8rem; font-weight: 600;
-    cursor: pointer; transition: all 0.2s;
-    font-family: 'Inter', sans-serif;
-    text-transform: uppercase; letter-spacing: 0.05em;
-  }
-
-  .filter-tab:hover,
-  .filter-tab.active {
-    background: var(--yellow);
-    border-color: var(--yellow);
-    color: var(--black);
-  }
-
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.25rem;
-  }
-
-  .portfolio-item {
-    border-radius: 8px; overflow: hidden;
-    position: relative; cursor: pointer;
-    background: var(--gray-mid);
-    border: 1px solid rgba(255,182,0,0.08);
-    transition: border-color 0.2s, transform 0.2s;
-    group: true;
-  }
-
-  .portfolio-item:hover { border-color: var(--yellow); transform: translateY(-4px); }
-
-  .portfolio-item.item-vertical { grid-row: span 2; }
-
-  .portfolio-thumb {
-    aspect-ratio: 16/9;
-    background: var(--gray-mid);
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .portfolio-item.item-vertical .portfolio-thumb { aspect-ratio: 9/16; }
-
-  .portfolio-thumb-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, #1e1c1a 0%, #2a2820 100%);
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .portfolio-thumb-bg svg { width: 40%; opacity: 0.1; }
-
-  .play-btn-large {
-    position: absolute;
-    width: 56px; height: 56px;
-    background: var(--yellow);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.2s, background 0.2s;
-    z-index: 2;
-  }
-
-  .portfolio-item:hover .play-btn-large { transform: scale(1.12); background: var(--yellow-dark); }
-
-  .play-btn-large svg { width: 20px; fill: var(--black); margin-left: 4px; }
-
-  .portfolio-meta {
-    padding: 1rem 1.25rem;
-  }
-
-  .portfolio-tags {
-    display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap;
-  }
-
-  .tag {
-    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 2px 8px; border-radius: 3px;
-  }
-
-  .tag-type {
-    background: rgba(255,182,0,0.15);
-    color: var(--yellow);
-    border: 1px solid rgba(255,182,0,0.3);
-  }
-
-  .tag-niche {
-    background: rgba(254,251,243,0.07);
-    color: rgba(254,251,243,0.5);
-    border: 1px solid rgba(254,251,243,0.1);
-  }
-
-  .portfolio-title {
-    font-size: 0.95rem; font-weight: 600;
-    color: var(--cream); line-height: 1.3;
-  }
-
-  .portfolio-client {
-    font-size: 0.8rem; color: rgba(254,251,243,0.4);
-    margin-top: 4px;
-  }
-
-  /* PROCESS */
-  .process-section {
-    padding: 7rem 4rem;
-    max-width: 1200px; margin: 0 auto;
-  }
-
-  .process-steps {
-    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem;
-    margin-top: 4rem;
-    position: relative;
-  }
-
-  .process-steps::before {
-    content: '';
-    position: absolute; top: 32px; left: calc(10% + 16px); right: calc(10% + 16px);
-    height: 1px; background: rgba(255,182,0,0.3);
-  }
-
-  .process-step { text-align: center; position: relative; }
-
-  .step-num {
-    width: 64px; height: 64px;
-    background: rgba(255,182,0,0.1);
-    border: 1px solid rgba(255,182,0,0.3);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1.5rem;
-    font-family: Impact, sans-serif;
-    font-size: 1.6rem; color: var(--yellow);
-    position: relative; z-index: 1;
-    transition: background 0.2s;
-  }
-
-  .process-step:hover .step-num {
-    background: var(--yellow); color: var(--black);
-  }
-
-  .step-title {
-    font-size: 0.9rem; font-weight: 700;
-    color: var(--cream); margin-bottom: 8px;
-    text-transform: uppercase; letter-spacing: 0.05em;
-  }
-
-  .step-desc {
-    font-size: 0.84rem; color: rgba(254,251,243,0.5);
-    line-height: 1.6;
-  }
-
-  /* BACKSTAGE */
-  .backstage-section {
-    padding: 7rem 4rem;
-    background: var(--gray-light);
-  }
-
-  .backstage-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 1rem;
-    margin-top: 3rem;
-  }
-
-  .backstage-item {
-    border-radius: 8px; overflow: hidden;
-    background: var(--gray-mid);
-    border: 1px solid rgba(255,182,0,0.08);
-    position: relative;
-    transition: border-color 0.2s;
-  }
-
-  .backstage-item:hover { border-color: rgba(255,182,0,0.4); }
-
-  .backstage-item.large { grid-row: span 2; aspect-ratio: 3/4; }
-  .backstage-item.medium { aspect-ratio: 4/3; }
-
-  .backstage-placeholder {
-    width: 100%; height: 100%; min-height: 200px;
-    background: linear-gradient(135deg, #1e1c1a 0%, #2a2820 100%);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 12px;
-  }
-
-  .backstage-placeholder svg { width: 36px; opacity: 0.2; fill: var(--cream); }
-
-  .backstage-placeholder span {
-    font-size: 0.72rem; color: rgba(254,251,243,0.2);
-    text-transform: uppercase; letter-spacing: 0.08em;
-  }
-
-  /* CTA SECTION */
-  .cta-section {
-    padding: 8rem 4rem;
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-
-  .cta-section::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at center, rgba(255,182,0,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .cta-section h2 { margin-bottom: 1.2rem; }
-
-  .cta-section .body-text {
-    max-width: 520px; margin: 0 auto 3rem;
-  }
-
-  .cta-contact {
-    display: inline-flex; align-items: center; gap: 12px;
-    background: rgba(255,182,0,0.08);
-    border: 1px solid rgba(255,182,0,0.2);
-    border-radius: 8px; padding: 1rem 2rem;
-    margin-top: 2rem;
-    font-size: 0.9rem; color: rgba(254,251,243,0.5);
-  }
-
-  .cta-contact strong { color: var(--cream); }
-
-  /* FOOTER */
-  footer {
-    padding: 3rem 4rem;
-    border-top: 1px solid rgba(255,182,0,0.1);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-
-  .footer-links { display: flex; gap: 2rem; list-style: none; }
-
-  .footer-links a {
-    color: rgba(254,251,243,0.35);
-    text-decoration: none; font-size: 0.82rem;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--yellow); }
-
-  .footer-copy {
-    font-size: 0.8rem; color: rgba(254,251,243,0.25);
-  }
-
-  /* MODAL */
-  .modal-overlay {
-    position: fixed; inset: 0; z-index: 1000;
-    background: rgba(0,0,0,0.85);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.25s;
-    backdrop-filter: blur(8px);
-  }
-
-  .modal-overlay.active { opacity: 1; pointer-events: all; }
-
-  .modal-box {
-    background: var(--gray-mid);
-    border: 1px solid rgba(255,182,0,0.2);
-    border-radius: 12px; overflow: hidden;
-    width: 90%; max-width: 900px;
-    transform: scale(0.95); transition: transform 0.25s;
-  }
-
-  .modal-overlay.active .modal-box { transform: scale(1); }
-
-  .modal-box.vertical-modal { max-width: 420px; }
-
-  .modal-video { position: relative; width: 100%; }
-  .modal-video.h16x9 { aspect-ratio: 16/9; }
-  .modal-video.h9x16 { aspect-ratio: 9/16; }
-
-  .modal-video iframe {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    border: none;
-  }
-
-  .modal-close {
-    position: absolute; top: 1rem; right: 1rem; z-index: 10;
-    width: 36px; height: 36px;
-    background: rgba(19,18,16,0.8);
-    border: 1px solid rgba(255,182,0,0.3);
-    border-radius: 50%; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--cream); font-size: 1.2rem;
-    transition: background 0.2s;
-  }
-
-  .modal-close:hover { background: var(--yellow); color: var(--black); }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero { padding: 6rem 1.5rem 3rem; }
-    h1 { font-size: 3rem; }
-    .hero-stats { gap: 2rem; }
-    .purpose-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
-    .portfolio-section, .backstage-section, .process-section { padding: 4rem 1.5rem; }
-    .process-steps { grid-template-columns: repeat(3, 1fr); }
-    .process-steps::before { display: none; }
-    .backstage-grid { grid-template-columns: 1fr 1fr; }
-    .backstage-item.large { grid-row: span 1; aspect-ratio: 4/3; }
-    .cta-section { padding: 5rem 1.5rem; }
-    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
-    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  }
-
-  /* HAMBURGER MOBILE MENU */
-  .hamburger {
-    display: none; flex-direction: column; gap: 5px;
-    cursor: pointer; padding: 4px;
-  }
-  .hamburger span {
-    width: 22px; height: 2px;
-    background: var(--cream); border-radius: 2px;
-    transition: all 0.3s;
-  }
-  .mobile-menu {
-    display: none; position: fixed;
-    top: 65px; left: 0; right: 0;
-    background: rgba(19,18,16,0.98);
-    border-bottom: 1px solid rgba(255,182,0,0.15);
-    padding: 1.5rem 2rem; z-index: 199;
-    flex-direction: column; gap: 1rem;
-    backdrop-filter: blur(16px);
-  }
-  .mobile-menu a {
-    color: rgba(254,251,243,0.7); text-decoration: none;
-    font-size: 1rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.06em;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(255,182,0,0.08);
-    transition: color 0.2s;
-  }
-  .mobile-menu a:hover { color: var(--yellow); }
-  .mobile-menu.open { display: flex; }
-
-  /* PROJETOS responsive */
-  @media (max-width: 900px) {
-    .projetos-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
-    nav { padding: 1rem 1.5rem; }
-    .hamburger { display: flex; }
-    .nav-links { display: none !important; }
-  }
-  @media (max-width: 480px) {
-    h1 { font-size: 2.6rem; }
-    .hero { padding: 5rem 1.2rem 3rem; }
-    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
-    .hero-actions { flex-direction: column; align-items: flex-start; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ─── SEO PRIMÁRIO ──────────────────────────────── -->
+  <title>Vídeos para Cervejarias e Bares em BH | Veic Vídeos</title>
+  <meta name="description" content="Produzimos vídeos estratégicos para cervejarias, bares e choperias em Belo Horizonte e todo o Brasil. Comunicação com posicionamento, autoridade e resultado no digital." />
+  <meta name="keywords" content="vídeos para cervejaria, produção de vídeo para bar, videomaker cervejaria, vídeos para choperia, produtora de vídeo Belo Horizonte, marketing em vídeo para cervejaria, vídeos estratégicos cervejaria BH" />
+  <meta name="author" content="Veic Vídeos" />
+  <meta name="robots" content="index, follow" />
+  <!-- INSTRUÇÃO: criar /sitemap.xml e /robots.txt na raiz do servidor para indexação acelerada -->
+  <!-- sitemap.xml deve conter: https://veicvideos.com/ com changefreq=monthly e priority=1.0 -->
+  <!-- robots.txt: User-agent: * / Allow: / / Sitemap: https://veicvideos.com/sitemap.xml -->
+  <meta name="geo.region" content="BR-MG" />
+  <meta name="geo.placename" content="Belo Horizonte" />
+  <meta name="geo.position" content="-19.9191;-43.9386" />
+  <meta name="ICBM" content="-19.9191, -43.9386" />
+  <link rel="canonical" href="https://veicvideos.com/cervejarias/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://veicvideos.com/cervejarias/" />
+  <link rel="alternate" hreflang="x-default" href="https://veicvideos.com/cervejarias/" />
+
+  <!-- ─── FAVICON ───────────────────────────────────── -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#FFB600" />
+
+  <!-- ─── OPEN GRAPH (WhatsApp, Facebook, LinkedIn) ─── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Veic Vídeos" />
+  <meta property="og:title" content="Vídeos para Cervejarias e Bares em BH | Veic Vídeos" />
+  <meta property="og:description" content="Produzimos vídeos estratégicos para cervejarias, bares e choperias em Belo Horizonte e todo o Brasil. Comunicação com posicionamento e autoridade no digital." />
+  <meta property="og:image" content="https://veicvideos.com/capa-social.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Veic Vídeos — Vídeos estratégicos para cervejarias e bares" />
+  <meta property="og:url" content="https://veicvideos.com/cervejarias/" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- ─── TWITTER CARD ──────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vídeos para Cervejarias e Bares em BH | Veic Vídeos" />
+  <meta name="twitter:description" content="Produzimos vídeos estratégicos para cervejarias, bares e choperias em Belo Horizonte e todo o Brasil. Comunicação com posicionamento e autoridade no digital." />
+  <meta name="twitter:image" content="https://veicvideos.com/capa-social.jpg" />
+
+  <!-- ─── SCHEMA.ORG / JSON-LD ─────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://veicvideos.com/#business",
+    "name": "Veic Vídeos",
+    "description": "Produzimos vídeos estratégicos para bares, cervejarias, choperias e negócios que querem comunicar com posicionamento e autoridade no digital.",
+    "url": "https://veicvideos.com/cervejarias/",
+    "logo": "https://veicvideos.com/capa-social.jpg",
+    "image": "https://veicvideos.com/capa-social.jpg",
+    "telephone": "+55-31-98333-5876",
+    "email": "contato@veicvideos.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Belo Horizonte",
+      "addressRegion": "MG",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -19.9191,
+      "longitude": -43.9386
+    },
+    "sameAs": [
+      "https://instagram.com/veicvideos",
+      "https://wa.me/5531983335876"
+    ],
+    "priceRange": "$$",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": -19.9191,
+        "longitude": -43.9386
+      },
+      "geoRadius": "100000"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Serviços de Produção de Vídeo",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vídeos Comerciais para Bares e Cervejarias" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vídeos Institucionais" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vídeos para Redes Sociais" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cases de Sucesso" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vídeos para Campanhas e Anúncios" } }
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quanto custa um vídeo para bar ou cervejaria em Belo Horizonte?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cada projeto é orçado individualmente conforme a demanda, tipo de vídeo e complexidade da produção. Trabalhamos com estratégia personalizada para bares, cervejarias e choperias em Belo Horizonte e região."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais tipos de vídeo a Veic Vídeos produz?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Produzimos vídeos comerciais, institucionais, para redes sociais, campanhas, anúncios, cases de sucesso, eventos, feiras, vitrine no Instagram e apresentações profissionais para negócios do setor de bares, cervejarias e choperias."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como funciona o processo de produção de vídeo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O processo tem 5 etapas: levantamento da demanda e objetivos da marca, direção de roteiro para comunicação assertiva, gravação com direção cuidadosa de cada cena, edição alinhada ao tom de comunicação do vídeo, e entrega nos formatos ideais para cada plataforma."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A Veic Vídeos atende fora de Belo Horizonte?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim, atendemos negócios em Belo Horizonte e região metropolitana, com raio de até 100 km. Entre em contato pelo WhatsApp para verificar disponibilidade para sua cidade."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Rótulos de Chopp APA — Brumanus",
+      "description": "Produção de vídeo estratégico para divulgação dos rótulos de chopp APA da Cervejaria Brumanus.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/SIpWQ_e89oo/maxresdefault.jpg",
+      "uploadDate": "2024-01-01",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/SIpWQ_e89oo",
+      "url": "https://www.youtube.com/watch?v=SIpWQ_e89oo",
+      "publisher": { "@id": "https://veicvideos.com/#business" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Session IPA no preço da Pilsen — Brumanus",
+      "description": "Vídeo estratégico para campanha de divulgação da Session IPA da Cervejaria Brumanus.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/4uQWPJ84uNk/maxresdefault.jpg",
+      "uploadDate": "2024-01-01",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/4uQWPJ84uNk",
+      "url": "https://www.youtube.com/watch?v=4uQWPJ84uNk",
+      "publisher": { "@id": "https://veicvideos.com/#business" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Brumanus Dia dos Namorados",
+      "description": "Produção de vídeo promocional para o Dia dos Namorados da Cervejaria Brumanus.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/gjDVDluYpII/maxresdefault.jpg",
+      "uploadDate": "2024-01-01",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/gjDVDluYpII",
+      "url": "https://www.youtube.com/watch?v=gjDVDluYpII",
+      "publisher": { "@id": "https://veicvideos.com/#business" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Gastronomia Brumadinho — Brumanus",
+      "description": "Vídeo institucional sobre a gastronomia da Cervejaria Brumanus em Brumadinho.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/4Hn9ngjpB6w/maxresdefault.jpg",
+      "uploadDate": "2024-01-01",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/4Hn9ngjpB6w",
+      "url": "https://www.youtube.com/watch?v=4Hn9ngjpB6w",
+      "publisher": { "@id": "https://veicvideos.com/#business" }
+    }
+  ]
+  </script>
+
+  <!-- ─── PERFORMANCE ───────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Impact&family=Inter:wght@400;500;600;700;800;900&display=swap&font-display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://i.ytimg.com" />
+  <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────── */
+    :root {
+      --black:   #131210;
+      --cream:   #FEFBF3;
+      --gold:    #FFB600;
+      --gold-dk: #cc9200;
+      --gray:    #2a2924;
+      --gray2:   #3d3b34;
+
+      --ff-title: 'Impact', 'Arial Black', sans-serif;
+      --ff-body:  'Inter', sans-serif;
+      --ff-script:'Alex Brush', cursive;
+
+      --max: 1200px;
+      --radius: 4px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--ff-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITIES ──────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--ff-body);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      font-family: var(--ff-body);
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      text-decoration: none;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn--gold {
+      background: var(--gold);
+      color: var(--black);
+      box-shadow: 0 4px 24px rgba(255,182,0,.35);
+    }
+    .btn--gold:hover {
+      background: #ffc51a;
+      box-shadow: 0 8px 32px rgba(255,182,0,.5);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--cream);
+      border: 2px solid rgba(254,251,243,.3);
+    }
+    .btn--outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ─── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.scrolled {
+      background: rgba(19,18,16,.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(255,182,0,.15);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 0;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      min-width: 0;
+    }
+    .nav-logo svg {
+      width: 36px;
+      height: 36px;
+    }
+    .nav-logo-text {
+      font-family: var(--ff-title);
+      font-size: 20px;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-cta { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+
+    /* noise grain overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* diagonal gold accent */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle at center, rgba(255,182,0,.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: var(--ff-title);
+      font-size: clamp(44px, 6vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-title .line-gold { color: var(--gold); display: block; }
+    .hero-title .line-script {
+      font-family: var(--ff-script);
+      font-size: clamp(36px, 4.5vw, 60px);
+      color: var(--cream);
+      text-transform: none;
+      font-weight: normal;
+      display: block;
+      line-height: 1.2;
+      margin: 4px 0;
+    }
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(254,251,243,.7);
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* hero phone mockup */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .phone-stack {
+      position: relative;
+      width: 260px;
+      height: 480px;
+    }
+
+    .phone-card {
+      position: absolute;
+      width: 200px;
+      height: 360px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255,182,0,.3);
+      box-shadow: 0 24px 80px rgba(0,0,0,.8);
+    }
+    .phone-card:nth-child(1) {
+      left: 0; top: 60px;
+      transform: rotate(-6deg);
+      z-index: 1;
+    }
+    .phone-card:nth-child(2) {
+      right: 0; top: 30px;
+      transform: rotate(4deg);
+      z-index: 2;
+      border-color: var(--gold);
+    }
+    .phone-card:nth-child(3) {
+      left: 30px; top: 10px;
+      transform: rotate(-1deg);
+      z-index: 3;
+    }
+
+    .phone-card-inner {
+      width: 100%; height: 100%;
+      background: var(--gray);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+      position: relative;
+    }
+
+    .phone-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px; height: 48px;
+      background: rgba(255,182,0,.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .phone-play svg { width: 18px; height: 18px; fill: var(--black); margin-left: 3px; }
+
+    .phone-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .phone-label-sub {
+      font-size: 10px;
+      color: rgba(254,251,243,.6);
+      margin-top: 2px;
+    }
+
+    /* phone bg patterns */
+    .phone-bg-1 { background: linear-gradient(135deg, #1e1c18 0%, #2d2a22 100%); }
+    .phone-bg-2 { background: linear-gradient(135deg, #2a2418 0%, #1a1712 100%); }
+    .phone-bg-3 { background: linear-gradient(135deg, #18181e 0%, #222228 100%); }
+
+    .phone-icon {
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 12px;
+      opacity: 0.6;
+    }
+
+    /* ─── PAIN SECTION ───────────────────────────────── */
+    .pain {
+      padding: 100px 0;
+      background: var(--cream);
+      color: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pain::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gold);
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .pain-title {
+      font-family: var(--ff-title);
+      font-size: clamp(32px, 4vw, 52px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .pain-title em {
+      font-style: normal;
+      color: var(--gold-dk);
+    }
+
+    .pain-text {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(19,18,16,.75);
+      margin-bottom: 16px;
+    }
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pain-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .pain-list .icon {
+      width: 28px; height: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .pain-list .icon svg { width: 14px; height: 14px; fill: var(--black); }
+    .pain-list-label {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--black);
+      display: block;
+    }
+    .pain-list-sub {
+      font-size: 14px;
+      color: rgba(19,18,16,.6);
+    }
+
+    /* ─── PROPOSTA ───────────────────────────────────── */
+    .proposta {
+      padding: 120px 0;
+      background: var(--black);
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-family: var(--ff-title);
+      font-size: clamp(32px, 4.5vw, 56px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-top: 16px;
+    }
+    .section-title .gold { color: var(--gold); }
+
+    .section-sub {
+      margin-top: 16px;
+      font-size: 16px;
+      color: rgba(254,251,243,.6);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--gray);
+      border: 1px solid rgba(255,182,0,.1);
+      border-radius: 8px;
+      padding: 36px 28px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      border-color: rgba(255,182,0,.5);
+      transform: translateY(-4px);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: left;
+    }
+    .card:hover::before { transform: scaleX(1); }
+
+    .card-num {
+      font-family: var(--ff-title);
+      font-size: 60px;
+      color: rgba(255,182,0,.12);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-family: var(--ff-body);
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(254,251,243,.6);
+    }
+
+    /* ─── VIDEOS ─────────────────────────────────────── */
+    .videos {
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--black) 0%, #1a1812 100%);
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 56px;
+    }
+
+    .video-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      background: var(--gray2);
+      cursor: pointer;
+      group: true;
+    }
+
+    .video-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .video-card:hover .video-thumb { transform: scale(1.05); }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(19,18,16,.9) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px 16px;
+      transition: background 0.3s ease;
+    }
+    .video-card:hover .video-overlay {
+      background: linear-gradient(to top, rgba(19,18,16,.95) 0%, rgba(19,18,16,.3) 100%);
+    }
+
+    .video-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 56px; height: 56px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 0.85;
+    }
+    .video-play-btn svg { width: 20px; height: 20px; fill: var(--black); margin-left: 4px; }
+    .video-card:hover .video-play-btn {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .video-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--cream);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .video-client {
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── DEPOIMENTOS / SOCIAL PROOF ─────────────────── */
+    .proof {
+      padding: 120px 0;
+      background: var(--cream);
+      color: var(--black);
+    }
+
+    .proof .section-title { color: var(--black); }
+    .proof .section-sub { color: rgba(19,18,16,.6); }
+
+    .proof-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 80px;
+      background: rgba(19,18,16,.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .proof-num-item {
+      background: var(--cream);
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    .proof-num {
+      font-family: var(--ff-title);
+      font-size: clamp(42px, 5vw, 64px);
+      color: var(--black);
+      line-height: 1;
+      display: block;
+    }
+    .proof-num span { color: var(--gold-dk); }
+
+    .proof-num-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(19,18,16,.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 8px;
+    }
+
+    /* ─── COMO FUNCIONA ──────────────────────────────── */
+    .processo {
+      padding: 80px 0;
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 32px;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(12.5% + 8px);
+      right: calc(12.5% + 8px);
+      height: 2px;
+      background: linear-gradient(to right, var(--gold) 0%, rgba(255,182,0,.1) 100%);
+    }
+
+    .step {
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    /* wrapper usado no mobile para layout em linha */
+    .step-content { display: contents; }
+
+    .step-num {
+      width: 72px; height: 72px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-title);
+      font-size: 28px;
+      color: var(--black);
+      margin: 0 auto 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-title {
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .step-text {
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(254,251,243,.5);
+    }
+
+    /* ─── CTA FINAL ──────────────────────────────────── */
+    .cta-section {
+      padding: 120px 0;
+      background: var(--gold);
+      color: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: 'VÍDEOS';
+      position: absolute;
+      font-family: var(--ff-title);
+      font-size: 220px;
+      font-weight: 900;
+      opacity: 0.08;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .cta-script {
+      font-family: var(--ff-script);
+      font-size: clamp(28px, 4vw, 52px);
+      color: rgba(19,18,16,.7);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .cta-title {
+      font-family: var(--ff-title);
+      font-size: clamp(40px, 6vw, 80px);
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: rgba(19,18,16,.7);
+      margin-bottom: 48px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn--dark {
+      background: var(--black);
+      color: var(--cream);
+      box-shadow: 0 4px 24px rgba(19,18,16,.4);
+    }
+    .btn--dark:hover {
+      background: #1e1c18;
+      box-shadow: 0 8px 32px rgba(19,18,16,.6);
+    }
+
+    .btn--ghost-dark {
+      background: transparent;
+      color: var(--black);
+      border: 2px solid rgba(19,18,16,.3);
+    }
+    .btn--ghost-dark:hover {
+      border-color: var(--black);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: #0c0b09;
+      padding: 60px 0 32px;
+      border-top: 1px solid rgba(255,182,0,.1);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand .nav-logo-text {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(254,251,243,.4);
+      max-width: 240px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .footer-col-title {
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul li a {
+      font-size: 14px;
+      color: rgba(254,251,243,.5);
+      transition: color 0.15s;
+    }
+    .footer-col ul li a:hover { color: var(--cream); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(254,251,243,.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(254,251,243,.3);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-btn {
+      width: 36px; height: 36px;
+      background: rgba(254,251,243,.06);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+    }
+    .social-btn:hover { background: var(--gold); }
+    .social-btn:hover svg { fill: var(--black); }
+    .social-btn svg { width: 16px; height: 16px; fill: rgba(254,251,243,.5); }
+
+    /* ─── WHATSAPP FLOAT ─────────────────────────────── */
+    .wpp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      width: 60px; height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: wpp-pulse 3s infinite;
+    }
+    .wpp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 32px rgba(37,211,102,.6);
+    }
+    .wpp-float svg { width: 30px; height: 30px; fill: white; }
+
+    @keyframes wpp-pulse {
+      0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,.4), 0 0 0 0 rgba(37,211,102,.3); }
+      50%       { box-shadow: 0 4px 24px rgba(37,211,102,.4), 0 0 0 12px rgba(37,211,102,0); }
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* stagger delays */
+    .fade-up:nth-child(1) { transition-delay: 0s; }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      /* NAV */
+      .nav-cta .btn--outline,
+      .nav-instagram { display: none !important; }
+      .nav-inner { gap: 8px; }
+      .nav-logo svg { height: 28px; }
+      .nav-cta .btn--gold { padding: 10px 18px; font-size: 13px; white-space: nowrap; }
+
+      /* HERO script font — match desktop cursive style */
+      .hero-title .line-script { font-size: clamp(32px, 9vw, 52px); }
+
+      /* TAG — one line on mobile */
+      .tag { white-space: nowrap; font-size: 10px; }
+
+      /* HERO */
+      .hero { padding: 100px 0 60px; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin: 0 auto 40px; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { display: none; }
+
+      /* PAIN */
+      .pain-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      /* POSICIONE-SE — título menor, vídeo grande abaixo */
+      .posicione { padding: 40px 0 48px; }
+      .posicione-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 28px !important;
+        text-align: center !important;
+      }
+      .posicione-left { order: 1; width: 100%; }
+      .posicione-right { order: 2; width: 100%; display: flex; justify-content: center; }
+      .posicione-title {
+        font-size: 42px !important;
+        line-height: 1.05 !important;
+      }
+      .posicione-video-wrap {
+        width: 52vw !important;
+        max-width: 220px !important;
+        margin: 0 auto !important;
+      }
+
+      /* PROPOSTA */
+      .cards-grid { grid-template-columns: 1fr; }
+      .section-header { margin-bottom: 36px; }
+
+      /* VÍDEOS */
+      .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+      /* PROJETOS */
+      .projetos { padding: 48px 0; }
+      .projetos-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 32px !important;
+      }
+      .projetos-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+      }
+      .projetos-right { width: 100%; overflow: hidden; }
+      .projetos-tipos-label { text-align: left; }
+      .projetos-tags { justify-content: flex-start; flex-wrap: wrap; }
+      .proj-tag { font-size: 12px; }
+
+      /* PROCESSO — linhas horizontais: número à esq, texto à dir */
+      .processo { padding: 48px 0; }
+      .steps,
+      .steps-5 {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        margin-top: 24px;
+      }
+      .steps::before { display: none; }
+      .step {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        padding: 16px 0 !important;
+        border-bottom: 1px solid rgba(255,182,0,.12);
+        text-align: left !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .step:last-child { border-bottom: none; }
+      .step-content { display: block !important; flex: 1; }
+      .step-num {
+        width: 52px !important;
+        height: 52px !important;
+        font-size: 20px !important;
+        flex-shrink: 0 !important;
+        margin: 0 !important;
+      }
+      .step-content { flex: 1; }
+
+      /* FOOTER */
+      .footer-inner { flex-direction: column; }
+      .footer-links { gap: 32px; }
+
+      /* CTA */
+      .cta-section::before { font-size: 120px; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      nav { padding: 10px 0; }
+      .nav-logo svg { height: 26px; }
+      .nav-cta .btn--gold { padding: 10px 16px; font-size: 13px; }
+
+      /* TAG — força uma linha */
+      .tag { white-space: nowrap; font-size: 10px; letter-spacing: 0.08em; }
+
+      /* HERO script font */
+      .hero-title .line-script { font-size: clamp(30px, 8.5vw, 48px); }
+
+      /* HERO */
+      .hero { padding: 90px 0 50px; min-height: auto; }
+      .hero-title { font-size: clamp(36px, 10vw, 56px); }
+      .hero-sub { font-size: 15px; }
+      .hero-actions { flex-direction: column; align-items: center; gap: 12px; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+
+      /* POSICIONE-SE */
+      .posicione { padding: 36px 0 44px; }
+      .posicione-title { font-size: 36px !important; }
+      .posicione-video-wrap {
+        width: 56vw !important;
+        max-width: 200px !important;
+      }
+
+      /* PROPOSTA */
+      .proposta { padding: 50px 0; }
+      .section-header { margin-bottom: 28px; }
+      .section-title { font-size: clamp(28px, 8vw, 44px); }
+      .card { padding: 28px 20px; }
+
+      /* VÍDEOS */
+      .videos { padding: 50px 0; }
+      .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+      /* PROJETOS */
+      .projetos { padding: 40px 0; }
+      .projetos-title { font-size: clamp(26px, 8vw, 40px); }
+      .projetos-tags { gap: 8px; }
+      .proj-tag { font-size: 11px; padding: 6px 12px; }
+      .projetos-left .btn { width: 100%; justify-content: center; text-align: center; }
+
+      /* PROCESSO */
+      .processo { padding: 40px 0; }
+      .step { gap: 16px !important; padding: 14px 0 !important; }
+      .step-num { width: 44px !important; height: 44px !important; font-size: 18px !important; }
+
+      /* CTA */
+      .cta-section { padding: 70px 0; }
+      .cta-title { font-size: clamp(32px, 10vw, 56px); }
+      .cta-actions { flex-direction: column; align-items: center; gap: 12px; }
+      .cta-actions .btn { width: 100%; justify-content: center; }
+      .cta-section::before { font-size: 80px; }
+      .cta-contact-info { flex-wrap: wrap; justify-content: center; font-size: 13px; }
+
+      /* FOOTER */
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-social { justify-content: center; }
+    }
+
+    /* ─── POSICIONE-SE ───────────────────────────── */
+    .posicione {
+      padding: 100px 0;
+      background: var(--gold);
+      color: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .posicione-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .posicione-title {
+      font-family: var(--ff-title);
+      font-size: clamp(36px, 5vw, 68px);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .posicione-title .gold { color: var(--black); }
+    .posicione-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* Wrapper com proporção 9:16 para o Short */
+    .posicione-video-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 9 / 16;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(19,18,16,.35);
+    }
+    .posicione-video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Botão play sobre o thumbnail */
+    .posicione-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.95);
+      width: 72px; height: 72px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 2;
+    }
+    .posicione-video-wrap:hover .posicione-play-btn {
+      transform: translate(-50%, -50%) scale(1.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    }
+    .posicione-video-wrap:hover .posicione-video-overlay {
+      background: rgba(19,18,16,.15) !important;
+    }
+
+    /* ─── PROJETOS ───────────────────────────────── */
+    .projetos {
+      padding: 120px 0;
+      background: var(--black);
+      color: var(--cream);
+      overflow: hidden;
+    }
+    .projetos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .projetos-title {
+      font-family: var(--ff-title);
+      font-size: clamp(32px, 4vw, 52px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 24px;
+      margin-top: 16px;
+    }
+    .projetos-title .gold { color: var(--gold); }
+    .projetos-text {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(254,251,243,.65);
+    }
+    .projetos-tipos-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .projetos-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .proj-tag {
+      background: rgba(255,182,0,.1);
+      border: 1px solid rgba(255,182,0,.3);
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .proj-tag:hover {
+      background: rgba(255,182,0,.2);
+      border-color: var(--gold);
+    }
+
+    /* ─── STEPS 5 ────────────────────────────────── */
+    .steps-5 {
+      grid-template-columns: repeat(5, 1fr) !important;
+    }
+    .steps-5::before {
+      left: calc(10% + 8px);
+      right: calc(10% + 8px);
+    }
+
+    /* ─── CTA CONTACT INFO ───────────────────────── */
+    .cta-contact-info {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 15px;
+      color: rgba(19,18,16,.65);
+    }
+    .cta-contact-info svg { flex-shrink: 0; }
+    .cta-contact-info a { font-weight: 700; color: var(--black); }
+
+    /* ─── FAQ ────────────────────────────────────── */
+    .faq-section {
+      padding: 100px 0;
+      background: var(--cream);
+      color: var(--black);
+    }
+    .faq-section .section-title { color: var(--black); }
+    .faq-section .section-sub { color: rgba(19,18,16,.6); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .faq-item {
+      background: white;
+      border: 1px solid rgba(19,18,16,.08);
+      border-radius: 8px;
+      padding: 28px 24px;
+    }
+    .faq-question {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .faq-answer {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(19,18,16,.7);
+    }
+    .faq-answer a {
+      color: var(--gold-dk);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    @media (max-width: 900px) {
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+
+  </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav id="navbar">
-  <a class="nav-logo" href="#">
-    <svg viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
-    </svg>
-    <span class="logo-text">Veic <span>VÍDEOS</span></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#portfolio">Portfólio</a></li>
-    <li><a href="#processo">Processo</a></li>
-    <li><a href="#backstage">Backstage</a></li>
-    <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
-  </ul>
-  <div class="hamburger" id="hamburguer" onclick="toggleMobileMenu()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#portfolio" onclick="toggleMobileMenu()">Portfólio</a>
-  <a href="#processo" onclick="toggleMobileMenu()">Processo</a>
-  <a href="#backstage" onclick="toggleMobileMenu()">Backstage</a>
-  <a href="#contato" onclick="toggleMobileMenu()" style="color:var(--yellow);border-bottom:none;">Fale Conosco</a>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <svg class="hero-bg-isotipo" viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
-    <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
-  </svg>
-  <div class="hero-content">
-    <div class="hero-badge">Produtora de Vídeos Estratégicos</div>
-    <h1>Revele<br>Sua <span class="accent">Marca</span><br>no Digital</h1>
-    <p class="hero-sub">Produzimos vídeos estratégicos que valorizam a imagem do seu negócio. Posicionamento com autoridade e identidade visual que converte.</p>
-    <div class="hero-actions">
-      <a href="#portfolio" class="btn-primary">
-        <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        Ver Portfólio
-      </a>
-      <a href="#contato" class="btn-secondary">Solicitar Orçamento →</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-num">50+</span>
-        <span class="stat-label">Vídeos Produzidos</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">20+</span>
-        <span class="stat-label">Clientes Atendidos</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num">100%</span>
-        <span class="stat-label">Estratégicos</span>
+  <!-- ─── NAV ────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" aria-label="Veic Vídeos">
+          <svg height="36" viewBox="0 0 336 68" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:auto;height:36px;">
+<path d="M83.29 53.5577L73 18.6077H79.7L83.91 34.4377C85.06 38.6777 86.14 42.9277 86.93 47.1577H87.05C87.84 42.9777 88.96 38.6477 90.12 34.4577L94.54 18.5977H101.1L90.23 53.5577H83.29Z" fill="white"/>
+<path d="M107.091 42.6181C107.231 47.5181 110.491 49.3781 114.241 49.3781C116.851 49.3781 118.791 48.9281 120.481 48.2881L121.381 52.5581C119.391 53.4181 116.571 54.0381 113.311 54.0381C105.621 54.0381 101.211 49.0781 101.211 41.3181C101.211 33.5581 105.371 27.7881 112.671 27.7881C119.971 27.7881 122.681 33.9481 122.681 39.8581C122.681 41.1181 122.591 42.0381 122.481 42.6181H107.101H107.091ZM116.931 38.3181C116.961 35.4681 115.851 32.0681 112.271 32.0681C108.691 32.0681 107.331 35.6181 107.101 38.3181H116.931Z" fill="white"/>
+<path d="M133.921 21.3781C133.931 23.2881 132.581 24.748 130.451 24.748C128.491 24.748 127.121 23.2881 127.141 21.3781C127.131 19.4281 128.541 17.998 130.531 17.998C132.521 17.998 133.901 19.4181 133.921 21.3781ZM127.471 53.5581V28.3081H133.601V53.5581H127.471Z" fill="white"/>
+<path d="M156.921 52.8676C155.761 53.4276 153.431 54.0276 150.661 54.0276C143.321 54.0276 138.551 49.1376 138.551 41.1676C138.551 33.6076 143.421 27.8076 151.641 27.8076C153.741 27.8076 155.821 28.2776 157.051 28.8376L156.001 33.5176C155.121 33.0976 153.771 32.6576 151.821 32.6576C147.331 32.6576 144.751 36.3076 144.771 40.9376C144.771 46.1076 147.781 49.1376 151.841 49.1376C153.681 49.1376 155.041 48.7476 156.161 48.2576L156.931 52.8676H156.921Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M291.434 18.6632C301.233 17.8516 308.574 24.4362 309.307 34.0651C310.121 44.7679 305.283 53.5075 294.063 54.5377C294.042 54.5414 294.021 54.5457 294 54.5494C277.177 56.1214 271.32 36.5477 279.916 24.624C282.514 21.0195 287.095 19.1295 291.367 18.6715C291.389 18.6687 291.412 18.666 291.434 18.6632ZM296.876 26.2673C295.406 25.1747 293.563 24.7067 291.749 24.9655C284.694 26.0202 283.651 35.1867 284.791 40.7974C285.695 45.2498 288.865 48.8204 293.78 48.2524C302.715 46.9255 303.16 30.8934 296.876 26.2673Z" fill="#FFB600"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M222.274 19.0263C237.805 17.9509 249.877 23.0766 246.305 41.3288C245.396 45.9735 242.544 49.2561 238.492 51.6346C232.102 54.6648 223.235 54.7642 216.29 53.7807C216.187 52.6303 216.24 50.8281 216.241 49.6463L216.247 19.6347C218.248 19.3628 220.259 19.1598 222.274 19.0263ZM236.008 28.2209C233.743 25.5539 229.362 24.8045 226.052 25.0569C225.299 25.1354 224.812 25.2068 224.072 25.3626C223.893 28.6106 224.027 33.1099 224.025 36.4317C224.022 39.916 223.893 44.5336 224.072 47.9584C227.663 48.281 231.576 48.1719 234.532 45.8639C234.908 45.5379 235.924 44.7097 236.174 44.3573C239.315 39.9267 239.622 32.477 236.008 28.2209Z" fill="#FFB600"/>
+<path d="M251.252 19.2985C256.098 19.2087 260.992 19.3429 265.843 19.2887C268.038 19.2643 270.315 19.2585 272.505 19.3221C272.527 21.4578 272.523 23.5935 272.492 25.7291C268.187 25.6248 263.319 25.6837 258.997 25.7291C258.852 27.8344 258.937 30.7576 258.953 32.9139C263.118 33.0079 267.49 32.9111 271.683 32.9397C271.812 34.4171 271.781 37.8044 271.685 39.2774C267.738 39.4512 263.024 39.2647 258.969 39.3178C258.916 40.2524 258.943 41.4259 258.94 42.3782C258.931 44.0801 258.937 45.782 258.959 47.4838C260.424 47.5996 262.85 47.5315 264.368 47.5317C267.326 47.5437 270.284 47.5363 273.242 47.5097C273.209 49.6265 273.244 51.8097 273.226 53.939L259.633 53.9405C256.865 53.9401 253.903 53.9906 251.148 53.9143C251.096 52.3269 251.149 50.3739 251.149 48.7627L251.15 26.0471C251.149 25.1526 251.064 19.5911 251.252 19.2985Z" fill="#FFB600"/>
+<path d="M190.446 19.3167C191.426 19.2472 192.896 19.2857 193.901 19.2863C195.509 19.2872 197.26 19.2531 198.851 19.3473C198.141 21.3293 197.252 23.7473 196.674 25.7461C196.27 27.3347 195.17 30.1958 194.608 31.8118L191.216 41.7953L188.479 49.9599C188.093 51.132 187.642 52.8597 187.164 53.9316C186.757 53.9514 186.304 53.9449 185.895 53.9391C183.264 53.9019 180.595 54.0055 177.968 53.909C177.17 52.5932 176.066 48.0755 175.526 46.4305L169.822 28.6615C169.368 27.2439 166.937 20.3803 167.001 19.4806C167.171 19.2815 167.127 19.3416 167.456 19.2998C169.737 19.2902 173.383 19.1778 175.52 19.3447L179.512 33.4035C180.203 35.8455 180.996 38.3797 181.6 40.8442C182.016 42.5404 182.376 44.4766 182.73 46.1998C183.181 45.169 183.464 43.6969 183.744 42.5713L185.205 36.785C185.874 34.2402 186.846 31.6326 187.55 29.0995C188.445 25.8827 189.351 22.4635 190.446 19.3167Z" fill="#FFB600"/>
+<path d="M323.104 18.6706C323.365 18.6253 324.568 18.6243 324.878 18.6188C328.016 18.5643 330.867 19.1265 333.727 20.4225C333.161 22.7438 332.577 24.3339 332.13 26.7891C329.488 25.8776 327.856 25.1001 324.882 25.1415C323.609 25.1263 321.467 25.4139 320.597 26.4698C317.075 30.7417 324.902 32.5976 327.361 33.7123C329.237 34.5625 330.868 35.4291 332.15 36.5773C336.165 40.1745 336.113 46.6581 332.437 50.4459C329.845 53.1551 325.77 54.1821 322.077 54.2546C318.905 54.2837 314.063 53.8618 311.332 52.2134C311.495 51.2869 312.521 46.431 312.808 45.9177C313.169 45.7784 315.862 46.9444 316.514 47.0963C319.642 47.8254 327.426 49.0449 326.941 43.721C326.896 43.2235 326.619 42.2756 326.238 41.9317C324.164 39.9919 321.147 39.3971 318.662 38.2676C315.521 36.751 312.063 34.2055 311.849 30.4154C311.686 27.543 311.818 25.5469 313.642 23.2665C316.003 20.3136 319.483 19.0302 323.104 18.6706Z" fill="#FFB600"/>
+<path d="M202.6 19.295C205.105 19.2714 207.846 19.2469 210.34 19.3205L210.331 53.9434L202.593 53.9361L202.6 19.295Z" fill="#FFB600"/>
+<path d="M207.541 11.04C209.73 10.9994 213.139 10.9515 215.214 11.0916C213.611 12.8651 211.329 14.9976 209.602 16.7473C209.429 16.9268 209.066 17.2162 208.861 17.389C206.935 17.4249 204.447 17.4393 202.543 17.3577C203.33 16.2989 204.076 15.1817 204.856 14.1235C205.524 13.2182 206.382 11.1026 207.541 11.04Z" fill="#FFB600"/>
+<path d="M57.34 33.5082C57.34 34.7182 56.95 35.5982 56.78 35.9282C56.39 36.7082 55.82 37.3782 55.09 37.8782L40.36 47.3482C40.26 47.4082 40.14 47.3782 40.08 47.2782L39.6 46.4782C38.17 44.0982 38.86 40.9582 41.14 39.5082L49.54 34.1382C49.93 33.8882 49.92 33.2882 49.52 33.0482L36.08 25.1782C35.43 24.7982 34.62 25.2982 34.62 26.0882V47.4982C34.62 49.4882 33.53 51.3382 31.84 52.2082L21.59 57.4582C19.87 58.3382 17.84 58.0982 16.32 56.7882C15.15 55.7682 14.53 54.1982 14.53 52.5982V12.5382C14.53 11.9682 14.23 11.4482 13.75 11.1882L6.83 7.46818C6.41 7.23818 5.91 7.56818 5.91 8.06818V58.4982C5.91 59.1482 6.57 59.5382 7.09 59.2082L11.38 56.4582C11.94 56.0982 12.65 56.5182 12.67 57.2082L12.71 58.8282C12.78 61.3182 11.59 63.6582 9.59 64.9682L7.34 66.4382C6.68 66.8682 5.93 67.1282 5.15 67.1382C2.14 67.1982 0 64.7082 0 61.8882V5.38818C0 3.74818 0.64 2.15818 1.85 1.14818C3.39 -0.151821 5.43 -0.351821 7.14 0.568179L17.76 6.27818C19.42 7.16818 20.47 8.98818 20.47 10.9682V50.5382C20.47 50.7682 20.69 50.9182 20.89 50.8182L28.02 47.1682C28.43 46.9582 28.69 46.5182 28.69 46.0382V22.6982C28.69 20.7282 29.63 18.8482 31.26 17.9082C32.74 17.0482 34.5 17.0482 35.99 17.9282L54.8 28.9482C55.19 29.1782 56.01 29.7282 56.62 30.7882C57.24 31.8582 57.33 32.9182 57.33 33.5082H57.34Z" fill="#FFB600"/>
+          </svg>
+        </a>
+        <div class="nav-cta">
+          <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener noreferrer" class="btn btn--outline nav-instagram" style="padding:10px 20px;font-size:13px;display:inline-flex;align-items:center;gap:7px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @veicvideos
+          </a>
+          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20cervejaria!" target="_blank" rel="noopener noreferrer" class="btn btn--gold" style="padding:10px 20px;font-size:13px;">Falar no WhatsApp</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- VIDEO REEL BANNER -->
-<section class="reel-section">
-  <p class="reel-label">● Produções em Destaque</p>
-  <div style="overflow: hidden;">
-    <div class="video-scroll-track" id="scrollTrack">
+  <!-- ─── HERO ────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
 
-      <!-- 1. VERTICAL — Shorts rsau38g08H0 -->
-      <div class="video-thumb vertical" onclick="openModal('rsau38g08H0','vertical','youtube')">
-        <div class="video-thumb-inner">
-          <img src="https://img.youtube.com/vi/rsau38g08H0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
-        </div>
-      </div>
-
-      <!-- 2. HORIZONTAL — YouTube cPl8z5m_nwY -->
-      <div class="video-thumb horizontal" onclick="openModal('cPl8z5m_nwY','horizontal','youtube')">
-        <div class="video-thumb-inner">
-          <img src="https://img.youtube.com/vi/cPl8z5m_nwY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
-        </div>
-      </div>
-
-      <!-- 3. VERTICAL — Shorts t3HKRTObtrU -->
-      <div class="video-thumb vertical" onclick="openModal('t3HKRTObtrU','vertical','youtube')">
-        <div class="video-thumb-inner">
-          <img src="https://img.youtube.com/vi/t3HKRTObtrU/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
-        </div>
-      </div>
-
-      <!-- 4. HORIZONTAL — YouTube P8hNnOzTfTo -->
-      <div class="video-thumb horizontal" onclick="openModal('P8hNnOzTfTo','horizontal','youtube')">
-        <div class="video-thumb-inner">
-          <img src="https://img.youtube.com/vi/P8hNnOzTfTo/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
-        </div>
-      </div>
-
-      <!-- 5. VERTICAL — Shorts t2jOdfkf1n0 -->
-      <div class="video-thumb vertical" onclick="openModal('t2jOdfkf1n0','vertical','youtube')">
-        <div class="video-thumb-inner">
-          <img src="https://img.youtube.com/vi/t2jOdfkf1n0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
-        </div>
-      </div>
-
-      <!-- 6. HORIZONTAL — YouTube CgfEWgE_8Aw -->
-      <div class="video-thumb horizontal" onclick="openModal('CgfEWgE_8Aw','horizontal','youtube')">
-        <div class="video-thumb-inner">
-          <img src="https://img.youtube.com/vi/CgfEWgE_8Aw/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
-        </div>
-      </div>
-
-      <!-- 7. VERTICAL — YouTube jeY8AvM-iUY (player horizontal mas vídeo vertical) -->
-      <div class="video-thumb vertical" onclick="openModal('jeY8AvM-iUY','vertical','youtube')">
-        <div class="video-thumb-inner">
-          <img src="https://img.youtube.com/vi/jeY8AvM-iUY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
-        </div>
-      </div>
-
-      <!-- 8. HORIZONTAL — YouTube AVlMyYiXCCk -->
-      <div class="video-thumb horizontal" onclick="openModal('AVlMyYiXCCk','horizontal','youtube')">
-        <div class="video-thumb-inner">
-          <img src="https://img.youtube.com/vi/AVlMyYiXCCk/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
-        </div>
-      </div>
-
-      <!-- 9. VERTICAL — Shorts zpbKSZBjGB8 -->
-      <div class="video-thumb vertical" onclick="openModal('zpbKSZBjGB8','vertical','youtube')">
-        <div class="video-thumb-inner">
-          <img src="https://img.youtube.com/vi/zpbKSZBjGB8/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
-        </div>
-      </div>
-
-      <!-- 10. VERTICAL — Vimeo 1194588209 (player horizontal mas vídeo vertical) -->
-      <div class="video-thumb vertical" id="vimeo-thumb-1194588209" onclick="openModal('1194588209','vertical','vimeo')">
-        <div class="video-thumb-inner">
-          <img id="vimeo-img-1194588209" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;">
-          <div id="vimeo-placeholder-1194588209" style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;">
-            <svg viewBox="0 0 57.34 67.13" style="width:40%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="tag">Vídeos para Bares, Cervejarias &amp; Choperias</span>
           </div>
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
+          <h1 class="hero-title">
+            <span class="line-gold">Seu Bar</span>
+            <span class="line-script">merece aparecer</span>
+            COM AUTORIDADE
+          </h1>
+          <p class="hero-sub">
+            Produzimos vídeos estratégicos que valorizam a imagem de negócios, profissionais e
+            projetos que precisam comunicar com autoridade e posicionamento.
+          </p>
+          <div class="hero-actions">
+            <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20cervejaria!" target="_blank" rel="noopener noreferrer" class="btn btn--gold">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Quero vídeos pra minha cervejaria
+            </a>
+            <a href="#videos" class="btn btn--outline">Ver produções</a>
+          </div>
+        </div>
+
+        <!-- Phone Mockup Visual -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="phone-stack">
+            <div class="phone-card">
+              <div class="phone-card-inner phone-bg-1">
+                <div class="phone-icon">🍺</div>
+                <div class="phone-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="phone-label">Rótulos de Chopp</div>
+                <div class="phone-label-sub">Short • 47K views</div>
+              </div>
+            </div>
+            <div class="phone-card">
+              <div class="phone-card-inner phone-bg-2">
+                <div class="phone-icon">🎬</div>
+                <div class="phone-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="phone-label">Gastronomia</div>
+                <div class="phone-label-sub">Short • 23K views</div>
+              </div>
+            </div>
+            <div class="phone-card">
+              <div class="phone-card-inner phone-bg-3">
+                <div class="phone-icon">🍻</div>
+                <div class="phone-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="phone-label">Dia dos Namorados</div>
+                <div class="phone-label-sub">Short • 31K views</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── POSICIONE-SE ──────────────────────────── -->
+  <section class="posicione" id="posicione">
+    <div class="container">
+      <div class="posicione-grid">
+        <div class="posicione-left fade-up">
+          <h2 class="posicione-title">POSICIONE-SE ATRAVÉS DE VÍDEOS <span class="gold">ESTRATÉGICOS</span></h2>
+        </div>
+        <div class="posicione-right fade-up">
+          <div class="posicione-video-wrap" onclick="openVideoModal('nrzURq_4LPk')" style="cursor:pointer;">
+            <!-- Thumbnail do YouTube -->
+            <img
+              src="https://i.ytimg.com/vi/nrzURq_4LPk/maxresdefault.jpg"
+              onerror="this.src='https://i.ytimg.com/vi/nrzURq_4LPk/hqdefault.jpg'"
+              alt="Qual é o diferencial — Veic Vídeos, produtora de vídeo em Belo Horizonte"
+              loading="lazy"
+              width="320" height="569"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
+            />
+            <!-- Overlay escuro -->
+            <div style="position:absolute;inset:0;background:rgba(19,18,16,.35);transition:background .2s;" class="posicione-video-overlay"></div>
+            <!-- Botão play -->
+            <div class="posicione-play-btn">
+              <svg viewBox="0 0 24 24" style="width:26px;height:26px;fill:#131210;margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VIDEOS ───────────────────────────────── -->
+  <section class="videos" id="videos">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Produções Veic Vídeos</span>
+        <h2 class="section-title">Veja o que<br/><span class="gold">já produzimos</span></h2>
+        <p class="section-sub">Clique em qualquer vídeo para assistir aqui mesmo.</p>
+      </div>
+
+      <!-- Modal de vídeo -->
+      <div id="video-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.88);align-items:center;justify-content:center;">
+        <div style="position:relative;width:100%;max-width:380px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.8);">
+          <iframe id="video-modal-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+        </div>
+        <button onclick="closeVideoModal()" style="position:fixed;top:20px;right:24px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);transition:background .2s;" onmouseover="this.style.background='rgba(255,182,0,.7)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">&times;</button>
+      </div>
+
+      <div class="videos-grid">
+        <div class="video-card fade-up" onclick="openVideoModal('SIpWQ_e89oo')">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/SIpWQ_e89oo/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/SIpWQ_e89oo/hqdefault.jpg'" alt="Rótulos de Chopp APA — produção de vídeo para cervejaria Brumanus" loading="lazy" width="360" height="640" />
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Dia dos Namorados</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </div>
+        <div class="video-card fade-up" onclick="openVideoModal('gjDVDluYpII')">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/gjDVDluYpII/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/gjDVDluYpII/hqdefault.jpg'" alt="Brumanus Dia dos Namorados — vídeo promocional para cervejaria" loading="lazy" width="360" height="640" />
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Rótulos de Chopp APA</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </div>
+        <div class="video-card fade-up" onclick="openVideoModal('4uQWPJ84uNk')">
+          <img class="video-thumb" src="thumb_gastronomia.jpg" onerror="this.src='https://i.ytimg.com/vi/4uQWPJ84uNk/hqdefault.jpg'" alt="Session IPA no preço da Pilsen — vídeo estratégico para cervejaria" loading="lazy" width="360" height="640" />
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Gastronomia Brumadinho</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </div>
+        <div class="video-card fade-up" onclick="openVideoModal('4Hn9ngjpB6w')">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/4Hn9ngjpB6w/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/4Hn9ngjpB6w/hqdefault.jpg'" alt="Gastronomia Brumadinho — vídeo institucional para bar e restaurante" loading="lazy" width="360" height="640" />
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Session IPA no preço da Pilsen</div>
+            <div class="video-client">Brumanus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── BACKSTAGE ───────────────────────────────── -->
+  <section class="backstage" id="backstage" style="background:#0d0d0b;padding:80px 0;">
+    <div class="container">
+      <div class="section-header fade-up" style="text-align:center;margin-bottom:48px;">
+        <span class="tag" style="background:transparent;color:var(--gold);border:1px solid var(--gold);">Por dentro da Veic</span>
+        <h2 class="section-title" style="margin-top:16px;">Nossa equipe<br/><span class="gold">em campo</span></h2>
+        <p class="section-sub">Bastidores de quem vive o vídeo de perto.</p>
+      </div>
+
+      <div class="bs-carousel-wrap" style="position:relative;">
+        <div class="bs-carousel" id="bsCarousel" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:8px;">
+          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
+            <img src="bs1.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
+          </div>
+          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
+            <img src="bs2.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
+          </div>
+          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
+            <img src="bs3.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Circuito Cultural Barreiro"/>
+          </div>
+          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
+            <img src="bs4.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Circuito Cultural Barreiro"/>
+          </div>
+          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
+            <img src="bs5.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
+          </div>
+          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
+            <img src="bs6.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
+          </div>
+          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
+            <img src="bs7.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
+          </div>
+          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
+            <img src="bs8.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
+          </div>
+          <div class="bs-slide" style="flex:0 0 calc(33.333% - 11px);scroll-snap-align:start;border-radius:16px;overflow:hidden;position:relative;min-width:260px;">
+            <img src="bs9.jpg" style="width:100%;height:480px;object-fit:cover;display:block;" loading="lazy" alt="Backstage Veic Vídeos"/>
+          </div>
+        </div>
+
+        <!-- Botões de navegação -->
+        <button onclick="bsScroll(-1)" style="position:absolute;left:-20px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.4);">‹</button>
+        <button onclick="bsScroll(1)"  style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,.4);">›</button>
+      </div>
+
+      <!-- Indicadores -->
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:24px;" id="bsDots"></div>
+    </div>
+  </section>
+
+  <style>
+    #bsCarousel::-webkit-scrollbar { display:none; }
+    @media(max-width:768px) {
+      .bs-slide { flex: 0 0 calc(80% - 8px) !important; }
+    }
+  </style>
+
+  <script>
+    (function(){
+      const c = document.getElementById('bsCarousel');
+      const dotsWrap = document.getElementById('bsDots');
+      const slides = c.querySelectorAll('.bs-slide');
+      const visibleCount = window.innerWidth < 768 ? 1 : 3;
+      const total = Math.ceil(slides.length / visibleCount);
+
+      // Criar dots
+      for(let i=0;i<total;i++){
+        const d = document.createElement('div');
+        d.style.cssText = 'width:8px;height:8px;border-radius:50%;background:'+(i===0?'var(--gold)':'rgba(255,255,255,.3)')+';cursor:pointer;transition:background .3s;';
+        d.addEventListener('click',()=>{ c.scrollTo({left: c.offsetWidth * i, behavior:'smooth'}); });
+        dotsWrap.appendChild(d);
+      }
+
+      // Atualizar dots no scroll
+      c.addEventListener('scroll',()=>{
+        const idx = Math.round(c.scrollLeft / c.offsetWidth);
+        dotsWrap.querySelectorAll('div').forEach((d,i)=>{
+          d.style.background = i===idx ? 'var(--gold)' : 'rgba(255,255,255,.3)';
+        });
+      });
+
+      window.bsScroll = function(dir){
+        const slideW = c.querySelector('.bs-slide').offsetWidth + 16;
+        c.scrollBy({ left: dir * slideW * visibleCount, behavior:'smooth' });
+      };
+    })();
+  </script>
+
+  <!-- ─── PROJETOS ───────────────────────────────── -->
+  <section class="projetos" id="projetos">
+    <div class="container">
+      <div class="section-header fade-up" style="margin-bottom:48px;">
+        <span class="tag" style="background:transparent;color:var(--gold);border:1px solid var(--gold);">Forma de trabalho</span>
+      </div>
+      <div class="projetos-grid fade-up">
+        <div class="projetos-left">
+          <h2 class="projetos-title">Desenvolvemos projetos<br/><span class="gold">Audiovisuais</span></h2>
+          <p class="projetos-text">Desenvolvemos projetos de comunicação em vídeo conforme a necessidade de cada cliente. Cada projeto é orçado individualmente, com estratégia personalizada, conforme demanda.</p>
+          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener noreferrer" class="btn btn--gold" style="margin-top:32px;">Solicitar Orçamento via WhatsApp</a>
+        </div>
+        <div class="projetos-right">
+          <div class="projetos-tipos-label">Tipos de Projeto</div>
+          <div class="projetos-tags">
+            <span class="proj-tag">Ações</span>
+            <span class="proj-tag">Anúncios</span>
+            <span class="proj-tag">Apresentação Profissional</span>
+            <span class="proj-tag">Campanhas</span>
+            <span class="proj-tag">Cases de Sucesso</span>
+            <span class="proj-tag">Comerciais</span>
+            <span class="proj-tag">Divulgação</span>
+            <span class="proj-tag">Eventos</span>
+            <span class="proj-tag">Feiras</span>
+            <span class="proj-tag">Institucionais</span>
+            <span class="proj-tag">Redes Sociais</span>
+            <span class="proj-tag">Vitrine no Instagram</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROCESSO ──────────────────────────────── -->
+  <section class="processo" id="processo">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Como funciona</span>
+        <h2 class="section-title">Desenvolvimento<br/><span class="gold">do projeto</span></h2>
+        <p class="section-sub">Um processo simples e transparente, do início ao fim.</p>
+      </div>
+
+      <div class="steps steps-5">
+        <div class="step fade-up">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <div class="step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Levantamento</h3></div>
+            <p class="step-text">Levantamos a demanda de comunicação, objetivos e público da sua marca.</p>
+          </div>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <div class="step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Direção de Roteiro</h3></div>
+            <p class="step-text">Direcionamos a elaboração de roteiro de gravação para resultar em uma comunicação assertiva.</p>
+          </div>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <div class="step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Gravação com Direção</h3></div>
+            <p class="step-text">Gravamos com direção cuidadosa e orientação em cada cena.</p>
+          </div>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <div class="step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Edição</h3></div>
+            <p class="step-text">Edição que transmite a mensagem dentro do tom de comunicação necessário conforme o objetivo do vídeo.</p>
+          </div>
+        </div>
+        <div class="step fade-up">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <div class="step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Entrega do Vídeo</h3></div>
+            <p class="step-text">Entrega nos formatos ideais para cada plataforma, prontos para publicar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ──────────────────────────────────────── -->
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Dúvidas frequentes</span>
+        <h2 class="section-title" id="faq-title">Perguntas<br/><span class="gold">Frequentes</span></h2>
+        <p class="section-sub">Tudo que você precisa saber antes de iniciar seu projeto de vídeo.</p>
+      </div>
+      <div class="faq-grid fade-up">
+        <div class="faq-item">
+          <h3 class="faq-question">Quanto custa um vídeo para bar ou cervejaria?</h3>
+          <p class="faq-answer">Cada projeto é orçado individualmente conforme o tipo de vídeo, complexidade da produção e demanda de comunicação. Não trabalhamos com pacotes fechados — a estratégia é personalizada para o seu negócio. <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener noreferrer">Solicite um orçamento pelo WhatsApp</a> e receba uma proposta sem compromisso.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Quais tipos de vídeo vocês produzem?</h3>
+          <p class="faq-answer">Produzimos vídeos comerciais, institucionais, para redes sociais (Reels, Shorts, TikTok), campanhas, anúncios pagos, cases de sucesso, vídeos de evento, feiras, vitrine no Instagram e apresentações profissionais — sempre com estratégia alinhada à identidade da sua marca.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Vocês atendem fora de Belo Horizonte?</h3>
+          <p class="faq-answer">Sim. Atendemos Belo Horizonte, região metropolitana, além de outras cidades de Minas Gerais e todo o Brasil, mediante reserva de data na agenda. Entre em contato para verificar a disponibilidade para a sua cidade.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Como é o processo de produção do vídeo?</h3>
+          <p class="faq-answer">O processo passa por 5 etapas: levantamento da demanda e objetivos, direção de roteiro para comunicação assertiva, gravação com orientação de cena, edição alinhada ao tom de comunicação e entrega nos formatos ideais para cada plataforma digital.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Preciso ter experiência em frente à câmera?</h3>
+          <p class="faq-answer">Não. Nossa produção inclui direção e orientação em cada cena. Trabalhamos com o cliente ou comunicador para garantir que a performance transmita a mensagem certa, mesmo que seja a primeira vez na frente das câmeras.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Em quanto tempo fica pronto o vídeo?</h3>
+          <p class="faq-answer">O prazo varia conforme o tipo e a complexidade do projeto. Após o levantamento inicial, apresentamos um cronograma claro com datas de gravação, edição e entrega. O processo é transparente do início ao fim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA FINAL ─────────────────────────────── -->
+  <section class="cta-section" id="contato">
+    <div class="container">
+      <div class="cta-inner fade-up">
+        <span class="tag" style="background:rgba(19,18,16,.15);color:var(--black);margin-bottom:20px;">Vamos trabalhar juntos?</span>
+        <h2 class="cta-title">Pronto para o<br/>Próximo Take?</h2>
+        <p class="cta-sub">
+          Entre em contato e vamos conversar sobre como posicionar
+          seu negócio no digital com vídeos estratégicos que realmente funcionam.
+        </p>
+        <div class="cta-actions">
+          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20quero%20conversar%20sobre%20v%C3%ADdeos%20para%20meu%20neg%C3%B3cio!" target="_blank" rel="noopener noreferrer" class="btn btn--dark" style="font-size:16px;padding:18px 36px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp
+          </a>
+          <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener noreferrer" class="btn btn--ghost-dark" style="display:inline-flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @veicvideos →
+          </a>
+        </div>
+        <div class="cta-contact-info">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          <a href="https://wa.me/5531983335876" target="_blank" rel="noopener noreferrer">(31) 98333-5876</a>
+          <span>· Atendimento via WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo-text" style="font-family:'Impact',sans-serif;font-size:20px;margin-bottom:8px;">Veic <span style="color:var(--gold)">VÍDEOS</span></div>
+          <p class="footer-tagline">Produzimos vídeos estratégicos que transmitem posicionamento e autoridade para bares, cervejarias e choperias.</p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col-title">Navegação</div>
+            <ul>
+              <li><a href="#proposta">O que entregamos</a></li>
+              <li><a href="#videos">Produções</a></li>
+              <li><a href="#processo">Como funciona</a></li>
+              <li><a href="#faq">Perguntas frequentes</a></li>
+              <li><a href="#contato">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Contato</div>
+            <ul>
+              <li><a href="https://wa.me/5531983335876" target="_blank" rel="noopener noreferrer">(31) 98333-5876</a></li>
+              <li><a href="https://instagram.com/veicvideos" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>@veicvideos</a></li>
+              <li><a href="https://veicvideos.com" target="_blank" rel="noopener noreferrer">veicvideos.com</a></li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <!-- 11. VERTICAL — Shorts MI6pCyYpMlc -->
-      <div class="video-thumb vertical" onclick="openModal('MI6pCyYpMlc','vertical','youtube')">
-        <div class="video-thumb-inner">
-          <img src="https://img.youtube.com/vi/MI6pCyYpMlc/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          <div class="thumb-overlay"></div>
-        </div>
-      </div>
-
-      <!-- ===== DUPLICATAS PARA LOOP INFINITO ===== -->
-      <div class="video-thumb vertical" onclick="openModal('rsau38g08H0','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/rsau38g08H0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-      <div class="video-thumb horizontal" onclick="openModal('cPl8z5m_nwY','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/cPl8z5m_nwY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('t3HKRTObtrU','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/t3HKRTObtrU/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-      <div class="video-thumb horizontal" onclick="openModal('P8hNnOzTfTo','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/P8hNnOzTfTo/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('t2jOdfkf1n0','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/t2jOdfkf1n0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-      <div class="video-thumb horizontal" onclick="openModal('CgfEWgE_8Aw','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/CgfEWgE_8Aw/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('jeY8AvM-iUY','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/jeY8AvM-iUY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-      <div class="video-thumb horizontal" onclick="openModal('AVlMyYiXCCk','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/AVlMyYiXCCk/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('zpbKSZBjGB8','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/zpbKSZBjGB8/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('1194588209','vertical','vimeo')"><div class="video-thumb-inner"><img id="vimeo-img-dup-1194588209" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;"><div id="vimeo-placeholder-dup-1194588209" style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 57.34 67.13" style="width:40%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg></div><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('MI6pCyYpMlc','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/MI6pCyYpMlc/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"></div></div></div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PROPÓSITO -->
-<section class="purpose-section">
-  <div>
-    <p class="section-eyebrow">Quem Somos</p>
-    <h2>Posicionamento<br><span class="accent">com Propósito</span></h2>
-    <p class="body-text">Nosso propósito é produzir vídeos estratégicos que valorizam a imagem de negócios, profissionais e projetos que precisam comunicar com <strong>autoridade e posicionamento</strong>.</p>
-    <p class="body-text">Não fazemos apenas vídeos bonitos. Entendemos a sua marca e criamos conteúdo que faz o seu negócio ser reconhecido no digital.</p>
-    <div class="purpose-cards">
-      <div class="purpose-card">
-        <div class="purpose-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
-        <div>
-          <h4>Estratégia antes da câmera</h4>
-          <p>Planejamos cada vídeo para que ele trabalhe pelos seus objetivos de negócio, não só para parecer bonito.</p>
-        </div>
-      </div>
-      <div class="purpose-card">
-        <div class="purpose-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 013 1.18 2 2 0 015 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
-        </div>
-        <div>
-          <h4>Identidade visual em movimento</h4>
-          <p>Cada produção carrega a essência da sua marca: cores, linguagem, tom de voz e posicionamento únicos.</p>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Veic Vídeos. Todos os direitos reservados.</span>
+        <div class="footer-social">
+          <!-- Instagram -->
+          <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/5531983335876" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-  <div class="purpose-visual">
-    <svg class="purpose-visual-isotipo" viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
-    </svg>
-    <div style="position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;">
-      <p style="font-size:0.72rem;color:rgba(254,251,243,0.3);text-align:center;text-transform:uppercase;letter-spacing:0.1em;">@veicvideos</p>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<!-- PORTFOLIO -->
-<section class="portfolio-section" id="portfolio">
-  <div class="section-header">
-    <div>
-      <p class="section-eyebrow">Trabalhos</p>
-      <h2>Portfólio</h2>
-    </div>
-    <a href="https://www.instagram.com/veicvideos" class="btn-secondary" style="white-space:nowrap">Ver Instagram →</a>
-  </div>
-
-  <!-- Filtros por TIPO -->
-  <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(254,251,243,0.3);margin-bottom:0.8rem;">Tipo de Vídeo</p>
-  <div class="filter-tabs" id="type-filters">
-    <button class="filter-tab active" data-type="todos">Todos</button>
-    <button class="filter-tab" data-type="institucional">Institucional</button>
-    <button class="filter-tab" data-type="produto">Produto</button>
-    <button class="filter-tab" data-type="reels">Reels / Short</button>
-    <button class="filter-tab" data-type="evento">Evento</button>
-    <button class="filter-tab" data-type="marca-pessoal">Marca Pessoal</button>
-  </div>
-
-  <!-- Filtros por NICHO -->
-  <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(254,251,243,0.3);margin-bottom:0.8rem;margin-top:1.2rem;">Nicho</p>
-  <div class="filter-tabs" id="niche-filters">
-    <button class="filter-tab active" data-niche="todos">Todos</button>
-    <button class="filter-tab" data-niche="cervejaria">Cervejaria</button>
-    <button class="filter-tab" data-niche="bar">Bar</button>
-    <button class="filter-tab" data-niche="choperia">Choperia</button>
-    <button class="filter-tab" data-niche="gastronomia">Gastronomia</button>
-    <button class="filter-tab" data-niche="marca-pessoal">Marca Pessoal</button>
-  </div>
-
-  <div class="portfolio-grid" id="portfolioGrid" style="margin-top:2.5rem;">
-    <!-- Item vertical -->
-    <div class="portfolio-item item-vertical" data-type="reels" data-niche="cervejaria" onclick="openModal('VIDEO_ID_1','vertical')">
-      <div class="portfolio-thumb">
-        <div class="portfolio-thumb-bg">
-          <svg viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg"><path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
-        </div>
-        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-      </div>
-      <div class="portfolio-meta">
-        <div class="portfolio-tags">
-          <span class="tag tag-type">Reels</span>
-          <span class="tag tag-niche">Cervejaria</span>
-        </div>
-        <p class="portfolio-title">Rótulos de Chopp APA Brumanus</p>
-        <p class="portfolio-client">Cervejaria Brumanus</p>
-      </div>
-    </div>
-
-    <!-- Item horizontal -->
-    <div class="portfolio-item" data-type="institucional" data-niche="bar" onclick="openModal('VIDEO_ID_2','horizontal')">
-      <div class="portfolio-thumb">
-        <div class="portfolio-thumb-bg"></div>
-        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-      </div>
-      <div class="portfolio-meta">
-        <div class="portfolio-tags">
-          <span class="tag tag-type">Institucional</span>
-          <span class="tag tag-niche">Bar</span>
-        </div>
-        <p class="portfolio-title">Apresentação Institucional</p>
-        <p class="portfolio-client">Bar Exemplo</p>
-      </div>
-    </div>
-
-    <div class="portfolio-item" data-type="produto" data-niche="cervejaria" onclick="openModal('VIDEO_ID_3','horizontal')">
-      <div class="portfolio-thumb">
-        <div class="portfolio-thumb-bg"></div>
-        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-      </div>
-      <div class="portfolio-meta">
-        <div class="portfolio-tags">
-          <span class="tag tag-type">Produto</span>
-          <span class="tag tag-niche">Cervejaria</span>
-        </div>
-        <p class="portfolio-title">Session IPA no preço da Pilsen</p>
-        <p class="portfolio-client">Cervejaria Brumanus</p>
-      </div>
-    </div>
-
-    <div class="portfolio-item item-vertical" data-type="reels" data-niche="gastronomia" onclick="openModal('VIDEO_ID_4','vertical')">
-      <div class="portfolio-thumb">
-        <div class="portfolio-thumb-bg"></div>
-        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-      </div>
-      <div class="portfolio-meta">
-        <div class="portfolio-tags">
-          <span class="tag tag-type">Reels</span>
-          <span class="tag tag-niche">Gastronomia</span>
-        </div>
-        <p class="portfolio-title">Gastronomia Brumadinho</p>
-        <p class="portfolio-client">Restaurante Exemplo</p>
-      </div>
-    </div>
-
-    <div class="portfolio-item" data-type="evento" data-niche="cervejaria" onclick="openModal('VIDEO_ID_5','horizontal')">
-      <div class="portfolio-thumb">
-        <div class="portfolio-thumb-bg"></div>
-        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-      </div>
-      <div class="portfolio-meta">
-        <div class="portfolio-tags">
-          <span class="tag tag-type">Evento</span>
-          <span class="tag tag-niche">Cervejaria</span>
-        </div>
-        <p class="portfolio-title">Dia dos Namorados Brumanus</p>
-        <p class="portfolio-client">Cervejaria Brumanus</p>
-      </div>
-    </div>
-
-    <div class="portfolio-item" data-type="marca-pessoal" data-niche="marca-pessoal" onclick="openModal('VIDEO_ID_6','horizontal')">
-      <div class="portfolio-thumb">
-        <div class="portfolio-thumb-bg"></div>
-        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-      </div>
-      <div class="portfolio-meta">
-        <div class="portfolio-tags">
-          <span class="tag tag-type">Marca Pessoal</span>
-          <span class="tag tag-niche">Marca Pessoal</span>
-        </div>
-        <p class="portfolio-title">Posicionamento Digital</p>
-        <p class="portfolio-client">Cliente Exemplo</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESSO -->
-<section class="process-section" id="processo">
-  <p class="section-eyebrow">Como Trabalhamos</p>
-  <h2>Do Briefing<br>ao <span class="accent">Resultado</span></h2>
-  <div class="process-steps">
-    <div class="process-step">
-      <div class="step-num">01</div>
-      <p class="step-title">Levantamento</p>
-      <p class="step-desc">Levantamos a demanda de comunicação, objetivos e o posicionamento da sua marca.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">02</div>
-      <p class="step-title">Direção de Roteiro</p>
-      <p class="step-desc">Desenvolvemos o roteiro estratégico alinhado à identidade e ao público da marca.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">03</div>
-      <p class="step-title">Gravação com Direção</p>
-      <p class="step-desc">Gravamos com equipamento profissional e direção de cena para cada detalhe.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">04</div>
-      <p class="step-title">Edição</p>
-      <p class="step-desc">Edição completa com motion, trilha, legendas e identidade visual da marca.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">05</div>
-      <p class="step-title">Entrega do Vídeo</p>
-      <p class="step-desc">Entrega nos formatos ideais para cada plataforma, prontos para publicar e converter.</p>
-    </div>
-  </div>
-</section>
-
-<!-- BACKSTAGE -->
-<section class="backstage-section" id="backstage">
-  <p class="section-eyebrow">Por Trás das Câmeras</p>
-  <h2>Bastidores<br>das <span class="accent">Produções</span></h2>
-  <div class="backstage-grid">
-    <div class="backstage-item large">
-      <div class="backstage-placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span>Foto de Backstage</span>
-      </div>
-    </div>
-    <div class="backstage-item medium">
-      <div class="backstage-placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span>Equipamento / Setup</span>
-      </div>
-    </div>
-    <div class="backstage-item medium">
-      <div class="backstage-placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span>Equipe em Ação</span>
-      </div>
-    </div>
-    <div class="backstage-item medium">
-      <div class="backstage-placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span>Gravação no Local</span>
-      </div>
-    </div>
-    <div class="backstage-item medium">
-      <div class="backstage-placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span>Pós-produção</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJETOS E CAMPANHAS -->
-<section style="padding:7rem 4rem;background:var(--black);">
-  <div style="max-width:1200px;margin:0 auto;">
-    <p class="section-eyebrow">Forma de Trabalho</p>
-    <h2>Trabalhamos por <span class="accent">Projetos</span></h2>
-    <p class="body-text" style="max-width:600px;">Desenvolvemos projetos completos de comunicação em vídeo conforme a necessidade de cada cliente. Não há pacotes fechados — cada projeto é orçado individualmente com estratégia personalizada.</p>
-    <div class="projetos-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:center;">
-      <div>
-        <p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(254,251,243,0.35);margin-bottom:1rem;">Tipos de projeto que atendemos</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">
-          <span style="background:rgba(255,182,0,0.12);border:1px solid rgba(255,182,0,0.25);color:var(--yellow);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:5px 14px;border-radius:100px;">Campanhas</span>
-          <span style="background:rgba(255,182,0,0.12);border:1px solid rgba(255,182,0,0.25);color:var(--yellow);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:5px 14px;border-radius:100px;">Anúncios</span>
-          <span style="background:rgba(255,182,0,0.12);border:1px solid rgba(255,182,0,0.25);color:var(--yellow);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:5px 14px;border-radius:100px;">Posicionamento</span>
-          <span style="background:rgba(255,182,0,0.12);border:1px solid rgba(255,182,0,0.25);color:var(--yellow);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:5px 14px;border-radius:100px;">Eventos</span>
-          <span style="background:rgba(255,182,0,0.12);border:1px solid rgba(255,182,0,0.25);color:var(--yellow);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:5px 14px;border-radius:100px;">Ações</span>
-          <span style="background:rgba(255,182,0,0.12);border:1px solid rgba(255,182,0,0.25);color:var(--yellow);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:5px 14px;border-radius:100px;">Feiras</span>
-          <span style="background:rgba(255,182,0,0.12);border:1px solid rgba(255,182,0,0.25);color:var(--yellow);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:5px 14px;border-radius:100px;">Case de Sucesso</span>
-          <span style="background:rgba(255,182,0,0.12);border:1px solid rgba(255,182,0,0.25);color:var(--yellow);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:5px 14px;border-radius:100px;">Institucional</span>
-        </div>
-      </div>
-      <div style="background:rgba(255,182,0,0.06);border:1px solid rgba(255,182,0,0.15);border-radius:12px;padding:2rem;">
-        <p class="body-text" style="margin-bottom:1.5rem;">"Orçamos conforme o projeto — porque cada marca tem uma necessidade única de comunicação."</p>
-        <a href="https://wa.me/5531983335876" class="btn-primary" target="_blank">Solicitar Orçamento →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="contato">
-  <p class="section-eyebrow">Vamos Trabalhar Juntos?</p>
-  <h2>Pronto Para<br><span class="accent">Revelar Sua Marca?</span></h2>
-  <p class="body-text">Entre em contato e vamos conversar sobre como posicionar seu negócio no digital com vídeos estratégicos que realmente funcionam.</p>
-  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-    <a href="https://wa.me/5531983335876" class="btn-primary" target="_blank">
-      <svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </a>
-    <a href="https://www.instagram.com/veicvideos" class="btn-secondary" target="_blank">Instagram @veicvideos →</a>
-  </div>
-  <div class="cta-contact">
-    <span>📞</span>
-    <span><strong>(31) 98333-5876</strong> · Atendimento via WhatsApp</span>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <a class="nav-logo" href="#">
-    <svg width="28" viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
-    </svg>
-    <span class="logo-text">Veic <span>VÍDEOS</span></span>
+  <!-- WhatsApp Flutuante -->
+  <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20cervejaria!" target="_blank" rel="noopener noreferrer" class="wpp-float" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
   </a>
-  <ul class="footer-links">
-    <li><a href="#portfolio">Portfólio</a></li>
-    <li><a href="#processo">Processo</a></li>
-    <li><a href="#backstage">Backstage</a></li>
-    <li><a href="#contato">Contato</a></li>
-  </ul>
-  <p class="footer-copy">© 2025 Veic Vídeos</p>
-</footer>
 
+  <!-- ─── JS ────────────────────────────────────── -->
+  <script>
+    // Modal de vídeo
+    const videoModal = document.getElementById('video-modal');
+    const videoModalIframe = document.getElementById('video-modal-iframe');
 
-<!-- WHATSAPP FLUTUANTE -->
-<a href="https://wa.me/5531983335876" target="_blank" title="Falar no WhatsApp"
-   style="position:fixed;bottom:24px;right:24px;z-index:500;width:56px;height:56px;
-          background:#25D366;border-radius:50%;display:flex;align-items:center;
-          justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);
-          transition:transform 0.2s;text-decoration:none;"
-   onmouseover="this.style.transform='scale(1.1)'"
-   onmouseout="this.style.transform='scale(1)'">
-  <svg width="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="videoModal" onclick="closeModalOnOverlay(event)">
-  <div class="modal-box" id="modalBox">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-video" id="modalVideo">
-      <iframe id="modalIframe" src="" allowfullscreen allow="autoplay"></iframe>
-    </div>
-  </div>
-</div>
-
-<script>
-  // Mobile menu
-  function toggleMobileMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-
-  // Navbar scroll effect
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-      nav.style.borderBottomColor = 'rgba(255,182,0,0.25)';
-    } else {
-      nav.style.borderBottomColor = 'rgba(255,182,0,0.15)';
-    }
-  });
-
-  // Portfolio filtering
-  let activeType = 'todos';
-  let activeNiche = 'todos';
-
-  document.querySelectorAll('[data-type]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeType = btn.dataset.type;
-      filterPortfolio();
-    });
-  });
-
-  document.querySelectorAll('[data-niche]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-niche]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeNiche = btn.dataset.niche;
-      filterPortfolio();
-    });
-  });
-
-  function filterPortfolio() {
-    document.querySelectorAll('.portfolio-item').forEach(item => {
-      const matchType = activeType === 'todos' || item.dataset.type === activeType;
-      const matchNiche = activeNiche === 'todos' || item.dataset.niche === activeNiche;
-      item.style.display = (matchType && matchNiche) ? '' : 'none';
-    });
-  }
-
-  // Modal
-  function openModal(videoId, orientation, platform) {
-    const modal = document.getElementById('videoModal');
-    const modalBox = document.getElementById('modalBox');
-    const modalVideo = document.getElementById('modalVideo');
-    const iframe = document.getElementById('modalIframe');
-
-    if (platform === 'vimeo') {
-      iframe.src = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
-    } else {
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    function openVideoModal(videoId) {
+      videoModalIframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&vq=hd1080&hd=1&quality=hd1080';
+      videoModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     }
 
-    modalVideo.className = 'modal-video ' + (orientation === 'vertical' ? 'h9x16' : 'h16x9');
-    modalBox.className = 'modal-box' + (orientation === 'vertical' ? ' vertical-modal' : '');
+    function closeVideoModal() {
+      videoModal.style.display = 'none';
+      videoModalIframe.src = '';
+      document.body.style.overflow = '';
+    }
 
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
+    // Fechar ao clicar no fundo escuro
+    videoModal.addEventListener('click', function(e) {
+      if (e.target === videoModal) closeVideoModal();
+    });
 
-  // Fetch Vimeo thumbnail via oEmbed
-  (function loadVimeoThumbnail() {
-    const vimeoId = '1194588209';
-    fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/' + vimeoId + '&width=400')
-      .then(function(r){ return r.json(); })
-      .then(function(data) {
-        var thumbUrl = data.thumbnail_url;
-        ['vimeo-img-' + vimeoId, 'vimeo-img-dup-' + vimeoId].forEach(function(id) {
-          var img = document.getElementById(id);
-          if (img) { img.src = thumbUrl; img.style.display = ''; }
-        });
-        ['vimeo-placeholder-' + vimeoId, 'vimeo-placeholder-dup-' + vimeoId].forEach(function(id) {
-          var el = document.getElementById(id);
-          if (el) el.style.display = 'none';
-        });
-      })
-      .catch(function() {});
-  })();
+    // Fechar com Esc
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeVideoModal();
+    });
 
-  function closeModal() {
-    const modal = document.getElementById('videoModal');
-    modal.classList.remove('active');
-    document.getElementById('modalIframe').src = '';
-    document.body.style.overflow = '';
-  }
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
 
-  function closeModalOnOverlay(e) {
-    if (e.target === document.getElementById('videoModal')) closeModal();
-  }
+    // Intersection Observer para fade-up
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
-</script>
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
