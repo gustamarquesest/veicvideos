@@ -1626,35 +1626,81 @@
   <!-- ─── CASES DE SUCESSO ─────────────────────── -->
   <style>
     .cases {
-      padding: 96px 0 80px;
+      padding: 104px 0 88px;
       background: var(--black);
       overflow: hidden;
     }
+    .cases .section-header {
+      margin-bottom: 42px;
+    }
+    .cases-carousel {
+      width: 100%;
+      overflow: hidden;
+      padding: 8px 0 18px;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
     .cases-track {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(280px, 1fr);
-      gap: 16px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 8px 2px 16px;
-      scrollbar-color: var(--gold) rgba(254,251,243,.12);
+      display: flex;
+      align-items: stretch;
+      gap: 24px;
+      width: max-content;
+      will-change: transform;
+      animation: cases-scroll 34s linear infinite;
+    }
+    .cases-carousel:hover .cases-track {
+      animation-play-state: paused;
     }
     .cases-track .video-card {
+      width: clamp(420px, 48vw, 680px);
       aspect-ratio: 16 / 9;
-      scroll-snap-align: start;
+      flex: 0 0 auto;
+      border-radius: 14px;
+      box-shadow: 0 22px 60px rgba(0,0,0,.35);
     }
     .cases-track .video-thumb {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    @media (min-width: 900px) {
-      .cases-track { grid-auto-columns: calc((100% - 32px) / 3); }
+    .cases-track .video-title {
+      font-size: 17px;
+    }
+    .cases-track .video-client {
+      font-size: 12px;
+    }
+    @keyframes cases-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-50% - 12px)); }
+    }
+    @media (max-width: 900px) {
+      .cases-track .video-card { width: 78vw; }
     }
     @media (max-width: 600px) {
-      .cases { padding: 64px 0 56px; }
-      .cases-track { grid-auto-columns: 86%; }
+      .cases { padding: 70px 0 62px; }
+      .cases-carousel {
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+      }
+      .cases-track {
+        gap: 16px;
+        animation-duration: 28s;
+      }
+      .cases-track .video-card { width: 86vw; }
+      @keyframes cases-scroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(calc(-50% - 8px)); }
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cases-track {
+        width: auto;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        animation: none;
+        padding-bottom: 12px;
+      }
+      .cases-track .video-card { scroll-snap-align: center; }
     }
   </style>
   <section class="cases" id="cases">
@@ -1664,7 +1710,9 @@
         <h2 class="section-title">Depoimentos de Clientes<br/><span class="gold">apresentando resultados</span></h2>
         <p class="section-sub">Histórias de clientes apresentadas com narrativa, clareza e posicionamento.</p>
       </div>
-      <div class="cases-track fade-up" aria-label="Carrossel de cases de sucesso">
+    </div>
+    <div class="cases-carousel fade-up" aria-label="Carrossel contínuo de cases de sucesso">
+      <div class="cases-track">
         <div class="video-card" onclick="openVideoModal('cPl8z5m_nwY', false)">
           <img class="video-thumb" src="https://i.ytimg.com/vi/cPl8z5m_nwY/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/cPl8z5m_nwY/hqdefault.jpg'" alt="Case de sucesso em vídeo horizontal" loading="lazy" width="640" height="360" />
           <div class="video-overlay">
@@ -1701,6 +1749,22 @@
     </div>
   </section>
 
+  <script>
+    (function() {
+      var track = document.querySelector('#cases .cases-track');
+      if (!track || track.dataset.loopReady) return;
+
+      Array.prototype.slice.call(track.children).forEach(function(card) {
+        var clone = card.cloneNode(true);
+        var img = clone.querySelector('img');
+        clone.setAttribute('aria-hidden', 'true');
+        if (img) img.setAttribute('alt', '');
+        track.appendChild(clone);
+      });
+
+      track.dataset.loopReady = 'true';
+    })();
+  </script>
   <!-- ─── EVENTOS ───────────────────────────────── -->
   <section class="eventos" id="eventos">
     <div class="container">
@@ -2067,3 +2131,5 @@
 
 </body>
 </html>
+
+
