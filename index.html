@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
 <title>Veic Vídeos — Produtora de Vídeos Estratégicos | veicvideos.com</title>
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Veic Vídeos" />
@@ -719,16 +720,26 @@
   }
 
   .cta-contact {
-    display: inline-flex; align-items: center; gap: 12px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
     background: rgba(255,182,0,0.08);
     border: 1px solid rgba(255,182,0,0.2);
     border-radius: 8px; padding: 1rem 2rem;
     margin-top: 2rem;
+    max-width: min(100%, 530px);
     font-size: 0.9rem; color: rgba(254,251,243,0.5);
-    white-space: nowrap;
+    white-space: normal;
+    text-align: left;
   }
 
-  .cta-contact strong { color: var(--cream); font-size: 1rem; }
+  .cta-contact strong { color: var(--cream); font-size: 1rem; font-weight: 800; }
+
+  .cta-contact strong,
+  .cta-contact a,
+  .cta-contact a:visited {
+    color: var(--cream);
+    font-weight: 800;
+    text-decoration: none;
+  }
 
   /* FOOTER */
   footer {
@@ -814,6 +825,8 @@
     footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
     .phone-mockup { width: 220px; }
+    .cta-contact { display: flex; width: 100%; padding: 1rem 1.1rem; align-items: flex-start; }
+    .cta-contact span { min-width: 0; line-height: 1.45; }
   }
 
   /* HAMBURGER MOBILE MENU */
@@ -858,6 +871,8 @@
     .hero { padding: 5rem 1.2rem 3rem; }
     .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
     .hero-actions { flex-direction: column; align-items: flex-start; }
+    .cta-contact { font-size: 0.82rem; }
+    .cta-contact strong { display: inline; font-size: 0.96rem; }
   }
   /* CAROUSEL */
   #portfolioSlides {
@@ -2223,116 +2238,88 @@
   });
 
   // ─── PORTFOLIO CAROUSEL ──────────────────────────────────────────────
-  // All videos by type (shuffled within each category)
+  // Lista na mesma ordem exibida na tela do portfólio.
+  // Edite title e client no item correspondente para personalizar cada vídeo.
   // ─────────────────────────────────────────────────────────────────────────────
   // ORDEM DE EXIBIÇÃO NO PORTFÓLIO (modo "Todos")
-  // A função getVideos('todos') intercala as categorias por índice:
-  // curto[0], cases[0], institucional[0], backstage[0],
-  // curto[1], cases[1], institucional[1], backstage[1], ...
   //
   // Dentro de cada slide, o layout depende do tipo de vídeo:
   //   • Vertical  = 1 coluna   (Short / Reels)
   //   • Horizontal = 2 colunas (Cases / YouTube)
   //
-  // Para editar os textos de cada vídeo, localize o id do vídeo
-  // e ajuste as propriedades no objeto TYPE_LABELS (para o tag de cima)
-  // ou no objeto do vídeo (para o título embaixo, quando implementado).
+  // TYPE_LABELS controla apenas a tag de categoria exibida acima do título.
   // ─────────────────────────────────────────────────────────────────────────────
+  const portfolioVideos = [
+    /* posição tela 01 */ {id:'oDRUYh7xOBs',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 01',client:'Texto do vídeo 01'},
+    /* posição tela 02 */ {id:'fAzmIuYKra0',p:'youtube',o:'horizontal',type:'cases',title:'Case de Sucesso 01',client:'Texto do vídeo 01'},
+    /* posição tela 03 */ {id:'xI9-k8Al18Y',p:'youtube',o:'vertical',type:'institucional',title:'Institucional 01',client:'Texto do vídeo 01'},
+    /* posição tela 04 */ {id:'t3HKRTObtrU',p:'youtube',o:'vertical',type:'backstage',title:'Backstage + Case de Sucesso',client:'Cineart · Meet Tecnologia'},
+    /* posição tela 05 */ {id:'aC_lpOFyDJE',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 02',client:'Texto do vídeo 02'},
+    /* posição tela 06 */ {id:'BgJzvmtNZP4',p:'youtube',o:'horizontal',type:'cases',title:'Case de Sucesso 02',client:'Texto do vídeo 02'},
+    /* posição tela 07 */ {id:'t2jOdfkf1n0',p:'youtube',o:'vertical',type:'institucional',title:'Campanha de Marketing',client:'Betim Vs Cruzeiro'},
+    /* posição tela 08 */ {id:'hX0tfTg9-Vw',p:'youtube',o:'vertical',type:'backstage',title:'Backstage 02',client:'Texto do vídeo 02'},
+    /* posição tela 09 */ {id:'9jIKnhQFhbg',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 03',client:'Texto do vídeo 03'},
+    /* posição tela 10 */ {id:'cPl8z5m_nwY',p:'youtube',o:'horizontal',type:'cases',title:'Case de Sucesso',client:'Cineart'},
+    /* posição tela 11 */ {id:'BRhNBATj9Z0',p:'youtube',o:'vertical',type:'institucional',title:'Institucional 03',client:'Texto do vídeo 03'},
+    /* posição tela 12 */ {id:'SIpWQ_e89oo',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 04',client:'Texto do vídeo 04'},
+    /* posição tela 13 */ {id:'P8hNnOzTfTo',p:'youtube',o:'horizontal',type:'cases',title:'Explicando produto/Serviço',client:'Site · Landing Page'},
+    /* posição tela 14 */ {id:'1196950750',p:'vimeo',o:'vertical',type:'institucional',title:'Institucional 04',client:'Texto do vídeo 04'},
+    /* posição tela 15 */ {id:'1pbQqkS5EyU',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 05',client:'Texto do vídeo 05'},
+    /* posição tela 16 */ {id:'AVlMyYiXCCk',p:'youtube',o:'horizontal',type:'cases',title:'Case de Sucesso',client:'Grupo Avante · Meet Tecnologia'},
+    /* posição tela 17 */ {id:'EzVojjz2TwU',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 06',client:'Texto do vídeo 06'},
+    /* posição tela 18 */ {id:'CgfEWgE_8Aw',p:'youtube',o:'horizontal',type:'cases',title:'Case de Sucesso',client:'Biologistica · Meet Tecnologia'},
+    /* posição tela 19 */ {id:'gdJzWobbouw',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 07',client:'Texto do vídeo 07'},
+    /* posição tela 20 */ {id:'4uQWPJ84uNk',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 08',client:'Texto do vídeo 08'},
+    /* posição tela 21 */ {id:'gjDVDluYpII',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 09',client:'Texto do vídeo 09'},
+    /* posição tela 22 */ {id:'PodfSqi6ru8',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 10',client:'Texto do vídeo 10'},
+    /* posição tela 23 */ {id:'26-R6P5IGpA',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 11',client:'Texto do vídeo 11'},
+    /* posição tela 24 */ {id:'4Hn9ngjpB6w',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 12',client:'Texto do vídeo 12'},
+    /* posição tela 25 */ {id:'XbhVd3a0sEI',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 13',client:'Texto do vídeo 13'},
+    /* posição tela 26 */ {id:'0qOjey-rtsI',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 14',client:'Texto do vídeo 14'},
+    /* posição tela 27 */ {id:'7GOJkl2N4kI',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 15',client:'Texto do vídeo 15'},
+    /* posição tela 28 */ {id:'Q-Gt_kSUTEE',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 16',client:'Texto do vídeo 16'},
+    /* posição tela 29 */ {id:'3lea5v3Jhmg',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 17',client:'Texto do vídeo 17'},
+    /* posição tela 30 */ {id:'HU5pbfJ5aJk',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 18',client:'Texto do vídeo 18'},
+    /* posição tela 31 */ {id:'18b-G4JqoV0',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 19',client:'Texto do vídeo 19'},
+    /* posição tela 32 */ {id:'j1H5zRoC-qk',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 20',client:'Texto do vídeo 20'},
+    /* posição tela 33 */ {id:'nXqTs0U-fPU',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 21',client:'Texto do vídeo 21'},
+    /* posição tela 34 */ {id:'JzY1JbbS7x4',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 22',client:'Texto do vídeo 22'},
+    /* posição tela 35 */ {id:'CO2o8s_k3D4',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 23',client:'Texto do vídeo 23'},
+    /* posição tela 36 */ {id:'G4q5jUkg8VE',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 24',client:'Texto do vídeo 24'},
+    /* posição tela 37 */ {id:'y368nZZESHs',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 25',client:'Texto do vídeo 25'},
+    /* posição tela 38 */ {id:'4J12L2Xlvh8',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 26',client:'Texto do vídeo 26'},
+    /* posição tela 39 */ {id:'MI6pCyYpMlc',p:'youtube',o:'vertical',type:'curto',title:'Confiber · Cacau Show',client:'Sorteio Páscoa'},
+    /* posição tela 40 */ {id:'utxuE5nihsA',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 28',client:'Texto do vídeo 28'},
+    /* posição tela 41 */ {id:'QhdlzY4eoos',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 29',client:'Texto do vídeo 29'},
+    /* posição tela 42 */ {id:'ELgs8RaBxm8',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 30',client:'Texto do vídeo 30'},
+    /* posição tela 43 */ {id:'C3Atq_Dytb0',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 31',client:'Texto do vídeo 31'},
+    /* posição tela 44 */ {id:'EgfQkzmAc5M',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 32',client:'Texto do vídeo 32'},
+    /* posição tela 45 */ {id:'D0D6BRfgWcI',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 33',client:'Texto do vídeo 33'},
+    /* posição tela 46 */ {id:'9eZazmXiRJo',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 34',client:'Texto do vídeo 34'},
+    /* posição tela 47 */ {id:'zBBKTTKwJBQ',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 35',client:'Texto do vídeo 35'},
+    /* posição tela 48 */ {id:'KXf_GURp9lE',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 36',client:'Texto do vídeo 36'},
+    /* posição tela 49 */ {id:'Ncg0eyN_OcM',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 37',client:'Texto do vídeo 37'},
+    /* posição tela 50 */ {id:'0xETMgu7rqQ',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 38',client:'Texto do vídeo 38'},
+    /* posição tela 51 */ {id:'3jOBzTjl9Lc',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 39',client:'Texto do vídeo 39'},
+    /* posição tela 52 */ {id:'-h53nPnf3JQ',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 40',client:'Texto do vídeo 40'},
+    /* posição tela 53 */ {id:'4F6CzKbNvZc',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 41',client:'Texto do vídeo 41'},
+    /* posição tela 54 */ {id:'A9WNZacvW50',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 42',client:'Texto do vídeo 42'},
+    /* posição tela 55 */ {id:'Qun6ERFAS4I',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 43',client:'Texto do vídeo 43'},
+    /* posição tela 56 */ {id:'2xP77y-P4A8',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 44',client:'Texto do vídeo 44'},
+    /* posição tela 57 */ {id:'zpbKSZBjGB8',p:'youtube',o:'vertical',type:'curto',title:'Campanha',client:'Conselho da Massa'},
+    /* posição tela 58 */ {id:'eHGZho9cy_w',p:'youtube',o:'vertical',type:'curto',title:'Curto / Reels 46',client:'Texto do vídeo 46'},
+    /* posição tela 59 */ {id:'1195816891',p:'vimeo',o:'vertical',type:'curto',title:'Mangalarga Marchador',client:'Festival'},
+    /* posição tela 60 */ {id:'1196948372',p:'vimeo',o:'vertical',type:'curto',title:'Curto / Reels 48',client:'Texto do vídeo 48'}
+  ];
+
   const allVideos = {
-
-    // ── CURTO / REELS ─────────────────────────────────────────────────────────
-    // Cada item é exibido na aba "Curto/Reels" e aparece intercalado em "Todos".
-    // Tag exibida: "Curto / Reels"  |  Subtítulo: "Short · Vertical"
-    curto: [
-      /* posição curto 1  */ {id:'oDRUYh7xOBs',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 2  */ {id:'aC_lpOFyDJE',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 3  */ {id:'9jIKnhQFhbg',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 4  */ {id:'SIpWQ_e89oo',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 5  */ {id:'1pbQqkS5EyU',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 6  */ {id:'EzVojjz2TwU',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 7  */ {id:'gdJzWobbouw',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 8  */ {id:'4uQWPJ84uNk',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 9  */ {id:'gjDVDluYpII',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 10 */ {id:'PodfSqi6ru8',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 11 */ {id:'26-R6P5IGpA',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 12 */ {id:'4Hn9ngjpB6w',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 13 */ {id:'XbhVd3a0sEI',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 14 */ {id:'0qOjey-rtsI',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 15 */ {id:'7GOJkl2N4kI',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 16 */ {id:'Q-Gt_kSUTEE',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 17 */ {id:'3lea5v3Jhmg',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 18 */ {id:'HU5pbfJ5aJk',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 19 */ {id:'18b-G4JqoV0',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 20 */ {id:'j1H5zRoC-qk',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 21 */ {id:'nXqTs0U-fPU',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 22 */ {id:'JzY1JbbS7x4',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 23 */ {id:'CO2o8s_k3D4',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 24 */ {id:'G4q5jUkg8VE',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 25 */ {id:'y368nZZESHs',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 26 */ {id:'4J12L2Xlvh8',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 27 */ {id:'MI6pCyYpMlc',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 28 */ {id:'utxuE5nihsA',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 29 */ {id:'QhdlzY4eoos',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 30 */ {id:'ELgs8RaBxm8',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 31 */ {id:'C3Atq_Dytb0',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 32 */ {id:'EgfQkzmAc5M',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 33 */ {id:'D0D6BRfgWcI',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 34 */ {id:'9eZazmXiRJo',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 35 */ {id:'zBBKTTKwJBQ',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 36 */ {id:'KXf_GURp9lE',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 37 */ {id:'Ncg0eyN_OcM',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 38 */ {id:'0xETMgu7rqQ',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 39 */ {id:'3jOBzTjl9Lc',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 40 */ {id:'-h53nPnf3JQ',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 41 */ {id:'4F6CzKbNvZc',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 42 */ {id:'A9WNZacvW50',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 43 */ {id:'Qun6ERFAS4I',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 44 */ {id:'2xP77y-P4A8',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 45 */ {id:'zpbKSZBjGB8',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 46 */ {id:'eHGZho9cy_w',p:'youtube',o:'vertical',type:'curto'},
-      /* posição curto 47 */ {id:'1195816891',p:'vimeo',o:'vertical',type:'curto'},
-      /* posição curto 48 */ {id:'1196948372',p:'vimeo',o:'vertical',type:'curto'}
-    ],
-
-    // ── CASES DE SUCESSO ──────────────────────────────────────────────────────
-    // Tag exibida: "Case de Sucesso"  |  Subtítulo: "Vídeo · Horizontal"
-    cases: [
-      /* posição cases 1 */ {id:'fAzmIuYKra0',p:'youtube',o:'horizontal',type:'cases'},
-      /* posição cases 2 */ {id:'BgJzvmtNZP4',p:'youtube',o:'horizontal',type:'cases'},
-      /* posição cases 3 */ {id:'cPl8z5m_nwY',p:'youtube',o:'horizontal',type:'cases'},
-      /* posição cases 4 */ {id:'P8hNnOzTfTo',p:'youtube',o:'horizontal',type:'cases'},
-      /* posição cases 5 */ {id:'AVlMyYiXCCk',p:'youtube',o:'horizontal',type:'cases'},
-      /* posição cases 6 */ {id:'CgfEWgE_8Aw',p:'youtube',o:'horizontal',type:'cases'}
-    ],
-
-    // ── INSTITUCIONAL ─────────────────────────────────────────────────────────
-    // Tag exibida: "Institucional"  |  Subtítulo: "Short · Vertical"
-    institucional: [
-      /* posição institucional 1 */ {id:'xI9-k8Al18Y',p:'youtube',o:'vertical',type:'institucional'},
-      /* posição institucional 2 */ {id:'t2jOdfkf1n0',p:'youtube',o:'vertical',type:'institucional'},
-      /* posição institucional 3 */ {id:'BRhNBATj9Z0',p:'youtube',o:'vertical',type:'institucional'},
-      /* posição institucional 4 */ {id:'1196950750',p:'vimeo',o:'vertical',type:'institucional'}
-    ],
-
-    // ── BACKSTAGE ─────────────────────────────────────────────────────────────
-    // Tag exibida: "Backstage"  |  Subtítulo: "Short · Vertical"
-    backstage: [
-      /* posição backstage 1 */ {id:'t3HKRTObtrU',p:'youtube',o:'vertical',type:'backstage'},
-      /* posição backstage 2 */ {id:'hX0tfTg9-Vw',p:'youtube',o:'vertical',type:'backstage'}
-    ]
-
+    curto: portfolioVideos.filter(v => v.type === 'curto'),
+    cases: portfolioVideos.filter(v => v.type === 'cases'),
+    institucional: portfolioVideos.filter(v => v.type === 'institucional'),
+    backstage: portfolioVideos.filter(v => v.type === 'backstage')
   };
-
-  // Combine all for "todos"
   function getVideos(type) {
-    if (type === 'todos') {
-      // Interleave all categories
-      const all = [];
-      const cats = Object.values(allVideos);
-      const maxLen = Math.max(...cats.map(a=>a.length));
-      for(let i=0;i<maxLen;i++){cats.forEach(cat=>{if(i<cat.length)all.push(cat[i]);});}
-      return all;
-    }
+    if (type === 'todos') return portfolioVideos;
     return allVideos[type] || [];
   }
 
@@ -2349,40 +2336,26 @@
   };
 
   /*
-   * buildSlideGroups: divide vídeos em grupos (slides) de uma linha só.
-   * Grid de 5 colunas (horizontal = span 2, vertical = span 1):
-   *   - 1H + 3V  = 2+1+1+1 = 5 cols  → grid cheio, sem sobra
-   *   - 2H + 1V  = 2+2+1   = 5 cols  → grid cheio, sem sobra
-   *   - 4V       = flex centralizado, largura 1/5 por card
-   *   - Sobras   = flex centralizado
+   * buildSlideGroups mantém a ordem de portfolioVideos e só quebra a linha
+   * quando a soma das colunas passa de 5 (horizontal = 2, vertical = 1).
    */
   function buildSlideGroups(videos) {
     const groups = [];
-    const verts  = videos.filter(v => v.o === 'vertical');
-    const horizs = videos.filter(v => v.o === 'horizontal');
-    let vi = 0, hi = 0;
+    let row = [];
+    let rowCols = 0;
 
-    while (vi < verts.length || hi < horizs.length) {
-      const rv = verts.length  - vi;
-      const rh = horizs.length - hi;
-
-      if (rh > 0 && rv >= 3) {
-        // 1 horizontal + 3 verticais = 5 colunas — grid cheio
-        groups.push({ items: [horizs[hi++], verts[vi++], verts[vi++], verts[vi++]], flex: false });
-      } else if (rh >= 2 && rv >= 1) {
-        // 2 horizontais + 1 vertical = 5 colunas — grid cheio
-        groups.push({ items: [horizs[hi++], horizs[hi++], verts[vi++]], flex: false });
-      } else if (rv >= 4 && rh === 0) {
-        // 4 verticais — flex centralizado, cards com largura 1/5 (igual ao grid)
-        groups.push({ items: [verts[vi++], verts[vi++], verts[vi++], verts[vi++]], flex: true });
-      } else {
-        // sobras — flex centralizado
-        const leftover = [];
-        while (hi < horizs.length) leftover.push(horizs[hi++]);
-        while (vi < verts.length)  leftover.push(verts[vi++]);
-        if (leftover.length) groups.push({ items: leftover, flex: true });
+    videos.forEach(v => {
+      const cols = v.o === 'horizontal' ? 2 : 1;
+      if (row.length && rowCols + cols > 5) {
+        groups.push({ items: row, flex: rowCols < 5 });
+        row = [];
+        rowCols = 0;
       }
-    }
+      row.push(v);
+      rowCols += cols;
+    });
+
+    if (row.length) groups.push({ items: row, flex: rowCols < 5 });
     return groups;
   }
 
@@ -2392,6 +2365,8 @@
     const thumbUrl = isVimeo ? '' : `https://img.youtube.com/vi/${v.id}/maxresdefault.jpg`;
     const platformLabel = isVimeo ? 'Vimeo' : (isVert ? 'Short' : 'YouTube');
     const typeLabel = TYPE_LABELS[v.type] || platformLabel;
+    const title = v.title || typeLabel;
+    const client = v.client || platformLabel;
 
     const imgContent = isVimeo
       ? `<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 57.34 67.13" style="width:38%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg></div>`
@@ -2406,7 +2381,8 @@
         <div class="portfolio-tags">
           <span class="tag tag-type">${typeLabel}</span>
         </div>
-        <p class="portfolio-title">${isVimeo ? 'Produção Veic' : (isVert ? 'Short · Vertical' : 'Vídeo · Horizontal')}</p>
+        <p class="portfolio-title">${title}</p>
+        <p class="portfolio-client">${client}</p>
       </div>
     </div>`;
   }
@@ -2626,3 +2602,9 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
