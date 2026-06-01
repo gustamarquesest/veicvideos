@@ -2387,12 +2387,36 @@
 
     updateDots(totalSlides);
     loadVimeoThumbsForSlide();
-    resetTimer();
+    // Não chama resetTimer() aqui; o timer é gerenciado pelo IntersectionObserver
   }
 
-  // Re-renderizar ao redimensionar (portrait <-> landscape)
+  // Re-renderizar só na mudança real de orientação (portrait <-> landscape).
+  // NUNCA usar resize puro no mobile: a barra do browser some/aparece durante scroll
+  // e dispara resize mesmo sem mudança de largura real, resetando o carrossel.
   let resizeTimer;
+  let lastOrientation = screen.orientation ? screen.orientation.angle : window.orientation;
+  function handleOrientationChange() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const newOrientation = screen.orientation ? screen.orientation.angle : window.orientation;
+      if (newOrientation === lastOrientation) return;
+      lastOrientation = newOrientation;
+      currentSlide = 0;
+      renderCarousel();
+    }, 300);
+  }
+  if (screen.orientation) {
+    screen.orientation.addEventListener('change', handleOrientationChange);
+  } else {
+    window.addEventListener('orientationchange', handleOrientationChange);
+  }
+  // No desktop, resize normal (só aciona se largura mudar de fato)
+  let lastDesktopWidth = window.innerWidth;
   window.addEventListener('resize', () => {
+    if ('ontouchstart' in window) return; // mobile: ignora totalmente
+    const w = window.innerWidth;
+    if (w === lastDesktopWidth) return;
+    lastDesktopWidth = w;
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => { currentSlide = 0; renderCarousel(); }, 200);
   });
@@ -2449,20 +2473,41 @@
     resetTimer();
   }
 
+  let carouselVisible = false;
+
   function resetTimer() {
     if(carouselTimer) clearInterval(carouselTimer);
-    carouselTimer = setInterval(()=>{ carouselNav(1); }, 3000);
+    if(carouselVisible) {
+      carouselTimer = setInterval(()=>{ carouselNav(1); }, 3000);
+    }
   }
 
-  // Pause on hover
+  // Pause on hover + IntersectionObserver para auto-play ao entrar na tela
   document.addEventListener('DOMContentLoaded', function(){
     const wrap = document.getElementById('portfolioCarouselWrap');
     if(wrap){
-      wrap.addEventListener('mouseenter',()=>{ if(carouselTimer) clearInterval(carouselTimer); });
-      wrap.addEventListener('mouseleave',()=>{ resetTimer(); });
+      // Hover não pausa mais o carrossel — gira sempre a cada 3s
+
+      // Inicia o carrossel automaticamente quando ele aparece na tela
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            if(!carouselVisible) {
+              carouselVisible = true;
+              carouselNav(1); // avança o primeiro slide imediatamente
+              resetTimer();
+            }
+          } else {
+            carouselVisible = false;
+            if(carouselTimer) clearInterval(carouselTimer);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(wrap);
     }
 
-    // Initial render
+    // Initial render (timer só inicia via IntersectionObserver)
     renderCarousel();
 
     // Load Vimeo thumbnails for reel banner
