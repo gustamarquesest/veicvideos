@@ -2230,89 +2230,73 @@
 
   // ─── PORTFOLIO CAROUSEL ──────────────────────────────────────────────
   // All videos by type (shuffled within each category)
-  const allVideos = {
-    curto: [
-      {id:'oDRUYh7xOBs',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Anúncio de Serviço'},
-      {id:'aC_lpOFyDJE',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Impacto'},
-      {id:'9jIKnhQFhbg',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels Estratégico'},
-      {id:'SIpWQ_e89oo',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short Promocional'},
-      {id:'1pbQqkS5EyU',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Marca'},
-      {id:'EzVojjz2TwU',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels de Autoridade'},
-      {id:'gdJzWobbouw',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short para Engajar'},
-      {id:'4uQWPJ84uNk',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo Viral'},
-      {id:'gjDVDluYpII',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Vídeo de Posicionamento'},
-      {id:'PodfSqi6ru8',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels Institucional'},
-      {id:'26-R6P5IGpA',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short de Produto'},
-      {id:'4Hn9ngjpB6w',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Conversão'},
-      {id:'XbhVd3a0sEI',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels de Captação'},
-      {id:'0qOjey-rtsI',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short de Engajamento'},
-      {id:'7GOJkl2N4kI',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Lançamento'},
-      {id:'Q-Gt_kSUTEE',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels de Campanha'},
-      {id:'3lea5v3Jhmg',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short Educativo'},
-      {id:'HU5pbfJ5aJk',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Tendência'},
-      {id:'18b-G4JqoV0',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels de Autoridade'},
-      {id:'j1H5zRoC-qk',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short para Redes'},
-      {id:'nXqTs0U-fPU',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Marca'},
-      {id:'JzY1JbbS7x4',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels de Destaque'},
-      {id:'CO2o8s_k3D4',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short de Serviço'},
-      {id:'G4q5jUkg8VE',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo Estratégico'},
-      {id:'y368nZZESHs',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels Promocional'},
-      {id:'4J12L2Xlvh8',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short de Campanha'},
-      {id:'MI6pCyYpMlc',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Confiber · Cacau Show'},
-      {id:'utxuE5nihsA',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Engajamento'},
-      {id:'QhdlzY4eoos',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels de Impacto'},
-      {id:'ELgs8RaBxm8',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short Corporativo'},
-      {id:'C3Atq_Dytb0',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Resultado'},
-      {id:'EgfQkzmAc5M',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels de Lançamento'},
-      {id:'D0D6BRfgWcI',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short Institucional'},
-      {id:'9eZazmXiRJo',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Marca'},
-      {id:'zBBKTTKwJBQ',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels de Conversão'},
-      {id:'KXf_GURp9lE',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short de Destaque'},
-      {id:'Ncg0eyN_OcM',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo para Redes'},
-      {id:'0xETMgu7rqQ',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels de Autoridade'},
-      {id:'3jOBzTjl9Lc',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short de Produto'},
-      {id:'-h53nPnf3JQ',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Captação'},
-      {id:'4F6CzKbNvZc',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels Estratégico'},
-      {id:'A9WNZacvW50',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short de Campanha'},
-      {id:'Qun6ERFAS4I',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Conteúdo de Posicionamento'},
-      {id:'2xP77y-P4A8',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Reels de Impacto'},
-      {id:'zpbKSZBjGB8',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Campanha Conselho da Massa'},
-      {id:'eHGZho9cy_w',p:'youtube',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Short de Engajamento'},
-      {id:'1195816891',p:'vimeo',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Mangalarga Marchador'},
-      {id:'1196948372',p:'vimeo',o:'vertical',type:'curto',tag:'Curto / Reels',title:'Produção Veic'}
-    ],
-    cases: [
-      {id:'fAzmIuYKra0',p:'youtube',o:'horizontal',type:'cases',tag:'Case de Sucesso',title:'Case de Sucesso'},
-      {id:'BgJzvmtNZP4',p:'youtube',o:'horizontal',type:'cases',tag:'Case de Sucesso',title:'Case de Sucesso'},
-      {id:'cPl8z5m_nwY',p:'youtube',o:'horizontal',type:'cases',tag:'Case de Sucesso',title:'Case de Sucesso · Cineart'},
-      {id:'P8hNnOzTfTo',p:'youtube',o:'horizontal',type:'cases',tag:'Explicação de Produto',title:'Explicando Produto/Serviço'},
-      {id:'AVlMyYiXCCk',p:'youtube',o:'horizontal',type:'cases',tag:'Case de Sucesso',title:'Case de Sucesso · Grupo Avante'},
-      {id:'CgfEWgE_8Aw',p:'youtube',o:'horizontal',type:'cases',tag:'Case de Sucesso',title:'Case · Biologistica'}
-    ],
-    institucional: [
-      {id:'xI9-k8Al18Y',p:'youtube',o:'vertical',type:'institucional',tag:'Institucional',title:'Vídeo Institucional'},
-      {id:'t2jOdfkf1n0',p:'youtube',o:'vertical',type:'institucional',tag:'Institucional',title:'Campanha de Marketing'},
-      {id:'BRhNBATj9Z0',p:'youtube',o:'vertical',type:'institucional',tag:'Institucional',title:'Vídeo Institucional'},
-      {id:'1196950750',p:'vimeo',o:'vertical',type:'institucional',tag:'Institucional',title:'Produção Veic'}
-    ],
-    backstage: [
-      {id:'t3HKRTObtrU',p:'youtube',o:'vertical',type:'backstage',tag:'Backstage',title:'Backstage · Cineart'},
-      {id:'hX0tfTg9-Vw',p:'youtube',o:'vertical',type:'backstage',tag:'Backstage',title:'Backstage de Produção'}
-    ]
-  };
+  // ─── LISTA DE VÍDEOS DO PORTFÓLIO ────────────────────────────────────
+  // Edite tag e title de cada vídeo individualmente.
+  // A ordem aqui é a ordem exata de exibição no carrossel.
+  const allVideos = [
+    {id:'oDRUYh7xOBs',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Anúncio de Serviço'},
+    {id:'fAzmIuYKra0',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Case de Sucesso'},
+    {id:'xI9-k8Al18Y',p:'youtube',o:'vertical',  tag:'Institucional',   title:'Vídeo Institucional'},
+    {id:'t3HKRTObtrU',p:'youtube',o:'vertical',  tag:'Backstage',       title:'Backstage · Cineart'},
+    {id:'aC_lpOFyDJE',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Impacto'},
+    {id:'BgJzvmtNZP4',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Case de Sucesso'},
+    {id:'t2jOdfkf1n0',p:'youtube',o:'vertical',  tag:'Institucional',   title:'Campanha de Marketing'},
+    {id:'hX0tfTg9-Vw',p:'youtube',o:'vertical',  tag:'Backstage',       title:'Backstage de Produção'},
+    {id:'9jIKnhQFhbg',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels Estratégico'},
+    {id:'cPl8z5m_nwY',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Case de Sucesso · Cineart'},
+    {id:'BRhNBATj9Z0',p:'youtube',o:'vertical',  tag:'Institucional',   title:'Vídeo Institucional'},
+    {id:'SIpWQ_e89oo',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short Promocional'},
+    {id:'P8hNnOzTfTo',p:'youtube',o:'horizontal', tag:'Explicação de Produto', title:'Explicando Produto/Serviço'},
+    {id:'1196950750', p:'vimeo',   o:'vertical',  tag:'Institucional',   title:'Produção Veic'},
+    {id:'1pbQqkS5EyU',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Marca'},
+    {id:'AVlMyYiXCCk',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Case de Sucesso · Grupo Avante'},
+    {id:'EzVojjz2TwU',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels de Autoridade'},
+    {id:'CgfEWgE_8Aw',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Case · Biologistica'},
+    {id:'gdJzWobbouw',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short para Engajar'},
+    {id:'4uQWPJ84uNk',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo Viral'},
+    {id:'gjDVDluYpII',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Vídeo de Posicionamento'},
+    {id:'PodfSqi6ru8',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels Institucional'},
+    {id:'26-R6P5IGpA',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short de Produto'},
+    {id:'4Hn9ngjpB6w',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Conversão'},
+    {id:'XbhVd3a0sEI',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels de Captação'},
+    {id:'0qOjey-rtsI',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short de Engajamento'},
+    {id:'7GOJkl2N4kI',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Lançamento'},
+    {id:'Q-Gt_kSUTEE',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels de Campanha'},
+    {id:'3lea5v3Jhmg',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short Educativo'},
+    {id:'HU5pbfJ5aJk',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Tendência'},
+    {id:'18b-G4JqoV0',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels de Autoridade'},
+    {id:'j1H5zRoC-qk',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short para Redes'},
+    {id:'nXqTs0U-fPU',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Marca'},
+    {id:'JzY1JbbS7x4',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels de Destaque'},
+    {id:'CO2o8s_k3D4',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short de Serviço'},
+    {id:'G4q5jUkg8VE',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo Estratégico'},
+    {id:'y368nZZESHs',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels Promocional'},
+    {id:'4J12L2Xlvh8',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short de Campanha'},
+    {id:'MI6pCyYpMlc',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Confiber · Cacau Show'},
+    {id:'utxuE5nihsA',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Engajamento'},
+    {id:'QhdlzY4eoos',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels de Impacto'},
+    {id:'ELgs8RaBxm8',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short Corporativo'},
+    {id:'C3Atq_Dytb0',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Resultado'},
+    {id:'EgfQkzmAc5M',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels de Lançamento'},
+    {id:'D0D6BRfgWcI',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short Institucional'},
+    {id:'9eZazmXiRJo',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Marca'},
+    {id:'zBBKTTKwJBQ',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels de Conversão'},
+    {id:'KXf_GURp9lE',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short de Destaque'},
+    {id:'Ncg0eyN_OcM',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo para Redes'},
+    {id:'0xETMgu7rqQ',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels de Autoridade'},
+    {id:'3jOBzTjl9Lc',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short de Produto'},
+    {id:'-h53nPnf3JQ',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Captação'},
+    {id:'4F6CzKbNvZc',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels Estratégico'},
+    {id:'A9WNZacvW50',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short de Campanha'},
+    {id:'Qun6ERFAS4I',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Conteúdo de Posicionamento'},
+    {id:'2xP77y-P4A8',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Reels de Impacto'},
+    {id:'zpbKSZBjGB8',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Campanha Conselho da Massa'},
+    {id:'eHGZho9cy_w',p:'youtube',o:'vertical',  tag:'Curto / Reels',   title:'Short de Engajamento'},
+    {id:'1195816891', p:'vimeo',   o:'vertical',  tag:'Curto / Reels',   title:'Mangalarga Marchador'},
+    {id:'1196948372', p:'vimeo',   o:'vertical',  tag:'Curto / Reels',   title:'Produção Veic'}
+  ];
 
-  // Combine all for "todos"
-  function getVideos(type) {
-    if (type === 'todos') {
-      // Interleave all categories
-      const all = [];
-      const cats = Object.values(allVideos);
-      const maxLen = Math.max(...cats.map(a=>a.length));
-      for(let i=0;i<maxLen;i++){cats.forEach(cat=>{if(i<cat.length)all.push(cat[i]);});}
-      return all;
-    }
-    return allVideos[type] || [];
-  }
+  function getVideos() { return allVideos; }
 
   let currentSlide = 0;
   let activeType = 'todos';
@@ -2391,7 +2375,7 @@
   function isMobile() { return window.innerWidth <= 900; }
 
   function renderCarousel() {
-    currentVideos = getVideos(activeType);
+    currentVideos = getVideos();
 
     // No mobile: 1 vídeo por slide
     if (isMobile()) {
