@@ -3070,30 +3070,38 @@
       });
     });
 
-    // Scroll snap: detectar qual card ficou centralizado após scroll
-    viewport.addEventListener('scroll', function() {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(function() {
-        var center = viewport.scrollLeft + viewport.clientWidth / 2;
-        var cards2 = document.querySelectorAll('.eco-mob-card');
-        var bestIdx = 0;
-        var bestDist = Infinity;
-        cards2.forEach(function(card) {
-          var cardCenter = card.offsetLeft + card.offsetWidth / 2;
-          var dist = Math.abs(cardCenter - center);
-          if (dist < bestDist) {
-            bestDist = dist;
-            bestIdx = parseInt(card.getAttribute('data-index'), 10);
-          }
-        });
-        if (bestIdx !== activeIndex) {
-          activeIndex = bestIdx;
-          updateActiveState(bestIdx, false);
-          ecoSelect(bestIdx); // atualiza painel de detalhe
-          triggerDetailAnim();
+    // Detecta o card centralizado e seleciona imediatamente ao fim do scroll
+    function onScrollEnd() {
+      var center = viewport.scrollLeft + viewport.clientWidth / 2;
+      var cards2 = document.querySelectorAll('.eco-mob-card');
+      var bestIdx = 0;
+      var bestDist = Infinity;
+      cards2.forEach(function(card) {
+        var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        var dist = Math.abs(cardCenter - center);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestIdx = parseInt(card.getAttribute('data-index'), 10);
         }
-      }, 80);
-    }, { passive: true });
+      });
+      if (bestIdx !== activeIndex) {
+        activeIndex = bestIdx;
+        updateActiveState(bestIdx, false);
+        ecoSelect(bestIdx);
+        triggerDetailAnim();
+      }
+    }
+
+    // Usa scrollend nativo (Chrome 114+, Firefox 109+, Safari 17.4+)
+    // Fallback: debounce curto apenas para browsers sem suporte
+    if ('onscrollend' in viewport) {
+      viewport.addEventListener('scrollend', onScrollEnd, { passive: true });
+    } else {
+      viewport.addEventListener('scroll', function() {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(onScrollEnd, 50);
+      }, { passive: true });
+    }
 
     // Inicializa: centraliza no card 0
     scrollToCard(0, false);
