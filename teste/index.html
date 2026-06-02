@@ -522,29 +522,6 @@
     margin-bottom: 3rem;
   }
 
-  .filter-tabs {
-    display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;
-  }
-
-  .filter-tab {
-    padding: 0.4rem 1rem;
-    background: transparent;
-    border: 1px solid rgba(254,251,243,0.15);
-    color: rgba(254,251,243,0.55);
-    border-radius: 100px;
-    font-size: 0.8rem; font-weight: 600;
-    cursor: pointer; transition: all 0.2s;
-    font-family: 'Inter', sans-serif;
-    text-transform: uppercase; letter-spacing: 0.05em;
-  }
-
-  .filter-tab:hover,
-  .filter-tab.active {
-    background: var(--yellow);
-    border-color: var(--yellow);
-    color: var(--black);
-  }
-
   .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -745,12 +722,18 @@
     display: inline-flex; align-items: center; gap: 12px;
     background: rgba(255,182,0,0.08);
     border: 1px solid rgba(255,182,0,0.2);
-    border-radius: 8px; padding: 1rem 2rem;
+    border-radius: 8px; padding: 1rem 1.25rem;
     margin-top: 2rem;
-    font-size: 0.9rem; color: rgba(254,251,243,0.5);
+    font-size: 0.9rem; color: #fff;
+    white-space: nowrap;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
-  .cta-contact strong { color: var(--cream); }
+  .cta-contact strong { color: #fff; }
+  .cta-contact a { color: #fff !important; text-decoration: none; }
+  .cta-contact a:visited { color: #fff !important; }
+  .cta-contact a:hover { color: var(--yellow) !important; }
 
   /* FOOTER */
   footer {
@@ -833,6 +816,7 @@
     .backstage-grid { grid-template-columns: 1fr 1fr; }
     .backstage-item.large { grid-row: span 1; aspect-ratio: 4/3; }
     .cta-section { padding: 5rem 1.5rem; }
+    .cta-contact { font-size: 0.78rem; padding: 0.75rem 1rem; gap: 8px; white-space: nowrap; max-width: calc(100vw - 3rem); overflow: hidden; }
     footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
     .phone-mockup { width: 220px; }
@@ -1797,7 +1781,7 @@
           <div class="thumb-overlay">
             <div class="thumb-info">
               <span class="thumb-label">Treinamento NR</span>
-              <span class="thumb-sublabel">Registro</span>
+              <span class="thumb-sublabel">Registro da Ação</span>
             </div>
           </div>
         </div>
@@ -1879,18 +1863,6 @@
         </div>
       </div>
 
-      <!-- ===== DUPLICATAS PARA LOOP INFINITO ===== -->
-      <div class="video-thumb vertical" onclick="openModal('rsau38g08H0','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/rsau38g08H0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Vídeo Institucional</span><span class="thumb-sublabel">Short · YouTube</span></div></div></div></div>
-      <div class="video-thumb horizontal" onclick="openModal('cPl8z5m_nwY','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/cPl8z5m_nwY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Vídeo Corporativo</span><span class="thumb-sublabel">Horizontal · YouTube</span></div></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('t3HKRTObtrU','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/t3HKRTObtrU/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Conteúdo Social</span><span class="thumb-sublabel">Short · YouTube</span></div></div></div></div>
-      <div class="video-thumb horizontal" onclick="openModal('P8hNnOzTfTo','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/P8hNnOzTfTo/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Vídeo Estratégico</span><span class="thumb-sublabel">Horizontal · YouTube</span></div></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('t2jOdfkf1n0','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/t2jOdfkf1n0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Case de Sucesso</span><span class="thumb-sublabel">Short · YouTube</span></div></div></div></div>
-      <div class="video-thumb horizontal" onclick="openModal('CgfEWgE_8Aw','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/CgfEWgE_8Aw/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Produção Completa</span><span class="thumb-sublabel">Horizontal · YouTube</span></div></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('jeY8AvM-iUY','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/jeY8AvM-iUY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Identidade de Marca</span><span class="thumb-sublabel">Vertical · YouTube</span></div></div></div></div>
-      <div class="video-thumb horizontal" onclick="openModal('AVlMyYiXCCk','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/AVlMyYiXCCk/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Vídeo Comercial</span><span class="thumb-sublabel">Horizontal · YouTube</span></div></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('zpbKSZBjGB8','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/zpbKSZBjGB8/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Reels & Stories</span><span class="thumb-sublabel">Short · YouTube</span></div></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('1194588209','vertical','vimeo')"><div class="video-thumb-inner"><img id="vimeo-img-dup-1194588209" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;"><div id="vimeo-placeholder-dup-1194588209" style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 57.34 67.13" style="width:40%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg></div><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Produção Veic</span><span class="thumb-sublabel">Vertical · Vimeo</span></div></div></div></div>
-      <div class="video-thumb vertical" onclick="openModal('MI6pCyYpMlc','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/MI6pCyYpMlc/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Motion & Edição</span><span class="thumb-sublabel">Short · YouTube</span></div></div></div></div>
 
     </div>
   </div>
@@ -2035,15 +2007,6 @@
       <h2>Portfólio</h2>
     </div>
     <a href="https://www.instagram.com/veicvideos" class="btn-secondary" style="white-space:nowrap">Ver Instagram →</a>
-  </div>
-
-  <!-- Filtros por TIPO -->
-  <div class="filter-tabs" id="type-filters">
-    <button class="filter-tab active" data-type="todos">Todos</button>
-    <button class="filter-tab" data-type="curto">Curto / Reels</button>
-    <button class="filter-tab" data-type="cases">Cases de Sucesso</button>
-    <button class="filter-tab" data-type="institucional">Institucional</button>
-    <button class="filter-tab" data-type="backstage">Backstage</button>
   </div>
 
   <!-- CAROUSEL WRAPPER -->
@@ -2255,59 +2218,73 @@
 
   // ─── PORTFOLIO CAROUSEL ──────────────────────────────────────────────
   // All videos by type (shuffled within each category)
-  const allVideos = {
-    curto: [
-      {id:'oDRUYh7xOBs',p:'youtube',o:'vertical',type:'curto'},{id:'aC_lpOFyDJE',p:'youtube',o:'vertical',type:'curto'},
-      {id:'9jIKnhQFhbg',p:'youtube',o:'vertical',type:'curto'},{id:'SIpWQ_e89oo',p:'youtube',o:'vertical',type:'curto'},
-      {id:'1pbQqkS5EyU',p:'youtube',o:'vertical',type:'curto'},{id:'EzVojjz2TwU',p:'youtube',o:'vertical',type:'curto'},
-      {id:'gdJzWobbouw',p:'youtube',o:'vertical',type:'curto'},{id:'4uQWPJ84uNk',p:'youtube',o:'vertical',type:'curto'},
-      {id:'gjDVDluYpII',p:'youtube',o:'vertical',type:'curto'},{id:'PodfSqi6ru8',p:'youtube',o:'vertical',type:'curto'},
-      {id:'26-R6P5IGpA',p:'youtube',o:'vertical',type:'curto'},{id:'4Hn9ngjpB6w',p:'youtube',o:'vertical',type:'curto'},
-      {id:'XbhVd3a0sEI',p:'youtube',o:'vertical',type:'curto'},{id:'0qOjey-rtsI',p:'youtube',o:'vertical',type:'curto'},
-      {id:'7GOJkl2N4kI',p:'youtube',o:'vertical',type:'curto'},{id:'Q-Gt_kSUTEE',p:'youtube',o:'vertical',type:'curto'},
-      {id:'3lea5v3Jhmg',p:'youtube',o:'vertical',type:'curto'},{id:'HU5pbfJ5aJk',p:'youtube',o:'vertical',type:'curto'},
-      {id:'18b-G4JqoV0',p:'youtube',o:'vertical',type:'curto'},{id:'j1H5zRoC-qk',p:'youtube',o:'vertical',type:'curto'},
-      {id:'nXqTs0U-fPU',p:'youtube',o:'vertical',type:'curto'},{id:'JzY1JbbS7x4',p:'youtube',o:'vertical',type:'curto'},
-      {id:'CO2o8s_k3D4',p:'youtube',o:'vertical',type:'curto'},{id:'G4q5jUkg8VE',p:'youtube',o:'vertical',type:'curto'},
-      {id:'y368nZZESHs',p:'youtube',o:'vertical',type:'curto'},{id:'4J12L2Xlvh8',p:'youtube',o:'vertical',type:'curto'},
-      {id:'MI6pCyYpMlc',p:'youtube',o:'vertical',type:'curto'},{id:'utxuE5nihsA',p:'youtube',o:'vertical',type:'curto'},
-      {id:'QhdlzY4eoos',p:'youtube',o:'vertical',type:'curto'},{id:'ELgs8RaBxm8',p:'youtube',o:'vertical',type:'curto'},
-      {id:'C3Atq_Dytb0',p:'youtube',o:'vertical',type:'curto'},{id:'EgfQkzmAc5M',p:'youtube',o:'vertical',type:'curto'},
-      {id:'D0D6BRfgWcI',p:'youtube',o:'vertical',type:'curto'},{id:'9eZazmXiRJo',p:'youtube',o:'vertical',type:'curto'},
-      {id:'zBBKTTKwJBQ',p:'youtube',o:'vertical',type:'curto'},{id:'KXf_GURp9lE',p:'youtube',o:'vertical',type:'curto'},
-      {id:'Ncg0eyN_OcM',p:'youtube',o:'vertical',type:'curto'},{id:'0xETMgu7rqQ',p:'youtube',o:'vertical',type:'curto'},
-      {id:'3jOBzTjl9Lc',p:'youtube',o:'vertical',type:'curto'},{id:'-h53nPnf3JQ',p:'youtube',o:'vertical',type:'curto'},
-      {id:'4F6CzKbNvZc',p:'youtube',o:'vertical',type:'curto'},{id:'A9WNZacvW50',p:'youtube',o:'vertical',type:'curto'},
-      {id:'Qun6ERFAS4I',p:'youtube',o:'vertical',type:'curto'},{id:'2xP77y-P4A8',p:'youtube',o:'vertical',type:'curto'},
-      {id:'zpbKSZBjGB8',p:'youtube',o:'vertical',type:'curto'},{id:'eHGZho9cy_w',p:'youtube',o:'vertical',type:'curto'},
-      {id:'1195816891',p:'vimeo',o:'vertical',type:'curto'},{id:'1196948372',p:'vimeo',o:'vertical',type:'curto'}
-    ],
-    cases: [
-      {id:'fAzmIuYKra0',p:'youtube',o:'horizontal',type:'cases'},{id:'BgJzvmtNZP4',p:'youtube',o:'horizontal',type:'cases'},
-      {id:'cPl8z5m_nwY',p:'youtube',o:'horizontal',type:'cases'},{id:'P8hNnOzTfTo',p:'youtube',o:'horizontal',type:'cases'},
-      {id:'AVlMyYiXCCk',p:'youtube',o:'horizontal',type:'cases'},{id:'CgfEWgE_8Aw',p:'youtube',o:'horizontal',type:'cases'}
-    ],
-    institucional: [
-      {id:'xI9-k8Al18Y',p:'youtube',o:'vertical',type:'institucional'},{id:'t2jOdfkf1n0',p:'youtube',o:'vertical',type:'institucional'},
-      {id:'BRhNBATj9Z0',p:'youtube',o:'vertical',type:'institucional'},{id:'1196950750',p:'vimeo',o:'vertical',type:'institucional'}
-    ],
-    backstage: [
-      {id:'t3HKRTObtrU',p:'youtube',o:'vertical',type:'backstage'},{id:'hX0tfTg9-Vw',p:'youtube',o:'vertical',type:'backstage'}
-    ]
-  };
+  // ─── LISTA DE VÍDEOS DO PORTFÓLIO ────────────────────────────────────
+  // Edite tag e title de cada vídeo individualmente.
+  // A ordem aqui é a ordem exata de exibição no carrossel.
+  const allVideos = [
+    {id:'oDRUYh7xOBs',p:'youtube',o:'vertical',  tag:'Apresentação de Benefícios',   title:'Benefícios Fibraxx'},
+    {id:'fAzmIuYKra0',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Grupo AVG · Meet Tecnologia'},
+    {id:'xI9-k8Al18Y',p:'youtube',o:'vertical',  tag:'Registro do Festival',   title:'Mangalarga marchador'},
+    {id:'t3HKRTObtrU',p:'youtube',o:'vertical',  tag:'Backstage + Case de Sucesso',       title:'Cineart ·  Meet Tecnologia'},
+    {id:'aC_lpOFyDJE',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Deezer · Confiber'},
+    {id:'BgJzvmtNZP4',p:'youtube',o:'horizontal', tag:'Festival',  title:'Circuito Cultural Barreiro'},
+    {id:'t2jOdfkf1n0',p:'youtube',o:'vertical',  tag:'Ação de Campanha',   title:'Betim Vs Cruzeiro'},
+    {id:'hX0tfTg9-Vw',p:'youtube',o:'vertical',  tag:'Backstage + Case de Sucesso',       title:'Biologistica · Meet Tecnologia'},
+    {id:'9jIKnhQFhbg',p:'youtube',o:'vertical',  tag:'Apresentação de Benefícios',   title:'Fibraxx'},
+    {id:'cPl8z5m_nwY',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Cineart · Meet Tecnologia'},
+    {id:'BRhNBATj9Z0',p:'youtube',o:'vertical',  tag:'Conteúdo Institucional',   title:'Palestra no Colégio Santo Agostinho · Meet Tecnologia'},
+    {id:'SIpWQ_e89oo',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Dia dos Namorados'},
+    {id:'P8hNnOzTfTo',p:'youtube',o:'horizontal', tag:'Apresentação de Serviços', title:'UNE Internet'},
+    {id:'1196950750', p:'vimeo',   o:'vertical',  tag:'Conteúdo Institucional',   title:'Endomarketing Dia das Mulheres'},
+    {id:'1pbQqkS5EyU',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Disney + · Confiber'},
+    {id:'AVlMyYiXCCk',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Grupo Avante · Meet Tecnologia'},
+    {id:'EzVojjz2TwU',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Brumanus no Carnaval'},
+    {id:'CgfEWgE_8Aw',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Biologistica · Meet Tecnologia'},
+    {id:'gdJzWobbouw',p:'youtube',o:'vertical',  tag:'Teaser',   title:'Brumanus no Carnaval'},
+    {id:'4uQWPJ84uNk',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Brumanus no Sabor das Brumas'},
+    {id:'gjDVDluYpII',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Chopp APA Brumanus'},
+    {id:'PodfSqi6ru8',p:'youtube',o:'vertical',  tag:'Conteúdo Institucional',   title:'Suporte Técnico'},
+    {id:'26-R6P5IGpA',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Disney + · Confiber'},
+    {id:'4Hn9ngjpB6w',p:'youtube',o:'vertical',  tag:'Anúncio de Promoção',   title:'Session Ipa no preço da Pilsen'},
+    {id:'XbhVd3a0sEI',p:'youtube',o:'vertical',  tag:'Conteúdo',   title:'Área de Cobertura'},
+    {id:'0qOjey-rtsI',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Link Dedicado'},
+    {id:'7GOJkl2N4kI',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Premiere · Confiber'},
+    {id:'Q-Gt_kSUTEE',p:'youtube',o:'vertical',  tag:'Anúncio de Patrocínio',   title:'Betim Futebol · Meet Tecnologia'},
+    {id:'3lea5v3Jhmg',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Black Friday'},
+    {id:'HU5pbfJ5aJk',p:'youtube',o:'vertical',  tag:'Backstage + Case de Sucesso',   title:'Grupo Avante · Meet Tecnologia'},
+    {id:'18b-G4JqoV0',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'HBO Max · Confiber'},
+    {id:'j1H5zRoC-qk',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Disaster Recovery'},
+    {id:'nXqTs0U-fPU',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Streamings Confiber'},
+    {id:'JzY1JbbS7x4',p:'youtube',o:'vertical',  tag:'Conteúdo Educativo',   title:'Sua Empresa usa Nuvem?'},
+    {id:'CO2o8s_k3D4',p:'youtube',o:'vertical',  tag:'Anúncio de Parceria',   title:'Confiber · Restaurante Nosso Quintal'},
+    {id:'G4q5jUkg8VE',p:'youtube',o:'vertical',  tag:'Conteúdo Educativo',   title:'Qual Tipo de Cloud Usar?'},
+    {id:'y368nZZESHs',p:'youtube',o:'vertical',  tag:'Anúncio de Parceria',   title:'Confiber · Panificadora Palmeiras'},
+    {id:'4J12L2Xlvh8',p:'youtube',o:'vertical',  tag:'Conteúdo Educativo',   title:'O que significa Cloud?'},
+    {id:'MI6pCyYpMlc',p:'youtube',o:'vertical',  tag:'Anúncio de Promoção',   title:'Confiber · Cacau Show'},
+    {id:'utxuE5nihsA',p:'youtube',o:'vertical',  tag:'Conteúdo Educativo',   title:'Segurança Digital'},
+    {id:'QhdlzY4eoos',p:'youtube',o:'vertical',  tag:'Anúncio em Motion',   title:'Copa do Mundo'},
+    {id:'ELgs8RaBxm8',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Casa Inteligente'},
+    {id:'C3Atq_Dytb0',p:'youtube',o:'vertical',  tag:'Anúncio de Promoção',   title:'Mês das Mães'},
+    {id:'EgfQkzmAc5M',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Segurança Residencial'},
+    {id:'D0D6BRfgWcI',p:'youtube',o:'vertical',  tag:'Conteúdo Educativo',   title:'Mamãe Gorila Vs Parentalidade'},
+    {id:'9eZazmXiRJo',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Automação Residencial'},
+    {id:'zBBKTTKwJBQ',p:'youtube',o:'vertical',  tag:'Anúncio de Parceria',   title:'Fibraxx· Big Stars Circus'},
+    {id:'KXf_GURp9lE',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Câmera Veicular'},
+    {id:'Ncg0eyN_OcM',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'Nath Sthael'},
+    {id:'0xETMgu7rqQ',p:'youtube',o:'vertical',  tag:'Apresentação de Serviços',   title:'Rastreamento de Veículo'},
+    {id:'3jOBzTjl9Lc',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'Maikin'},
+    {id:'-h53nPnf3JQ',p:'youtube',o:'vertical',  tag:'Apresentação de Serviços',   title:'Acesso Assistido'},
+    {id:'4F6CzKbNvZc',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'Euocêeozé'},
+    {id:'A9WNZacvW50',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'Grupo Guararás'},
+    {id:'Qun6ERFAS4I',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'UNUN2'},
+    {id:'2xP77y-P4A8',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'Encerramento com 14 Bis'},
+    {id:'zpbKSZBjGB8',p:'youtube',o:'vertical',  tag:'Campanha',   title:'Conselho da Massa'},
+    {id:'eHGZho9cy_w',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Black Friday'},
+    {id:'1195816891', p:'vimeo',   o:'vertical',  tag:'Registro do Festival',   title:'Mangalarga Marchador'},
+    {id:'1196948372', p:'vimeo',   o:'vertical',  tag:'Conteúdo Institucional',   title:'Cuidado no Período de Chuvas'}
+  ];
 
-  // Combine all for "todos"
-  function getVideos(type) {
-    if (type === 'todos') {
-      // Interleave all categories
-      const all = [];
-      const cats = Object.values(allVideos);
-      const maxLen = Math.max(...cats.map(a=>a.length));
-      for(let i=0;i<maxLen;i++){cats.forEach(cat=>{if(i<cat.length)all.push(cat[i]);});}
-      return all;
-    }
-    return allVideos[type] || [];
-  }
+  function getVideos() { return allVideos; }
 
   let currentSlide = 0;
   let activeType = 'todos';
@@ -2363,8 +2340,7 @@
     const isVimeo = v.p === 'vimeo';
     const isVert = v.o === 'vertical';
     const thumbUrl = isVimeo ? '' : `https://img.youtube.com/vi/${v.id}/maxresdefault.jpg`;
-    const platformLabel = isVimeo ? 'Vimeo' : (isVert ? 'Short' : 'YouTube');
-    const typeLabel = TYPE_LABELS[v.type] || platformLabel;
+    const typeLabel = v.tag || TYPE_LABELS[v.type] || '';
 
     const imgContent = isVimeo
       ? `<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 57.34 67.13" style="width:38%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg></div>`
@@ -2378,9 +2354,8 @@
       <div class="portfolio-meta">
         <div class="portfolio-tags">
           <span class="tag tag-type">${typeLabel}</span>
-          <span class="tag tag-niche">${platformLabel}</span>
         </div>
-        <p class="portfolio-title">${isVimeo ? 'Produção Veic' : (isVert ? 'Short · Vertical' : 'Vídeo · Horizontal')}</p>
+        <p class="portfolio-title">${v.title || ''}</p>
       </div>
     </div>`;
   }
@@ -2388,7 +2363,7 @@
   function isMobile() { return window.innerWidth <= 900; }
 
   function renderCarousel() {
-    currentVideos = getVideos(activeType);
+    currentVideos = getVideos();
 
     // No mobile: 1 vídeo por slide
     if (isMobile()) {
@@ -2419,12 +2394,36 @@
 
     updateDots(totalSlides);
     loadVimeoThumbsForSlide();
-    resetTimer();
+    // Não chama resetTimer() aqui; o timer é gerenciado pelo IntersectionObserver
   }
 
-  // Re-renderizar ao redimensionar (portrait <-> landscape)
+  // Re-renderizar só na mudança real de orientação (portrait <-> landscape).
+  // NUNCA usar resize puro no mobile: a barra do browser some/aparece durante scroll
+  // e dispara resize mesmo sem mudança de largura real, resetando o carrossel.
   let resizeTimer;
+  let lastOrientation = screen.orientation ? screen.orientation.angle : window.orientation;
+  function handleOrientationChange() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const newOrientation = screen.orientation ? screen.orientation.angle : window.orientation;
+      if (newOrientation === lastOrientation) return;
+      lastOrientation = newOrientation;
+      currentSlide = 0;
+      renderCarousel();
+    }, 300);
+  }
+  if (screen.orientation) {
+    screen.orientation.addEventListener('change', handleOrientationChange);
+  } else {
+    window.addEventListener('orientationchange', handleOrientationChange);
+  }
+  // No desktop, resize normal (só aciona se largura mudar de fato)
+  let lastDesktopWidth = window.innerWidth;
   window.addEventListener('resize', () => {
+    if ('ontouchstart' in window) return; // mobile: ignora totalmente
+    const w = window.innerWidth;
+    if (w === lastDesktopWidth) return;
+    lastDesktopWidth = w;
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => { currentSlide = 0; renderCarousel(); }, 200);
   });
@@ -2481,52 +2480,84 @@
     resetTimer();
   }
 
+  let carouselVisible = false;
+
   function resetTimer() {
     if(carouselTimer) clearInterval(carouselTimer);
-    carouselTimer = setInterval(()=>{ carouselNav(1); }, 3000);
+    if(carouselVisible) {
+      carouselTimer = setInterval(()=>{ carouselNav(1); }, 3000);
+    }
   }
 
-  // Pause on hover
+  // Pause on hover + IntersectionObserver para auto-play ao entrar na tela
   document.addEventListener('DOMContentLoaded', function(){
     const wrap = document.getElementById('portfolioCarouselWrap');
     if(wrap){
-      wrap.addEventListener('mouseenter',()=>{ if(carouselTimer) clearInterval(carouselTimer); });
-      wrap.addEventListener('mouseleave',()=>{ resetTimer(); });
+      // Hover não pausa mais o carrossel — gira sempre a cada 3s
+
+      // Inicia o carrossel automaticamente quando ele aparece na tela
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            if(!carouselVisible) {
+              carouselVisible = true;
+              carouselNav(1); // avança o primeiro slide imediatamente
+              resetTimer();
+            }
+          } else {
+            carouselVisible = false;
+            if(carouselTimer) clearInterval(carouselTimer);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(wrap);
     }
 
-    // Filter tabs
-    document.querySelectorAll('[data-type]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeType = btn.dataset.type;
-        currentSlide = 0;
-        renderCarousel();
-      });
-    });
-
-    // Initial render
+    // Initial render (timer só inicia via IntersectionObserver)
     renderCarousel();
 
-    // Load Vimeo thumbnails for reel banner
-    [['1194588209',['vimeo-img-1194588209'],['vimeo-placeholder-1194588209'],['vimeo-img-dup-1194588209'],['vimeo-placeholder-dup-1194588209']],
-     ['1195816891',['vimeo-img-1195816891'],['vimeo-placeholder-1195816891']]].forEach(function(item){
-      const vimeoId = item[0];
-      const imgIds = item[1]; const placeholderIds = item[2];
-      const dupImgIds = item[3]||[]; const dupPlaceholderIds = item[4]||[];
-      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/'+vimeoId+'&width=400')
-        .then(r=>r.json()).then(data=>{
-          var thumbUrl = data.thumbnail_url;
-          [...imgIds,...dupImgIds].forEach(function(id){
-            var img = document.getElementById(id);
-            if(img){img.src=thumbUrl;img.style.display='';}
-          });
-          [...placeholderIds,...dupPlaceholderIds].forEach(function(id){
-            var el = document.getElementById(id);
-            if(el) el.style.display='none';
-          });
-        }).catch(function(){});
+    // Load Vimeo thumbnails for reel banner, then clone track for seamless loop
+    const vimeoReqs = [
+      {id:'1194588209', imgId:'vimeo-img-1194588209', placeholderId:'vimeo-placeholder-1194588209'},
+      {id:'1195816891', imgId:'vimeo-img-1195816891', placeholderId:'vimeo-placeholder-1195816891'}
+    ];
+    let vimeoLoaded = 0;
+    function initScrollLoop() {
+      const track = document.getElementById('scrollTrack');
+      if (!track) return;
+      // Remove any previously cloned set
+      track.querySelectorAll('.scroll-clone').forEach(el => el.remove());
+      // Clone all original items and append
+      const originals = Array.from(track.children);
+      originals.forEach(function(item) {
+        const clone = item.cloneNode(true);
+        // Remove IDs from clone to avoid duplicates
+        clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+        clone.classList.add('scroll-clone');
+        track.appendChild(clone);
+      });
+      // Pause and restart animation to sync from 0
+      track.style.animation = 'none';
+      track.offsetHeight; // force reflow
+      track.style.animation = '';
+    }
+    function onVimeoLoaded() {
+      vimeoLoaded++;
+      if (vimeoLoaded >= vimeoReqs.length) initScrollLoop();
+    }
+    vimeoReqs.forEach(function(item) {
+      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/'+item.id+'&width=400')
+        .then(r=>r.json()).then(function(data) {
+          var img = document.getElementById(item.imgId);
+          var ph  = document.getElementById(item.placeholderId);
+          if (img) { img.src = data.thumbnail_url; img.style.display = ''; }
+          if (ph)  { ph.style.display = 'none'; }
+          onVimeoLoaded();
+        }).catch(function() { onVimeoLoaded(); });
     });
+    // Also init loop for non-Vimeo case (if Vimeo fails or isn't needed)
+    initScrollLoop();
   });
 
   // Modal
