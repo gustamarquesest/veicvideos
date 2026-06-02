@@ -3070,8 +3070,9 @@
       });
     });
 
-    // Detecta o card centralizado e seleciona imediatamente ao fim do scroll
-    function onScrollEnd() {
+    // Seleciona em tempo real: qualquer card que centralizar durante a rolagem já ativa
+    var rafId = null;
+    function checkCenter() {
       var center = viewport.scrollLeft + viewport.clientWidth / 2;
       var cards2 = document.querySelectorAll('.eco-mob-card');
       var bestIdx = 0;
@@ -3092,16 +3093,10 @@
       }
     }
 
-    // Usa scrollend nativo (Chrome 114+, Firefox 109+, Safari 17.4+)
-    // Fallback: debounce curto apenas para browsers sem suporte
-    if ('onscrollend' in viewport) {
-      viewport.addEventListener('scrollend', onScrollEnd, { passive: true });
-    } else {
-      viewport.addEventListener('scroll', function() {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(onScrollEnd, 50);
-      }, { passive: true });
-    }
+    viewport.addEventListener('scroll', function() {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(checkCenter);
+    }, { passive: true });
 
     // Inicializa: centraliza no card 0
     scrollToCard(0, false);
