@@ -1,575 +1,4212 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Veic Vídeos – Jornada</title>
-  <style>
-    /* ─── TOKENS ─────────────────────────────────────────────── */
-    :root {
-      --bg:        #1a1508;
-      --surface:   #231c0a;
-      --card:      #2b2109;
-      --card-act:  #3d2f0b;
-      --gold:      #e8a020;
-      --gold-dim:  #7a5510;
-      --gold-faint:#3d2c08;
-      --text:      #f0e8d6;
-      --muted:     #8a7a60;
-      --border:    #3a2e10;
-      --radius:    14px;
-      --track-h:   220px;    /* height of carousel track on mobile */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veic Vídeos — Produtora de Vídeos Estratégicos | veicvideos.com</title>
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Veic Vídeos" />
+<meta property="og:title" content="Veic Vídeos — Produtora de Vídeos Estratégicos | veicvideos.com" />
+<meta property="og:description" content="Produzimos vídeos estratégicos para a construção do Ecossistema de Comunicação integrada e efetiva da organização, criando experiências mais consistentes para clientes e colaboradores." />
+<meta property="og:image" content="https://veicvideos.com/og-image.png" />
+<meta property="og:image:width" content="1000" />
+<meta property="og:image:height" content="1000" />
+<meta property="og:image:alt" content="Veic Vídeos — Produtora de Vídeos Estratégicos" />
+<meta property="og:url" content="https://veicvideos.com/" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Veic Vídeos — Produtora de Vídeos Estratégicos | veicvideos.com" />
+<meta name="twitter:description" content="Produzimos vídeos estratégicos para a construção do Ecossistema de Comunicação integrada e efetiva da organização, criando experiências mais consistentes para clientes e colaboradores." />
+<meta name="twitter:image" content="https://veicvideos.com/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #131210;
+    --cream: #FEFBF3;
+    --yellow: #FFB600;
+    --yellow-dark: #CC9200;
+    --gray-mid: #2a2820;
+    --gray-light: #1e1c1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAVIGATION */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(19,18,16,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,182,0,0.15);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo svg { width: 32px; height: auto; }
+
+  .logo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+  }
+
+  .logo-text span { color: var(--yellow); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: rgba(254,251,243,0.7);
+    text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover { color: var(--yellow); }
+
+  .nav-cta {
+    background: var(--yellow) !important;
+    color: var(--black) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--yellow-dark) !important; color: var(--black) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-isotipo {
+    position: absolute; right: -6%; top: 50%; transform: translateY(-50%);
+    width: 52%; opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .hero-content { max-width: 680px; position: relative; z-index: 2; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,182,0,0.12);
+    border: 1px solid rgba(255,182,0,0.3);
+    color: var(--yellow);
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 100px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--yellow); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+  }
+
+  h1 {
+    font-family: Impact, 'Inter', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px var(--black);
+    paint-order: stroke fill;
+  }
+
+  h1 .accent { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+
+  .hero-sub {
+    font-size: 1.15rem; color: rgba(254,251,243,0.65);
+    line-height: 1.7; margin-bottom: 2.5rem;
+    max-width: 520px;
+    font-weight: 400;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--yellow); color: var(--black);
+    padding: 1rem 2rem; border-radius: 4px;
+    font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; display: inline-flex;
+    align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+
+  .btn-secondary {
+    color: var(--cream); padding: 1rem 2rem;
+    border: 1px solid rgba(254,251,243,0.2);
+    border-radius: 4px; font-weight: 500; font-size: 0.95rem;
+    text-decoration: none; display: inline-flex;
+    align-items: center; gap: 8px;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+
+  .btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,182,0,0.15);
+  }
+
+  .stat-item { display: flex; flex-direction: column; }
+
+  .stat-num {
+    font-family: Impact, sans-serif;
+    font-size: 2.2rem; color: var(--yellow);
+    line-height: 1; font-weight: 900;
+  }
+
+  .stat-label {
+    font-size: 0.78rem; color: rgba(254,251,243,0.5);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  /* VIDEO REEL BANNER */
+  .reel-section {
+    padding: 5rem 0;
+    background: var(--gray-light);
+    border-top: 1px solid rgba(255,182,0,0.1);
+    border-bottom: 1px solid rgba(255,182,0,0.1);
+    overflow: hidden;
+  }
+
+  .reel-label {
+    text-align: center;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 2.5rem;
+  }
+
+  .video-scroll-track {
+    display: flex; gap: 1rem;
+    animation: scroll-left 45s linear infinite;
+    width: max-content;
+  }
+
+  .video-scroll-track:hover { animation-play-state: paused; }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .video-thumb {
+    flex-shrink: 0;
+    border-radius: 8px; overflow: hidden;
+    position: relative; cursor: pointer;
+    border: 1px solid rgba(255,182,0,0.1);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .video-thumb:hover { border-color: var(--yellow); transform: scale(1.03); }
+
+  .video-thumb.vertical { width: 196px; height: 350px; }
+  .video-thumb.horizontal { width: 434px; height: 245px; }
+
+  .video-thumb-inner {
+    width: 100%; height: 100%;
+    background: var(--gray-mid);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+
+  .thumb-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(19,18,16,0.85) 0%, rgba(19,18,16,0.2) 40%, transparent 65%);
+    display: flex; align-items: flex-end; padding: 14px 16px;
+    transition: background 0.3s;
+  }
+
+  .video-thumb:hover .thumb-overlay {
+    background: linear-gradient(to top, rgba(19,18,16,0.92) 0%, rgba(19,18,16,0.35) 45%, transparent 70%);
+  }
+
+  .thumb-play {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 62px; height: 62px;
+    background: rgba(255,182,0,0.92);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 1;
+    transition: transform 0.25s, background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(255,182,0,0.35);
+    z-index: 3;
+  }
+
+  .video-thumb:hover .thumb-play {
+    transform: translate(-50%,-50%) scale(1.12);
+    background: var(--yellow);
+    box-shadow: 0 6px 28px rgba(255,182,0,0.55);
+  }
+
+  .thumb-play svg { width: 22px; fill: var(--black); margin-left: 4px; }
+
+  .thumb-info {
+    position: relative; z-index: 3;
+    display: flex; flex-direction: column; gap: 3px;
+    width: 100%;
+  }
+
+  .thumb-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem; color: var(--cream);
+    font-weight: 700; line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+  }
+
+  .thumb-sublabel {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem; color: var(--yellow);
+    font-weight: 700; line-height: 1.2;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+  }
+
+  .thumb-niche {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--yellow); color: var(--black);
+    font-size: 0.6rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 3px 8px; border-radius: 3px;
+    z-index: 3;
+  }
+
+  /* ABOUT / PROPÓSITO */
+  .purpose-section {
+    padding: 7rem 4rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center; max-width: 1400px; margin: 0 auto;
+  }
+
+  /* PROPÓSITO YELLOW WRAPPER */
+  .purpose-wrapper {
+    background: var(--yellow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .purpose-wrapper .section-eyebrow {
+    color: rgba(19,18,16,0.55);
+  }
+
+  .purpose-wrapper h2 {
+    color: var(--black);
+    -webkit-text-stroke: 0px;
+    paint-order: fill;
+  }
+
+  .purpose-wrapper h2 .accent {
+    color: var(--black);
+    -webkit-text-stroke: 0px;
+  }
+
+  .purpose-wrapper .body-text {
+    color: rgba(19,18,16,0.75);
+  }
+
+  .purpose-wrapper .purpose-card {
+    background: rgba(254,251,243,0.18);
+    border: 1px solid rgba(254,251,243,0.35);
+  }
+
+  .purpose-wrapper .purpose-card h4 {
+    color: var(--black);
+  }
+
+  .purpose-wrapper .purpose-card p {
+    color: rgba(19,18,16,0.65);
+  }
+
+  .purpose-wrapper .purpose-card-icon {
+    background: rgba(254,251,243,0.25);
+  }
+
+  .purpose-wrapper .purpose-card-icon svg {
+    fill: var(--black);
+  }
+
+  /* Phone mockup player */
+  .phone-mockup {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+
+  .phone-shell {
+    background: #131210;
+    border-radius: 36px;
+    padding: 14px;
+    box-shadow:
+      0 0 0 2px #2a2820,
+      0 30px 80px rgba(0,0,0,0.45),
+      0 8px 24px rgba(0,0,0,0.3);
+    position: relative;
+  }
+
+  .phone-notch {
+    width: 80px; height: 26px;
+    background: #131210;
+    border-radius: 0 0 16px 16px;
+    margin: 0 auto 6px;
+    position: relative; z-index: 2;
+  }
+
+  .phone-screen {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 9/16;
+    position: relative;
+    background: #000;
+  }
+
+  .phone-screen iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: none;
+    pointer-events: none;
+  }
+
+  .phone-screen-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.25);
+    cursor: pointer;
+    transition: background 0.25s;
+    z-index: 2;
+  }
+
+  .phone-screen-overlay:hover { background: rgba(0,0,0,0.1); }
+
+  .phone-play-btn {
+    width: 64px; height: 64px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    margin-bottom: 14px;
+  }
+
+  .phone-screen-overlay:hover .phone-play-btn {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.5);
+  }
+
+  .phone-play-btn svg { width: 22px; fill: var(--black); margin-left: 4px; }
+
+  .phone-video-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem; font-weight: 700;
+    color: var(--yellow);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.2rem;
+  }
+
+  h2 {
+    font-family: Impact, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1; letter-spacing: -0.01em;
+    color: var(--cream); margin-bottom: 1.5rem;
+    -webkit-text-stroke: 2px var(--black);
+    paint-order: stroke fill;
+  }
+
+  h2 .accent { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+
+  .body-text {
+    font-size: 1.05rem; color: rgba(254,251,243,0.65);
+    line-height: 1.8; margin-bottom: 1.5rem;
+  }
+
+  .purpose-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: var(--gray-light);
+    border-radius: 8px;
+    border: 1px solid rgba(255,182,0,0.15);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .purpose-visual-isotipo {
+    width: 60%; opacity: 0.12;
+  }
+
+  .purpose-cards {
+    display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem;
+  }
+
+  .purpose-card {
+    background: rgba(255,182,0,0.06);
+    border: 1px solid rgba(255,182,0,0.15);
+    border-radius: 8px; padding: 1.2rem 1.5rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+
+  .purpose-card-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: rgba(255,182,0,0.15);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .purpose-card-icon svg { width: 20px; fill: var(--yellow); }
+
+  .purpose-card h4 {
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 4px;
+  }
+
+  .purpose-card p {
+    font-size: 0.84rem; color: rgba(254,251,243,0.55); line-height: 1.5;
+  }
+
+  /* PORTFOLIO SECTION */
+  .portfolio-section {
+    padding: 7rem 4rem;
+    background: var(--gray-light);
+  }
+
+  .section-header {
+    display: flex; align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .portfolio-item {
+    border-radius: 8px; overflow: hidden;
+    position: relative; cursor: pointer;
+    background: var(--gray-mid);
+    border: 1px solid rgba(255,182,0,0.08);
+    transition: border-color 0.2s, transform 0.2s;
+    group: true;
+    align-self: start;
+  }
+
+  .portfolio-item:hover { border-color: var(--yellow); transform: translateY(-4px); }
+
+  .portfolio-item.item-vertical { grid-row: span 2; }
+
+  .portfolio-thumb {
+    background: var(--gray-mid);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .portfolio-item.item-vertical .portfolio-thumb { aspect-ratio: 9/16; }
+
+  .portfolio-thumb-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1e1c1a 0%, #2a2820 100%);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .portfolio-thumb-bg svg { width: 40%; opacity: 0.1; }
+
+  .play-btn-large {
+    position: absolute;
+    width: 56px; height: 56px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+    z-index: 2;
+  }
+
+  .portfolio-item:hover .play-btn-large { transform: scale(1.12); background: var(--yellow-dark); }
+
+  .play-btn-large svg { width: 20px; fill: var(--black); margin-left: 4px; }
+
+  .portfolio-meta {
+    padding: 0.75rem 1rem;
+  }
+
+  .portfolio-tags {
+    display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px; border-radius: 3px;
+  }
+
+  .tag-type {
+    background: rgba(255,182,0,0.15);
+    color: var(--yellow);
+    border: 1px solid rgba(255,182,0,0.3);
+  }
+
+  .tag-niche {
+    background: rgba(254,251,243,0.07);
+    color: rgba(254,251,243,0.5);
+    border: 1px solid rgba(254,251,243,0.1);
+  }
+
+  .portfolio-title {
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--cream); line-height: 1.3;
+  }
+
+  .portfolio-client {
+    font-size: 0.72rem; color: rgba(254,251,243,0.4);
+    margin-top: 3px;
+  }
+
+  /* PROCESS */
+  .process-section {
+    padding: 7rem 4rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .process-steps {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem;
+    margin-top: 4rem;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 32px; left: calc(10% + 16px); right: calc(10% + 16px);
+    height: 1px; background: rgba(255,182,0,0.3);
+  }
+
+  .process-step { text-align: center; position: relative; }
+
+  .step-num {
+    width: 64px; height: 64px;
+    background: rgba(255,182,0,0.1);
+    border: 1px solid rgba(255,182,0,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: Impact, sans-serif;
+    font-size: 1.6rem; color: var(--yellow);
+    position: relative; z-index: 1;
+    transition: background 0.2s;
+  }
+
+  .process-step:hover .step-num {
+    background: var(--yellow); color: var(--black);
+  }
+
+  .step-title {
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  .step-desc {
+    font-size: 0.84rem; color: rgba(254,251,243,0.5);
+    line-height: 1.6;
+  }
+
+  /* BACKSTAGE */
+  .backstage-section {
+    padding: 7rem 4rem;
+    background: var(--gray-light);
+  }
+
+  .backstage-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .backstage-item {
+    border-radius: 8px; overflow: hidden;
+    background: var(--gray-mid);
+    border: 1px solid rgba(255,182,0,0.08);
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .backstage-item:hover { border-color: rgba(255,182,0,0.4); }
+
+  .backstage-item.large { grid-row: span 2; aspect-ratio: 3/4; }
+  .backstage-item.medium { aspect-ratio: 4/3; }
+
+  .backstage-placeholder {
+    width: 100%; height: 100%; min-height: 200px;
+    background: linear-gradient(135deg, #1e1c1a 0%, #2a2820 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+  }
+
+  .backstage-placeholder svg { width: 36px; opacity: 0.2; fill: var(--cream); }
+
+  .backstage-placeholder span {
+    font-size: 0.72rem; color: rgba(254,251,243,0.2);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 8rem 4rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(255,182,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 { margin-bottom: 1.2rem; }
+
+  .cta-section .body-text {
+    max-width: 520px; margin: 0 auto 3rem;
+  }
+
+  .cta-contact {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: rgba(255,182,0,0.08);
+    border: 1px solid rgba(255,182,0,0.2);
+    border-radius: 8px; padding: 1rem 1.25rem;
+    margin-top: 2rem;
+    font-size: 0.9rem; color: #fff;
+    white-space: nowrap;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cta-contact strong { color: #fff; }
+  .cta-contact a { color: #fff !important; text-decoration: none; }
+  .cta-contact a:visited { color: #fff !important; }
+  .cta-contact a:hover { color: var(--yellow) !important; }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 4rem;
+    border-top: 1px solid rgba(255,182,0,0.1);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+
+  .footer-links a {
+    color: rgba(254,251,243,0.35);
+    text-decoration: none; font-size: 0.82rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--yellow); }
+
+  .footer-copy {
+    font-size: 0.8rem; color: rgba(254,251,243,0.25);
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.85);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s;
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+  .modal-box {
+    background: var(--gray-mid);
+    border: 1px solid rgba(255,182,0,0.2);
+    border-radius: 12px; overflow: hidden;
+    width: 90%; max-width: 900px;
+    transform: scale(0.95); transition: transform 0.25s;
+  }
+
+  .modal-overlay.active .modal-box { transform: scale(1); }
+
+  .modal-box.vertical-modal { max-width: 420px; }
+
+  .modal-video { position: relative; width: 100%; }
+  .modal-video.h16x9 { aspect-ratio: 16/9; }
+  .modal-video.h9x16 { aspect-ratio: 9/16; }
+
+  .modal-video iframe {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    border: none;
+  }
+
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem; z-index: 10;
+    width: 36px; height: 36px;
+    background: rgba(19,18,16,0.8);
+    border: 1px solid rgba(255,182,0,0.3);
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cream); font-size: 1.2rem;
+    transition: background 0.2s;
+  }
+
+  .modal-close:hover { background: var(--yellow); color: var(--black); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    h1 { font-size: 3rem; }
+    .hero-stats { gap: 2rem; }
+    .purpose-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .portfolio-section, .backstage-section, .process-section { padding: 4rem 1.5rem; }
+    .process-steps { grid-template-columns: repeat(3, 1fr); }
+    .process-steps::before { display: none; }
+    .backstage-grid { grid-template-columns: 1fr 1fr; }
+    .backstage-item.large { grid-row: span 1; aspect-ratio: 4/3; }
+    .cta-section { padding: 5rem 1.5rem; }
+    .cta-contact { font-size: 0.78rem; padding: 0.75rem 1rem; gap: 8px; white-space: nowrap; max-width: calc(100vw - 3rem); overflow: hidden; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .phone-mockup { width: 220px; }
+  }
+
+  /* HAMBURGER MOBILE MENU */
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 4px;
+  }
+  .hamburger span {
+    width: 22px; height: 2px;
+    background: var(--cream); border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none; position: fixed;
+    top: 65px; left: 0; right: 0;
+    background: rgba(19,18,16,0.98);
+    border-bottom: 1px solid rgba(255,182,0,0.15);
+    padding: 1.5rem 2rem; z-index: 199;
+    flex-direction: column; gap: 1rem;
+    backdrop-filter: blur(16px);
+  }
+  .mobile-menu a {
+    color: rgba(254,251,243,0.7); text-decoration: none;
+    font-size: 1rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,182,0,0.08);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--yellow); }
+  .mobile-menu.open { display: flex; }
+
+  /* PROJETOS responsive */
+  @media (max-width: 900px) {
+    .projetos-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    nav { padding: 1rem 1.5rem; }
+    .hamburger { display: flex; }
+    .nav-links { display: none !important; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 2.6rem; }
+    .hero { padding: 5rem 1.2rem 3rem; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+  }
+  /* CAROUSEL */
+  #portfolioSlides {
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  /* Slide com horizontal: grid 4 colunas (span2 + 1 + 1 não caberia, então horizontal fica span 2 em 4 cols com 2V) */
+  .carousel-slide {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+    box-sizing: border-box;
+    align-items: start;
+  }
+
+  /* Slide só com verticais: flex centralizado */
+  .carousel-slide--flex {
+    display: flex !important;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  /* Vertical cards dentro do flex: largura igual a 1/5 (mesmo tamanho do grid de 5 colunas) */
+  .carousel-slide--flex .portfolio-item {
+    flex: 0 0 calc((100% - 4 * 1.25rem) / 5);
+    max-width: calc((100% - 4 * 1.25rem) / 5);
+  }
+
+  /* Horizontal cards span 2 columns */
+  #portfolioSlides .portfolio-item.item-horizontal {
+    grid-column: span 2;
+  }
+
+  /* Remove item-vertical span behavior inside carousel */
+  #portfolioSlides .portfolio-item.item-vertical {
+    grid-row: span 1 !important;
+  }
+
+  @media (max-width: 1100px) {
+    .carousel-slide { grid-template-columns: repeat(4,1fr) !important; }
+    .carousel-slide--flex .portfolio-item { flex: 0 0 calc((100% - 3 * 1.25rem) / 4) !important; max-width: calc((100% - 3 * 1.25rem) / 4) !important; }
+  }
+  /* Mobile: 1 vídeo por slide, centralizado, tamanho razoável */
+  @media (max-width: 900px) {
+    #carouselPrev { left: 4px !important; width: 36px !important; height: 36px !important; z-index: 10; }
+    #carouselNext { right: 4px !important; width: 36px !important; height: 36px !important; z-index: 10; }
+    .carousel-slide,
+    .carousel-slide--flex {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: flex-start !important;
+      gap: 0 !important;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      min-height: 100vh;
+    .carousel-slide .portfolio-item,
+    .carousel-slide--flex .portfolio-item {
+      flex: 0 0 72% !important;
+      max-width: 72% !important;
     }
-
-    /* ─── SECTION WRAPPER ────────────────────────────────────── */
-    .journey-section {
-      padding: 48px 0 64px;
+  }
+  @media (max-width: 480px) {
+    .carousel-slide .portfolio-item,
+    .carousel-slide--flex .portfolio-item {
+      flex: 0 0 82% !important;
+      max-width: 82% !important;
     }
+  }
 
-    .journey-header {
-      text-align: center;
-      padding: 0 24px 32px;
+  /* ─── FAQ ─────────────────────────────────────── */
+  .faq-section {
+    padding: 7rem 4rem;
+    background: var(--cream);
+    color: var(--black);
+  }
+
+  .faq-section .section-eyebrow { color: var(--yellow-dark); }
+
+  .faq-section h2 {
+    color: var(--black);
+    -webkit-text-stroke: 0px;
+    paint-order: fill;
+    margin-bottom: 0.5rem;
+  }
+
+  .faq-section h2 .accent {
+    color: var(--yellow-dark);
+    -webkit-text-stroke: 0px;
+  }
+
+  .faq-section .body-text {
+    color: rgba(19,18,16,0.6);
+    margin-bottom: 0;
+  }
+
+  .faq-header {
+    max-width: 1100px;
+    margin: 0 auto 3rem;
+  }
+
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(19,18,16,0.1);
+  }
+
+  .faq-item {
+    background: white;
+    border: none;
+    border-bottom: 1px solid rgba(19,18,16,0.08);
+    padding: 28px 28px;
+    transition: background 0.2s;
+  }
+
+  .faq-item:last-child { border-bottom: none; }
+
+  .faq-item[open] { background: #fffdf6; }
+
+  .faq-item summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-item summary::after {
+    content: '+';
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--black);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 900;
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .faq-item[open] summary::after {
+    content: '−';
+    transform: rotate(0deg);
+  }
+
+  .faq-item[open] summary { margin-bottom: 14px; }
+
+  .faq-answer {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: rgba(19,18,16,0.65);
+    padding-right: 46px;
+  }
+
+  .faq-answer a {
+    color: var(--yellow-dark);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  /* ══════════════════════════════════════════════════
+     ESTILOS COPIADOS DO TECH_2 (prefixo t2-)
+     ══════════════════════════════════════════════════ */
+
+  /* variáveis locais para o bloco t2 */
+  :root {
+    --t2-black: #131210;
+    --t2-cream: #FEFBF3;
+    --t2-gold:  #FFB600;
+    --t2-gold-dk: #CC9200;
+    --t2-gray:  #1e1c18;
+    --t2-max:   1200px;
+    --t2-ff-title: Impact, 'Arial Narrow', Arial, sans-serif;
+    --t2-ff-body:  'Inter', system-ui, sans-serif;
+  }
+
+  .t2-container {
+    width: 100%;
+    max-width: var(--t2-max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .t2-tag {
+    display: inline-block;
+    background: var(--t2-gold);
+    color: var(--t2-black);
+    font-family: var(--t2-ff-body);
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+  }
+
+  .t2-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-family: var(--t2-ff-body);
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    text-decoration: none;
+    border: none;
+  }
+  .t2-btn:hover { transform: translateY(-2px); }
+  .t2-btn--gold {
+    background: var(--t2-gold);
+    color: var(--t2-black);
+    box-shadow: 0 4px 24px rgba(255,182,0,.35);
+  }
+  .t2-btn--gold:hover {
+    background: #ffc51a;
+    box-shadow: 0 8px 32px rgba(255,182,0,.5);
+  }
+
+  .t2-section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .t2-section-title {
+    font-family: var(--t2-ff-title);
+    font-size: clamp(32px, 4.5vw, 56px);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-top: 16px;
+    color: var(--t2-cream);
+  }
+  .t2-gold { color: var(--t2-gold); }
+  .t2-section-sub {
+    margin-top: 16px;
+    font-size: 16px;
+    color: rgba(254,251,243,.6);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* PROJETOS */
+  .t2-projetos {
+    padding: 120px 0;
+    background: var(--t2-black);
+    color: var(--t2-cream);
+    overflow: hidden;
+  }
+  .t2-projetos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .t2-projetos-title {
+    font-family: var(--t2-ff-title);
+    font-size: clamp(32px, 4vw, 52px);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 24px;
+    margin-top: 16px;
+    color: var(--t2-cream);
+  }
+  .t2-projetos-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(254,251,243,.65);
+  }
+  .t2-projetos-tipos-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--t2-gold);
+    margin-bottom: 20px;
+  }
+  .t2-projetos-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .t2-proj-tag {
+    background: rgba(255,182,0,.1);
+    border: 1px solid rgba(255,182,0,.3);
+    color: var(--t2-cream);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .t2-proj-tag:hover {
+    background: rgba(255,182,0,.2);
+    border-color: var(--t2-gold);
+  }
+
+  /* PROCESSO */
+  .t2-processo {
+    padding: 80px 0;
+    background: var(--t2-black);
+    overflow: hidden;
+  }
+  .t2-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 32px;
+  }
+  .t2-steps::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: calc(12.5% + 8px);
+    right: calc(12.5% + 8px);
+    height: 2px;
+    background: linear-gradient(to right, var(--t2-gold) 0%, rgba(255,182,0,.1) 100%);
+  }
+  .t2-steps-5 {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+  .t2-steps-5::before {
+    left: calc(10% + 8px);
+    right: calc(10% + 8px);
+  }
+  .t2-step {
+    padding: 0 20px;
+    text-align: center;
+  }
+  .t2-step-content { display: contents; }
+  .t2-step-num {
+    width: 72px; height: 72px;
+    background: var(--t2-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--t2-ff-title);
+    font-size: 28px;
+    color: var(--t2-black);
+    margin: 0 auto 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .t2-step-title {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--t2-cream);
+    margin-bottom: 10px;
+  }
+  .t2-step-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(254,251,243,.5);
+  }
+
+  /* FAQ */
+  .t2-faq-section {
+    padding: 100px 0;
+    background: var(--t2-cream);
+    color: var(--t2-black);
+  }
+  .t2-faq-section .t2-section-header { text-align: center; }
+  .t2-faq-section .t2-section-title { color: var(--t2-black); -webkit-text-stroke: 0; paint-order: fill; }
+  .t2-faq-section .t2-section-sub { color: rgba(19,18,16,.6); }
+  .t2-faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(19,18,16,.08);
+  }
+  .t2-faq-item {
+    background: white;
+    border: none;
+    border-bottom: 1px solid rgba(19,18,16,.08);
+    border-radius: 0;
+    padding: 28px 24px;
+  }
+  .t2-faq-item:last-child { border-bottom: none; }
+  .t2-faq-question {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--t2-black);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .t2-faq-answer {
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(19,18,16,.7);
+  }
+  .t2-faq-item summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+  }
+  .t2-faq-item summary::-webkit-details-marker { display: none; }
+  .t2-faq-item summary::after {
+    content: '+';
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--t2-gold);
+    color: var(--t2-black);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .t2-faq-item[open] summary::after { content: '-'; }
+  .t2-faq-item summary.t2-faq-question { margin-bottom: 0; }
+  .t2-faq-item[open] summary.t2-faq-question { margin-bottom: 12px; }
+  .t2-faq-answer a {
+    color: var(--t2-gold-dk);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  /* RESPONSIVO t2 */
+  @media (max-width: 900px) {
+    .t2-projetos { padding: 48px 0; }
+    .t2-projetos-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .t2-processo { padding: 48px 0; }
+    .t2-steps, .t2-steps-5 {
+      grid-template-columns: 1fr !important;
     }
-    .journey-header h2 {
-      font-size: clamp(13px, 3.5vw, 15px);
-      font-weight: 700;
-      letter-spacing: .12em;
-      color: var(--gold);
-      text-transform: uppercase;
-      line-height: 1.5;
-    }
-
-    /* ══════════════════════════════════════════════════════════
-       DESKTOP – horizontal single row (unchanged)
-    ══════════════════════════════════════════════════════════ */
-    .desktop-track {
-      display: none;
-    }
-
-    @media (min-width: 768px) {
-      .desktop-track {
-        display: flex;
-        gap: 0;
-        padding: 0 32px;
-      }
-      .mobile-carousel-wrapper { display: none !important; }
-
-      .d-step {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 28px 16px 24px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        cursor: pointer;
-        transition: background .2s, border-color .2s;
-        position: relative;
-      }
-      .d-step:first-child { border-radius: var(--radius) 0 0 var(--radius); }
-      .d-step:last-child  { border-radius: 0 var(--radius) var(--radius) 0; }
-      .d-step + .d-step   { border-left: none; }
-
-      .d-step.active,
-      .d-step:hover { background: var(--card-act); border-color: var(--gold-dim); }
-      .d-step.active::after {
-        content: '';
-        position: absolute;
-        bottom: 0; left: 10%; right: 10%;
-        height: 3px;
-        background: var(--gold);
-        border-radius: 2px;
-      }
-
-      .d-step .step-num {
-        font-size: 11px; font-weight: 700; letter-spacing: .1em;
-        color: var(--gold-dim);
-        margin-bottom: 10px;
-      }
-      .d-step.active .step-num { color: var(--gold); }
-
-      .d-step .step-icon {
-        width: 42px; height: 42px;
-        border-radius: 10px;
-        background: var(--gold-faint);
-        border: 1px solid var(--gold-dim);
-        display: flex; align-items: center; justify-content: center;
-        margin-bottom: 12px;
-        font-size: 18px;
-        transition: background .2s, border-color .2s;
-      }
-      .d-step.active .step-icon {
-        background: var(--gold-dim);
-        border-color: var(--gold);
-      }
-
-      .d-step .step-title {
-        font-size: 11px; font-weight: 800; letter-spacing: .1em;
-        text-transform: uppercase;
-        color: var(--text);
-        margin-bottom: 6px;
-      }
-      .d-step .step-desc {
-        font-size: 11px; line-height: 1.5;
-        color: var(--muted);
-      }
-
-      /* desktop content panel */
-      .journey-content {
-        margin: 28px 32px 0;
-        padding: 28px 32px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-      }
-    }
-
-    /* ══════════════════════════════════════════════════════════
-       MOBILE – CAROUSEL
-    ══════════════════════════════════════════════════════════ */
-    .mobile-carousel-wrapper {
-      position: relative;
-      overflow: hidden;
-      /* fade edges */
-      -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 18%,
-        black 82%,
-        transparent 100%
-      );
-      mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 18%,
-        black 82%,
-        transparent 100%
-      );
-    }
-
-    .mobile-track {
+    .t2-steps::before { display: none; }
+    .t2-step {
       display: flex;
-      gap: 12px;
-      padding: 12px 50vw;          /* large side padding so first card centers */
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      cursor: grab;
-      user-select: none;
-      transition: scroll-behavior .3s;
+      align-items: flex-start;
+      gap: 16px;
+      text-align: left;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,182,0,.1);
     }
-    .mobile-track::-webkit-scrollbar { display: none; }
-    .mobile-track.is-dragging { cursor: grabbing; scroll-behavior: auto; }
+    .t2-step:last-child { border-bottom: none; }
+    .t2-step-content { display: block; flex: 1; padding-top: 10px; }
+    .t2-step-num { width: 44px !important; height: 44px !important; font-size: 18px !important; flex-shrink: 0; margin: 0; }
+    .t2-faq-section { padding: 4rem 1.5rem; }
+    .t2-container { padding: 0 16px; }
+  }
 
-    /* ── individual step card ── */
-    .m-step {
-      flex: 0 0 160px;
-      scroll-snap-align: center;
-      scroll-snap-stop: always;
+  /* ══════════════════════════════════════════════════
+     O QUE ENTREGAMOS — DIAGNÓSTICO DE NECESSIDADE
+     ══════════════════════════════════════════════════ */
+  .diag-section {
+    background: var(--black);
+    padding: 7rem 0 0;
+    overflow: hidden;
+  }
+
+  .diag-header {
+    text-align: center;
+    padding: 0 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .diag-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 1.25rem;
+  }
+
+  .diag-title {
+    font-family: Impact, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    -webkit-text-stroke: 2px var(--black);
+    paint-order: stroke fill;
+  }
+
+  .diag-title .diag-gold {
+    color: var(--yellow);
+    -webkit-text-stroke: 2px var(--black);
+  }
+
+  .diag-sub {
+    font-size: 1rem;
+    color: rgba(254,251,243,0.5);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── SPLIT LAYOUT ── */
+  .diag-split {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    min-height: 620px;
+    border-top: 1px solid rgba(255,182,0,0.1);
+  }
+
+  /* ── LEFT: NEED SELECTOR ── */
+  .diag-needs {
+    border-right: 1px solid rgba(255,182,0,0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .diag-needs-label {
+    padding: 1.5rem 2rem 1rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(254,251,243,0.3);
+    border-bottom: 1px solid rgba(255,182,0,0.07);
+  }
+
+  .diag-need-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 2rem;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255,182,0,0.06);
+    transition: background 0.2s;
+    position: relative;
+    user-select: none;
+  }
+
+  .diag-need-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--yellow);
+    transform: scaleY(0);
+    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+    transform-origin: center;
+  }
+
+  .diag-need-item:hover {
+    background: rgba(255,182,0,0.04);
+  }
+
+  .diag-need-item.active {
+    background: rgba(255,182,0,0.07);
+  }
+
+  .diag-need-item.active::before {
+    transform: scaleY(1);
+  }
+
+  .diag-need-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,182,0,0.2);
+    border: 1.5px solid rgba(255,182,0,0.3);
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+
+  .diag-need-item.active .diag-need-dot,
+  .diag-need-item:hover .diag-need-dot {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    transform: scale(1.3);
+  }
+
+  .diag-need-text {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(254,251,243,0.55);
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+
+  .diag-need-item.active .diag-need-text,
+  .diag-need-item:hover .diag-need-text {
+    color: var(--cream);
+  }
+
+  .diag-need-arrow {
+    margin-left: auto;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.2s, transform 0.2s;
+    color: var(--yellow);
+    font-size: 1rem;
+  }
+
+  .diag-need-item.active .diag-need-arrow,
+  .diag-need-item:hover .diag-need-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ── RIGHT: SOLUTION PANEL ── */
+  .diag-panel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diag-solution {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+    padding: 3rem 3.5rem;
+    animation: diagFadeIn 0.35s ease forwards;
+  }
+
+  .diag-solution.visible {
+    display: flex;
+  }
+
+  @keyframes diagFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .diag-sol-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .diag-sol-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,182,0,0.2);
+  }
+
+  .diag-sol-title {
+    font-family: Impact, sans-serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    -webkit-text-stroke: 1px rgba(19,18,16,0.3);
+    paint-order: stroke fill;
+  }
+
+  .diag-sol-title em {
+    color: var(--yellow);
+    font-style: normal;
+    -webkit-text-stroke: 1px rgba(19,18,16,0.3);
+  }
+
+  .diag-sol-desc {
+    font-size: 0.95rem;
+    color: rgba(254,251,243,0.6);
+    line-height: 1.75;
+    margin-bottom: 1.75rem;
+    max-width: 520px;
+  }
+
+  .diag-sol-includes-label {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(254,251,243,0.35);
+    margin-bottom: 0.75rem;
+  }
+
+  .diag-sol-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 2rem;
+  }
+
+  .diag-sol-pill {
+    background: rgba(255,182,0,0.08);
+    border: 1px solid rgba(255,182,0,0.2);
+    color: rgba(254,251,243,0.7);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.01em;
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+  }
+
+  .diag-sol-pill:hover {
+    background: rgba(255,182,0,0.16);
+    border-color: rgba(255,182,0,0.45);
+    color: var(--cream);
+  }
+
+  .diag-sol-ideal {
+    margin-top: auto;
+    padding: 1.1rem 1.4rem;
+    background: rgba(255,182,0,0.06);
+    border-left: 3px solid var(--yellow);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.84rem;
+    color: rgba(254,251,243,0.55);
+    line-height: 1.6;
+    max-width: 540px;
+  }
+
+  .diag-sol-ideal strong {
+    color: rgba(254,251,243,0.85);
+    font-weight: 700;
+  }
+
+  /* ── BIG NUMBER DECORATION ── */
+  .diag-sol-bignum {
+    position: absolute;
+    top: 1.5rem;
+    right: 2.5rem;
+    font-family: Impact, sans-serif;
+    font-size: 9rem;
+    line-height: 1;
+    color: rgba(255,182,0,0.04);
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+  }
+
+  /* ── MOBILE FALLBACK ── */
+  .diag-mobile-list { display: none; }
+
+  @media (max-width: 900px) {
+    .diag-section { padding: 4rem 0 0; }
+    .diag-header { padding: 0 1.5rem; margin-bottom: 2.5rem; }
+    .diag-split { display: none; }
+    .diag-mobile-list {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 22px 14px 18px;
-      background: var(--card);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition:
-        background .3s cubic-bezier(.4,0,.2,1),
-        border-color .3s,
-        transform .3s cubic-bezier(.4,0,.2,1),
-        box-shadow .3s;
-      position: relative;
-      will-change: transform;
-      touch-action: pan-x;
+      gap: 0;
+      border-top: 1px solid rgba(255,182,0,0.1);
     }
 
-    .m-step.active {
-      background: var(--card-act);
-      border-color: var(--gold);
-      transform: scale(1.06);
-      box-shadow:
-        0 0 0 1px var(--gold),
-        0 8px 28px rgba(232,160,32,.18),
-        0 2px 8px rgba(0,0,0,.4);
-      z-index: 2;
+    .diag-mob-item {
+      border-bottom: 1px solid rgba(255,182,0,0.08);
+      overflow: hidden;
     }
 
-    /* bottom bar on active */
-    .m-step.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 14%; right: 14%;
-      height: 3px;
-      background: var(--gold);
-      border-radius: 2px 2px 0 0;
-    }
-
-    .m-step .step-num {
-      font-size: 10px; font-weight: 700; letter-spacing: .12em;
-      color: var(--gold-dim);
-      margin-bottom: 10px;
-    }
-    .m-step.active .step-num { color: var(--gold); }
-
-    .m-step .step-icon {
-      width: 44px; height: 44px;
-      border-radius: 11px;
-      background: var(--gold-faint);
-      border: 1.5px solid var(--gold-dim);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-      margin-bottom: 12px;
-      transition: background .3s, border-color .3s;
-    }
-    .m-step.active .step-icon {
-      background: rgba(232,160,32,.18);
-      border-color: var(--gold);
-    }
-
-    .m-step .step-title {
-      font-size: 10.5px; font-weight: 800; letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--text);
-      line-height: 1.3;
-    }
-
-    /* ── progress dots ── */
-    .carousel-dots {
+    .diag-mob-trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--cream);
       display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 18px;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s;
     }
-    .dot {
-      width: 6px; height: 6px;
+
+    .diag-mob-trigger:hover,
+    .diag-mob-item.open .diag-mob-trigger {
+      background: rgba(255,182,0,0.06);
+    }
+
+    .diag-mob-trigger-dot {
+      width: 8px; height: 8px;
       border-radius: 50%;
-      background: var(--gold-faint);
-      border: 1px solid var(--gold-dim);
-      transition: background .3s, transform .3s, width .3s;
-    }
-    .dot.active {
-      background: var(--gold);
-      width: 18px;
-      border-radius: 3px;
-      border-color: var(--gold);
+      background: rgba(255,182,0,0.25);
+      border: 1.5px solid rgba(255,182,0,0.4);
+      flex-shrink: 0;
+      transition: background 0.2s;
     }
 
-    /* ── mobile content panel ── */
-    .mobile-content {
-      margin: 24px 16px 0;
-      padding: 24px 20px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      /* slide-in animation */
-      animation: slideUp .35s cubic-bezier(.4,0,.2,1) both;
+    .diag-mob-item.open .diag-mob-trigger-dot {
+      background: var(--yellow);
+      border-color: var(--yellow);
     }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(14px); }
+    .diag-mob-trigger-text {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: rgba(254,251,243,0.7);
+      flex: 1;
+      line-height: 1.4;
+    }
+
+    .diag-mob-item.open .diag-mob-trigger-text {
+      color: var(--cream);
+    }
+
+    .diag-mob-chevron {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      transition: transform 0.25s;
+      fill: none;
+      stroke: rgba(255,182,0,0.5);
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .diag-mob-item.open .diag-mob-chevron {
+      transform: rotate(180deg);
+      stroke: var(--yellow);
+    }
+
+    .diag-mob-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .diag-mob-item.open .diag-mob-body {
+      max-height: 600px;
+    }
+
+    .diag-mob-content {
+      padding: 0 1.5rem 1.75rem 2.25rem;
+    }
+
+    .diag-mob-sol-title {
+      font-family: Impact, sans-serif;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+      line-height: 1.1;
+      -webkit-text-stroke: 1px rgba(19,18,16,0.3);
+      paint-order: stroke fill;
+    }
+
+    .diag-mob-sol-title em {
+      color: var(--yellow);
+      font-style: normal;
+    }
+
+    .diag-mob-sol-desc {
+      font-size: 0.84rem;
+      color: rgba(254,251,243,0.55);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .diag-mob-sol-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .diag-mob-sol-ideal {
+      padding: 0.9rem 1.1rem;
+      background: rgba(255,182,0,0.06);
+      border-left: 3px solid var(--yellow);
+      border-radius: 0 5px 5px 0;
+      font-size: 0.78rem;
+      color: rgba(254,251,243,0.5);
+      line-height: 1.6;
+    }
+
+    .diag-mob-sol-ideal strong {
+      color: rgba(254,251,243,0.8);
+    }
+    .diag-bottom-cta {
+      padding: 2.5rem 1.5rem 3.5rem !important;
+    }
+  }
+
+  /* ── PROJETOS AUDIOVISUAIS ──────────────────────── */
+  .veic-projetos-section {
+    padding: 7rem 4rem;
+    background: var(--black);
+    border-top: 1px solid rgba(255,182,0,0.1);
+  }
+  .veic-projetos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .veic-projetos-header {
+    margin-bottom: 2.5rem;
+  }
+  .veic-projetos-tag {
+    display: inline-block;
+    background: transparent;
+    color: var(--yellow);
+    border: 1px solid var(--yellow);
+    font-weight: 800;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+  }
+  .veic-projetos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .veic-projetos-title {
+    font-family: Impact, sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    -webkit-text-stroke: 2px var(--black);
+    paint-order: stroke fill;
+  }
+  .veic-projetos-gold { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+  .veic-projetos-text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(254,251,243,0.65);
+    margin-bottom: 0.5rem;
+  }
+  .veic-btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--yellow);
+    color: var(--black);
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .veic-btn-gold:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+  .veic-projetos-tipos-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--yellow);
+    margin-bottom: 1.25rem;
+  }
+  .veic-projetos-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .veic-proj-tag {
+    background: rgba(255,182,0,0.08);
+    border: 1px solid rgba(255,182,0,0.25);
+    color: var(--cream);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .veic-proj-tag:hover {
+    background: rgba(255,182,0,0.18);
+    border-color: var(--yellow);
+  }
+
+  /* ── DESENVOLVIMENTO DO PROJETO ─────────────────── */
+  .veic-processo-section {
+    padding: 7rem 4rem;
+    background: var(--black);
+    border-top: 1px solid rgba(255,182,0,0.1);
+  }
+  .veic-processo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .veic-processo-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .veic-processo-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+  .veic-processo-title {
+    font-family: Impact, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    -webkit-text-stroke: 2px var(--black);
+    paint-order: stroke fill;
+  }
+  .veic-processo-gold { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+  .veic-processo-sub {
+    font-size: 1rem;
+    color: rgba(254,251,243,0.6);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .veic-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 1rem;
+  }
+  .veic-steps::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: calc(10% + 8px);
+    right: calc(10% + 8px);
+    height: 2px;
+    background: linear-gradient(to right, var(--yellow) 0%, rgba(255,182,0,0.1) 100%);
+  }
+  .veic-step {
+    padding: 0 1.25rem;
+    text-align: center;
+  }
+  .veic-step-content { display: block; }
+  .veic-step-num {
+    width: 72px; height: 72px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Impact, sans-serif;
+    font-size: 1.6rem;
+    color: var(--black);
+    margin: 0 auto 1.75rem;
+    position: relative;
+    z-index: 1;
+  }
+  .veic-step-title {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--cream);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .veic-step-text {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: rgba(254,251,243,0.5);
+  }
+
+  @media (max-width: 1100px) {
+    .veic-steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .veic-steps::before { display: none; }
+  }
+  @media (max-width: 900px) {
+    .veic-projetos-section,
+    .veic-processo-section { padding: 4rem 1.5rem; }
+    .veic-projetos-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .veic-steps { grid-template-columns: 1fr; }
+    .veic-step { text-align: left; display: flex; gap: 1.25rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid rgba(255,182,0,0.1); }
+    .veic-step:last-child { border-bottom: none; }
+    .veic-step-num { flex-shrink: 0; margin: 0; width: 52px; height: 52px; font-size: 1.3rem; }
+    .veic-step-content { flex: 1; padding-top: 12px; }
+  }
+
+  /* ═══════════════════════════════════════════
+     ECOSSISTEMA DE COMUNICAÇÃO DO NEGÓCIO
+     ═══════════════════════════════════════════ */
+  .eco-section {
+    padding: 7rem 4rem;
+    background: var(--gray-light);
+    border-top: 1px solid rgba(255,182,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .eco-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,182,0,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .eco-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .eco-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .eco-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 1.25rem;
+  }
+
+  .eco-title {
+    font-family: Impact, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 0;
+    -webkit-text-stroke: 2px var(--gray-light);
+    paint-order: stroke fill;
+  }
+
+  .eco-title .eco-gold {
+    color: var(--yellow);
+    -webkit-text-stroke: 2px var(--gray-light);
+  }
+
+  .eco-intro {
+    text-align: center;
+    max-width: 720px;
+    margin: 1.5rem auto 3.5rem;
+    font-size: 1.05rem;
+    color: rgba(254,251,243,0.6);
+    line-height: 1.75;
+  }
+
+  /* ── DUAS DIMENSÕES ── */
+  .eco-dimensions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-bottom: 4rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,182,0,0.15);
+  }
+
+  .eco-dim {
+    background: rgba(255,182,0,0.04);
+    padding: 2rem 2.25rem;
+    position: relative;
+  }
+
+  .eco-dim:first-child {
+    border-right: 1px solid rgba(255,182,0,0.12);
+  }
+
+  .eco-dim-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .eco-dim-label::before {
+    content: '';
+    display: block;
+    width: 20px; height: 2px;
+    background: var(--yellow);
+    flex-shrink: 0;
+  }
+
+  .eco-dim-title {
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--cream);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .eco-dim-desc {
+    font-size: 0.88rem;
+    color: rgba(254,251,243,0.55);
+    line-height: 1.65;
+  }
+
+  /* ── ETAPAS ── */
+  .eco-stages-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .eco-stages {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,182,0,0.12);
+  }
+
+  .eco-stage {
+    background: rgba(255,255,255,0.02);
+    border-right: 1px solid rgba(255,182,0,0.1);
+    padding: 1.5rem 1.1rem;
+    cursor: pointer;
+    transition: background 0.22s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .eco-stage:last-child { border-right: none; }
+
+  .eco-stage:hover,
+  .eco-stage.active {
+    background: rgba(255,182,0,0.08);
+  }
+
+  .eco-stage.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--yellow);
+  }
+
+  .eco-stage-num {
+    font-family: Impact, sans-serif;
+    font-size: 1.5rem;
+    color: rgba(255,182,0,0.2);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .eco-stage.active .eco-stage-num,
+  .eco-stage:hover .eco-stage-num {
+    color: var(--yellow);
+  }
+
+  .eco-stage-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.75rem;
+    background: rgba(255,182,0,0.08);
+    border: 1px solid rgba(255,182,0,0.15);
+    transition: background 0.22s, border-color 0.22s;
+  }
+
+  .eco-stage:hover .eco-stage-icon,
+  .eco-stage.active .eco-stage-icon {
+    background: rgba(255,182,0,0.18);
+    border-color: rgba(255,182,0,0.4);
+  }
+
+  .eco-stage-icon svg {
+    width: 18px; height: 18px;
+    stroke: rgba(255,182,0,0.55);
+    transition: stroke 0.22s;
+  }
+
+  .eco-stage:hover .eco-stage-icon svg,
+  .eco-stage.active .eco-stage-icon svg {
+    stroke: var(--yellow);
+  }
+
+  .eco-stage-name {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: rgba(254,251,243,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+    transition: color 0.22s;
+  }
+
+  .eco-stage:hover .eco-stage-name,
+  .eco-stage.active .eco-stage-name {
+    color: var(--cream);
+  }
+
+  .eco-stage-hint {
+    font-size: 0.7rem;
+    color: rgba(254,251,243,0.3);
+    line-height: 1.4;
+    transition: color 0.22s;
+  }
+
+  .eco-stage:hover .eco-stage-hint,
+  .eco-stage.active .eco-stage-hint {
+    color: rgba(254,251,243,0.5);
+  }
+
+  /* ── DETAIL PANEL ── */
+  .eco-detail {
+    background: rgba(255,182,0,0.05);
+    border: 1px solid rgba(255,182,0,0.18);
+    border-radius: 10px;
+    padding: 2rem 2.25rem;
+    min-height: 180px;
+    margin-bottom: 3.5rem;
+    transition: opacity 0.2s;
+  }
+
+  .eco-detail-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .eco-detail-block-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 0.6rem;
+  }
+
+  .eco-detail-block-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .eco-detail-block-desc {
+    font-size: 0.84rem;
+    color: rgba(254,251,243,0.55);
+    line-height: 1.65;
+  }
+
+  .eco-detail-videos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.5rem;
+  }
+
+  .eco-video-pill {
+    background: rgba(255,182,0,0.1);
+    border: 1px solid rgba(255,182,0,0.25);
+    color: rgba(254,251,243,0.75);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  /* ── RODAPÉ DA SEÇÃO ── */
+  .eco-footer-text {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,182,0,0.12);
+  }
+
+  .eco-footer-text p {
+    font-size: 1rem;
+    color: rgba(254,251,243,0.55);
+    line-height: 1.75;
+  }
+
+  .eco-footer-text strong {
+    color: var(--cream);
+    font-weight: 700;
+  }
+
+  /* ── RESPONSIVE DESKTOP ── */
+  @media (max-width: 1100px) {
+    .eco-stages { grid-template-columns: repeat(3, 1fr); }
+    .eco-stage:nth-child(3) { border-right: none; }
+    .eco-stage:nth-child(4),
+    .eco-stage:nth-child(5),
+    .eco-stage:nth-child(6) {
+      border-top: 1px solid rgba(255,182,0,0.1);
+    }
+    .eco-detail-inner { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 900px) {
+    .eco-section { padding: 4rem 1.5rem; }
+    .eco-dimensions { grid-template-columns: 1fr; }
+    .eco-dim:first-child { border-right: none; border-bottom: 1px solid rgba(255,182,0,0.12); }
+    .eco-detail-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+  }
+
+  /* ── MOBILE JOURNEY CAROUSEL ── */
+  /* Oculta a grade desktop no mobile, mostra o carrossel */
+  @media (max-width: 767px) {
+    .eco-stages { display: none !important; }
+    .eco-mob-carousel-wrap { display: block; }
+  }
+  @media (min-width: 768px) {
+    .eco-mob-carousel-wrap { display: none !important; }
+  }
+
+  /* Wrapper do carrossel mobile */
+  .eco-mob-carousel-wrap {
+    position: relative;
+    margin-bottom: 0;
+    /* fade nas bordas para indicar continuidade */
+    --fade-w: 56px;
+  }
+
+  /* Trilha de fade lateral */
+  .eco-mob-carousel-wrap::before,
+  .eco-mob-carousel-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: var(--fade-w);
+    pointer-events: none;
+    z-index: 3;
+  }
+  .eco-mob-carousel-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--gray-light) 0%, transparent 100%);
+  }
+  .eco-mob-carousel-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--gray-light) 0%, transparent 100%);
+  }
+
+  /* Viewport com scroll snap */
+  .eco-mob-viewport {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 1.25rem 0 1.5rem;
+    /* padding lateral para que o card central fique visível com os adjacentes */
+    padding-left: calc(50% - 82px);
+    padding-right: calc(50% - 82px);
+  }
+  .eco-mob-viewport::-webkit-scrollbar { display: none; }
+
+  /* Trilha interna */
+  .eco-mob-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    align-items: center;
+  }
+
+  /* Card individual de etapa */
+  .eco-mob-card {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    width: 152px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,182,0,0.12);
+    border-radius: 12px;
+    padding: 1.1rem 0.85rem 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition:
+      background 0.28s cubic-bezier(0.4,0,0.2,1),
+      border-color 0.28s cubic-bezier(0.4,0,0.2,1),
+      transform 0.28s cubic-bezier(0.4,0,0.2,1),
+      box-shadow 0.28s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  /* Estado inativo: ligeiramente menor */
+  .eco-mob-card:not(.active) {
+    transform: scale(0.88);
+    opacity: 0.6;
+  }
+
+  /* Estado ativo: destaque total */
+  .eco-mob-card.active {
+    background: rgba(255,182,0,0.1);
+    border-color: rgba(255,182,0,0.5);
+    transform: scale(1);
+    opacity: 1;
+    box-shadow:
+      0 0 0 1px rgba(255,182,0,0.25),
+      0 8px 28px rgba(0,0,0,0.35),
+      0 2px 8px rgba(255,182,0,0.12);
+  }
+
+  /* Barra amarela inferior no ativo */
+  .eco-mob-card.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 16px; right: 16px;
+    height: 3px;
+    background: var(--yellow);
+    border-radius: 2px 2px 0 0;
+  }
+
+  /* Número da etapa */
+  .eco-mob-num {
+    font-family: Impact, sans-serif;
+    font-size: 1.35rem;
+    color: rgba(255,182,0,0.25);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    transition: color 0.25s;
+  }
+  .eco-mob-card.active .eco-mob-num {
+    color: var(--yellow);
+  }
+
+  /* Ícone */
+  .eco-mob-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,182,0,0.06);
+    border: 1px solid rgba(255,182,0,0.12);
+    margin-bottom: 0.65rem;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .eco-mob-card.active .eco-mob-icon {
+    background: rgba(255,182,0,0.18);
+    border-color: rgba(255,182,0,0.4);
+  }
+  .eco-mob-icon svg {
+    width: 17px; height: 17px;
+    stroke: rgba(255,182,0,0.45);
+    transition: stroke 0.25s;
+  }
+  .eco-mob-card.active .eco-mob-icon svg {
+    stroke: var(--yellow);
+  }
+
+  /* Nome da etapa */
+  .eco-mob-name {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgba(254,251,243,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    transition: color 0.25s;
+  }
+  .eco-mob-card.active .eco-mob-name {
+    color: var(--cream);
+  }
+
+  /* Dots de progresso */
+  .eco-mob-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.1rem;
+    margin-bottom: 1.75rem;
+  }
+  .eco-mob-dot {
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255,182,0,0.2);
+    transition: width 0.3s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+    width: 6px;
+  }
+  .eco-mob-dot.active {
+    width: 20px;
+    background: var(--yellow);
+  }
+
+  /* Painel de detalhe mobile — sem alteração visual, só ajuste de layout */
+  @media (max-width: 767px) {
+    .eco-detail {
+      border-radius: 12px;
+      padding: 1.5rem 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .eco-detail-inner {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    /* Animação de entrada do conteúdo */
+    .eco-detail-inner.eco-anim-in {
+      animation: ecoDetailIn 0.32s cubic-bezier(0.4,0,0.2,1) both;
+    }
+    @keyframes ecoDetailIn {
+      from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    .content-label {
-      font-size: 10px; font-weight: 700; letter-spacing: .14em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .content-title {
-      font-size: 20px; font-weight: 800; letter-spacing: -.01em;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-    .content-desc {
-      font-size: 14px; line-height: 1.65;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .content-tags {
-      display: flex; flex-wrap: wrap; gap: 8px;
-    }
-    .tag {
-      font-size: 11px; font-weight: 600; letter-spacing: .06em;
-      color: var(--gold);
-      background: var(--gold-faint);
-      border: 1px solid var(--gold-dim);
-      border-radius: 20px;
-      padding: 4px 12px;
-    }
-
-    /* ── step counter badge ── */
-    .step-counter {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      margin-bottom: 14px;
-    }
-    .step-counter .sc-num {
-      font-size: 13px; font-weight: 800; color: var(--gold);
-    }
-    .step-counter .sc-sep { color: var(--gold-dim); font-size: 12px; }
-    .step-counter .sc-total { font-size: 12px; color: var(--muted); }
-
-    /* hide desktop on mobile */
-    @media (max-width: 767px) {
-      .desktop-track,
-      .journey-content { display: none !important; }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-<section class="journey-section">
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">
+    <svg viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
+    </svg>
+    <span class="logo-text">Veic <span>VÍDEOS</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#proposta">O que Entregamos</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
+  </ul>
+  <div class="hamburger" id="hamburguer" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#portfolio" onclick="toggleMobileMenu()">Portfólio</a>
+  <a href="#ecossistema" onclick="toggleMobileMenu()">Ecossistema</a>
+  <a href="#proposta" onclick="toggleMobileMenu()">O que Entregamos</a>
+  <a href="#processo" onclick="toggleMobileMenu()">Processo</a>
+  <a href="#contato" onclick="toggleMobileMenu()" style="color:var(--yellow);border-bottom:none;">Fale Conosco</a>
+</div>
 
-  <div class="journey-header">
-    <h2>Selecione uma etapa para entender que<br>tipo de vídeo faz sentido</h2>
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-bg-isotipo" viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-badge">Produtora de Vídeos Estratégicos</div>
+    <h1>Estrutura de<br>Comunicação<br><span class="accent">em Vídeo</span></h1>
+    <p class="hero-sub">Produzimos vídeos estratégicos para a construção do Ecossistema de Comunicação integrada e efetiva da organização, criando experiências mais consistentes para clientes e colaboradores.</p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Ver Portfólio
+      </a>
+      <a href="#contato" class="btn-secondary">Solicitar Orçamento →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEO REEL BANNER -->
+<section class="reel-section">
+  <p class="reel-label">● Produções em Destaque</p>
+  <div style="overflow: hidden;">
+    <div class="video-scroll-track" id="scrollTrack">
+
+      <!-- 1. VERTICAL — Shorts rsau38g08H0 -->
+      <div class="video-thumb vertical" onclick="openModal('rsau38g08H0','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/rsau38g08H0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Anúncio de Patrocínio</span>
+              <span class="thumb-sublabel">Betim Futebol</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. HORIZONTAL — YouTube cPl8z5m_nwY -->
+      <div class="video-thumb horizontal" onclick="openModal('cPl8z5m_nwY','horizontal','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/cPl8z5m_nwY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Case de Sucesso</span>
+              <span class="thumb-sublabel">Cineart</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. VERTICAL — Shorts t3HKRTObtrU -->
+      <div class="video-thumb vertical" onclick="openModal('t3HKRTObtrU','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/t3HKRTObtrU/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Backstage + Case de Sucesso</span>
+              <span class="thumb-sublabel">Cineart · Meet Tecnologia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. HORIZONTAL — YouTube P8hNnOzTfTo -->
+      <div class="video-thumb horizontal" onclick="openModal('P8hNnOzTfTo','horizontal','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/P8hNnOzTfTo/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Explicando produto/Serviço</span>
+              <span class="thumb-sublabel">Site · Landing Page</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. VERTICAL — Shorts t2jOdfkf1n0 -->
+      <div class="video-thumb vertical" onclick="openModal('t2jOdfkf1n0','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/t2jOdfkf1n0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Campanha de Marketing</span>
+              <span class="thumb-sublabel">Betim Vs Cruzeiro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. HORIZONTAL — YouTube CgfEWgE_8Aw -->
+      <div class="video-thumb horizontal" onclick="openModal('CgfEWgE_8Aw','horizontal','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/CgfEWgE_8Aw/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Case de Sucesso</span>
+              <span class="thumb-sublabel">Biologistica · Meet Tecnologia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. VERTICAL — YouTube jeY8AvM-iUY (player horizontal mas vídeo vertical) -->
+      <div class="video-thumb vertical" onclick="openModal('jeY8AvM-iUY','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/jeY8AvM-iUY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Treinamento NR</span>
+              <span class="thumb-sublabel">Registro da Ação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. HORIZONTAL — YouTube AVlMyYiXCCk -->
+      <div class="video-thumb horizontal" onclick="openModal('AVlMyYiXCCk','horizontal','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/AVlMyYiXCCk/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Case de Sucesso</span>
+              <span class="thumb-sublabel">Grupo Avante · Meet Tecnologia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. VERTICAL — Shorts zpbKSZBjGB8 -->
+      <div class="video-thumb vertical" onclick="openModal('zpbKSZBjGB8','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/zpbKSZBjGB8/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Campanha</span>
+              <span class="thumb-sublabel">Conselho da Massa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEW. VERTICAL — Vimeo 1195816891 Mangalarga Marchador -->
+      <div class="video-thumb vertical" id="vimeo-thumb-1195816891" onclick="openModal('1195816891','vertical','vimeo')">
+        <div class="video-thumb-inner">
+          <img id="vimeo-img-1195816891" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;">
+          <div id="vimeo-placeholder-1195816891" style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 57.34 67.13" style="width:40%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+          </div>
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Mangalarga Marchador</span>
+              <span class="thumb-sublabel">Festival</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. VERTICAL — Vimeo 1194588209 (player horizontal mas vídeo vertical) -->
+      <div class="video-thumb vertical" id="vimeo-thumb-1194588209" onclick="openModal('1194588209','vertical','vimeo')">
+        <div class="video-thumb-inner">
+          <img id="vimeo-img-1194588209" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;">
+          <div id="vimeo-placeholder-1194588209" style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 57.34 67.13" style="width:40%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+          </div>
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Marcos Catarina</span>
+              <span class="thumb-sublabel">Dia dos Namorados</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. VERTICAL — Shorts MI6pCyYpMlc -->
+      <div class="video-thumb vertical" onclick="openModal('MI6pCyYpMlc','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/MI6pCyYpMlc/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Confiber · Cacau Show</span>
+              <span class="thumb-sublabel">Sorteio Páscoa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- PROPÓSITO -->
+<div class="purpose-wrapper">
+<section class="purpose-section">
+  <div>
+    <p class="section-eyebrow">Quem Somos</p>
+    <h2>Posicionamento<br><span class="accent">com Propósito</span></h2>
+    <p class="body-text">Produzimos vídeos estratégicos que valorizam a imagem de negócios, profissionais e projetos que precisam comunicar com <strong>autoridade e posicionamento</strong>.</p>
+    <p class="body-text">Entendemos a sua marca e produzimos vídeos que agregam valor pra sua organização.</p>
+    <div class="purpose-cards">
+      <div class="purpose-card" style="background:rgba(19,18,16,0.75);border-color:rgba(19,18,16,0.9);">
+        <div class="purpose-card-icon" style="background:rgba(255,182,0,0.15);">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 013 1.18 2 2 0 015 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z" fill="none" stroke="#FFB600" stroke-width="1.5"/></svg>
+        </div>
+        <div>
+          <h4 style="color:#FEFBF3;">Ecossistema de Comunicação</h4>
+          <p style="color:rgba(254,251,243,0.65);">Produzimos vídeos para diferentes etapas da jornada do cliente e da cultura organizacional, ajudando empresas a construir uma comunicação mais clara, coerente e alinhada ao posicionamento da marca.</p>
+        </div>
+      </div>
+      <div class="purpose-card" style="background:rgba(19,18,16,0.75);border-color:rgba(19,18,16,0.9);">
+        <div class="purpose-card-icon" style="background:rgba(255,182,0,0.15);">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="#FFB600" stroke-width="1.5"/></svg>
+        </div>
+        <div>
+          <h4 style="color:#FEFBF3;">Estratégia antes da câmera</h4>
+          <p style="color:rgba(254,251,243,0.65);">Planejamos, roteirizamos, dirigimos, gravamos, editamos e entregamos os vídeos alinhados aos objetivos do negócio. Orientamos gestores, colaboradores e clientes durante as gravações para garantir uma comunicação clara, natural e coerente com a proposta de comunicação.</p>
+        </div>
+      </div>
+      <div class="purpose-card" style="background:rgba(19,18,16,0.75);border-color:rgba(19,18,16,0.9);">
+        <div class="purpose-card-icon" style="background:rgba(255,182,0,0.15);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#FFB600" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="#FFB600"/></svg>
+        </div>
+        <div>
+          <h4 style="color:#FEFBF3;">Produção com direção</h4>
+          <p style="color:rgba(254,251,243,0.65);">Orientamos pessoas e equipes durante as gravações para transformar conhecimento, experiência e cultura organizacional em vídeos claros, profissionais e alinhados ao posicionamento da marca.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ══ DESKTOP LAYOUT (unchanged) ══ -->
-  <div class="desktop-track" id="desktopTrack"></div>
-  <div class="journey-content" id="desktopContent"></div>
+  <!-- Phone mockup com o Short -->
+  <div style="display:flex;align-items:center;justify-content:center;">
+    <div class="phone-mockup">
+      <div class="phone-shell">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://img.youtube.com/vi/nrzURq_4LPk/maxresdefault.jpg" alt="Qual é o diferencial" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="phone-screen-overlay" onclick="openModal('nrzURq_4LPk','vertical','youtube')">
+            <div class="phone-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <span class="phone-video-label">Qual é o Diferencial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
 
-  <!-- ══ MOBILE CAROUSEL ══ -->
-  <div class="mobile-carousel-wrapper">
-    <div class="mobile-track" id="mobileTrack"></div>
+<!-- ECOSSISTEMA DE COMUNICAÇÃO DO NEGÓCIO -->
+<section class="eco-section" id="ecossistema">
+  <div class="eco-container">
+
+    <!-- HEADER -->
+    <div class="eco-header">
+      <div class="eco-tag">Ecossistema de Comunicação</div>
+      <h2 class="eco-title">Comunicação de Negócio<br><span class="eco-gold">em Vídeo</span></h2>
+    </div>
+
+    <p class="eco-intro">A Veic Vídeos ajuda empresas a identificar oportunidades de comunicação através do vídeo em diferentes etapas da jornada do cliente e da cultura organizacional.</p>
+
+    <!-- DUAS DIMENSÕES -->
+    <div class="eco-dimensions">
+      <div class="eco-dim">
+        <div class="eco-dim-label">Dimensão 1</div>
+        <div class="eco-dim-title">Jornada do Cliente</div>
+        <div class="eco-dim-desc">Desde o momento em que uma pessoa descobre sua empresa até se tornar um cliente fiel — cada etapa tem necessidades de comunicação diferentes. Vídeos certos, no momento certo, aceleram esse caminho.</div>
+      </div>
+      <div class="eco-dim">
+        <div class="eco-dim-label">Dimensão 2</div>
+        <div class="eco-dim-title">Cultura Organizacional</div>
+        <div class="eco-dim-desc">A comunicação de um negócio não existe apenas para fora. Colaboradores alinhados, processos bem explicados e uma cultura forte também precisam de vídeo para se consolidar.</div>
+      </div>
+    </div>
+
+    <!-- ETAPAS -->
+    <p class="eco-stages-label">Selecione uma etapa para entender que tipo de vídeo faz sentido</p>
+
+    <!-- MOBILE: CARROSSEL HORIZONTAL DE ETAPAS -->
+    <div class="eco-mob-carousel-wrap" id="ecoMobCarouselWrap">
+      <div class="eco-mob-viewport" id="ecoMobViewport">
+        <div class="eco-mob-track" id="ecoMobTrack">
+
+          <div class="eco-mob-card active" data-index="0">
+            <span class="eco-mob-num">01</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="eco-mob-name">Descoberta</div>
+          </div>
+
+          <div class="eco-mob-card" data-index="1">
+            <span class="eco-mob-num">02</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div class="eco-mob-name">Apresentação</div>
+          </div>
+
+          <div class="eco-mob-card" data-index="2">
+            <span class="eco-mob-num">03</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="eco-mob-name">Consideração</div>
+          </div>
+
+          <div class="eco-mob-card" data-index="3">
+            <span class="eco-mob-num">04</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            </div>
+            <div class="eco-mob-name">Conversão</div>
+          </div>
+
+          <div class="eco-mob-card" data-index="4">
+            <span class="eco-mob-num">05</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="eco-mob-name">Fidelização</div>
+          </div>
+
+          <div class="eco-mob-card" data-index="5">
+            <span class="eco-mob-num">06</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            </div>
+            <div class="eco-mob-name">Cultura Interna</div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Dots de progresso -->
+      <div class="eco-mob-dots" id="ecoMobDots">
+        <div class="eco-mob-dot active"></div>
+        <div class="eco-mob-dot"></div>
+        <div class="eco-mob-dot"></div>
+        <div class="eco-mob-dot"></div>
+        <div class="eco-mob-dot"></div>
+        <div class="eco-mob-dot"></div>
+      </div>
+    </div>
+
+    <!-- DESKTOP: GRADE DE ETAPAS (inalterada) -->
+    <div class="eco-stages" id="ecoStages">
+
+      <div class="eco-stage active" onclick="ecoSelect(0)">
+        <span class="eco-stage-num">01</span>
+        <div class="eco-stage-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="eco-stage-name">Descoberta</div>
+        <div class="eco-stage-hint">Aparecer para quem ainda não te conhece</div>
+      </div>
+
+      <div class="eco-stage" onclick="ecoSelect(1)">
+        <span class="eco-stage-num">02</span>
+        <div class="eco-stage-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="eco-stage-name">Apresentação</div>
+        <div class="eco-stage-hint">Explicar quem é sua empresa e o que faz</div>
+      </div>
+
+      <div class="eco-stage" onclick="ecoSelect(2)">
+        <span class="eco-stage-num">03</span>
+        <div class="eco-stage-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="eco-stage-name">Consideração</div>
+        <div class="eco-stage-hint">Gerar confiança e reduzir objeções</div>
+      </div>
+
+      <div class="eco-stage" onclick="ecoSelect(3)">
+        <span class="eco-stage-num">04</span>
+        <div class="eco-stage-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        </div>
+        <div class="eco-stage-name">Conversão</div>
+        <div class="eco-stage-hint">Facilitar a decisão de compra</div>
+      </div>
+
+      <div class="eco-stage" onclick="ecoSelect(4)">
+        <span class="eco-stage-num">05</span>
+        <div class="eco-stage-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="eco-stage-name">Fidelização</div>
+        <div class="eco-stage-hint">Encantar e reter clientes existentes</div>
+      </div>
+
+      <div class="eco-stage" onclick="ecoSelect(5)">
+        <span class="eco-stage-num">06</span>
+        <div class="eco-stage-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <div class="eco-stage-name">Cultura Interna</div>
+        <div class="eco-stage-hint">Comunicar para equipes e colaboradores</div>
+      </div>
+
+    </div>
+
+    <!-- DETAIL PANEL -->
+    <div class="eco-detail" id="ecoDetail">
+      <div class="eco-detail-inner" id="ecoDetailInner">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <!-- FOOTER TEXT -->
+    <div class="eco-footer-text">
+      <p>Nem toda empresa precisa dos mesmos vídeos. Por isso, utilizamos a <strong>jornada do cliente</strong> e a <strong>cultura organizacional</strong> para identificar quais produções fazem mais sentido para o momento atual do negócio.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const ECO_DATA = [
+    {
+      stage: 'Descoberta',
+      goal: 'Fazer sua empresa aparecer para quem ainda não te conhece.',
+      desc: 'Nessa etapa, o potencial cliente nem sabe que sua empresa existe. O vídeo precisa chamar atenção, despertar curiosidade e gerar o primeiro interesse.',
+      videos: ['Anúncios em vídeo','Conteúdo para Instagram','Reels e Shorts','Conteúdo para YouTube','Vídeos educativos','Teasers de impacto'],
+      where: 'Meta Ads · Google Ads · Instagram · YouTube · LinkedIn Ads'
+    },
+    {
+      stage: 'Apresentação',
+      goal: 'Explicar quem é a empresa, o que faz e quais são seus diferenciais.',
+      desc: 'A pessoa já te descobriu e quer entender mais. É hora de apresentar sua empresa com clareza, mostrar seus produtos e serviços, e comunicar posicionamento.',
+      videos: ['Vídeo institucional','Apresentação da empresa','Vídeo de produtos e serviços','Demonstrações','Missão, visão e valores','Bastidores e cultura'],
+      where: 'Site · Landing Page · WhatsApp · Apresentações comerciais · YouTube'
+    },
+    {
+      stage: 'Consideração',
+      goal: 'Gerar confiança, reduzir objeções e fortalecer autoridade.',
+      desc: 'O lead está avaliando se vai comprar de você ou da concorrência. Provas sociais, autoridade e conteúdo de valor fazem a diferença nesse momento.',
+      videos: ['Cases de sucesso','Depoimentos de clientes','Conteúdo educativo','Conteúdo informativo','Vídeos de autoridade','Resultados alcançados'],
+      where: 'Site · Instagram · YouTube · LinkedIn · Landing Page · E-mail'
+    },
+    {
+      stage: 'Conversão',
+      goal: 'Facilitar a decisão de compra e acelerar o fechamento.',
+      desc: 'O lead está prestes a decidir. Vídeos comerciais objetivos, propostas em vídeo e VSLs ajudam a eliminar a última resistência e fechar negócios.',
+      videos: ['VSL (Video Sales Letter)','Vídeos comerciais','Convite para demonstração','Proposta em vídeo','Ofertas especiais','Recuperação de leads'],
+      where: 'WhatsApp · E-mail · Landing Page · CRM · Apresentações comerciais'
+    },
+    {
+      stage: 'Fidelização',
+      goal: 'Encantar o cliente após a compra e gerar recompra e indicações.',
+      desc: 'A relação com o cliente não termina na venda. Vídeos de boas-vindas, tutoriais e conteúdos de upsell aumentam a satisfação e o valor gerado por cada cliente.',
+      videos: ['Boas-vindas ao cliente','Onboarding','Tutoriais e FAQ em vídeo','Orientações de uso','Upsell e Cross-sell','Indique e ganhe'],
+      where: 'WhatsApp · E-mail · Área de membros · App · Site'
+    },
+    {
+      stage: 'Cultura Interna',
+      goal: 'Alinhar equipes, fortalecer a cultura e melhorar a comunicação interna.',
+      desc: 'Colaboradores engajados e bem informados entregam mais. Vídeos internos economizam tempo, padronizam processos e transmitem cultura de forma escalável.',
+      videos: ['Integração de colaboradores','Treinamentos em vídeo','Comunicados internos','Missão, visão e valores','Procedimentos operacionais','Endomarketing'],
+      where: 'Intranet · LMS · WhatsApp corporativo · Reuniões internas · TV corporativa'
+    }
+  ];
+
+  function ecoSelect(index) {
+    // Update active stage
+    document.querySelectorAll('.eco-stage').forEach((el, i) => {
+      el.classList.toggle('active', i === index);
+    });
+    // Update detail panel
+    const d = ECO_DATA[index];
+    document.getElementById('ecoDetailInner').innerHTML = `
+      <div>
+        <div class="eco-detail-block-label">Objetivo</div>
+        <div class="eco-detail-block-title">${d.stage}</div>
+        <div class="eco-detail-block-desc">${d.goal}</div>
+        <div class="eco-detail-block-desc" style="margin-top:0.6rem;">${d.desc}</div>
+      </div>
+      <div>
+        <div class="eco-detail-block-label">Tipos de vídeo indicados</div>
+        <div class="eco-detail-videos">${d.videos.map(v => `<span class="eco-video-pill">${v}</span>`).join('')}</div>
+      </div>
+      <div>
+        <div class="eco-detail-block-label">Onde usar</div>
+        <div class="eco-detail-block-desc" style="color:rgba(254,251,243,0.6);line-height:1.9;">${d.where.split(' · ').join('<br>')}</div>
+      </div>
+    `;
+  }
+
+  // Initialize on load
+  document.addEventListener('DOMContentLoaded', function() { ecoSelect(0); });
+</script>
+
+<script>
+/* ── MOBILE JOURNEY CAROUSEL ── */
+(function() {
+  var CARD_W = 152;
+  var GAP = 12;
+  var activeIndex = 0;
+  var isScrolling = false;
+  var scrollTimeout = null;
+
+  function init() {
+    var viewport = document.getElementById('ecoMobViewport');
+    var cards    = document.querySelectorAll('.eco-mob-card');
+    if (!viewport || !cards.length) return;
+
+    // Tap/click em cada card
+    cards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        var idx = parseInt(card.getAttribute('data-index'), 10);
+        selectCard(idx, true);
+      });
+    });
+
+    // Scroll snap: detectar qual card ficou centralizado após scroll
+    viewport.addEventListener('scroll', function() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function() {
+        var center = viewport.scrollLeft + viewport.clientWidth / 2;
+        var cards2 = document.querySelectorAll('.eco-mob-card');
+        var bestIdx = 0;
+        var bestDist = Infinity;
+        cards2.forEach(function(card) {
+          var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          var dist = Math.abs(cardCenter - center);
+          if (dist < bestDist) {
+            bestDist = dist;
+            bestIdx = parseInt(card.getAttribute('data-index'), 10);
+          }
+        });
+        if (bestIdx !== activeIndex) {
+          activeIndex = bestIdx;
+          updateActiveState(bestIdx, false);
+          ecoSelect(bestIdx); // atualiza painel de detalhe
+          triggerDetailAnim();
+        }
+      }, 80);
+    }, { passive: true });
+
+    // Inicializa: centraliza no card 0
+    scrollToCard(0, false);
+    updateDots(0);
+  }
+
+  function selectCard(idx, animate) {
+    if (idx === activeIndex) return;
+    activeIndex = idx;
+    scrollToCard(idx, animate !== false);
+    updateActiveState(idx, true);
+    ecoSelect(idx);
+    triggerDetailAnim();
+  }
+
+  function scrollToCard(idx, smooth) {
+    var viewport = document.getElementById('ecoMobViewport');
+    var cards = document.querySelectorAll('.eco-mob-card');
+    if (!viewport || !cards[idx]) return;
+    var card = cards[idx];
+    var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    var targetScroll = cardCenter - viewport.clientWidth / 2;
+    viewport.scrollTo({ left: targetScroll, behavior: smooth ? 'smooth' : 'auto' });
+  }
+
+  function updateActiveState(idx, animateCards) {
+    var cards = document.querySelectorAll('.eco-mob-card');
+    cards.forEach(function(card, i) {
+      var isActive = i === idx;
+      if (isActive) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+    updateDots(idx);
+  }
+
+  function updateDots(idx) {
+    var dots = document.querySelectorAll('.eco-mob-dot');
+    dots.forEach(function(dot, i) {
+      if (i === idx) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function triggerDetailAnim() {
+    var inner = document.getElementById('ecoDetailInner');
+    if (!inner) return;
+    inner.classList.remove('eco-anim-in');
+    // force reflow
+    void inner.offsetWidth;
+    inner.classList.add('eco-anim-in');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+<!-- O QUE ENTREGAMOS — DIAGNÓSTICO DE NECESSIDADE -->
+<section class="diag-section" id="proposta">
+
+  <div class="diag-header">
+    <div class="diag-tag">O que Entregamos</div>
+    <h2 class="diag-title">Qual é o <span class="diag-gold">momento</span><br>da sua empresa?</h2>
+    <p class="diag-sub">Selecione o desafio que mais se parece com o da sua empresa e descubra quais vídeos fazem mais sentido agora.</p>
   </div>
 
-  <div class="carousel-dots" id="carouselDots"></div>
+  <!-- DESKTOP: SPLIT VIEW -->
+  <div class="diag-split">
 
-  <div id="mobileContent"></div>
+    <!-- NEEDS SELECTOR (LEFT) -->
+    <div class="diag-needs">
+      <div class="diag-needs-label">Selecione o desafio do negócio</div>
+
+      <div class="diag-need-item active" onclick="diagSelect(0)">
+        <span class="diag-need-dot"></span>
+        <span class="diag-need-text">Precisamos aparecer para novos clientes e gerar demanda</span>
+        <span class="diag-need-arrow">→</span>
+      </div>
+
+      <div class="diag-need-item" onclick="diagSelect(1)">
+        <span class="diag-need-dot"></span>
+        <span class="diag-need-text">Nossa empresa ainda não tem presença digital consolidada</span>
+        <span class="diag-need-arrow">→</span>
+      </div>
+
+      <div class="diag-need-item" onclick="diagSelect(2)">
+        <span class="diag-need-dot"></span>
+        <span class="diag-need-text">Queremos fortalecer nosso posicionamento e autoridade</span>
+        <span class="diag-need-arrow">→</span>
+      </div>
+
+      <div class="diag-need-item" onclick="diagSelect(3)">
+        <span class="diag-need-dot"></span>
+        <span class="diag-need-text">Precisamos vender mais e converter melhor nossas oportunidades</span>
+        <span class="diag-need-arrow">→</span>
+      </div>
+
+      <div class="diag-need-item" onclick="diagSelect(4)">
+        <span class="diag-need-dot"></span>
+        <span class="diag-need-text">Queremos melhorar a experiência e fidelizar nossos clientes</span>
+        <span class="diag-need-arrow">→</span>
+      </div>
+
+      <div class="diag-need-item" onclick="diagSelect(5)">
+        <span class="diag-need-dot"></span>
+        <span class="diag-need-text">Precisamos organizar a comunicação interna e nossa equipe</span>
+        <span class="diag-need-arrow">→</span>
+      </div>
+
+      <div class="diag-need-item" onclick="diagSelect(6)">
+        <span class="diag-need-dot"></span>
+        <span class="diag-need-text">Realizamos eventos e queremos transformá-los em ativos de comunicação</span>
+        <span class="diag-need-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- SOLUTION PANEL (RIGHT) -->
+    <div class="diag-panel" id="diagPanel">
+
+      <!-- SOLUTION 0: Anúncios e Geração de Demanda -->
+      <div class="diag-solution visible" id="diag-sol-0">
+        <div class="diag-sol-bignum">05</div>
+        <div class="diag-sol-eyebrow">Solução indicada</div>
+        <h3 class="diag-sol-title">Anúncios e<br><em>Geração de Demanda</em></h3>
+        <p class="diag-sol-desc">Vídeos para aumentar o alcance da marca, atrair novas pessoas e gerar oportunidades comerciais de forma consistente. Quando a empresa precisa crescer, a comunicação precisa ir até onde o cliente está.</p>
+        <div class="diag-sol-includes-label">O que inclui</div>
+        <div class="diag-sol-pills">
+          <span class="diag-sol-pill">Anúncios Meta Ads</span>
+          <span class="diag-sol-pill">Anúncios Google Ads</span>
+          <span class="diag-sol-pill">Campanhas promocionais</span>
+          <span class="diag-sol-pill">Lançamentos</span>
+          <span class="diag-sol-pill">Remarketing</span>
+          <span class="diag-sol-pill">Captação de leads</span>
+          <span class="diag-sol-pill">Teasers de impacto</span>
+        </div>
+        <div class="diag-sol-ideal">
+          <strong>Ideal para empresas</strong> que desejam ampliar sua visibilidade, atrair novos clientes e aumentar a geração de oportunidades comerciais de forma previsível.
+        </div>
+      </div>
+
+      <!-- SOLUTION 1: Apresentação e Presença Digital -->
+      <div class="diag-solution" id="diag-sol-1">
+        <div class="diag-sol-bignum">02</div>
+        <div class="diag-sol-eyebrow">Solução indicada</div>
+        <h3 class="diag-sol-title">Apresentação do Negócio<br>e <em>Presença Digital</em></h3>
+        <p class="diag-sol-desc">Ajudamos sua empresa a ser encontrada no Google e a apresentar seus produtos, serviços e diferenciais de forma clara, profissional e acessível para potenciais clientes.</p>
+        <div class="diag-sol-includes-label">O que inclui</div>
+        <div class="diag-sol-pills">
+          <span class="diag-sol-pill">Landing Page com vídeo</span>
+          <span class="diag-sol-pill">Presença no Google</span>
+          <span class="diag-sol-pill">Vídeo institucional</span>
+          <span class="diag-sol-pill">Vídeos de produtos e serviços</span>
+          <span class="diag-sol-pill">Demonstrações</span>
+          <span class="diag-sol-pill">Vídeos para WhatsApp</span>
+          <span class="diag-sol-pill">Diferenciais do negócio</span>
+        </div>
+        <div class="diag-sol-ideal">
+          <strong>Ideal para empresas</strong> que dependem de indicações, PDFs ou explicações repetitivas para apresentar o que fazem e ainda não têm uma presença digital estruturada.
+        </div>
+      </div>
+
+      <!-- SOLUTION 2: Posicionamento e Autoridade -->
+      <div class="diag-solution" id="diag-sol-2">
+        <div class="diag-sol-bignum">03</div>
+        <div class="diag-sol-eyebrow">Solução indicada</div>
+        <h3 class="diag-sol-title">Posicionamento,<br><em>Autoridade e Conteúdo</em></h3>
+        <p class="diag-sol-desc">Vídeos para gerar descoberta, despertar interesse, fortalecer autoridade e ampliar a presença da marca no ambiente digital. Mais do que aparecer, é sobre ser reconhecida como referência.</p>
+        <div class="diag-sol-includes-label">O que inclui</div>
+        <div class="diag-sol-pills">
+          <span class="diag-sol-pill">Conteúdo para Instagram</span>
+          <span class="diag-sol-pill">Conteúdo para YouTube</span>
+          <span class="diag-sol-pill">Conteúdo para LinkedIn</span>
+          <span class="diag-sol-pill">Conteúdo educativo</span>
+          <span class="diag-sol-pill">Conteúdo informativo</span>
+          <span class="diag-sol-pill">Mini cursos</span>
+          <span class="diag-sol-pill">Webinars</span>
+        </div>
+        <div class="diag-sol-ideal">
+          <strong>Ideal para empresas</strong> que desejam aumentar visibilidade, gerar demanda, fortalecer posicionamento e construir autoridade no mercado.
+        </div>
+      </div>
+
+      <!-- SOLUTION 3: Vendas e Conversão -->
+      <div class="diag-solution" id="diag-sol-3">
+        <div class="diag-sol-bignum">04</div>
+        <div class="diag-sol-eyebrow">Solução indicada</div>
+        <h3 class="diag-sol-title">Vendas e<br><em>Conversão</em></h3>
+        <p class="diag-sol-desc">Vídeos para gerar confiança, reduzir objeções e facilitar a tomada de decisão durante o processo comercial. O vídeo certo, no momento certo, encurta o ciclo de vendas.</p>
+        <div class="diag-sol-includes-label">O que inclui</div>
+        <div class="diag-sol-pills">
+          <span class="diag-sol-pill">Cases de sucesso</span>
+          <span class="diag-sol-pill">Depoimentos de clientes</span>
+          <span class="diag-sol-pill">VSL</span>
+          <span class="diag-sol-pill">Vídeos comerciais</span>
+          <span class="diag-sol-pill">Convites para demo</span>
+          <span class="diag-sol-pill">Ofertas especiais</span>
+          <span class="diag-sol-pill">Recuperação comercial</span>
+        </div>
+        <div class="diag-sol-ideal">
+          <strong>Ideal para empresas</strong> que precisam melhorar suas apresentações comerciais, aumentar conversões e acelerar decisões de compra.
+        </div>
+      </div>
+
+      <!-- SOLUTION 4: Experiência e Fidelização -->
+      <div class="diag-solution" id="diag-sol-4">
+        <div class="diag-sol-bignum">06</div>
+        <div class="diag-sol-eyebrow">Solução indicada</div>
+        <h3 class="diag-sol-title">Experiência, Fidelização<br>e <em>Encantamento</em></h3>
+        <p class="diag-sol-desc">Vídeos para melhorar a experiência do cliente, aumentar a satisfação e fortalecer o relacionamento após a compra. Clientes encantados compram mais e indicam mais.</p>
+        <div class="diag-sol-includes-label">O que inclui</div>
+        <div class="diag-sol-pills">
+          <span class="diag-sol-pill">Boas-vindas</span>
+          <span class="diag-sol-pill">Onboarding</span>
+          <span class="diag-sol-pill">Tutoriais</span>
+          <span class="diag-sol-pill">FAQ em vídeo</span>
+          <span class="diag-sol-pill">Orientações processuais</span>
+          <span class="diag-sol-pill">Upsell e Cross-sell</span>
+          <span class="diag-sol-pill">Indique e ganhe</span>
+        </div>
+        <div class="diag-sol-ideal">
+          <strong>Ideal para empresas</strong> que desejam aumentar retenção, recompra, indicações e o valor gerado por cada cliente ao longo do relacionamento.
+        </div>
+      </div>
+
+      <!-- SOLUTION 5: Cultura Organizacional -->
+      <div class="diag-solution" id="diag-sol-5">
+        <div class="diag-sol-bignum">01</div>
+        <div class="diag-sol-eyebrow">Solução indicada</div>
+        <h3 class="diag-sol-title">Cultura Organizacional e<br><em>Comunicação Interna</em></h3>
+        <p class="diag-sol-desc">Vídeos para fortalecer a cultura da empresa, acelerar a integração de colaboradores e melhorar a comunicação interna entre equipes. Quando a empresa cresce, a comunicação interna precisa crescer junto.</p>
+        <div class="diag-sol-includes-label">O que inclui</div>
+        <div class="diag-sol-pills">
+          <span class="diag-sol-pill">Integração de colaboradores</span>
+          <span class="diag-sol-pill">Cultura organizacional</span>
+          <span class="diag-sol-pill">Treinamentos</span>
+          <span class="diag-sol-pill">Missão, visão e valores</span>
+          <span class="diag-sol-pill">Procedimentos operacionais</span>
+          <span class="diag-sol-pill">Comunicação interna</span>
+          <span class="diag-sol-pill">Endomarketing</span>
+        </div>
+        <div class="diag-sol-ideal">
+          <strong>Ideal para empresas</strong> que desejam alinhar equipes, fortalecer sua cultura organizacional e transmitir a mesma mensagem em todos os setores do negócio.
+        </div>
+      </div>
+
+      <!-- SOLUTION 6: Eventos e Ações Corporativas -->
+      <div class="diag-solution" id="diag-sol-6">
+        <div class="diag-sol-bignum">07</div>
+        <div class="diag-sol-eyebrow">Solução indicada</div>
+        <h3 class="diag-sol-title">Eventos e<br><em>Ações Corporativas</em></h3>
+        <p class="diag-sol-desc">Vídeos para registrar, divulgar e ampliar o impacto de eventos, campanhas e ações estratégicas da marca. Um evento bem documentado continua gerando valor por muito tempo depois que ele termina.</p>
+        <div class="diag-sol-includes-label">O que inclui</div>
+        <div class="diag-sol-pills">
+          <span class="diag-sol-pill">Feiras e eventos corporativos</span>
+          <span class="diag-sol-pill">Convenções</span>
+          <span class="diag-sol-pill">Lançamentos</span>
+          <span class="diag-sol-pill">Ações institucionais</span>
+          <span class="diag-sol-pill">Campanhas internas</span>
+          <span class="diag-sol-pill">Aftermovies</span>
+        </div>
+        <div class="diag-sol-ideal">
+          <strong>Ideal para empresas</strong> que realizam eventos e desejam transformar esses momentos em ativos de comunicação e fortalecimento da marca.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MOBILE: ACCORDION -->
+  <div class="diag-mobile-list">
+
+    <div class="diag-mob-item open">
+      <button class="diag-mob-trigger" onclick="diagMobToggle(this)">
+        <span class="diag-mob-trigger-dot"></span>
+        <span class="diag-mob-trigger-text">Precisamos aparecer para novos clientes e gerar demanda</span>
+        <svg class="diag-mob-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="diag-mob-body">
+        <div class="diag-mob-content">
+          <div class="diag-mob-sol-title">Anúncios e <em>Geração de Demanda</em></div>
+          <div class="diag-mob-sol-desc">Vídeos para aumentar o alcance da marca, atrair novas pessoas e gerar oportunidades comerciais de forma consistente.</div>
+          <div class="diag-mob-sol-pills">
+            <span class="diag-sol-pill">Meta Ads</span><span class="diag-sol-pill">Google Ads</span><span class="diag-sol-pill">Campanhas</span><span class="diag-sol-pill">Remarketing</span><span class="diag-sol-pill">Captação de leads</span>
+          </div>
+          <div class="diag-mob-sol-ideal"><strong>Ideal para</strong> empresas que querem ampliar visibilidade e atrair novos clientes.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diag-mob-item">
+      <button class="diag-mob-trigger" onclick="diagMobToggle(this)">
+        <span class="diag-mob-trigger-dot"></span>
+        <span class="diag-mob-trigger-text">Nossa empresa ainda não tem presença digital consolidada</span>
+        <svg class="diag-mob-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="diag-mob-body">
+        <div class="diag-mob-content">
+          <div class="diag-mob-sol-title">Apresentação do Negócio e <em>Presença Digital</em></div>
+          <div class="diag-mob-sol-desc">Estrutura sua empresa no digital com vídeos que apresentam quem você é, o que faz e por que escolher você.</div>
+          <div class="diag-mob-sol-pills">
+            <span class="diag-sol-pill">Landing Page</span><span class="diag-sol-pill">Vídeo institucional</span><span class="diag-sol-pill">Produtos e serviços</span><span class="diag-sol-pill">WhatsApp</span>
+          </div>
+          <div class="diag-mob-sol-ideal"><strong>Ideal para</strong> empresas que ainda dependem de indicações e PDFs para se apresentar.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diag-mob-item">
+      <button class="diag-mob-trigger" onclick="diagMobToggle(this)">
+        <span class="diag-mob-trigger-dot"></span>
+        <span class="diag-mob-trigger-text">Queremos fortalecer nosso posicionamento e autoridade</span>
+        <svg class="diag-mob-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="diag-mob-body">
+        <div class="diag-mob-content">
+          <div class="diag-mob-sol-title">Posicionamento, <em>Autoridade e Conteúdo</em></div>
+          <div class="diag-mob-sol-desc">Construa autoridade com conteúdo que educa, informa e posiciona sua marca como referência no mercado.</div>
+          <div class="diag-mob-sol-pills">
+            <span class="diag-sol-pill">Instagram</span><span class="diag-sol-pill">YouTube</span><span class="diag-sol-pill">LinkedIn</span><span class="diag-sol-pill">Conteúdo educativo</span>
+          </div>
+          <div class="diag-mob-sol-ideal"><strong>Ideal para</strong> empresas que querem ser reconhecidas como referência no seu setor.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diag-mob-item">
+      <button class="diag-mob-trigger" onclick="diagMobToggle(this)">
+        <span class="diag-mob-trigger-dot"></span>
+        <span class="diag-mob-trigger-text">Precisamos vender mais e converter melhor nossas oportunidades</span>
+        <svg class="diag-mob-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="diag-mob-body">
+        <div class="diag-mob-content">
+          <div class="diag-mob-sol-title">Vendas e <em>Conversão</em></div>
+          <div class="diag-mob-sol-desc">Vídeos que reduzem objeções, geram confiança e facilitam a decisão de compra no momento certo.</div>
+          <div class="diag-mob-sol-pills">
+            <span class="diag-sol-pill">Cases</span><span class="diag-sol-pill">Depoimentos</span><span class="diag-sol-pill">VSL</span><span class="diag-sol-pill">Vídeos comerciais</span>
+          </div>
+          <div class="diag-mob-sol-ideal"><strong>Ideal para</strong> empresas que querem encurtar o ciclo de vendas e aumentar conversões.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diag-mob-item">
+      <button class="diag-mob-trigger" onclick="diagMobToggle(this)">
+        <span class="diag-mob-trigger-dot"></span>
+        <span class="diag-mob-trigger-text">Queremos melhorar a experiência e fidelizar nossos clientes</span>
+        <svg class="diag-mob-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="diag-mob-body">
+        <div class="diag-mob-content">
+          <div class="diag-mob-sol-title">Experiência, Fidelização e <em>Encantamento</em></div>
+          <div class="diag-mob-sol-desc">Vídeos que encantam após a compra, aumentam satisfação e transformam clientes em promotores da marca.</div>
+          <div class="diag-mob-sol-pills">
+            <span class="diag-sol-pill">Onboarding</span><span class="diag-sol-pill">Tutoriais</span><span class="diag-sol-pill">Upsell</span><span class="diag-sol-pill">FAQ em vídeo</span>
+          </div>
+          <div class="diag-mob-sol-ideal"><strong>Ideal para</strong> empresas que querem aumentar retenção, recompra e indicações.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diag-mob-item">
+      <button class="diag-mob-trigger" onclick="diagMobToggle(this)">
+        <span class="diag-mob-trigger-dot"></span>
+        <span class="diag-mob-trigger-text">Precisamos organizar a comunicação interna e nossa equipe</span>
+        <svg class="diag-mob-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="diag-mob-body">
+        <div class="diag-mob-content">
+          <div class="diag-mob-sol-title">Cultura Organizacional e <em>Comunicação Interna</em></div>
+          <div class="diag-mob-sol-desc">Vídeos que alinham equipes, fortalecem cultura e escalam a mensagem certa para todos os colaboradores.</div>
+          <div class="diag-mob-sol-pills">
+            <span class="diag-sol-pill">Integração</span><span class="diag-sol-pill">Treinamentos</span><span class="diag-sol-pill">Cultura</span><span class="diag-sol-pill">Comunicados</span>
+          </div>
+          <div class="diag-mob-sol-ideal"><strong>Ideal para</strong> empresas que cresceram e precisam alinhar equipes em escala.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diag-mob-item">
+      <button class="diag-mob-trigger" onclick="diagMobToggle(this)">
+        <span class="diag-mob-trigger-dot"></span>
+        <span class="diag-mob-trigger-text">Realizamos eventos e queremos transformá-los em ativos de comunicação</span>
+        <svg class="diag-mob-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="diag-mob-body">
+        <div class="diag-mob-content">
+          <div class="diag-mob-sol-title">Eventos e <em>Ações Corporativas</em></div>
+          <div class="diag-mob-sol-desc">Transforme cada evento em um ativo que continua gerando valor muito depois que as luzes se apagam.</div>
+          <div class="diag-mob-sol-pills">
+            <span class="diag-sol-pill">Eventos corporativos</span><span class="diag-sol-pill">Convenções</span><span class="diag-sol-pill">Aftermovies</span><span class="diag-sol-pill">Lançamentos</span>
+          </div>
+          <div class="diag-mob-sol-ideal"><strong>Ideal para</strong> empresas que realizam eventos e querem ampliar o impacto desses momentos.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div style="padding:3rem 4rem 5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;border-top:1px solid rgba(255,182,0,0.1);flex-wrap:wrap;" class="diag-bottom-cta">
+    <p style="font-size:1rem;color:rgba(254,251,243,0.5);max-width:560px;line-height:1.75;">
+      Cada empresa tem um momento diferente. Por isso, começamos com um <strong style="color:rgba(254,251,243,0.85);font-weight:700;">diagnóstico personalizado</strong> para identificar quais vídeos geram mais impacto para o seu negócio agora.
+    </p>
+    <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--black);padding:1rem 1.75rem;border-radius:4px;font-weight:700;font-size:0.92rem;text-decoration:none;white-space:nowrap;transition:background 0.2s,transform 0.15s;flex-shrink:0;" onmouseover="this.style.background='#CC9200';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#FFB600';this.style.transform='translateY(0)'">
+      Solicitar Diagnóstico Gratuito →
+    </a>
+  </div>
 
 </section>
 
 <script>
-/* ─── DATA ──────────────────────────────────────────────────── */
-const steps = [
-  {
-    num: '01',
-    icon: '👁',
-    title: 'Descoberta',
-    desc: 'Aparecer para quem ainda não te conhece',
-    objective: 'Fazer sua empresa aparecer para quem ainda não a conhece, expandindo alcance e gerando reconhecimento de marca.',
-    types: ['Vídeo de topo de funil', 'Reels de alcance', 'Conteúdo orgânico', 'Anúncios de branding'],
-  },
-  {
-    num: '02',
-    icon: '🪟',
-    title: 'Apresentação',
-    desc: 'Explicar quem é sua empresa e o que faz',
-    objective: 'Apresentar sua empresa de forma clara e envolvente para quem acabou de descobrí-la, gerando interesse e credibilidade.',
-    types: ['Vídeo institucional', 'Manifesto de marca', 'Sobre nós', 'Tour pela empresa'],
-  },
-  {
-    num: '03',
-    icon: '📍',
-    title: 'Consideração',
-    desc: 'Gerar confiança e reduzir objeções',
-    objective: 'Aprofundar o relacionamento com leads que já conhecem sua empresa, eliminando dúvidas e construindo autoridade.',
-    types: ['Cases de sucesso', 'Depoimentos', 'Bastidores', 'Conteúdo educativo'],
-  },
-  {
-    num: '04',
-    icon: '🏷',
-    title: 'Conversão',
-    desc: 'Facilitar a decisão de compra',
-    objective: 'Levar o lead qualificado à ação — compra, contato ou agendamento — com argumentos visuais irresistíveis.',
-    types: ['Demonstração de produto', 'Oferta em vídeo', 'Prova social', 'CTA direto'],
-  },
-  {
-    num: '05',
-    icon: '👥',
-    title: 'Fidelização',
-    desc: 'Encantar e reter clientes existentes',
-    objective: 'Manter clientes engajados, aumentar o LTV e transformá-los em promotores espontâneos da sua marca.',
-    types: ['Onboarding em vídeo', 'Tutoriais', 'Novidades exclusivas', 'Programas de fidelidade'],
-  },
-  {
-    num: '06',
-    icon: '💼',
-    title: 'Cultura Interna',
-    desc: 'Comunicar para equipes e colaboradores',
-    objective: 'Alinhar times, engajar talentos e comunicar valores internos de forma clara, humana e memorável.',
-    types: ['Onboarding de equipe', 'Comunicados internos', 'Treinamentos', 'Cultura e valores'],
-  },
-];
-
-let activeIdx = 0;
-
-/* ─── DESKTOP BUILD ─────────────────────────────────────────── */
-const desktopTrack   = document.getElementById('desktopTrack');
-const desktopContent = document.getElementById('desktopContent');
-
-function buildDesktop() {
-  desktopTrack.innerHTML = steps.map((s, i) => `
-    <div class="d-step ${i === activeIdx ? 'active' : ''}" data-i="${i}">
-      <div class="step-num">${s.num}</div>
-      <div class="step-icon">${s.icon}</div>
-      <div class="step-title">${s.title}</div>
-      <div class="step-desc">${s.desc}</div>
-    </div>
-  `).join('');
-
-  desktopTrack.querySelectorAll('.d-step').forEach(el => {
-    el.addEventListener('click', () => setActive(+el.dataset.i));
-  });
-
-  renderDesktopContent();
-}
-
-function renderDesktopContent() {
-  const s = steps[activeIdx];
-  desktopContent.innerHTML = `
-    <div class="content-label">Objetivo</div>
-    <div class="content-title">${s.title}</div>
-    <div class="content-desc">${s.objective}</div>
-    <div class="content-tags">${s.types.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-  `;
-}
-
-/* ─── MOBILE BUILD ──────────────────────────────────────────── */
-const mobileTrack   = document.getElementById('mobileTrack');
-const mobileContent = document.getElementById('mobileContent');
-const dotsEl        = document.getElementById('carouselDots');
-
-function buildMobile() {
-  mobileTrack.innerHTML = steps.map((s, i) => `
-    <div class="m-step ${i === activeIdx ? 'active' : ''}" data-i="${i}">
-      <div class="step-num">${s.num}</div>
-      <div class="step-icon">${s.icon}</div>
-      <div class="step-title">${s.title}</div>
-    </div>
-  `).join('');
-
-  dotsEl.innerHTML = steps.map((_, i) =>
-    `<div class="dot ${i === activeIdx ? 'active' : ''}" data-i="${i}"></div>`
-  ).join('');
-
-  mobileTrack.querySelectorAll('.m-step').forEach(el => {
-    el.addEventListener('click', () => {
-      const i = +el.dataset.i;
-      setActive(i);
-      scrollToCard(i, true);
+  function diagSelect(index) {
+    // Update need items
+    document.querySelectorAll('.diag-need-item').forEach((el, i) => {
+      el.classList.toggle('active', i === index);
     });
-  });
-
-  dotsEl.querySelectorAll('.dot').forEach(el => {
-    el.addEventListener('click', () => {
-      const i = +el.dataset.i;
-      setActive(i);
-      scrollToCard(i, true);
+    // Hide all solutions
+    document.querySelectorAll('.diag-solution').forEach(el => {
+      el.classList.remove('visible');
+      el.style.display = 'none';
     });
-  });
-
-  renderMobileContent(false);
-  // initial scroll
-  setTimeout(() => scrollToCard(activeIdx, false), 60);
-}
-
-function renderMobileContent(animate = true) {
-  const s = steps[activeIdx];
-  mobileContent.innerHTML = `
-    <div class="mobile-content" style="${animate ? '' : 'animation:none'}">
-      <div class="step-counter">
-        <span class="sc-num">${s.num}</span>
-        <span class="sc-sep">/</span>
-        <span class="sc-total">06</span>
-      </div>
-      <div class="content-label">Objetivo</div>
-      <div class="content-title">${s.title}</div>
-      <div class="content-desc">${s.objective}</div>
-      <div class="content-tags">${s.types.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-    </div>
-  `;
-}
-
-/* ─── ACTIVE STATE ──────────────────────────────────────────── */
-function setActive(i) {
-  activeIdx = i;
-
-  // desktop
-  desktopTrack.querySelectorAll('.d-step').forEach((el, idx) =>
-    el.classList.toggle('active', idx === i));
-  renderDesktopContent();
-
-  // mobile
-  mobileTrack.querySelectorAll('.m-step').forEach((el, idx) =>
-    el.classList.toggle('active', idx === i));
-  dotsEl.querySelectorAll('.dot').forEach((el, idx) =>
-    el.classList.toggle('active', idx === i));
-  renderMobileContent(true);
-}
-
-/* ─── SCROLL TO CARD ────────────────────────────────────────── */
-function scrollToCard(i, smooth) {
-  const cards = mobileTrack.querySelectorAll('.m-step');
-  if (!cards[i]) return;
-  const card   = cards[i];
-  const track  = mobileTrack;
-  const cardCX = card.offsetLeft + card.offsetWidth / 2;
-  const trackW = track.clientWidth;
-  const target = cardCX - trackW / 2;
-  track.scrollTo({ left: target, behavior: smooth ? 'smooth' : 'instant' });
-}
-
-/* ─── SNAP → ACTIVE (scroll end) ───────────────────────────── */
-let snapTimer;
-mobileTrack.addEventListener('scroll', () => {
-  clearTimeout(snapTimer);
-  snapTimer = setTimeout(() => {
-    const trackW  = mobileTrack.clientWidth;
-    const scrollL = mobileTrack.scrollLeft;
-    const cards   = mobileTrack.querySelectorAll('.m-step');
-    let   best    = -1, bestDist = Infinity;
-    cards.forEach((card, i) => {
-      const cx   = card.offsetLeft + card.offsetWidth / 2;
-      const dist = Math.abs(cx - scrollL - trackW / 2);
-      if (dist < bestDist) { bestDist = dist; best = i; }
-    });
-    if (best !== -1 && best !== activeIdx) {
-      setActive(best);
+    // Show selected
+    const sol = document.getElementById('diag-sol-' + index);
+    if (sol) {
+      sol.style.display = 'flex';
+      // Force reflow for animation restart
+      sol.offsetHeight;
+      sol.classList.add('visible');
     }
-  }, 80);
-}, { passive: true });
+  }
 
-/* ─── DRAG (mouse) ──────────────────────────────────────────── */
-let isDragging = false, dragStart = 0, scrollStart = 0;
+  function diagMobToggle(btn) {
+    const item = btn.closest('.diag-mob-item');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.diag-mob-item').forEach(el => el.classList.remove('open'));
+    // Open this one if it was closed
+    if (!isOpen) item.classList.add('open');
+  }
 
-mobileTrack.addEventListener('mousedown', e => {
-  isDragging = true;
-  dragStart  = e.clientX;
-  scrollStart = mobileTrack.scrollLeft;
-  mobileTrack.classList.add('is-dragging');
-});
-window.addEventListener('mousemove', e => {
-  if (!isDragging) return;
-  const dx = e.clientX - dragStart;
-  mobileTrack.scrollLeft = scrollStart - dx;
-});
-window.addEventListener('mouseup', () => {
-  if (!isDragging) return;
-  isDragging = false;
-  mobileTrack.classList.remove('is-dragging');
-});
+  // Init desktop
+  document.addEventListener('DOMContentLoaded', function() {
+    diagSelect(0);
+  });
+</script>
 
-/* ─── INIT ──────────────────────────────────────────────────── */
-buildDesktop();
-buildMobile();
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <div class="section-header">
+    <div>
+      <p class="section-eyebrow">Trabalhos</p>
+      <h2>Portfólio</h2>
+    </div>
+    <a href="https://www.instagram.com/veicvideos" class="btn-secondary" style="white-space:nowrap">Ver Instagram →</a>
+  </div>
+
+  <!-- CAROUSEL WRAPPER -->
+  <div style="position:relative;margin-top:2.5rem;padding:0 7.5%;" id="portfolioCarouselWrap">
+    <button id="carouselPrev" onclick="carouselNav(-1)" aria-label="Anterior" style="position:absolute;left:calc(-24px);top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:var(--yellow);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,182,0,0.35);transition:background 0.2s;" onmouseover="this.style.background='#CC9200'" onmouseout="this.style.background='#FFB600'">
+      <svg width="20" fill="none" stroke="#131210" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button id="carouselNext" onclick="carouselNav(1)" aria-label="Proximo" style="position:absolute;right:calc(-24px);top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:var(--yellow);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,182,0,0.35);transition:background 0.2s;" onmouseover="this.style.background='#CC9200'" onmouseout="this.style.background='#FFB600'">
+      <svg width="20" fill="none" stroke="#131210" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div id="portfolioSlides" style="overflow:hidden;border-radius:8px;"></div>
+    <div id="carouselDots" style="display:flex;justify-content:center;gap:8px;margin-top:1.5rem;flex-wrap:wrap;"></div>
+  </div>
+
+  <!-- hidden grid ref -->
+  <div class="portfolio-grid" id="portfolioGrid" style="display:none;"></div>
+</section>
+
+<!-- PROJETOS AUDIOVISUAIS -->
+<section class="t2-projetos" id="projetos">
+  <div class="t2-container">
+    <div class="t2-section-header" style="margin-bottom:48px;">
+      <span class="t2-tag" style="background:transparent;color:#FFB600;border:1px solid #FFB600;">Forma de trabalho</span>
+    </div>
+    <div class="t2-projetos-grid">
+      <div class="t2-projetos-left">
+        <h2 class="t2-projetos-title">Desenvolvemos projetos<br/><span class="t2-gold">Audiovisuais</span></h2>
+        <p class="t2-projetos-text">Cada empresa possui um momento diferente de maturidade, desafios de comunicação e necessidades específicas.<br/><br/>Por isso, atuamos com a metodologia Veic Vídeos, mapeando as necessidades de comunicação do negócio e identificamos quais vídeos podem gerar mais impacto na jornada do cliente, na cultura organizacional e no posicionamento da marca.<br/><br/>A partir desse diagnóstico, desenvolvemos um projeto personalizado para o momento atual da empresa.</p>
+        <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener noreferrer" class="t2-btn t2-btn--gold" style="margin-top:32px;">Solicitar Orçamento via WhatsApp</a>
+      </div>
+      <div class="t2-projetos-right">
+        <div class="t2-projetos-tipos-label">Tipos de Projeto</div>
+        <div class="t2-projetos-tags">
+          <span class="t2-proj-tag">Comunicação e Cultura Organizacional</span>
+          <span class="t2-proj-tag">Presença Digital</span>
+          <span class="t2-proj-tag">Marketing e Posicionamento</span>
+          <span class="t2-proj-tag">Vendas e Conversão</span>
+          <span class="t2-proj-tag">Experiência do Cliente</span>
+          <span class="t2-proj-tag">Eventos e Ações Corporativas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="t2-processo" id="processo">
+  <div class="t2-container">
+    <div class="t2-section-header">
+      <span class="t2-tag">Como funciona</span>
+      <h2 class="t2-section-title">Desenvolvimento<br/><span class="t2-gold">do projeto</span></h2>
+      <p class="t2-section-sub">Produzimos vídeos para estruturar a comunicação do seu negócio.</p>
+    </div>
+    <div class="t2-steps t2-steps-5">
+      <div class="t2-step">
+        <div class="t2-step-num">01</div>
+        <div class="t2-step-content">
+          <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Diagnóstico</h3></div>
+          <p class="t2-step-text">Entendemos o momento atual do seu negócio ou projeto, seus objetivos, sua comunicação atual e os principais pontos de contato com clientes e colaboradores.</p>
+        </div>
+      </div>
+      <div class="t2-step">
+        <div class="t2-step-num">02</div>
+        <div class="t2-step-content">
+          <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Mapeamento</h3></div>
+          <p class="t2-step-text">Identificamos oportunidades de comunicação em vídeo ao longo da jornada do cliente e da cultura organizacional.</p>
+        </div>
+      </div>
+      <div class="t2-step">
+        <div class="t2-step-num">03</div>
+        <div class="t2-step-content">
+          <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Priorização</h3></div>
+          <p class="t2-step-text">Definimos quais vídeos geram mais impacto para o estágio atual da empresa.</p>
+        </div>
+      </div>
+      <div class="t2-step">
+        <div class="t2-step-num">04</div>
+        <div class="t2-step-content">
+          <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Produção com Direção</h3></div>
+          <p class="t2-step-text">Planejamos, roteirizamos, dirigimos, gravamos, editamos e entregamos os vídeos alinhados aos objetivos do negócio. Orientamos gestores, colaboradores e clientes durante as gravações para garantir uma comunicação clara, natural e coerente com a proposta de comunicação.</p>
+        </div>
+      </div>
+      <div class="t2-step">
+        <div class="t2-step-num">05</div>
+        <div class="t2-step-content">
+          <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Evolução</h3></div>
+          <p class="t2-step-text">Sua empresa amplia gradualmente seu ecossistema de comunicação conforme novas demandas surgem e o nível de consciência sobre a jornada do cliente e a cultura organizacional evolui.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="t2-faq-section" id="faq" aria-labelledby="t2-faq-title">
+  <div class="t2-container">
+    <div class="t2-section-header">
+      <span class="t2-tag">Dúvidas frequentes</span>
+      <h2 class="t2-section-title" id="t2-faq-title">Perguntas<br/><span class="t2-gold">Frequentes</span></h2>
+      <p class="t2-section-sub">Tudo que você precisa saber antes de iniciar seu projeto de vídeo.</p>
+    </div>
+    <div class="t2-faq-grid">
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Quanto custa um vídeo?</summary>
+        <p class="t2-faq-answer">Cada projeto é orçado individualmente conforme os objetivos do negócio, a complexidade da produção e os resultados esperados. Antes de propor uma solução, buscamos entender o momento da empresa e quais vídeos geram mais impacto para sua comunicação. <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener noreferrer">Solicite um orçamento sem compromisso.</a></p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Quais problemas os vídeos podem ajudar a resolver no meu negócio?</summary>
+        <div class="t2-faq-answer">
+          <p>Os vídeos podem apoiar diferentes áreas da empresa, dependendo do momento e dos objetivos do negócio.</p>
+          <p style="margin-top:10px;">Alguns exemplos:</p>
+          <ul style="margin-top:8px;padding-left:1.2rem;line-height:2;">
+            <li>Fortalecer a presença digital da empresa</li>
+            <li>Ser encontrado no Google</li>
+            <li>Apresentar a empresa de forma profissional</li>
+            <li>Explicar produtos e serviços com mais clareza</li>
+            <li>Facilitar o trabalho da equipe comercial</li>
+            <li>Gerar mais confiança durante o processo de venda</li>
+            <li>Aumentar a geração de oportunidades de negócio</li>
+            <li>Fortalecer o posicionamento da marca</li>
+            <li>Produzir conteúdo para Instagram, YouTube e LinkedIn</li>
+            <li>Integrar e treinar colaboradores</li>
+            <li>Melhorar a experiência do cliente após a compra</li>
+            <li>Reduzir dúvidas recorrentes através de tutoriais e orientações</li>
+            <li>Aumentar fidelização e indicações</li>
+          </ul>
+          <p style="margin-top:10px;">Cada empresa possui necessidades diferentes. Por isso, buscamos entender o momento do negócio antes de definir quais vídeos terão maior impacto.</p>
+        </div>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Quais tipos de vídeo a Veic Vídeos produz?</summary>
+        <div class="t2-faq-answer">
+          <p>Produzimos vídeos para diferentes etapas da jornada do cliente e da comunicação interna da empresa.</p>
+          <p style="margin-top:10px;">Entre eles:</p>
+          <ul style="margin-top:8px;padding-left:1.2rem;line-height:2;">
+            <li>Apresentação da empresa</li>
+            <li>Vídeos institucionais</li>
+            <li>Apresentação de produtos e serviços</li>
+            <li>Cases de sucesso</li>
+            <li>Conteúdo para Instagram, YouTube e LinkedIn</li>
+            <li>Vídeos comerciais</li>
+            <li>VSL</li>
+            <li>Anúncios</li>
+            <li>Treinamentos</li>
+            <li>Integração de colaboradores</li>
+            <li>Tutoriais</li>
+            <li>Onboarding</li>
+            <li>Vídeos para fidelização e experiência do cliente</li>
+            <li>Eventos e ações corporativas</li>
+          </ul>
+        </div>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">O que significa estruturar a comunicação através do vídeo?</summary>
+        <p class="t2-faq-answer">Significa identificar quais vídeos fazem sentido para o momento atual da empresa e para cada etapa da jornada do cliente e da cultura organizacional.<br/><br/>Nem toda empresa precisa dos mesmos vídeos. Por isso buscamos entender a realidade do negócio antes de definir quais produções terão maior impacto.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Minha empresa precisa produzir todos esses vídeos?</summary>
+        <p class="t2-faq-answer">Não.<br/><br/>Cada empresa possui um nível diferente de maturidade e necessidades diferentes de comunicação.<br/><br/>Algumas precisam começar apresentando melhor seus produtos e serviços. Outras precisam gerar demanda. Outras precisam fortalecer vendas, treinamento ou experiência do cliente.<br/><br/>Nosso papel é ajudar a identificar as prioridades.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Vocês também criam Landing Pages?</summary>
+        <p class="t2-faq-answer">Sim.<br/><br/>Além da produção dos vídeos, também desenvolvemos Landing Pages de apresentação para empresas que desejam fortalecer sua presença digital, ser encontradas no Google e apresentar seus produtos e serviços de forma mais profissional.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Minha empresa ainda não produz vídeos. Por onde começar?</summary>
+        <p class="t2-faq-answer">Na maioria dos casos, recomendamos começar pelos vídeos que ajudam a apresentar a empresa, seus produtos, serviços e diferenciais.<br/><br/>Muitas empresas ainda dependem de explicações repetitivas, catálogos, PDFs ou conversas individuais para apresentar o que fazem. Nesses casos, uma Landing Page profissional com vídeos de apresentação costuma ser um dos primeiros passos para fortalecer a presença digital e facilitar o processo comercial.<br/><br/>A partir daí, a estrutura de comunicação pode evoluir conforme as necessidades do negócio.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Como funciona o processo de trabalho?</summary>
+        <div class="t2-faq-answer">
+          <p>Nosso processo acontece em cinco etapas:</p>
+          <ul style="margin-top:8px;padding-left:1.2rem;line-height:2;">
+            <li>Diagnóstico do momento atual da empresa</li>
+            <li>Mapeamento das necessidades de comunicação</li>
+            <li>Priorização dos vídeos mais importantes</li>
+            <li>Produção audiovisual</li>
+            <li>Evolução da estrutura de comunicação ao longo do tempo</li>
+          </ul>
+          <p style="margin-top:10px;">Assim garantimos que cada vídeo tenha uma função clara dentro da comunicação do negócio.</p>
+        </div>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Preciso ter experiência em frente às câmeras?</summary>
+        <p class="t2-faq-answer">Não.<br/><br/>Orientamos clientes e equipes durante toda a gravação para que consigam transmitir sua mensagem com naturalidade e segurança, mesmo sem experiência anterior.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Vocês atendem fora de Belo Horizonte?</summary>
+        <p class="t2-faq-answer">Sim.<br/><br/>Atendemos Belo Horizonte, região metropolitana, outras cidades de Minas Gerais e projetos em todo o Brasil mediante agendamento prévio.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Em quanto tempo os vídeos ficam prontos?</summary>
+        <p class="t2-faq-answer">O prazo varia conforme o tipo de projeto, quantidade de vídeos e complexidade da produção.<br/><br/>Após o diagnóstico inicial, apresentamos um cronograma claro com todas as etapas de gravação, edição e entrega.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <p class="section-eyebrow">Vamos Trabalhar Juntos?</p>
+  <h2>Pronto Para<br><span class="accent">Revelar Sua Marca?</span></h2>
+  <p class="body-text">Entre em contato e vamos conversar sobre como posicionar seu negócio no digital com vídeos estratégicos que realmente funcionam.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="https://wa.me/5531983335876" class="btn-primary" target="_blank">
+      <svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://www.instagram.com/veicvideos" class="btn-secondary" target="_blank">Instagram @veicvideos →</a>
+  </div>
+  <div class="cta-contact">
+    <span>📞</span>
+    <span><strong>(31) 98333-5876</strong> · Atendimento via WhatsApp</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="nav-logo" href="#">
+    <svg width="28" viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
+    </svg>
+    <span class="logo-text">Veic <span>VÍDEOS</span></span>
+  </a>
+  <ul class="footer-links">
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#proposta">O que Entregamos</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Veic Vídeos</p>
+</footer>
+
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5531983335876" target="_blank" title="Falar no WhatsApp"
+   style="position:fixed;bottom:24px;right:24px;z-index:500;width:56px;height:56px;
+          background:#25D366;border-radius:50%;display:flex;align-items:center;
+          justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);
+          transition:transform 0.2s;text-decoration:none;"
+   onmouseover="this.style.transform='scale(1.1)'"
+   onmouseout="this.style.transform='scale(1)'">
+  <svg width="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="videoModal" onclick="closeModalOnOverlay(event)">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-video" id="modalVideo">
+      <iframe id="modalIframe" src="" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mobile menu
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.style.borderBottomColor = 'rgba(255,182,0,0.25)';
+    } else {
+      nav.style.borderBottomColor = 'rgba(255,182,0,0.15)';
+    }
+  });
+
+  // ─── PORTFOLIO CAROUSEL ──────────────────────────────────────────────
+  // All videos by type (shuffled within each category)
+  // ─── LISTA DE VÍDEOS DO PORTFÓLIO ────────────────────────────────────
+  // Edite tag e title de cada vídeo individualmente.
+  // A ordem aqui é a ordem exata de exibição no carrossel.
+  const allVideos = [
+    {id:'oDRUYh7xOBs',p:'youtube',o:'vertical',  tag:'Apresentação de Benefícios',   title:'Benefícios Fibraxx'},
+    {id:'fAzmIuYKra0',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Grupo AVG · Meet Tecnologia'},
+    {id:'xI9-k8Al18Y',p:'youtube',o:'vertical',  tag:'Registro do Festival',   title:'Mangalarga marchador'},
+    {id:'t3HKRTObtrU',p:'youtube',o:'vertical',  tag:'Backstage + Case de Sucesso',       title:'Cineart ·  Meet Tecnologia'},
+    {id:'aC_lpOFyDJE',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Deezer · Confiber'},
+    {id:'BgJzvmtNZP4',p:'youtube',o:'horizontal', tag:'Festival',  title:'Circuito Cultural Barreiro'},
+    {id:'t2jOdfkf1n0',p:'youtube',o:'vertical',  tag:'Ação de Campanha',   title:'Betim Vs Cruzeiro'},
+    {id:'hX0tfTg9-Vw',p:'youtube',o:'vertical',  tag:'Backstage + Case de Sucesso',       title:'Biologistica · Meet Tecnologia'},
+    {id:'9jIKnhQFhbg',p:'youtube',o:'vertical',  tag:'Apresentação de Benefícios',   title:'Fibraxx'},
+    {id:'cPl8z5m_nwY',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Cineart · Meet Tecnologia'},
+    {id:'BRhNBATj9Z0',p:'youtube',o:'vertical',  tag:'Conteúdo Institucional',   title:'Palestra no Colégio Santo Agostinho · Meet Tecnologia'},
+    {id:'SIpWQ_e89oo',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Dia dos Namorados'},
+    {id:'P8hNnOzTfTo',p:'youtube',o:'horizontal', tag:'Apresentação de Serviços', title:'UNE Internet'},
+    {id:'1196950750', p:'vimeo',   o:'vertical',  tag:'Conteúdo Institucional',   title:'Endomarketing Dia das Mulheres'},
+    {id:'1pbQqkS5EyU',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Disney + · Confiber'},
+    {id:'AVlMyYiXCCk',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Grupo Avante · Meet Tecnologia'},
+    {id:'EzVojjz2TwU',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Brumanus no Carnaval'},
+    {id:'CgfEWgE_8Aw',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Biologistica · Meet Tecnologia'},
+    {id:'gdJzWobbouw',p:'youtube',o:'vertical',  tag:'Teaser',   title:'Brumanus no Carnaval'},
+    {id:'4uQWPJ84uNk',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Brumanus no Sabor das Brumas'},
+    {id:'gjDVDluYpII',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Chopp APA Brumanus'},
+    {id:'PodfSqi6ru8',p:'youtube',o:'vertical',  tag:'Conteúdo Institucional',   title:'Suporte Técnico'},
+    {id:'26-R6P5IGpA',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Disney + · Confiber'},
+    {id:'4Hn9ngjpB6w',p:'youtube',o:'vertical',  tag:'Anúncio de Promoção',   title:'Session Ipa no preço da Pilsen'},
+    {id:'XbhVd3a0sEI',p:'youtube',o:'vertical',  tag:'Conteúdo',   title:'Área de Cobertura'},
+    {id:'0qOjey-rtsI',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Link Dedicado'},
+    {id:'7GOJkl2N4kI',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Premiere · Confiber'},
+    {id:'Q-Gt_kSUTEE',p:'youtube',o:'vertical',  tag:'Anúncio de Patrocínio',   title:'Betim Futebol · Meet Tecnologia'},
+    {id:'3lea5v3Jhmg',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Black Friday'},
+    {id:'HU5pbfJ5aJk',p:'youtube',o:'vertical',  tag:'Backstage + Case de Sucesso',   title:'Grupo Avante · Meet Tecnologia'},
+    {id:'18b-G4JqoV0',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'HBO Max · Confiber'},
+    {id:'j1H5zRoC-qk',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Disaster Recovery'},
+    {id:'nXqTs0U-fPU',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Streamings Confiber'},
+    {id:'JzY1JbbS7x4',p:'youtube',o:'vertical',  tag:'Conteúdo Educativo',   title:'Sua Empresa usa Nuvem?'},
+    {id:'CO2o8s_k3D4',p:'youtube',o:'vertical',  tag:'Anúncio de Parceria',   title:'Confiber · Restaurante Nosso Quintal'},
+    {id:'G4q5jUkg8VE',p:'youtube',o:'vertical',  tag:'Conteúdo Educativo',   title:'Qual Tipo de Cloud Usar?'},
+    {id:'y368nZZESHs',p:'youtube',o:'vertical',  tag:'Anúncio de Parceria',   title:'Confiber · Panificadora Palmeiras'},
+    {id:'4J12L2Xlvh8',p:'youtube',o:'vertical',  tag:'Conteúdo Educativo',   title:'O que significa Cloud?'},
+    {id:'MI6pCyYpMlc',p:'youtube',o:'vertical',  tag:'Anúncio de Promoção',   title:'Confiber · Cacau Show'},
+    {id:'utxuE5nihsA',p:'youtube',o:'vertical',  tag:'Conteúdo Educativo',   title:'Segurança Digital'},
+    {id:'QhdlzY4eoos',p:'youtube',o:'vertical',  tag:'Anúncio em Motion',   title:'Copa do Mundo'},
+    {id:'ELgs8RaBxm8',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Casa Inteligente'},
+    {id:'C3Atq_Dytb0',p:'youtube',o:'vertical',  tag:'Anúncio de Promoção',   title:'Mês das Mães'},
+    {id:'EgfQkzmAc5M',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Segurança Residencial'},
+    {id:'D0D6BRfgWcI',p:'youtube',o:'vertical',  tag:'Conteúdo Educativo',   title:'Mamãe Gorila Vs Parentalidade'},
+    {id:'9eZazmXiRJo',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Automação Residencial'},
+    {id:'zBBKTTKwJBQ',p:'youtube',o:'vertical',  tag:'Anúncio de Parceria',   title:'Fibraxx· Big Stars Circus'},
+    {id:'KXf_GURp9lE',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Câmera Veicular'},
+    {id:'Ncg0eyN_OcM',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'Nath Sthael'},
+    {id:'0xETMgu7rqQ',p:'youtube',o:'vertical',  tag:'Apresentação de Serviços',   title:'Rastreamento de Veículo'},
+    {id:'3jOBzTjl9Lc',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'Maikin'},
+    {id:'-h53nPnf3JQ',p:'youtube',o:'vertical',  tag:'Apresentação de Serviços',   title:'Acesso Assistido'},
+    {id:'4F6CzKbNvZc',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'Euocêeozé'},
+    {id:'A9WNZacvW50',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'Grupo Guararás'},
+    {id:'Qun6ERFAS4I',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'UNUN2'},
+    {id:'2xP77y-P4A8',p:'youtube',o:'vertical',  tag:'Convite Festival',   title:'Encerramento com 14 Bis'},
+    {id:'zpbKSZBjGB8',p:'youtube',o:'vertical',  tag:'Campanha',   title:'Conselho da Massa'},
+    {id:'eHGZho9cy_w',p:'youtube',o:'vertical',  tag:'Anúncio',   title:'Black Friday'},
+    {id:'1195816891', p:'vimeo',   o:'vertical',  tag:'Registro do Festival',   title:'Mangalarga Marchador'},
+    {id:'1196948372', p:'vimeo',   o:'vertical',  tag:'Conteúdo Institucional',   title:'Cuidado no Período de Chuvas'}
+  ];
+
+  function getVideos() { return allVideos; }
+
+  let currentSlide = 0;
+  let activeType = 'todos';
+  let carouselTimer = null;
+  let currentVideos = [];
+  let isAnimating = false;
+  let slideGroups = [];
+
+  const TYPE_LABELS = {
+    curto: 'Curto / Reels', cases: 'Case de Sucesso',
+    institucional: 'Institucional', backstage: 'Backstage'
+  };
+
+  /*
+   * buildSlideGroups: divide vídeos em grupos (slides) de uma linha só.
+   * Grid de 5 colunas (horizontal = span 2, vertical = span 1):
+   *   - 1H + 3V  = 2+1+1+1 = 5 cols  → grid cheio, sem sobra
+   *   - 2H + 1V  = 2+2+1   = 5 cols  → grid cheio, sem sobra
+   *   - 4V       = flex centralizado, largura 1/5 por card
+   *   - Sobras   = flex centralizado
+   */
+  function buildSlideGroups(videos) {
+    const groups = [];
+    const verts  = videos.filter(v => v.o === 'vertical');
+    const horizs = videos.filter(v => v.o === 'horizontal');
+    let vi = 0, hi = 0;
+
+    while (vi < verts.length || hi < horizs.length) {
+      const rv = verts.length  - vi;
+      const rh = horizs.length - hi;
+
+      if (rh > 0 && rv >= 3) {
+        // 1 horizontal + 3 verticais = 5 colunas — grid cheio
+        groups.push({ items: [horizs[hi++], verts[vi++], verts[vi++], verts[vi++]], flex: false });
+      } else if (rh >= 2 && rv >= 1) {
+        // 2 horizontais + 1 vertical = 5 colunas — grid cheio
+        groups.push({ items: [horizs[hi++], horizs[hi++], verts[vi++]], flex: false });
+      } else if (rv >= 4 && rh === 0) {
+        // 4 verticais — flex centralizado, cards com largura 1/5 (igual ao grid)
+        groups.push({ items: [verts[vi++], verts[vi++], verts[vi++], verts[vi++]], flex: true });
+      } else {
+        // sobras — flex centralizado
+        const leftover = [];
+        while (hi < horizs.length) leftover.push(horizs[hi++]);
+        while (vi < verts.length)  leftover.push(verts[vi++]);
+        if (leftover.length) groups.push({ items: leftover, flex: true });
+      }
+    }
+    return groups;
+  }
+
+  function buildThumb(v) {
+    const isVimeo = v.p === 'vimeo';
+    const isVert = v.o === 'vertical';
+    const thumbUrl = isVimeo ? '' : `https://img.youtube.com/vi/${v.id}/maxresdefault.jpg`;
+    const typeLabel = v.tag || TYPE_LABELS[v.type] || '';
+
+    const imgContent = isVimeo
+      ? `<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 57.34 67.13" style="width:38%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg></div>`
+      : `<img src="${thumbUrl}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy">`;
+
+    return `<div class="portfolio-item${isVert ? '' : ' item-horizontal'}" ${isVimeo?`data-vimeo-id="${v.id}"`:''}  onclick="openModal('${v.id}','${v.o}','${v.p}')" style="cursor:pointer;">
+      <div class="portfolio-thumb" style="aspect-ratio:${isVert?'9/16':'16/9'}; position:relative; background:var(--gray-mid);">
+        <div class="portfolio-thumb-bg">${imgContent}</div>
+        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="portfolio-meta">
+        <div class="portfolio-tags">
+          <span class="tag tag-type">${typeLabel}</span>
+        </div>
+        <p class="portfolio-title">${v.title || ''}</p>
+      </div>
+    </div>`;
+  }
+
+  function isMobile() { return window.innerWidth <= 900; }
+
+  function renderCarousel() {
+    currentVideos = getVideos();
+
+    // No mobile: 1 vídeo por slide
+    if (isMobile()) {
+      slideGroups = currentVideos.map(v => ({ items: [v], flex: true }));
+    } else {
+      slideGroups = buildSlideGroups(currentVideos);
+    }
+
+    const totalSlides = slideGroups.length;
+    if(currentSlide >= totalSlides) currentSlide = 0;
+
+    const slidesEl = document.getElementById('portfolioSlides');
+
+    let html = `<div class="carousel-track" id="carouselTrack" style="transition:none;transform:translateX(-${currentSlide * 100}%);">`;
+    slideGroups.forEach(group => {
+      const cls = group.flex ? 'carousel-slide carousel-slide--flex' : 'carousel-slide';
+      html += `<div class="${cls}">`;
+      group.items.forEach(v => { html += buildThumb(v); });
+      html += `</div>`;
+    });
+    html += `</div>`;
+    slidesEl.innerHTML = html;
+
+    requestAnimationFrame(() => {
+      const track = document.getElementById('carouselTrack');
+      if(track) track.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    });
+
+    updateDots(totalSlides);
+    loadVimeoThumbsForSlide();
+    // Não chama resetTimer() aqui; o timer é gerenciado pelo IntersectionObserver
+  }
+
+  // Re-renderizar só na mudança real de orientação (portrait <-> landscape).
+  // NUNCA usar resize puro no mobile: a barra do browser some/aparece durante scroll
+  // e dispara resize mesmo sem mudança de largura real, resetando o carrossel.
+  let resizeTimer;
+  let lastOrientation = screen.orientation ? screen.orientation.angle : window.orientation;
+  function handleOrientationChange() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const newOrientation = screen.orientation ? screen.orientation.angle : window.orientation;
+      if (newOrientation === lastOrientation) return;
+      lastOrientation = newOrientation;
+      currentSlide = 0;
+      renderCarousel();
+    }, 300);
+  }
+  if (screen.orientation) {
+    screen.orientation.addEventListener('change', handleOrientationChange);
+  } else {
+    window.addEventListener('orientationchange', handleOrientationChange);
+  }
+  // No desktop, resize normal (só aciona se largura mudar de fato)
+  let lastDesktopWidth = window.innerWidth;
+  window.addEventListener('resize', () => {
+    if ('ontouchstart' in window) return; // mobile: ignora totalmente
+    const w = window.innerWidth;
+    if (w === lastDesktopWidth) return;
+    lastDesktopWidth = w;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { currentSlide = 0; renderCarousel(); }, 200);
+  });
+
+  function updateDots(totalSlides) {
+    const dotsEl = document.getElementById('carouselDots');
+    let dots = '';
+    for(let s=0; s<totalSlides; s++){
+      dots += `<button onclick="goToSlide(${s})" aria-label="Slide ${s+1}" style="width:${s===currentSlide?'28px':'10px'};height:10px;border-radius:5px;border:none;background:${s===currentSlide?'var(--yellow)':'rgba(255,182,0,0.25)'};cursor:pointer;transition:all 0.3s;padding:0;"></button>`;
+    }
+    dotsEl.innerHTML = dots;
+  }
+
+  function slideTo(index) {
+    if(isAnimating) return;
+    const totalSlides = slideGroups.length;
+    currentSlide = (index + totalSlides) % totalSlides;
+    const track = document.getElementById('carouselTrack');
+    if(track) {
+      isAnimating = true;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      setTimeout(() => { isAnimating = false; }, 470);
+    }
+    updateDots(totalSlides);
+    loadVimeoThumbsForSlide();
+  }
+
+  function loadVimeoThumbsForSlide() {
+    const track = document.getElementById('carouselTrack');
+    if(!track) return;
+    const slides = track.querySelectorAll('.carousel-slide');
+    const visibleSlide = slides[currentSlide];
+    if(!visibleSlide) return;
+    visibleSlide.querySelectorAll('[data-vimeo-id]').forEach(function(el){
+      const vid = el.getAttribute('data-vimeo-id');
+      if(el.getAttribute('data-loaded')) return;
+      el.setAttribute('data-loaded','1');
+      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/'+vid+'&width=400')
+        .then(r=>r.json()).then(data=>{
+          const bg = el.querySelector('.portfolio-thumb-bg');
+          if(bg){bg.innerHTML=`<img src="${data.thumbnail_url}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">`;}
+        }).catch(()=>{});
+    });
+  }
+
+  function goToSlide(n) {
+    slideTo(n);
+    resetTimer();
+  }
+
+  function carouselNav(dir) {
+    const totalSlides = slideGroups.length;
+    slideTo((currentSlide + dir + totalSlides) % totalSlides);
+    resetTimer();
+  }
+
+  let carouselVisible = false;
+
+  function resetTimer() {
+    if(carouselTimer) clearInterval(carouselTimer);
+    if(carouselVisible) {
+      carouselTimer = setInterval(()=>{ carouselNav(1); }, 3000);
+    }
+  }
+
+  // Pause on hover + IntersectionObserver para auto-play ao entrar na tela
+  document.addEventListener('DOMContentLoaded', function(){
+    const wrap = document.getElementById('portfolioCarouselWrap');
+    if(wrap){
+      // Hover não pausa mais o carrossel — gira sempre a cada 3s
+
+      // Inicia o carrossel automaticamente quando ele aparece na tela
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            if(!carouselVisible) {
+              carouselVisible = true;
+              carouselNav(1); // avança o primeiro slide imediatamente
+              resetTimer();
+            }
+          } else {
+            carouselVisible = false;
+            if(carouselTimer) clearInterval(carouselTimer);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(wrap);
+    }
+
+    // Initial render (timer só inicia via IntersectionObserver)
+    renderCarousel();
+
+    // Load Vimeo thumbnails for reel banner, then clone track for seamless loop
+    const vimeoReqs = [
+      {id:'1194588209', imgId:'vimeo-img-1194588209', placeholderId:'vimeo-placeholder-1194588209'},
+      {id:'1195816891', imgId:'vimeo-img-1195816891', placeholderId:'vimeo-placeholder-1195816891'}
+    ];
+    let vimeoLoaded = 0;
+    function initScrollLoop() {
+      const track = document.getElementById('scrollTrack');
+      if (!track) return;
+      // Remove any previously cloned set
+      track.querySelectorAll('.scroll-clone').forEach(el => el.remove());
+      // Clone all original items and append
+      const originals = Array.from(track.children);
+      originals.forEach(function(item) {
+        const clone = item.cloneNode(true);
+        // Remove IDs from clone to avoid duplicates
+        clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+        clone.classList.add('scroll-clone');
+        track.appendChild(clone);
+      });
+      // Pause and restart animation to sync from 0
+      track.style.animation = 'none';
+      track.offsetHeight; // force reflow
+      track.style.animation = '';
+    }
+    function onVimeoLoaded() {
+      vimeoLoaded++;
+      if (vimeoLoaded >= vimeoReqs.length) initScrollLoop();
+    }
+    vimeoReqs.forEach(function(item) {
+      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/'+item.id+'&width=400')
+        .then(r=>r.json()).then(function(data) {
+          var img = document.getElementById(item.imgId);
+          var ph  = document.getElementById(item.placeholderId);
+          if (img) { img.src = data.thumbnail_url; img.style.display = ''; }
+          if (ph)  { ph.style.display = 'none'; }
+          onVimeoLoaded();
+        }).catch(function() { onVimeoLoaded(); });
+    });
+    // Also init loop for non-Vimeo case (if Vimeo fails or isn't needed)
+    initScrollLoop();
+  });
+
+  // Modal
+  function openModal(videoId, orientation, platform) {
+    const modal = document.getElementById('videoModal');
+    const modalBox = document.getElementById('modalBox');
+    const modalVideo = document.getElementById('modalVideo');
+    const iframe = document.getElementById('modalIframe');
+
+    if (platform === 'vimeo') {
+      iframe.src = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+    } else {
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+
+    modalVideo.className = 'modal-video ' + (orientation === 'vertical' ? 'h9x16' : 'h16x9');
+    modalBox.className = 'modal-box' + (orientation === 'vertical' ? ' vertical-modal' : '');
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('videoModal');
+    modal.classList.remove('active');
+    document.getElementById('modalIframe').src = '';
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOnOverlay(e) {
+    if (e.target === document.getElementById('videoModal')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
 </script>
 </body>
 </html>
