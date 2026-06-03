@@ -7,7 +7,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Veic Vídeos" />
 <meta property="og:title" content="Veic Vídeos — Produtora de Vídeos Estratégicos | veicvideos.com" />
-<meta property="og:description" content="Produzimos vídeos estratégicos para a construção do Ecossistema de Comunicação integrada e efetiva da organização, criando experiências mais consistentes para clientes e colaboradores." />
+<meta property="og:description" content="Produzimos vídeos estratégicos para a construção do Ecossistema de Comunicação integrada e efetiva de empresas e eventos, criando experiências mais consistentes para clientes, colaboradores e toda a audiência." />
 <meta property="og:image" content="https://veicvideos.com/og-image.png" />
 <meta property="og:image:width" content="1000" />
 <meta property="og:image:height" content="1000" />
@@ -1192,6 +1192,7 @@
     padding: 80px 0;
     background: var(--t2-black);
     overflow: hidden;
+    border-top: 1px solid rgba(255,182,0,0.12);
   }
   .t2-steps {
     display: grid;
@@ -1323,15 +1324,30 @@
     .t2-processo { padding: 48px 0; }
     .t2-steps, .t2-steps-5 {
       grid-template-columns: 1fr !important;
+      position: relative;
     }
     .t2-steps::before { display: none; }
+    /* Linha vertical de progressão entre etapas no mobile */
+    .t2-steps::after {
+      content: '';
+      position: absolute;
+      left: 22px; /* centro do número 44px */
+      top: 44px;
+      bottom: 44px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--yellow), rgba(255,182,0,0.1));
+      pointer-events: none;
+      z-index: 0;
+    }
     .t2-step {
       display: flex;
       align-items: flex-start;
       gap: 16px;
       text-align: left;
       padding: 14px 0;
-      border-bottom: 1px solid rgba(255,182,0,.1);
+      border-bottom: none;
+      position: relative;
+      z-index: 1;
     }
     .t2-step:last-child { border-bottom: none; }
     .t2-step-content { display: block; flex: 1; padding-top: 10px; }
@@ -2289,7 +2305,7 @@
     font-weight: 700;
   }
 
-  /* ── RESPONSIVE ── */
+  /* ── RESPONSIVE DESKTOP ── */
   @media (max-width: 1100px) {
     .eco-stages { grid-template-columns: repeat(3, 1fr); }
     .eco-stage:nth-child(3) { border-right: none; }
@@ -2305,16 +2321,210 @@
     .eco-section { padding: 4rem 1.5rem; }
     .eco-dimensions { grid-template-columns: 1fr; }
     .eco-dim:first-child { border-right: none; border-bottom: 1px solid rgba(255,182,0,0.12); }
-    .eco-stages { grid-template-columns: repeat(2, 1fr); }
-    .eco-stage:nth-child(2) { border-right: none; }
-    .eco-stage:nth-child(3) { border-right: 1px solid rgba(255,182,0,0.1); border-top: 1px solid rgba(255,182,0,0.1); }
-    .eco-stage:nth-child(4) { border-right: none; }
     .eco-detail-inner { grid-template-columns: 1fr; gap: 1.25rem; }
   }
 
-  @media (max-width: 480px) {
-    .eco-stages { grid-template-columns: 1fr 1fr; }
-    .eco-stage { padding: 1rem 0.75rem; }
+  /* ── MOBILE JOURNEY CAROUSEL ── */
+  /* Oculta a grade desktop no mobile, mostra o carrossel */
+  @media (max-width: 767px) {
+    .eco-stages { display: none !important; }
+    .eco-mob-carousel-wrap { display: block; }
+  }
+  @media (min-width: 768px) {
+    .eco-mob-carousel-wrap { display: none !important; }
+  }
+
+  /* Wrapper do carrossel mobile */
+  .eco-mob-carousel-wrap {
+    position: relative;
+    margin-bottom: 0;
+    /* fade nas bordas para indicar continuidade */
+    --fade-w: 56px;
+  }
+
+  /* Trilha de fade lateral */
+  .eco-mob-carousel-wrap::before,
+  .eco-mob-carousel-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: var(--fade-w);
+    pointer-events: none;
+    z-index: 3;
+  }
+  .eco-mob-carousel-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--gray-light) 0%, transparent 100%);
+  }
+  .eco-mob-carousel-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--gray-light) 0%, transparent 100%);
+  }
+
+  /* Viewport com scroll snap */
+  .eco-mob-viewport {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 1.25rem 0 1.5rem;
+    /* padding lateral para que o card central fique visível com os adjacentes */
+    padding-left: calc(50% - 82px);
+    padding-right: calc(50% - 82px);
+  }
+  .eco-mob-viewport::-webkit-scrollbar { display: none; }
+
+  /* Trilha interna */
+  .eco-mob-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    align-items: center;
+  }
+
+  /* Card individual de etapa */
+  .eco-mob-card {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    width: 152px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,182,0,0.12);
+    border-radius: 12px;
+    padding: 1.1rem 0.85rem 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition:
+      background 0.28s cubic-bezier(0.4,0,0.2,1),
+      border-color 0.28s cubic-bezier(0.4,0,0.2,1),
+      transform 0.28s cubic-bezier(0.4,0,0.2,1),
+      box-shadow 0.28s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  /* Estado inativo: ligeiramente menor */
+  .eco-mob-card:not(.active) {
+    transform: scale(0.88);
+    opacity: 0.6;
+  }
+
+  /* Estado ativo: destaque total */
+  .eco-mob-card.active {
+    background: rgba(255,182,0,0.1);
+    border-color: rgba(255,182,0,0.5);
+    transform: scale(1);
+    opacity: 1;
+    box-shadow:
+      0 0 0 1px rgba(255,182,0,0.25),
+      0 8px 28px rgba(0,0,0,0.35),
+      0 2px 8px rgba(255,182,0,0.12);
+  }
+
+  /* Barra amarela inferior no ativo */
+  .eco-mob-card.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 16px; right: 16px;
+    height: 3px;
+    background: var(--yellow);
+    border-radius: 2px 2px 0 0;
+  }
+
+  /* Número da etapa */
+  .eco-mob-num {
+    font-family: Impact, sans-serif;
+    font-size: 1.35rem;
+    color: rgba(255,182,0,0.25);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    transition: color 0.25s;
+  }
+  .eco-mob-card.active .eco-mob-num {
+    color: var(--yellow);
+  }
+
+  /* Ícone */
+  .eco-mob-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,182,0,0.06);
+    border: 1px solid rgba(255,182,0,0.12);
+    margin-bottom: 0.65rem;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .eco-mob-card.active .eco-mob-icon {
+    background: rgba(255,182,0,0.18);
+    border-color: rgba(255,182,0,0.4);
+  }
+  .eco-mob-icon svg {
+    width: 17px; height: 17px;
+    stroke: rgba(255,182,0,0.45);
+    transition: stroke 0.25s;
+  }
+  .eco-mob-card.active .eco-mob-icon svg {
+    stroke: var(--yellow);
+  }
+
+  /* Nome da etapa */
+  .eco-mob-name {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgba(254,251,243,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    transition: color 0.25s;
+  }
+  .eco-mob-card.active .eco-mob-name {
+    color: var(--cream);
+  }
+
+  /* Dots de progresso */
+  .eco-mob-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.1rem;
+    margin-bottom: 1.75rem;
+  }
+  .eco-mob-dot {
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255,182,0,0.2);
+    transition: width 0.3s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+    width: 6px;
+  }
+  .eco-mob-dot.active {
+    width: 20px;
+    background: var(--yellow);
+  }
+
+  /* Painel de detalhe mobile — sem alteração visual, só ajuste de layout */
+  @media (max-width: 767px) {
+    .eco-detail {
+      border-radius: 12px;
+      padding: 1.5rem 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .eco-detail-inner {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    /* Animação de entrada do conteúdo */
+    .eco-detail-inner.eco-anim-in {
+      animation: ecoDetailIn 0.32s cubic-bezier(0.4,0,0.2,1) both;
+    }
+    @keyframes ecoDetailIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
   }
 </style>
 </head>
@@ -2330,6 +2540,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#ecossistema">Ecossistema</a></li>
     <li><a href="#proposta">O que Entregamos</a></li>
     <li><a href="#processo">Processo</a></li>
     <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
@@ -2353,7 +2564,7 @@
   </svg>
   <div class="hero-content">
     <div class="hero-badge">Produtora de Vídeos Estratégicos</div>
-    <h1>Estrutura de<br>Comunicação<br><span class="accent">em Vídeo</span></h1>
+    <h1><span class="accent">Vídeos Para<br>Negócios</span><br>e Eventos</h1>
     <p class="hero-sub">Produzimos vídeos estratégicos para a construção do Ecossistema de Comunicação integrada e efetiva da organização, criando experiências mais consistentes para clientes e colaboradores.</p>
     <div class="hero-actions">
       <a href="#portfolio" class="btn-primary">
@@ -2558,7 +2769,6 @@
     <p class="section-eyebrow">Quem Somos</p>
     <h2>Posicionamento<br><span class="accent">com Propósito</span></h2>
     <p class="body-text">Produzimos vídeos estratégicos que valorizam a imagem de negócios, profissionais e projetos que precisam comunicar com <strong>autoridade e posicionamento</strong>.</p>
-    <p class="body-text">Entendemos a sua marca e produzimos vídeos que agregam valor pra sua organização.</p>
     <div class="purpose-cards">
       <div class="purpose-card" style="background:rgba(19,18,16,0.75);border-color:rgba(19,18,16,0.9);">
         <div class="purpose-card-icon" style="background:rgba(255,182,0,0.15);">
@@ -2566,7 +2776,7 @@
         </div>
         <div>
           <h4 style="color:#FEFBF3;">Ecossistema de Comunicação</h4>
-          <p style="color:rgba(254,251,243,0.65);">Produzimos vídeos para diferentes etapas da jornada do cliente e da cultura organizacional, ajudando empresas a construir uma comunicação mais clara, coerente e alinhada ao posicionamento da marca.</p>
+          <p style="color:rgba(254,251,243,0.65);">Vídeos para cada etapa da jornada do cliente e da cultura organizacional, construindo uma comunicação coerente e alinhada ao posicionamento da marca.</p>
         </div>
       </div>
       <div class="purpose-card" style="background:rgba(19,18,16,0.75);border-color:rgba(19,18,16,0.9);">
@@ -2575,7 +2785,7 @@
         </div>
         <div>
           <h4 style="color:#FEFBF3;">Estratégia antes da câmera</h4>
-          <p style="color:rgba(254,251,243,0.65);">Planejamos, roteirizamos, dirigimos, gravamos, editamos e entregamos os vídeos alinhados aos objetivos do negócio. Orientamos gestores, colaboradores e clientes durante as gravações para garantir uma comunicação clara, natural e coerente com a proposta de comunicação.</p>
+          <p style="color:rgba(254,251,243,0.65);">Cada etapa da produção é planejada e dirigida com foco nos objetivos de comunicação do negócio.</p>
         </div>
       </div>
       <div class="purpose-card" style="background:rgba(19,18,16,0.75);border-color:rgba(19,18,16,0.9);">
@@ -2584,7 +2794,7 @@
         </div>
         <div>
           <h4 style="color:#FEFBF3;">Produção com direção</h4>
-          <p style="color:rgba(254,251,243,0.65);">Orientamos pessoas e equipes durante as gravações para transformar conhecimento, experiência e cultura organizacional em vídeos claros, profissionais e alinhados ao posicionamento da marca.</p>
+          <p style="color:rgba(254,251,243,0.65);">Dirigimos pessoas e equipes durante as gravações para transformar processos operacionais, experiência e cultura organizacional em vídeos claros alinhados ao posicionamento da marca.</p>
         </div>
       </div>
     </div>
@@ -2611,34 +2821,156 @@
 </div>
 
 <!-- ECOSSISTEMA DE COMUNICAÇÃO DO NEGÓCIO -->
+
+<!-- PROJETOS AUDIOVISUAIS -->
+<section class="t2-projetos" id="projetos">
+  <div class="t2-container">
+    <div class="t2-section-header" style="margin-bottom:48px;">
+      <span class="t2-tag" style="background:transparent;color:#FFB600;border:1px solid #FFB600;">Forma de trabalho</span>
+    </div>
+    <div class="t2-projetos-grid">
+      <div class="t2-projetos-left">
+        <h2 class="t2-projetos-title">Desenvolvemos projetos<br/><span class="t2-gold">Audiovisuais</span></h2>
+        <p class="t2-projetos-text">Cada organização tem um momento e desafios diferentes. Por isso, mapeamos as necessidades de comunicação do negócio ou evento e desenvolvemos um projeto audiovisual personalizado.</p>
+        <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener noreferrer" class="t2-btn t2-btn--gold" style="margin-top:32px;">Solicitar Orçamento via WhatsApp</a>
+      </div>
+      <div class="t2-projetos-right">
+        <div class="t2-projetos-tipos-label">Tipos de Projeto</div>
+        <div class="t2-projetos-tags">
+          <span class="t2-proj-tag">Comunicação e Cultura Organizacional</span>
+          <span class="t2-proj-tag">Presença Digital</span>
+          <span class="t2-proj-tag">Marketing e Posicionamento</span>
+          <span class="t2-proj-tag">Vendas e Conversão</span>
+          <span class="t2-proj-tag">Experiência do Cliente</span>
+          <span class="t2-proj-tag">Eventos, Feiras e Ações Corporativas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <div class="section-header">
+    <div>
+      <p class="section-eyebrow">Trabalhos</p>
+      <h2>Portfólio</h2>
+    </div>
+    <a href="https://www.instagram.com/veicvideos" class="btn-secondary" style="white-space:nowrap">Ver Instagram →</a>
+  </div>
+
+  <!-- CAROUSEL WRAPPER -->
+  <div style="position:relative;margin-top:2.5rem;padding:0 7.5%;" id="portfolioCarouselWrap">
+    <button id="carouselPrev" onclick="carouselNav(-1)" aria-label="Anterior" style="position:absolute;left:calc(-24px);top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:var(--yellow);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,182,0,0.35);transition:background 0.2s;" onmouseover="this.style.background='#CC9200'" onmouseout="this.style.background='#FFB600'">
+      <svg width="20" fill="none" stroke="#131210" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button id="carouselNext" onclick="carouselNav(1)" aria-label="Proximo" style="position:absolute;right:calc(-24px);top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:var(--yellow);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,182,0,0.35);transition:background 0.2s;" onmouseover="this.style.background='#CC9200'" onmouseout="this.style.background='#FFB600'">
+      <svg width="20" fill="none" stroke="#131210" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div id="portfolioSlides" style="overflow:hidden;border-radius:8px;"></div>
+    <div id="carouselDots" style="display:flex;justify-content:center;gap:8px;margin-top:1.5rem;flex-wrap:wrap;"></div>
+  </div>
+
+  <!-- hidden grid ref -->
+  <div class="portfolio-grid" id="portfolioGrid" style="display:none;"></div>
+</section>
+
+<!-- ECOSSISTEMA DE COMUNICAÇÃO DO NEGÓCIO -->
 <section class="eco-section" id="ecossistema">
   <div class="eco-container">
 
     <!-- HEADER -->
     <div class="eco-header">
-      <div class="eco-tag">Ecossistema de Comunicação</div>
-      <h2 class="eco-title">Comunicação de Negócio<br><span class="eco-gold">em Vídeo</span></h2>
+      <div class="eco-tag">Mapa de Interação</div>
+      <h2 class="eco-title">Ecossistema de Comunicação<br><span class="eco-gold">em Vídeo</span></h2>
     </div>
 
-    <p class="eco-intro">A Veic Vídeos ajuda empresas a identificar oportunidades de comunicação através do vídeo em diferentes etapas da jornada do cliente e da cultura organizacional.</p>
+    <p class="eco-intro">Identificamos onde o vídeo pode gerar mais impacto na jornada do cliente e na comunicação interna da empresa.</p>
 
     <!-- DUAS DIMENSÕES -->
     <div class="eco-dimensions">
       <div class="eco-dim">
         <div class="eco-dim-label">Dimensão 1</div>
         <div class="eco-dim-title">Jornada do Cliente</div>
-        <div class="eco-dim-desc">Desde o momento em que uma pessoa descobre sua empresa até se tornar um cliente fiel — cada etapa tem necessidades de comunicação diferentes. Vídeos certos, no momento certo, aceleram esse caminho.</div>
+        <div class="eco-dim-desc">Do primeiro contato à fidelização cada etapa da jornada tem necessidades de comunicação diferentes. O vídeo certo, no momento certo, acelera esse caminho.</div>
       </div>
       <div class="eco-dim">
         <div class="eco-dim-label">Dimensão 2</div>
         <div class="eco-dim-title">Cultura Organizacional</div>
-        <div class="eco-dim-desc">A comunicação de um negócio não existe apenas para fora. Colaboradores alinhados, processos bem explicados e uma cultura forte também precisam de vídeo para se consolidar.</div>
+        <div class="eco-dim-desc">A comunicação interna também precisa de vídeo. Equipes alinhadas, processos bem explicados e cultura forte se constroem com consistência.</div>
       </div>
     </div>
 
     <!-- ETAPAS -->
-    <p class="eco-stages-label">Selecione uma etapa para entender que tipo de vídeo faz sentido</p>
+    <p class="eco-stages-label">Selecione uma etapa para entender os tipos de vídeo para cada uma</p>
 
+    <!-- MOBILE: CARROSSEL HORIZONTAL DE ETAPAS -->
+    <div class="eco-mob-carousel-wrap" id="ecoMobCarouselWrap">
+      <div class="eco-mob-viewport" id="ecoMobViewport">
+        <div class="eco-mob-track" id="ecoMobTrack">
+
+          <div class="eco-mob-card active" data-index="0">
+            <span class="eco-mob-num">01</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="eco-mob-name">Descoberta</div>
+          </div>
+
+          <div class="eco-mob-card" data-index="1">
+            <span class="eco-mob-num">02</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div class="eco-mob-name">Apresentação</div>
+          </div>
+
+          <div class="eco-mob-card" data-index="2">
+            <span class="eco-mob-num">03</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="eco-mob-name">Consideração</div>
+          </div>
+
+          <div class="eco-mob-card" data-index="3">
+            <span class="eco-mob-num">04</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            </div>
+            <div class="eco-mob-name">Conversão</div>
+          </div>
+
+          <div class="eco-mob-card" data-index="4">
+            <span class="eco-mob-num">05</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="eco-mob-name">Fidelização</div>
+          </div>
+
+          <div class="eco-mob-card" data-index="5">
+            <span class="eco-mob-num">06</span>
+            <div class="eco-mob-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            </div>
+            <div class="eco-mob-name">Cultura Interna</div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Dots de progresso -->
+      <div class="eco-mob-dots" id="ecoMobDots">
+        <div class="eco-mob-dot active"></div>
+        <div class="eco-mob-dot"></div>
+        <div class="eco-mob-dot"></div>
+        <div class="eco-mob-dot"></div>
+        <div class="eco-mob-dot"></div>
+        <div class="eco-mob-dot"></div>
+      </div>
+    </div>
+
+    <!-- DESKTOP: GRADE DE ETAPAS (inalterada) -->
     <div class="eco-stages" id="ecoStages">
 
       <div class="eco-stage active" onclick="ecoSelect(0)">
@@ -2706,7 +3038,7 @@
 
     <!-- FOOTER TEXT -->
     <div class="eco-footer-text">
-      <p>Nem toda empresa precisa dos mesmos vídeos. Por isso, utilizamos a <strong>jornada do cliente</strong> e a <strong>cultura organizacional</strong> para identificar quais produções fazem mais sentido para o momento atual do negócio.</p>
+      <p>Utilizamos a <strong>jornada do cliente</strong> e a <strong>cultura organizacional</strong> para identificar quais produções fazem mais sentido para o momento atual do negócio.</p>
     </div>
 
   </div>
@@ -2717,14 +3049,14 @@
     {
       stage: 'Descoberta',
       goal: 'Fazer sua empresa aparecer para quem ainda não te conhece.',
-      desc: 'Nessa etapa, o potencial cliente nem sabe que sua empresa existe. O vídeo precisa chamar atenção, despertar curiosidade e gerar o primeiro interesse.',
+      desc: 'Nessa etapa, o potencial cliente não sabe que sua empresa existe. O vídeo precisa chamar atenção, despertar curiosidade e gerar o primeiro interesse.',
       videos: ['Anúncios em vídeo','Conteúdo para Instagram','Reels e Shorts','Conteúdo para YouTube','Vídeos educativos','Teasers de impacto'],
-      where: 'Meta Ads · Google Ads · Instagram · YouTube · LinkedIn Ads'
+      where: 'Meta Ads · Google Ads · Instagram · YouTube · LinkedIn'
     },
     {
       stage: 'Apresentação',
       goal: 'Explicar quem é a empresa, o que faz e quais são seus diferenciais.',
-      desc: 'A pessoa já te descobriu e quer entender mais. É hora de apresentar sua empresa com clareza, mostrar seus produtos e serviços, e comunicar posicionamento.',
+      desc: 'Quando a pessoa descobri o negócio ela quer entender mais. É hora de apresentar sua empresa com clareza, mostrar seus produtos e serviços, e comunicar posicionamento.',
       videos: ['Vídeo institucional','Apresentação da empresa','Vídeo de produtos e serviços','Demonstrações','Missão, visão e valores','Bastidores e cultura'],
       where: 'Site · Landing Page · WhatsApp · Apresentações comerciais · YouTube'
     },
@@ -2739,12 +3071,12 @@
       stage: 'Conversão',
       goal: 'Facilitar a decisão de compra e acelerar o fechamento.',
       desc: 'O lead está prestes a decidir. Vídeos comerciais objetivos, propostas em vídeo e VSLs ajudam a eliminar a última resistência e fechar negócios.',
-      videos: ['VSL (Video Sales Letter)','Vídeos comerciais','Convite para demonstração','Proposta em vídeo','Ofertas especiais','Recuperação de leads'],
-      where: 'WhatsApp · E-mail · Landing Page · CRM · Apresentações comerciais'
+      videos: ['VSL (Video Sales Letter)','Vídeos comerciais','Convite para demonstração','Ofertas especiais','Recuperação de leads'],
+      where: 'WhatsApp · E-mail · Landing Page · Apresentações comerciais'
     },
     {
       stage: 'Fidelização',
-      goal: 'Encantar o cliente após a compra e gerar recompra e indicações.',
+      goal: 'Encantar o cliente após a compra, gerar recompra e indicações.',
       desc: 'A relação com o cliente não termina na venda. Vídeos de boas-vindas, tutoriais e conteúdos de upsell aumentam a satisfação e o valor gerado por cada cliente.',
       videos: ['Boas-vindas ao cliente','Onboarding','Tutoriais e FAQ em vídeo','Orientações de uso','Upsell e Cross-sell','Indique e ganhe'],
       where: 'WhatsApp · E-mail · Área de membros · App · Site'
@@ -2754,7 +3086,7 @@
       goal: 'Alinhar equipes, fortalecer a cultura e melhorar a comunicação interna.',
       desc: 'Colaboradores engajados e bem informados entregam mais. Vídeos internos economizam tempo, padronizam processos e transmitem cultura de forma escalável.',
       videos: ['Integração de colaboradores','Treinamentos em vídeo','Comunicados internos','Missão, visão e valores','Procedimentos operacionais','Endomarketing'],
-      where: 'Intranet · LMS · WhatsApp corporativo · Reuniões internas · TV corporativa'
+      where: 'Intranet · WhatsApp corporativo · Reuniões internas · TV corporativa'
     }
   ];
 
@@ -2778,7 +3110,7 @@
       </div>
       <div>
         <div class="eco-detail-block-label">Onde usar</div>
-        <div class="eco-detail-block-desc" style="color:rgba(254,251,243,0.6);line-height:1.9;">${d.where.split(' · ').join('<br>')}</div>
+        <div class="eco-detail-videos">${d.where.split(' · ').map(w => `<span class="eco-video-pill">${w}</span>`).join('')}</div>
       </div>
     `;
   }
@@ -2787,12 +3119,127 @@
   document.addEventListener('DOMContentLoaded', function() { ecoSelect(0); });
 </script>
 
+<script>
+/* ── MOBILE JOURNEY CAROUSEL ── */
+(function() {
+  var CARD_W = 152;
+  var GAP = 12;
+  var activeIndex = 0;
+  var isScrolling = false;
+  var scrollTimeout = null;
+
+  function init() {
+    var viewport = document.getElementById('ecoMobViewport');
+    var cards    = document.querySelectorAll('.eco-mob-card');
+    if (!viewport || !cards.length) return;
+
+    // Tap/click em cada card
+    cards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        var idx = parseInt(card.getAttribute('data-index'), 10);
+        selectCard(idx, true);
+      });
+    });
+
+    // Seleciona em tempo real: qualquer card que centralizar durante a rolagem já ativa
+    var rafId = null;
+    function checkCenter() {
+      var center = viewport.scrollLeft + viewport.clientWidth / 2;
+      var cards2 = document.querySelectorAll('.eco-mob-card');
+      var bestIdx = 0;
+      var bestDist = Infinity;
+      cards2.forEach(function(card) {
+        var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        var dist = Math.abs(cardCenter - center);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestIdx = parseInt(card.getAttribute('data-index'), 10);
+        }
+      });
+      if (bestIdx !== activeIndex) {
+        activeIndex = bestIdx;
+        updateActiveState(bestIdx, false);
+        ecoSelect(bestIdx);
+        triggerDetailAnim();
+      }
+    }
+
+    viewport.addEventListener('scroll', function() {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(checkCenter);
+    }, { passive: true });
+
+    // Inicializa: centraliza no card 0
+    scrollToCard(0, false);
+    updateDots(0);
+  }
+
+  function selectCard(idx, animate) {
+    if (idx === activeIndex) return;
+    activeIndex = idx;
+    scrollToCard(idx, animate !== false);
+    updateActiveState(idx, true);
+    ecoSelect(idx);
+    triggerDetailAnim();
+  }
+
+  function scrollToCard(idx, smooth) {
+    var viewport = document.getElementById('ecoMobViewport');
+    var cards = document.querySelectorAll('.eco-mob-card');
+    if (!viewport || !cards[idx]) return;
+    var card = cards[idx];
+    var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    var targetScroll = cardCenter - viewport.clientWidth / 2;
+    viewport.scrollTo({ left: targetScroll, behavior: smooth ? 'smooth' : 'auto' });
+  }
+
+  function updateActiveState(idx, animateCards) {
+    var cards = document.querySelectorAll('.eco-mob-card');
+    cards.forEach(function(card, i) {
+      var isActive = i === idx;
+      if (isActive) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+    updateDots(idx);
+  }
+
+  function updateDots(idx) {
+    var dots = document.querySelectorAll('.eco-mob-dot');
+    dots.forEach(function(dot, i) {
+      if (i === idx) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function triggerDetailAnim() {
+    var inner = document.getElementById('ecoDetailInner');
+    if (!inner) return;
+    inner.classList.remove('eco-anim-in');
+    // force reflow
+    void inner.offsetWidth;
+    inner.classList.add('eco-anim-in');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 <!-- O QUE ENTREGAMOS — DIAGNÓSTICO DE NECESSIDADE -->
 <section class="diag-section" id="proposta">
 
   <div class="diag-header">
-    <div class="diag-tag">O que Entregamos</div>
-    <h2 class="diag-title">Qual é o <span class="diag-gold">momento</span><br>da sua empresa?</h2>
+    <div class="diag-tag">Onde Evoluir</div>
+    <h2 class="diag-title">Qual é o <span class="diag-gold">momento</span><br>do meu projeto?</h2>
     <p class="diag-sub">Selecione o desafio que mais se parece com o da sua empresa e descubra quais vídeos fazem mais sentido agora.</p>
   </div>
 
@@ -2805,13 +3252,13 @@
 
       <div class="diag-need-item active" onclick="diagSelect(0)">
         <span class="diag-need-dot"></span>
-        <span class="diag-need-text">Precisamos aparecer para novos clientes e gerar demanda</span>
+        <span class="diag-need-text">Precisamos aparecer para nossa audiência e gerar demanda</span>
         <span class="diag-need-arrow">→</span>
       </div>
 
       <div class="diag-need-item" onclick="diagSelect(1)">
         <span class="diag-need-dot"></span>
-        <span class="diag-need-text">Nossa empresa ainda não tem presença digital consolidada</span>
+        <span class="diag-need-text">Nossa empresa/ projeto não tem presença digital consolidada</span>
         <span class="diag-need-arrow">→</span>
       </div>
 
@@ -2829,7 +3276,7 @@
 
       <div class="diag-need-item" onclick="diagSelect(4)">
         <span class="diag-need-dot"></span>
-        <span class="diag-need-text">Queremos melhorar a experiência e fidelizar nossos clientes</span>
+        <span class="diag-need-text">Queremos melhorar a experiência e fidelizar nossos consumidores</span>
         <span class="diag-need-arrow">→</span>
       </div>
 
@@ -2975,7 +3422,7 @@
         </div>
       </div>
 
-      <!-- SOLUTION 6: Eventos e Ações Corporativas -->
+      <!-- SOLUTION 6: Eventos, Feiras e Ações Corporativas -->
       <div class="diag-solution" id="diag-sol-6">
         <div class="diag-sol-bignum">07</div>
         <div class="diag-sol-eyebrow">Solução indicada</div>
@@ -3028,9 +3475,9 @@
       <div class="diag-mob-body">
         <div class="diag-mob-content">
           <div class="diag-mob-sol-title">Apresentação do Negócio e <em>Presença Digital</em></div>
-          <div class="diag-mob-sol-desc">Estrutura sua empresa no digital com vídeos que apresentam quem você é, o que faz e por que escolher você.</div>
+          <div class="diag-mob-sol-desc">Estrutura da sua empresa com vídeos que apresentam quem você é, o que faz e por que escolher seu negócio.</div>
           <div class="diag-mob-sol-pills">
-            <span class="diag-sol-pill">Landing Page</span><span class="diag-sol-pill">Vídeo institucional</span><span class="diag-sol-pill">Produtos e serviços</span><span class="diag-sol-pill">WhatsApp</span>
+            <span class="diag-sol-pill">Landing Page</span><span class="diag-sol-pill">Vídeo institucional</span><span class="diag-sol-pill">Apresentação do Negócio</span><span class="diag-sol-pill">Produtos e serviços</span><span class="diag-sol-pill">WhatsApp</span>
           </div>
           <div class="diag-mob-sol-ideal"><strong>Ideal para</strong> empresas que ainda dependem de indicações e PDFs para se apresentar.</div>
         </div>
@@ -3066,7 +3513,7 @@
           <div class="diag-mob-sol-title">Vendas e <em>Conversão</em></div>
           <div class="diag-mob-sol-desc">Vídeos que reduzem objeções, geram confiança e facilitam a decisão de compra no momento certo.</div>
           <div class="diag-mob-sol-pills">
-            <span class="diag-sol-pill">Cases</span><span class="diag-sol-pill">Depoimentos</span><span class="diag-sol-pill">VSL</span><span class="diag-sol-pill">Vídeos comerciais</span>
+            <span class="diag-sol-pill">Case de Sucesso</span><span class="diag-sol-pill">Depoimentos</span><span class="diag-sol-pill">VSL</span><span class="diag-sol-pill">Vídeos comerciais</span>
           </div>
           <div class="diag-mob-sol-ideal"><strong>Ideal para</strong> empresas que querem encurtar o ciclo de vendas e aumentar conversões.</div>
         </div>
@@ -3112,7 +3559,7 @@
     <div class="diag-mob-item">
       <button class="diag-mob-trigger" onclick="diagMobToggle(this)">
         <span class="diag-mob-trigger-dot"></span>
-        <span class="diag-mob-trigger-text">Realizamos eventos e queremos transformá-los em ativos de comunicação</span>
+        <span class="diag-mob-trigger-text">Produzimos e participamos de eventos e feiras, e fazemos promoções de campanha. Queremos transformá-los em ativos de comunicação</span>
         <svg class="diag-mob-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="diag-mob-body">
@@ -3132,7 +3579,7 @@
   <!-- BOTTOM CTA -->
   <div style="padding:3rem 4rem 5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;border-top:1px solid rgba(255,182,0,0.1);flex-wrap:wrap;" class="diag-bottom-cta">
     <p style="font-size:1rem;color:rgba(254,251,243,0.5);max-width:560px;line-height:1.75;">
-      Cada empresa tem um momento diferente. Por isso, começamos com um <strong style="color:rgba(254,251,243,0.85);font-weight:700;">diagnóstico personalizado</strong> para identificar quais vídeos geram mais impacto para o seu negócio agora.
+      Começamos com um <strong style="color:var(--yellow);font-weight:700;font-size:1.05rem;">diagnóstico personalizado</strong> para identificar quais vídeos geram mais impacto para o seu negócio agora.
     </p>
     <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--black);padding:1rem 1.75rem;border-radius:4px;font-weight:700;font-size:0.92rem;text-decoration:none;white-space:nowrap;transition:background 0.2s,transform 0.15s;flex-shrink:0;" onmouseover="this.style.background='#CC9200';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#FFB600';this.style.transform='translateY(0)'">
       Solicitar Diagnóstico Gratuito →
@@ -3177,73 +3624,20 @@
   });
 </script>
 
-<!-- PORTFOLIO -->
-<section class="portfolio-section" id="portfolio">
-  <div class="section-header">
-    <div>
-      <p class="section-eyebrow">Trabalhos</p>
-      <h2>Portfólio</h2>
-    </div>
-    <a href="https://www.instagram.com/veicvideos" class="btn-secondary" style="white-space:nowrap">Ver Instagram →</a>
-  </div>
-
-  <!-- CAROUSEL WRAPPER -->
-  <div style="position:relative;margin-top:2.5rem;padding:0 7.5%;" id="portfolioCarouselWrap">
-    <button id="carouselPrev" onclick="carouselNav(-1)" aria-label="Anterior" style="position:absolute;left:calc(-24px);top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:var(--yellow);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,182,0,0.35);transition:background 0.2s;" onmouseover="this.style.background='#CC9200'" onmouseout="this.style.background='#FFB600'">
-      <svg width="20" fill="none" stroke="#131210" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <button id="carouselNext" onclick="carouselNav(1)" aria-label="Proximo" style="position:absolute;right:calc(-24px);top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:var(--yellow);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,182,0,0.35);transition:background 0.2s;" onmouseover="this.style.background='#CC9200'" onmouseout="this.style.background='#FFB600'">
-      <svg width="20" fill="none" stroke="#131210" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-    <div id="portfolioSlides" style="overflow:hidden;border-radius:8px;"></div>
-    <div id="carouselDots" style="display:flex;justify-content:center;gap:8px;margin-top:1.5rem;flex-wrap:wrap;"></div>
-  </div>
-
-  <!-- hidden grid ref -->
-  <div class="portfolio-grid" id="portfolioGrid" style="display:none;"></div>
-</section>
-
-<!-- PROJETOS AUDIOVISUAIS -->
-<section class="t2-projetos" id="projetos">
-  <div class="t2-container">
-    <div class="t2-section-header" style="margin-bottom:48px;">
-      <span class="t2-tag" style="background:transparent;color:#FFB600;border:1px solid #FFB600;">Forma de trabalho</span>
-    </div>
-    <div class="t2-projetos-grid">
-      <div class="t2-projetos-left">
-        <h2 class="t2-projetos-title">Desenvolvemos projetos<br/><span class="t2-gold">Audiovisuais</span></h2>
-        <p class="t2-projetos-text">Cada empresa possui um momento diferente de maturidade, desafios de comunicação e necessidades específicas.<br/><br/>Por isso, atuamos com a metodologia Veic Vídeos, mapeando as necessidades de comunicação do negócio e identificamos quais vídeos podem gerar mais impacto na jornada do cliente, na cultura organizacional e no posicionamento da marca.<br/><br/>A partir desse diagnóstico, desenvolvemos um projeto personalizado para o momento atual da empresa.</p>
-        <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener noreferrer" class="t2-btn t2-btn--gold" style="margin-top:32px;">Solicitar Orçamento via WhatsApp</a>
-      </div>
-      <div class="t2-projetos-right">
-        <div class="t2-projetos-tipos-label">Tipos de Projeto</div>
-        <div class="t2-projetos-tags">
-          <span class="t2-proj-tag">Comunicação e Cultura Organizacional</span>
-          <span class="t2-proj-tag">Presença Digital</span>
-          <span class="t2-proj-tag">Marketing e Posicionamento</span>
-          <span class="t2-proj-tag">Vendas e Conversão</span>
-          <span class="t2-proj-tag">Experiência do Cliente</span>
-          <span class="t2-proj-tag">Eventos e Ações Corporativas</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- PROCESSO -->
 <section class="t2-processo" id="processo">
   <div class="t2-container">
     <div class="t2-section-header">
       <span class="t2-tag">Como funciona</span>
       <h2 class="t2-section-title">Desenvolvimento<br/><span class="t2-gold">do projeto</span></h2>
-      <p class="t2-section-sub">Produzimos vídeos para estruturar a comunicação do seu negócio.</p>
+      <p class="t2-section-sub">Produzimos vídeos para estruturar a comunicação do seu negócio ou evento.</p>
     </div>
     <div class="t2-steps t2-steps-5">
       <div class="t2-step">
         <div class="t2-step-num">01</div>
         <div class="t2-step-content">
           <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Diagnóstico</h3></div>
-          <p class="t2-step-text">Entendemos o momento atual do seu negócio ou projeto, seus objetivos, sua comunicação atual e os principais pontos de contato com clientes e colaboradores.</p>
+          <p class="t2-step-text">Entendemos o momento atual do seu negócio ou projeto, seus objetivos, suas prioridades, sua comunicação atual e os principais pontos de contato com clientes e colaboradores.</p>
         </div>
       </div>
       <div class="t2-step">
@@ -3264,15 +3658,15 @@
         <div class="t2-step-num">04</div>
         <div class="t2-step-content">
           <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Produção com Direção</h3></div>
-          <p class="t2-step-text">Planejamos, roteirizamos, dirigimos, gravamos, editamos e entregamos os vídeos alinhados aos objetivos do negócio. Orientamos gestores, colaboradores e clientes durante as gravações para garantir uma comunicação clara, natural e coerente com a proposta de comunicação.</p>
+          <p class="t2-step-text">Planejamos, dirigimos, gravamos, editamos e entregamos os vídeos alinhados aos objetivos do negócio. Orientamos gestores, colaboradores e clientes durante as gravações para garantir uma comunicação clara, natural e coerente com a proposta de comunicação.</p>
         </div>
       </div>
       <div class="t2-step">
         <div class="t2-step-num">05</div>
         <div class="t2-step-content">
           <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Evolução</h3></div>
-          <p class="t2-step-text">Sua empresa amplia gradualmente seu ecossistema de comunicação conforme novas demandas surgem e o nível de consciência sobre a jornada do cliente e a cultura organizacional evolui.</p>
-        </div>
+          <p class="t2-step-text">O ecossistema de comunicação cresce junto com a empresa, o nível de consciência sobre a jornada do cliente e a cultura organizacional evolui, novas demandas surgem de forma contínua.</p>
+        </div> 
       </div>
     </div>
   </div>
@@ -3295,51 +3689,68 @@
         <summary class="t2-faq-question">Quais problemas os vídeos podem ajudar a resolver no meu negócio?</summary>
         <div class="t2-faq-answer">
           <p>Os vídeos podem apoiar diferentes áreas da empresa, dependendo do momento e dos objetivos do negócio.</p>
-          <p style="margin-top:10px;">Alguns exemplos:</p>
-          <ul style="margin-top:8px;padding-left:1.2rem;line-height:2;">
+          <p style="margin-top:12px;font-weight:700;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--yellow);">Presença e Posicionamento</p>
+          <ul style="margin-top:6px;padding-left:1.2rem;line-height:2;">
             <li>Fortalecer a presença digital da empresa</li>
             <li>Ser encontrado no Google</li>
             <li>Apresentar a empresa de forma profissional</li>
+            <li>Fortalecer o posicionamento da marca</li>
+          </ul>
+          <p style="margin-top:12px;font-weight:700;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--yellow);">Comercial e Vendas</p>
+          <ul style="margin-top:6px;padding-left:1.2rem;line-height:2;">
             <li>Explicar produtos e serviços com mais clareza</li>
             <li>Facilitar o trabalho da equipe comercial</li>
             <li>Gerar mais confiança durante o processo de venda</li>
             <li>Aumentar a geração de oportunidades de negócio</li>
-            <li>Fortalecer o posicionamento da marca</li>
+          </ul>
+          <p style="margin-top:12px;font-weight:700;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--yellow);">Conteúdo e Autoridade</p>
+          <ul style="margin-top:6px;padding-left:1.2rem;line-height:2;">
             <li>Produzir conteúdo para Instagram, YouTube e LinkedIn</li>
+          </ul>
+          <p style="margin-top:12px;font-weight:700;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--yellow);">Interno e Relacionamento</p>
+          <ul style="margin-top:6px;padding-left:1.2rem;line-height:2;">
             <li>Integrar e treinar colaboradores</li>
             <li>Melhorar a experiência do cliente após a compra</li>
-            <li>Reduzir dúvidas recorrentes através de tutoriais e orientações</li>
+            <li>Reduzir dúvidas recorrentes com tutoriais</li>
             <li>Aumentar fidelização e indicações</li>
           </ul>
-          <p style="margin-top:10px;">Cada empresa possui necessidades diferentes. Por isso, buscamos entender o momento do negócio antes de definir quais vídeos terão maior impacto.</p>
+          <p style="margin-top:10px;color:rgba(254,251,243,0.5);">Cada empresa possui necessidades diferentes. Por isso, buscamos entender o momento do negócio antes de definir quais vídeos terão maior impacto.</p>
         </div>
       </details>
       <details class="t2-faq-item">
         <summary class="t2-faq-question">Quais tipos de vídeo a Veic Vídeos produz?</summary>
         <div class="t2-faq-answer">
           <p>Produzimos vídeos para diferentes etapas da jornada do cliente e da comunicação interna da empresa.</p>
-          <p style="margin-top:10px;">Entre eles:</p>
-          <ul style="margin-top:8px;padding-left:1.2rem;line-height:2;">
+          <p style="margin-top:12px;font-weight:700;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--yellow);">Comunicação Externa</p>
+          <ul style="margin-top:6px;padding-left:1.2rem;line-height:2;">
             <li>Apresentação da empresa</li>
             <li>Vídeos institucionais</li>
             <li>Apresentação de produtos e serviços</li>
-            <li>Cases de sucesso</li>
             <li>Conteúdo para Instagram, YouTube e LinkedIn</li>
+          </ul>
+          <p style="margin-top:12px;font-weight:700;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--yellow);">Comercial</p>
+          <ul style="margin-top:6px;padding-left:1.2rem;line-height:2;">
+            <li>Cases de sucesso</li>
             <li>Vídeos comerciais</li>
             <li>VSL</li>
             <li>Anúncios</li>
+          </ul>
+          <p style="margin-top:12px;font-weight:700;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--yellow);">Interno</p>
+          <ul style="margin-top:6px;padding-left:1.2rem;line-height:2;">
             <li>Treinamentos</li>
             <li>Integração de colaboradores</li>
-            <li>Tutoriais</li>
-            <li>Onboarding</li>
+            <li>Tutoriais e onboarding</li>
+          </ul>
+          <p style="margin-top:12px;font-weight:700;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--yellow);">Eventos</p>
+          <ul style="margin-top:6px;padding-left:1.2rem;line-height:2;">
             <li>Vídeos para fidelização e experiência do cliente</li>
-            <li>Eventos e ações corporativas</li>
+            <li>Eventos, Feiras e ações corporativas</li>
           </ul>
         </div>
       </details>
       <details class="t2-faq-item">
         <summary class="t2-faq-question">O que significa estruturar a comunicação através do vídeo?</summary>
-        <p class="t2-faq-answer">Significa identificar quais vídeos fazem sentido para o momento atual da empresa e para cada etapa da jornada do cliente e da cultura organizacional.<br/><br/>Nem toda empresa precisa dos mesmos vídeos. Por isso buscamos entender a realidade do negócio antes de definir quais produções terão maior impacto.</p>
+        <p class="t2-faq-answer">Significa identificar no ecossistema de comunicação da sua empresa quais vídeos fazem sentido para o momento atual da empresa e para cada etapa da jornada do cliente e da cultura organizacional.<br/><br/>Nem toda empresa precisa dos mesmos vídeos. Por isso buscamos entender a realidade do negócio antes de definir quais produções terão maior impacto.</p>
       </details>
       <details class="t2-faq-item">
         <summary class="t2-faq-question">Minha empresa precisa produzir todos esses vídeos?</summary>
@@ -3351,21 +3762,11 @@
       </details>
       <details class="t2-faq-item">
         <summary class="t2-faq-question">Minha empresa ainda não produz vídeos. Por onde começar?</summary>
-        <p class="t2-faq-answer">Na maioria dos casos, recomendamos começar pelos vídeos que ajudam a apresentar a empresa, seus produtos, serviços e diferenciais.<br/><br/>Muitas empresas ainda dependem de explicações repetitivas, catálogos, PDFs ou conversas individuais para apresentar o que fazem. Nesses casos, uma Landing Page profissional com vídeos de apresentação costuma ser um dos primeiros passos para fortalecer a presença digital e facilitar o processo comercial.<br/><br/>A partir daí, a estrutura de comunicação pode evoluir conforme as necessidades do negócio.</p>
+        <p class="t2-faq-answer">Na maioria dos casos, recomendamos começar pelos vídeos que ajudam a apresentar a empresa, seus produtos, serviços e diferenciais.<br/><br/>Muitas empresas ainda dependem de explicações repetitivas, catálogos ou PDFs para se apresentar. Nesses casos, uma Landing Page com vídeos de apresentação costuma ser o primeiro passo para fortalecer a presença digital e facilitar o processo comercial.</p>
       </details>
       <details class="t2-faq-item">
         <summary class="t2-faq-question">Como funciona o processo de trabalho?</summary>
-        <div class="t2-faq-answer">
-          <p>Nosso processo acontece em cinco etapas:</p>
-          <ul style="margin-top:8px;padding-left:1.2rem;line-height:2;">
-            <li>Diagnóstico do momento atual da empresa</li>
-            <li>Mapeamento das necessidades de comunicação</li>
-            <li>Priorização dos vídeos mais importantes</li>
-            <li>Produção audiovisual</li>
-            <li>Evolução da estrutura de comunicação ao longo do tempo</li>
-          </ul>
-          <p style="margin-top:10px;">Assim garantimos que cada vídeo tenha uma função clara dentro da comunicação do negócio.</p>
-        </div>
+        <p class="t2-faq-answer">Nosso processo acontece em cinco etapas: Diagnóstico, Mapeamento, Priorização, Produção com Direção e Evolução — garantindo que cada vídeo tenha uma função clara dentro da comunicação do negócio. <a href="#processo">Ver processo completo →</a></p>
       </details>
       <details class="t2-faq-item">
         <summary class="t2-faq-question">Preciso ter experiência em frente às câmeras?</summary>
@@ -3386,8 +3787,8 @@
 <!-- CTA -->
 <section class="cta-section" id="contato">
   <p class="section-eyebrow">Vamos Trabalhar Juntos?</p>
-  <h2>Pronto Para<br><span class="accent">Revelar Sua Marca?</span></h2>
-  <p class="body-text">Entre em contato e vamos conversar sobre como posicionar seu negócio no digital com vídeos estratégicos que realmente funcionam.</p>
+  <h2>Pronto Para<br><span class="accent">O Próximo Take?</span></h2>
+  <p class="body-text">Entre em contato e vamos conversar sobre como posicionar seu negócio ou evento com vídeos estratégicos que realmente funcionam.</p>
   <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
     <a href="https://wa.me/5531983335876" class="btn-primary" target="_blank">
       <svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -3464,7 +3865,7 @@
   const allVideos = [
     {id:'oDRUYh7xOBs',p:'youtube',o:'vertical',  tag:'Apresentação de Benefícios',   title:'Benefícios Fibraxx'},
     {id:'fAzmIuYKra0',p:'youtube',o:'horizontal', tag:'Case de Sucesso',  title:'Grupo AVG · Meet Tecnologia'},
-    {id:'xI9-k8Al18Y',p:'youtube',o:'vertical',  tag:'Registro do Festival',   title:'Mangalarga marchador'},
+    {id:'NxeCva_bdxU',p:'youtube',o:'vertical',  tag:'Registro do Festival',   title:'Mangalarga marchador'},
     {id:'t3HKRTObtrU',p:'youtube',o:'vertical',  tag:'Backstage + Case de Sucesso',       title:'Cineart ·  Meet Tecnologia'},
     {id:'aC_lpOFyDJE',p:'youtube',o:'vertical',  tag:'Apresentação de Produto',   title:'Deezer · Confiber'},
     {id:'BgJzvmtNZP4',p:'youtube',o:'horizontal', tag:'Festival',  title:'Circuito Cultural Barreiro'},
