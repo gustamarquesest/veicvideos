@@ -46,7 +46,9 @@
         </div>
       </div>
       <div class="hero-player hero-player-vertical" aria-label="Vídeo Qual é o diferencial">
-        <iframe src="https://www.youtube.com/embed/nrzURq_4LPk?autoplay=1&mute=1&loop=1&playlist=nrzURq_4LPk&controls=1&playsinline=1&rel=0&modestbranding=1" title="Qual é o diferencial" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/nrzURq_4LPk?autoplay=1&mute=1&loop=1&playlist=nrzURq_4LPk&controls=0&playsinline=1&rel=0&modestbranding=1" title="Qual é o diferencial" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <button class="hero-click js-open-video" type="button" data-id="nrzURq_4LPk" data-platform="youtube" data-orientation="vertical" data-title="Qual é o diferencial" aria-label="Abrir vídeo com som"></button>
+        <span class="hero-sound-hint">Clique para ouvir</span>
         <span class="hero-player-label">Qual é o diferencial</span>
       </div>
       <div class="hero-strip" aria-label="Produções reais em destaque">
@@ -70,8 +72,12 @@
         <p class="eyebrow">Produções em destaque</p>
         <h2 id="featured-title">A obra aparece antes da explicação.</h2>
       </div>
-      <div class="featured-marquee" aria-label="Vídeos em destaque">
-        <div class="featured-rail" id="featuredRail"></div>
+      <div class="featured-wrap">
+        <button class="featured-arrow featured-arrow-left" id="featuredLeft" type="button" aria-label="Acelerar para a esquerda">‹</button>
+        <div class="featured-marquee" aria-label="Vídeos em destaque">
+          <div class="featured-rail" id="featuredRail"></div>
+        </div>
+        <button class="featured-arrow featured-arrow-right" id="featuredRight" type="button" aria-label="Acelerar para a direita">›</button>
       </div>
     </section>
 
