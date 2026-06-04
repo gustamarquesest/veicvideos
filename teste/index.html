@@ -1,275 +1,820 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veic Vídeos — Produtora Audiovisual</title>
-  <meta name="description" content="Produtora audiovisual para negócios e eventos. Vídeos com direção para apresentar, vender, treinar, registrar e transformar ações em ativos de comunicação.">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Veic Vídeos">
-  <meta property="og:title" content="Veic Vídeos — Produtora Audiovisual">
-  <meta property="og:description" content="Vídeos para negócios e eventos, com diagnóstico, direção, captação e edição.">
-  <meta property="og:image" content="https://veicvideos.com/og-image.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Veic Vídeos">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span>Veic <strong>Vídeos</strong></span>
-    </a>
-    <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-    </button>
-    <nav class="site-nav" aria-label="Navegação principal">
-      <a href="#portfolio">Portfólio</a>
-      <a href="#momentos">Momentos</a>
-      <a href="#diagnostico">Diagnóstico</a>
-      <a href="#processo">Processo</a>
-      <a class="nav-cta" href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener">Fale conosco</a>
-    </nav>
-  </header>
 
-  <main id="top">
-    <section class="hero section-dark">
-      <div class="hero-copy">
-        <p class="eyebrow">Produtora audiovisual</p>
-        <h1>Vídeos para negócios e eventos.</h1>
-        <p class="lead">Produzimos vídeos com direção para apresentar empresas, vender melhor, treinar equipes, registrar eventos e transformar ações em ativos de comunicação.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#portfolio"><span aria-hidden="true">▶</span> Ver portfólio</a>
-          <a class="btn btn-secondary" href="#diagnostico">Qual vídeo produzir?</a>
+<h2 class="sr-only">Plano mestre de evolução — Veic Vídeos — documento para aprovação</h2>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+
+.tabs{display:flex;gap:4px;flex-wrap:wrap;padding:0 0 14px;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:20px}
+.tab{font-size:12px;padding:5px 12px;border-radius:100px;border:.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.tab .dot{width:7px;height:7px;border-radius:50%}
+.tab.on,.tab:hover{border-color:currentColor}
+.t1 .dot{background:#3C3489}.t1.on,.t1:hover{background:#EEEDFE;color:#3C3489}
+.t2 .dot{background:#0F6E56}.t2.on,.t2:hover{background:#E1F5EE;color:#0F6E56}
+.t3 .dot{background:#854F0B}.t3.on,.t3:hover{background:#FAEEDA;color:#854F0B}
+.ts .dot{background:var(--color-text-tertiary)}.ts.on,.ts:hover{background:var(--color-background-tertiary);color:var(--color-text-primary)}
+
+.pan{display:none}.pan.on{display:block}
+
+.fase-header{padding:14px 16px;border-radius:var(--border-radius-lg) var(--border-radius-lg) 0 0;margin-bottom:1px}
+.f1-h{background:#EEEDFE;border:.5px solid #AFA9EC}
+.f2-h{background:#E1F5EE;border:.5px solid #5DCAA5}
+.f3-h{background:#FAEEDA;border:.5px solid #EF9F27}
+.fase-eyebrow{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
+.f1-h .fase-eyebrow{color:#534AB7}
+.f2-h .fase-eyebrow{color:#0F6E56}
+.f3-h .fase-eyebrow{color:#854F0B}
+.fase-title{font-size:16px;font-weight:500}
+.f1-h .fase-title{color:#26215C}
+.f2-h .fase-title{color:#04342C}
+.f3-h .fase-title{color:#412402}
+.fase-sub{font-size:12px;margin-top:2px}
+.f1-h .fase-sub{color:#534AB7}
+.f2-h .fase-sub{color:#0F6E56}
+.f3-h .fase-sub{color:#854F0B}
+
+.items{display:flex;flex-direction:column;gap:1px}
+.item{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);overflow:hidden}
+.item:last-child{border-radius:0 0 var(--border-radius-lg) var(--border-radius-lg)}
+
+.item-head{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:start;padding:12px 14px;cursor:pointer;user-select:none}
+.item-head:hover{background:var(--color-background-secondary)}
+.item-meta{display:flex;flex-direction:column;gap:3px}
+.item-section{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-tertiary)}
+.item-problem{font-size:13px;color:var(--color-text-primary);line-height:1.4}
+.prio{font-size:10px;font-weight:500;padding:2px 8px;border-radius:100px;white-space:nowrap;align-self:start}
+.prio-a{background:#FCEBEB;color:#A32D2D;border:.5px solid #F09595}
+.prio-m{background:#FAEEDA;color:#854F0B;border:.5px solid #FAC775}
+.prio-b{background:#F1EFE8;color:#5F5E5A;border:.5px solid #D3D1C7}
+.efr{font-size:10px;font-weight:500;padding:2px 8px;border-radius:100px;white-space:nowrap;align-self:start;background:var(--color-background-secondary);color:var(--color-text-secondary);border:.5px solid var(--color-border-tertiary)}
+.chev{font-size:14px;color:var(--color-text-tertiary);transition:transform .2s;align-self:center;flex-shrink:0}
+.chev.open{transform:rotate(180deg)}
+
+.item-body{display:none;padding:0 14px 14px;border-top:.5px solid var(--color-border-tertiary)}
+.item-body.open{display:block}
+
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-border-tertiary);border-radius:var(--border-radius-md);overflow:hidden;margin-top:12px}
+.detail-cell{background:var(--color-background-primary);padding:10px 12px}
+.detail-cell.full{grid-column:1/-1}
+.dl{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.dl-sol{color:#534AB7}.dl-imp{color:#0F6E56}.dl-dim{color:#854F0B}.dl-ux{color:#185FA5}
+.dt{font-size:12px;color:var(--color-text-secondary);line-height:1.6}
+.dt strong{color:var(--color-text-primary);font-weight:500}
+.dt em{color:#854F0B;font-style:normal;font-weight:500}
+.dt ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:3px}
+.dt li{padding-left:12px;position:relative}
+.dt li::before{content:'›';position:absolute;left:0;color:#BA7517}
+.dt code{background:var(--color-background-secondary);padding:1px 4px;border-radius:3px;font-family:var(--font-mono);font-size:11px}
+
+.impact-bar{height:3px;border-radius:100px;background:var(--color-border-tertiary);margin-top:6px;overflow:hidden}
+.impact-fill-a{height:100%;background:#E24B4A;border-radius:100px}
+.impact-fill-m{height:100%;background:#EF9F27;border-radius:100px}
+.impact-fill-b{height:100%;background:#888780;border-radius:100px}
+
+.summary-overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:20px}
+.sum-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 14px}
+.sum-num{font-size:22px;font-weight:500;line-height:1;margin-bottom:3px}
+.sum-lbl{font-size:11px;color:var(--color-text-secondary)}
+.sum-sub{font-size:10px;color:var(--color-text-tertiary);margin-top:2px}
+.n1{color:#534AB7}.n2{color:#0F6E56}.n3{color:#854F0B}
+
+.axes-row{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;margin-bottom:4px}
+.axis-label{font-size:11px;color:var(--color-text-tertiary);white-space:nowrap}
+.axis-bar{height:4px;border-radius:100px;background:var(--color-border-tertiary);position:relative;overflow:visible}
+.axis-fill{height:4px;border-radius:100px}
+
+@media(max-width:560px){.detail-grid{grid-template-columns:1fr}.item-head{grid-template-columns:1fr auto}.chev{display:none}.summary-overview{grid-template-columns:1fr 1fr}}
+</style>
+
+<div class="tabs" role="tablist">
+  <button class="tab t1 on" onclick="showTab('f1',this)" role="tab">
+    <span class="dot"></span>Fase 1 — Sem novos ativos
+  </button>
+  <button class="tab t2" onclick="showTab('f2',this)" role="tab">
+    <span class="dot"></span>Fase 2 — Material existente
+  </button>
+  <button class="tab t3" onclick="showTab('f3',this)" role="tab">
+    <span class="dot"></span>Fase 3 — Produção nova
+  </button>
+  <button class="tab ts" onclick="showTab('sum',this)" role="tab">
+    <span class="dot"></span>Visão geral
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════
+     FASE 1
+═══════════════════════════════════ -->
+<div id="p-f1" class="pan on">
+  <div class="fase-header f1-h">
+    <div class="fase-eyebrow">Fase 1 — Sem produção nova</div>
+    <div class="fase-title">HTML, CSS, UX, copy e reorganização visual</div>
+    <div class="fase-sub">9 itens · Implementação imediata · Custo zero de produção</div>
+  </div>
+  <div class="items">
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Hero · Posicionamento / UX</div>
+          <div class="item-problem">Isotipo SVG fantasma ocupa metade do hero — metade do espaço mais valioso do site é decoração vazia</div>
         </div>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
       </div>
-      <button class="hero-player js-open-video" type="button" data-id="cPl8z5m_nwY" data-platform="youtube" data-orientation="horizontal" data-title="Case de Sucesso · Cineart">
-        <img src="https://img.youtube.com/vi/cPl8z5m_nwY/maxresdefault.jpg" alt="Frame do vídeo Case de Sucesso Cineart">
-        <span class="play-dot"></span>
-        <span class="hero-player-label">Case de sucesso · Cineart</span>
-      </button>
-      <div class="hero-strip" aria-label="Produções reais em destaque">
-        <article>
-          <span>Case de sucesso</span>
-          <strong>Cineart · Meet Tecnologia</strong>
-        </article>
-        <article>
-          <span>Anúncio de patrocínio</span>
-          <strong>Betim Futebol</strong>
-        </article>
-        <article>
-          <span>Registro de festival</span>
-          <strong>Mangalarga Marchador</strong>
-        </article>
-      </div>
-    </section>
-
-    <section class="featured section-light" aria-labelledby="featured-title">
-      <div class="section-heading left">
-        <p class="eyebrow">Produções em destaque</p>
-        <h2 id="featured-title">A obra aparece antes da explicação.</h2>
-      </div>
-      <div class="featured-rail" id="featuredRail" aria-label="Vídeos em destaque"></div>
-    </section>
-
-    <section class="what section-dark">
-      <div class="section-heading left">
-        <p class="eyebrow">O que a Veic produz</p>
-        <h2>Vídeo é a entrega. A estratégia direciona a câmera.</h2>
-      </div>
-      <div class="type-grid">
-        <article>
-          <span>01</span>
-          <h3>Apresentação</h3>
-          <p>Institucional, produtos, serviços e landing pages com vídeo.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Demanda</h3>
-          <p>Anúncios, campanhas, reels, teasers e conteúdo educativo.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Confiança</h3>
-          <p>Cases de sucesso, depoimentos, bastidores e autoridade.</p>
-        </article>
-        <article>
-          <span>04</span>
-          <h3>Conversão</h3>
-          <p>Vídeos comerciais, VSLs, demos e ofertas especiais.</p>
-        </article>
-        <article>
-          <span>05</span>
-          <h3>Comunicação interna</h3>
-          <p>Treinamentos, integração, processos e endomarketing.</p>
-        </article>
-        <article>
-          <span>06</span>
-          <h3>Eventos</h3>
-          <p>Registros, aftermovies, chamadas e ativos pós-evento.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="portfolio section-light" id="portfolio">
-      <div class="section-heading">
-        <p class="eyebrow">Portfólio</p>
-        <h2>Trabalhos reais, organizados por função.</h2>
-      </div>
-      <div class="filter-row" id="portfolioFilters" aria-label="Filtros do portfólio"></div>
-      <div class="work-grid" id="portfolioGrid" aria-live="polite"></div>
-      <div class="portfolio-more">
-        <button class="btn btn-secondary-dark" id="loadMore" type="button">Carregar mais vídeos</button>
-      </div>
-    </section>
-
-    <section class="moments section-dark" id="momentos">
-      <div class="section-heading left">
-        <p class="eyebrow">Mapa audiovisual</p>
-        <h2>Em cada momento, um tipo de vídeo.</h2>
-      </div>
-      <div class="moment-tabs" role="tablist" aria-label="Momentos de comunicação">
-        <button class="moment-tab active" type="button" data-moment="0">Descoberta</button>
-        <button class="moment-tab" type="button" data-moment="1">Apresentação</button>
-        <button class="moment-tab" type="button" data-moment="2">Consideração</button>
-        <button class="moment-tab" type="button" data-moment="3">Conversão</button>
-        <button class="moment-tab" type="button" data-moment="4">Fidelização</button>
-        <button class="moment-tab" type="button" data-moment="5">Cultura interna</button>
-      </div>
-      <div class="moment-panel">
-        <div class="moment-copy">
-          <p class="panel-kicker" id="momentKicker">Aparecer para quem ainda não conhece</p>
-          <h3 id="momentTitle">Descoberta</h3>
-          <p id="momentDesc"></p>
-          <div class="pill-list light-pills" id="momentPills"></div>
-          <p class="where" id="momentWhere"></p>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Remover o <code>.hero-bg-isotipo</code>. Reestruturar o hero em layout split <code>grid-template-columns: 1fr 1fr</code>. Coluna esquerda: conteúdo de texto atual. Coluna direita: container <code>.hero-visual</code> com fundo <code>#1a1200</code> e mensagem visual de placeholder até o vídeo de bastidores estar disponível. No mobile: coluna direita vira faixa de 55vh no topo com gradient escuro inferior — texto flutua sobre o gradient.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">O hero passa de página de texto com decoração CSS para layout cinematográfico de dois campos. A estrutura visual de "produtora" é comunicada pelo próprio layout antes de qualquer imagem nova. Remove a sensação de vazio imediata que o visitante sente hoje.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:90%"></div></div>
+          </div>
+          <div class="detail-cell full">
+            <div class="dl dl-dim">Dimensões impactadas</div>
+            <div class="dt"><ul><li>Posicionamento — layout split é linguagem visual de produtoras, não de consultoras</li><li>Mobile first — no mobile o split vira vídeo-first (coluna visual no topo)</li><li>Percepção de autoridade — estrutura profissional antes de qualquer imagem nova</li></ul></div>
+          </div>
         </div>
-        <div class="moment-examples" id="momentExamples"></div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:25%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">1–2h de CSS · Sem dependências externas</div>
       </div>
-    </section>
+    </div>
 
-    <section class="diagnostic section-light" id="diagnostico">
-      <div class="section-heading">
-        <p class="eyebrow">Diagnóstico audiovisual</p>
-        <h2>Qual vídeo faz sentido agora?</h2>
-      </div>
-      <div class="diagnostic-layout">
-        <div class="need-list" aria-label="Desafios do negócio">
-          <button class="need active" type="button" data-need="0">Precisamos aparecer para nossa audiência e gerar demanda</button>
-          <button class="need" type="button" data-need="1">Nossa empresa/projeto não tem presença digital consolidada</button>
-          <button class="need" type="button" data-need="2">Queremos fortalecer nosso posicionamento e autoridade</button>
-          <button class="need" type="button" data-need="3">Precisamos vender mais e converter melhor nossas oportunidades</button>
-          <button class="need" type="button" data-need="4">Queremos melhorar a experiência e fidelizar nossos consumidores</button>
-          <button class="need" type="button" data-need="5">Precisamos organizar a comunicação interna e nossa equipe</button>
-          <button class="need" type="button" data-need="6">Realizamos eventos e queremos transformá-los em ativos de comunicação</button>
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Hero · Copy</div>
+          <div class="item-problem">Subtítulo de 42 palavras que explica o serviço — texto desnecessário para uma produtora com visual forte</div>
         </div>
-        <div class="recommendation">
-          <p class="panel-kicker">Vídeos indicados</p>
-          <h3 id="recTitle">Anúncios e geração de demanda</h3>
-          <p id="recDesc"></p>
-          <div class="pill-list" id="recPills"></div>
-          <div class="rec-examples" id="recExamples"></div>
-          <a class="btn btn-primary" href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Quero%20entender%20qual%20v%C3%ADdeo%20faz%20sentido%20para%20minha%20empresa." target="_blank" rel="noopener">Conversar sobre este projeto</a>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Substituir o subtítulo por uma linha de posicionamento de 3 palavras: <em>"Estratégia. Câmera. Resultado."</em><br><br>Remover o texto: <em>"Produzimos vídeos estratégicos para a construção do Ecossistema de Comunicação integrada e efetiva..."</em><br><br>Esse conceito é comunicado visualmente nas seções de Ecossistema e Propósito. No hero, o subtítulo deve ser impacto, não explicação.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">Redução de carga cognitiva na primeira impressão. O visitante lê o posicionamento em 1 segundo em vez de 8. A frase de 3 palavras é mais memorável, mais direta e mais compatível com o nível de confiança que uma produtora de referência deve comunicar.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:75%"></div></div>
+          </div>
         </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:5%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">5 minutos de edição de HTML</div>
       </div>
-    </section>
+    </div>
 
-    <section class="process section-dark" id="processo">
-      <div class="section-heading left">
-        <p class="eyebrow">Produção com direção</p>
-        <h2>Da intenção ao vídeo pronto.</h2>
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Propósito · Copy + Identidade</div>
+          <div class="item-problem">Os 3 cards de valor têm parágrafos de 2–3 linhas que explicam conceitos que o restante do site já demonstra</div>
+        </div>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
       </div>
-      <div class="process-rail">
-        <article>
-          <span>01</span>
-          <h3>Diagnóstico</h3>
-          <p>Entendemos o momento atual do negócio, objetivos e desafios de comunicação.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Mapeamento</h3>
-          <p>Identificamos oportunidades de vídeo na jornada do cliente e na comunicação interna.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Priorização</h3>
-          <p>Definimos quais vídeos geram mais impacto para o momento atual.</p>
-        </article>
-        <article>
-          <span>04</span>
-          <h3>Produção</h3>
-          <p>Planejamos, dirigimos, gravamos e editamos vídeos alinhados ao objetivo.</p>
-        </article>
-        <article>
-          <span>05</span>
-          <h3>Evolução</h3>
-          <p>A comunicação evolui conforme o crescimento e as novas demandas.</p>
-        </article>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Reduzir cada card de 2–3 linhas para 1 frase de até 12 palavras:<br><br>Card 1 → <em>"Cada etapa da jornada tem um vídeo. Cada vídeo tem um objetivo."</em><br>Card 2 → <em>"Estratégia antes de ligar a câmera."</em><br>Card 3 → <em>"Dirigimos a cena para que a mensagem chegue com naturalidade."</em><br><br>Os ícones SVG abstratos são substituídos por ícones Tabler específicos de produção: câmera, claquete, tela de resultado.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">Escaneabilidade da seção melhora em ~60%. O visitante absorve os 3 valores em segundos em vez de minutos. A linguagem mais direta reforça posicionamento de produtora — não de consultoria que precisa se explicar.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:70%"></div></div>
+          </div>
+          <div class="detail-cell full">
+            <div class="dl dl-dim">Dimensões impactadas</div>
+            <div class="dt"><ul><li>Experiência cognitiva — menos texto = decisão mais rápida</li><li>Identidade de produtora — linguagem direta, sem jargão de consultoria</li><li>SEO — frases curtas e fortes têm melhor escaneabilidade por crawlers também</li></ul></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:8%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">20 minutos de edição de copy + troca de ícones SVG</div>
       </div>
-    </section>
+    </div>
 
-    <section class="landing-support section-light">
-      <div class="support-copy">
-        <p class="eyebrow">Complemento</p>
-        <h2>Landing pages entram quando ajudam o vídeo.</h2>
-        <p>Além da produção dos vídeos, a Veic pode desenvolver landing pages de apresentação para fortalecer presença digital, ser encontrada no Google e apresentar produtos e serviços de forma mais profissional.</p>
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Processo · Copy + Visual</div>
+          <div class="item-problem">Cada etapa do processo tem 3–4 linhas de texto — parágrafos descrevem ações que deveriam ser evidentes pelo visual</div>
+        </div>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
       </div>
-      <div class="support-device">
-        <div class="device-top"></div>
-        <button class="device-video js-open-video" type="button" data-id="P8hNnOzTfTo" data-platform="youtube" data-orientation="horizontal" data-title="Apresentação de Serviços · UNE Internet">
-          <img src="https://img.youtube.com/vi/P8hNnOzTfTo/maxresdefault.jpg" alt="Frame de vídeo de apresentação de serviços">
-          <span class="play-dot"></span>
-        </button>
-        <div class="device-lines"><span></span><span></span><span></span></div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Reduzir cada etapa de 3–4 linhas para 1 frase de até 10 palavras:<br><br>Etapa 3 hoje: <em>"Planejamos, dirigimos, gravamos, editamos e entregamos os vídeos alinhados aos objetivos do negócio. Orientamos gestores, colaboradores e clientes durante as gravações..."</em> (60 palavras)<br><br>Etapa 3 proposta: <em>"Dirigimos a cena para que a mensagem chegue com naturalidade."</em> (12 palavras)<br><br>Redução de ~60% do texto da seção.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">A seção de processo passa a ser escaneável em segundos. O ritmo visual melhora — os círculos numerados se tornam âncoras visuais, não introdução de parágrafos. Prepara a seção para receber as fotos circulares da Fase 3.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:65%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:6%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">15 minutos de edição de copy</div>
       </div>
-    </section>
+    </div>
 
-    <section class="faq section-light">
-      <div class="section-heading">
-        <p class="eyebrow">Antes de produzir</p>
-        <h2>Perguntas frequentes.</h2>
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Backstage · UX + Ritmo</div>
+          <div class="item-problem">A seção Backstage tem título + parágrafo acima de um grid de 5 slots vazios — os placeholders comunicam mais ausência do que presença</div>
+        </div>
+        <span class="prio prio-m">Média</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
       </div>
-      <div class="faq-list">
-        <details>
-          <summary>Quanto custa um vídeo?</summary>
-          <p>Cada projeto é orçado individualmente conforme os objetivos do negócio, a complexidade da produção e os resultados esperados.</p>
-        </details>
-        <details>
-          <summary>Minha empresa precisa produzir todos esses vídeos?</summary>
-          <p>Não. Cada empresa possui um nível diferente de maturidade e necessidades diferentes. O papel da Veic é ajudar a identificar prioridades.</p>
-        </details>
-        <details>
-          <summary>Vocês também criam Landing Pages?</summary>
-          <p>Sim, quando a página ajuda a apresentar vídeos, fortalecer presença digital ou concentrar uma oferta. A entrega principal continua sendo audiovisual.</p>
-        </details>
-        <details>
-          <summary>Preciso ter experiência em frente às câmeras?</summary>
-          <p>Não. A Veic orienta clientes e equipes durante a gravação para transmitir a mensagem com naturalidade e segurança.</p>
-        </details>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Remover o título e o parágrafo da seção — quando as fotos chegarem (Fase 3), o grid fotográfico não precisa de legenda. Substituir por uma eyebrow ultra-discreta: <code>● Bastidores</code> em 11px amarelo, alinhado à esquerda. O grid ganha proporção de tela inteira (sem padding lateral excessivo).<br><br>Enquanto as fotos não chegam: manter os placeholders, mas adicionar ao slot grande (2fr) um texto de baixo contraste: <em>"Fotografias em produção"</em> — transparente sobre o placeholder, não como destaque.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">A seção deixa de chamar atenção para o que está faltando e passa a ser uma promessa visual de conteúdo a vir. Quando as fotos chegarem (Fase 3), o layout já estará calibrado para máximo impacto sem texto competindo com o visual.</div>
+            <div class="impact-bar"><div class="impact-fill-m" style="width:45%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:8%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">20 minutos de edição HTML + CSS</div>
       </div>
-    </section>
+    </div>
 
-    <section class="final-cta section-dark" id="contato">
-      <div>
-        <p class="eyebrow">Próximo take</p>
-        <h2>Vamos entender qual vídeo faz sentido agora?</h2>
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Ritmo visual geral · Direção de arte</div>
+          <div class="item-problem">8 de 9 seções têm fundo #131210 — o escuro perdeu poder dramático por ser o estado padrão, não a exceção</div>
+        </div>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
       </div>
-      <a class="btn btn-primary" href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener">Chamar no WhatsApp</a>
-    </section>
-  </main>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Implementar a <strong>regra dos três escuros</strong>: nunca três seções com fundo escuro puro consecutivas sem ruptura visual. Ajustes concretos:<br><br>— Seção Projetos Audiovisuais: fundo muda de <code>#131210</code> puro para <code>#1a1a16</code> com textura de grain CSS (box-shadow inset com noise muito sutil, 2% opacidade) — cria diferenciação sem mudar a paleta<br>— Seção Backstage: fundo muda para <code>#0f0e0c</code> (mais escuro que o padrão) — cria hierarquia entre seções escuras<br>— Seção Processo: fundo <code>#1e1c1a</code> (levemente mais claro)</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">O scroll pelo site passa a ter ritmo: o visitante sente alternância visual mesmo dentro da paleta escura. Cada seção tem identidade própria. A seção amarela do Propósito e a seção cream do FAQ se tornam mais dramáticas porque o escuro ao redor delas varia — não é mais todo igual.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:80%"></div></div>
+          </div>
+          <div class="detail-cell full">
+            <div class="dl dl-dim">Dimensões impactadas</div>
+            <div class="dt"><ul><li>Direção de arte — contraste entre seções é princípio fundamental de composição cinematográfica</li><li>Storytelling visual — o ritmo escuro/claro/escuro cria tensão e resolução ao longo do scroll</li><li>Percepção de autoridade — sites de produtoras de referência usam escuros variados, não um preto uniforme</li></ul></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:20%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">1h de CSS — ajuste de variáveis de fundo por seção</div>
+      </div>
+    </div>
 
-  <div class="modal" aria-hidden="true" role="dialog" aria-label="Player de vídeo">
-    <div class="modal-backdrop"></div>
-    <div class="modal-panel">
-      <button class="modal-close" type="button" aria-label="Fechar">×</button>
-      <div class="modal-video-wrap" id="modalVideoWrap"></div>
-      <h2 id="modalTitle">Vídeo</h2>
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">FAQ · Escaneabilidade</div>
+          <div class="item-problem">A resposta mais longa tem 4 subtópicos em uppercase amarelo + listas — formato dificulta escaneamento rápido</div>
+        </div>
+        <span class="prio prio-m">Média</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Substituir os 4 subtópicos uppercase por ícones Tabler de 16px à esquerda de cada subtópico. Ícones sugeridos: <code>ti-globe</code> (presença), <code>ti-chart-bar</code> (comercial), <code>ti-layout</code> (conteúdo), <code>ti-building</code> (interno). O conteúdo das listas permanece idêntico — só o marcador visual muda.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">Escaneamento ~40% mais rápido. Os ícones criam ancoragem visual que guia o olho entre os subtópicos sem exigir leitura sequencial. Melhora a experiência de quem busca resposta específica.</div>
+            <div class="impact-bar"><div class="impact-fill-m" style="width:40%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:8%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">20 minutos de HTML</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">CTA Final · Direção de arte</div>
+          <div class="item-problem">Isotipo SVG semitransparente ao fundo do CTA — última impressão do site é uma decoração vetorial sem significado</div>
+        </div>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Remover o isotipo e o <code>::before</code> com radial-gradient decorativo. Remover o subtítulo do CTA (visitante que chegou até aqui não precisa de mais persuasão — precisa de um clique).<br><br>O resultado é um CTA minimalista: só headline + 2 botões + caixa de contato. Limpo e direto. Prepara a seção para receber foto de fundo na Fase 2.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">A última seção do site passa de "degradê com logo ghostado" para CTA limpo e focado. Antes da foto chegar, a limpeza visual já melhora a conversão — sem distração, o botão ganha mais peso visual.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:70%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:6%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">15 minutos de CSS</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">SEO · Meta e estrutura semântica</div>
+          <div class="item-problem">Sem análise do código de SEO técnico (meta description genérica, heading hierarchy, structured data)</div>
+        </div>
+        <span class="prio prio-m">Média</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Três ajustes técnicos sem afetar o visual:<br><br>1. <strong>Meta description</strong>: substituir a descrição genérica atual por: <em>"Produtora audiovisual em Belo Horizonte. Vídeos estratégicos para empresas e eventos: marketing, cultura organizacional, treinamento e presença digital."</em><br>2. <strong>Heading hierarchy</strong>: auditar e garantir que cada seção tem um H2 semântico correto — alguns títulos usam Impact + uppercase mas precisam ser H2 no DOM<br>3. <strong>Schema.org LocalBusiness</strong>: adicionar JSON-LD com tipo VideoProductionCompany, endereço e serviços</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">Melhora de indexação para buscas locais ("produtora de vídeo belo horizonte", "vídeo para empresas BH"). O Schema.org VideoProductionCompany pode gerar rich snippets no Google. Sem impacto visual — só estrutura.</div>
+            <div class="impact-bar"><div class="impact-fill-m" style="width:55%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:15%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">1–2h de ajustes de HTML head + auditoria semântica</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     FASE 2
+═══════════════════════════════════ -->
+<div id="p-f2" class="pan">
+  <div class="fase-header f2-h">
+    <div class="fase-eyebrow">Fase 2 — Material já existente</div>
+    <div class="fase-title">Reutilização de vídeos, thumbnails e frames do portfólio</div>
+    <div class="fase-sub">6 itens · Custo zero de produção · 8–12h de implementação total</div>
+  </div>
+  <div class="items">
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">CTA Final · Direção de arte / Conversão</div>
+          <div class="item-problem">CTA finaliza o site com fundo preto vazio — última memória visual não tem impacto emocional</div>
+        </div>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Usar o melhor thumbnail horizontal do portfólio existente como <code>background-image</code> da <code>.cta-section</code>. Recomendação: Case Cineart (<code>cPl8z5m_nwY</code>) ou Avante — frames com pessoas e equipamento visíveis.<br><br>CSS: <code>background-size: cover; background-position: center;</code> + pseudoelemento <code>::before</code> com <code>background: rgba(19,18,16,0.78)</code>. Nenhum ativo novo necessário.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">A última memória visual do site deixa de ser um fundo preto e passa a ser uma cena real de produção com overlay dramático. O contraste com a seção cream do FAQ cria o ritmo de encerramento mais cinematográfico possível. Implementação: 20 minutos.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:88%"></div></div>
+          </div>
+          <div class="detail-cell full">
+            <div class="dl dl-dim">Dimensões impactadas</div>
+            <div class="dt"><ul><li>Storytelling visual — a última cena do site é uma cena real de produção</li><li>Conversão — CTA com background visual real tem maior recall e taxa de clique</li><li>Identidade de produtora — encerra o site com câmera e set, não com texto</li></ul></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:5%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">20 minutos de CSS · Maior ROI por minuto de implementação do site</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">O que Entregamos · Conversão / Storytelling</div>
+          <div class="item-problem">O painel de solução mais interativo do site é 100% textual — o usuário está no pico de intenção e não vê nenhum exemplo visual do que a Veic já entregou</div>
+        </div>
+        <span class="prio prio-a">Alta — maior impacto de conversão</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Para cada uma das 8–10 necessidades listadas no seletor esquerdo: adicionar no topo do painel direito um frame 16:9 do portfólio correspondente, com badge <em>"Exemplo real ▶"</em> clicável que abre o modal de vídeo existente.<br><br>Mapeamento: Atrair clientes → Betim Futebol / Anúncio · Presença digital → Landing Page · Posicionamento → Cineart · Vendas → Biologistica · Fidelização → Meet Tecnologia · Comunicação interna → Treinamento NR · Eventos → Mangalarga · Cada frame: screenshot do vídeo existente, 800×450px mínimo.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">Quando o visitante seleciona "Queremos vídeos para eventos" e vê imediatamente um frame real de evento filmado pela Veic, a decisão de entrar em contato se torna muito mais fácil. A seção passa de diagnóstico textual para portfólio navegável por necessidade. Esta é a mudança de maior ROI de conversão do site.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:95%"></div></div>
+          </div>
+          <div class="detail-cell full">
+            <div class="dl dl-ux">Redução de texto consequente</div>
+            <div class="dt">Com o frame visual presente, a descrição de cada solução pode ser reduzida de 2–3 frases para 1 frase. <em>Atual:</em> "Estrutura da sua empresa com vídeos que apresentam quem você é, o que faz e por que escolher seu negócio." → <em>Proposta:</em> "Vídeos que apresentam sua empresa antes da primeira reunião." O frame mostra o resultado; a frase nomeia o objetivo.</div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:35%;background:#EF9F27"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">3h de curadoria de frames + 3h de implementação no JS/HTML existente</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Projetos Audiovisuais · Identidade / UX</div>
+          <div class="item-problem">As 6 categorias de projeto são badges de texto puro — não comunicam visualmente a diversidade de trabalhos da Veic</div>
+        </div>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Transformar as 6 tags em mini-cards visuais (<code>aspect-ratio: 16/9</code>, grid 2×3 desktop, scroll horizontal snap no mobile). Cada card: frame do portfólio como background, overlay escuro 65%, nome da categoria ao centro em branco.<br><br>Hover: overlay reduz para 35%, aparece contador <em>"X projetos"</em>. Clicável para Portfólio filtrado.<br><br>Frames: curadoria de screenshots dos vídeos existentes, 800×450px. 2h de trabalho.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">Em uma tela, o visitante vê a diversidade completa de entregas da Veic de forma visual e imediata. Em vez de ler 6 categorias abstratas, ele reconhece 6 contextos visuais reais. A seção passa de lista de serviços para portfólio por segmento — linguagem de produtora.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:82%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:30%;background:#EF9F27"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">2h curadoria de frames + 3h de implementação CSS/HTML</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Ecossistema · Storytelling / Autoridade</div>
+          <div class="item-problem">O painel de detalhe das 6 etapas é 100% textual — modelo conceitual sem evidência visual do que foi entregue em cada etapa</div>
+        </div>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Adicionar coluna visual no painel de detalhe: 60% texto existente + 40% galeria de 2 frames do portfólio correspondentes à etapa clicada. Frames clicáveis que abrem o modal existente. Caption <em>"Exemplo real"</em> em amarelo.<br><br>Mobile: frames aparecem antes do texto descritivo (mostrar → explicar).<br><br>Mapeamento: Descoberta → Betim/Copa · Apresentação → Cineart/Avante · Consideração → Biologistica/Meet · Conversão → Landing Page · Fidelização → case pós-venda · Cultura Interna → Treinamento.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">A seção passa de modelo conceitual (como consultoria apresentaria) para showcase de evidências (como produtora apresentaria). Eliminar o 2º parágrafo de cada etapa reduz 40% do texto total do painel — os frames fazem esse trabalho visualmente.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:78%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:38%;background:#EF9F27"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">3h curadoria + 4h implementação no JS existente</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Hero · Mobile first</div>
+          <div class="item-problem">No mobile o hero é coluna única com texto sobre fundo preto — sem âncora visual, sem impacto emocional na primeira impressão</div>
+        </div>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">No mobile: usar o melhor thumbnail horizontal do portfólio como fundo do hero (55vh no topo), com gradient escuro vindo de baixo cobrindo 45%. O texto e os CTAs ficam sobre o gradient no terço inferior da imagem.<br><br>Stats aparecem logo abaixo da dobra do hero, numa faixa de 3 colunas separada por linha amarela fina.<br><br>Implementação: media query <code>@media (max-width: 900px)</code> com <code>background-image</code> no <code>.hero</code>.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">No mobile — onde a maioria dos visitantes chega — a primeira experiência passa de "texto preto sobre fundo escuro" para "cena de produção com texto flutuando sobre ela". A percepção de produtora é estabelecida visualmente antes de qualquer leitura. Impacto máximo, custo zero de produção.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:85%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:15%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">1h de CSS mobile · Sem JS necessário</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">FAQ · Autoridade / Conversão</div>
+          <div class="item-problem">FAQ em coluna única no desktop — espaço de coluna direita desperdiçado enquanto o usuário lê respostas</div>
+        </div>
+        <span class="prio prio-m">Média</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Solução</div>
+            <div class="dt">Desktop: layout <code>grid-template-columns: 1fr 280px</code>. Coluna esquerda: accordions existentes. Coluna direita: 3 mini-thumbnails verticais empilhados do portfólio com caption de 3 palavras cada — <em>"Case de sucesso"</em>, <em>"Resultado real"</em>, <em>"Vídeo institucional"</em>. Abaixo dos thumbnails: CTA mini de WhatsApp.<br><br>Mobile: coluna lateral desaparece, FAQ fica em coluna única como está.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">Enquanto o usuário lê perguntas e respostas, a coluna lateral mantém a evidência visual presente — reforça a autoridade sem interromper a leitura. O CTA mini de WhatsApp converte quem não encontrou a resposta que precisava.</div>
+            <div class="impact-bar"><div class="impact-fill-m" style="width:55%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:22%;background:#5DCAA5"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">2h de CSS layout + HTML para coluna lateral</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     FASE 3
+═══════════════════════════════════ -->
+<div id="p-f3" class="pan">
+  <div class="fase-header f3-h">
+    <div class="fase-eyebrow">Fase 3 — Produção de novos ativos</div>
+    <div class="fase-title">Fotos, vídeos de bastidores e conteúdo novo</div>
+    <div class="fase-sub">6 itens · 1–2 dias de produção · Impacto mais transformador</div>
+  </div>
+  <div class="items">
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Backstage · Identidade / Autoridade — sessão fotográfica</div>
+          <div class="item-problem">5 slots do grid Backstage são placeholders — a seção que mais diferencia produtora de consultoria está completamente vazia</div>
+        </div>
+        <span class="prio prio-a">Alta — maior impacto de percepção</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Briefing fotográfico</div>
+            <div class="dt"><strong>5 fotos de bastidores em 1 dia de shoot:</strong><br><br>1. Câmera no tripé com lente em foco, luz de tungstênio ao fundo — formato 3:4 (slot grande). Câmera deve ser reconhecível como profissional.<br>2. Operador enquadrando entrevistado — câmera em foco, sujeito em bokeh.<br>3. Monitor de campo com imagem visível, mão do diretor na tela.<br>4. Reunião de briefing — 2–3 pessoas, caderno/laptop, olhando para o mesmo ponto.<br>5. Editor na timeline do Premiere/DaVinci — tela reconhecível com frames.<br><br>Todas em ambientes reais da Veic. Sem estúdio neutro.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">Esta é a seção que mais transforma a percepção de marca do site inteiro. Ver 5 fotos reais de câmera, set e equipe resolve o problema central do diagnóstico: "parece consultoria, não produtora". Nenhum texto consegue o que 5 fotos fazem em 2 segundos de scroll.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:98%"></div></div>
+          </div>
+          <div class="detail-cell full">
+            <div class="dl dl-ux">Especificações técnicas</div>
+            <div class="dt"><ul><li>Slot 1 (grande): 800×1067px mínimo — formato 3:4 para o slot vertical de 2 linhas</li><li>Slots 2–5: 600×450px mínimo — formato 4:3</li><li>Tom: warm (tungstênio) preferido. Sem filtros de Instagram. Pós-produção básica de cor.</li><li>Produzir junto com foto da equipe (item abaixo) — mesmo dia de shoot</li></ul></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:60%;background:#EF9F27"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">Meio dia de shoot + 1 dia de seleção/edição básica + 2h de implementação</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Propósito · Confiança / Identidade — foto da equipe</div>
+          <div class="item-problem">Nenhum ser humano aparece no site — a empresa não tem rosto, não tem mãos, não tem set</div>
+        </div>
+        <span class="prio prio-a">Alta</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Briefing fotográfico</div>
+            <div class="dt"><strong>1 foto principal + 2 variações da equipe/diretor criativo:</strong><br><br>Formato quadrado, mínimo 400×400px (exibida em ~120px no layout). Enquadramento: meio-corpo. Contexto: ambiente de gravação real — câmera ou equipamento visível ao fundo desfocado. Tom quente de tungstênio.<br><br>Expressão de foco/trabalho — não pose corporativa. Pode ser o diretor atrás de câmera, ajustando equipamento, ou em reunião com monitor de campo visível.<br><br>Produzir no mesmo dia de shoot do Backstage.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">A seção de propósito passa a ter um rosto. Um ser humano em contexto de produção na seção de valores estabelece mais confiança do que qualquer texto de posicionamento. Pesquisa de UX consistentemente mostra que rostos humanos aumentam tempo de permanência e taxa de conversão.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:90%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:25%;background:#EF9F27"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">30 min no mesmo dia de shoot do Backstage + 1h de implementação</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Processo · Visual / Autoridade — 5 fotos de processo</div>
+          <div class="item-problem">Os círculos numerados abstratos representam etapas de um processo que poderia ser evidenciado por fotografia real</div>
+        </div>
+        <span class="prio prio-m">Média</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Briefing fotográfico</div>
+            <div class="dt"><strong>5 fotos de processo — formato quadrado mínimo 400×400px:</strong><br><br>1. Diagnóstico: pessoa no computador com planilha/apresentação, anotando em papel<br>2. Estratégia: papel com roteiro manuscrito, rascunho de storyboard visível<br>3. Produção: câmera na mão, operador em campo — a foto mais importante das 5<br>4. Edição: tela de Premiere/DaVinci com timeline reconhecível, mãos no teclado<br>5. Evolução: reunião com cliente, tela mostrando resultado ou métricas, expressão positiva<br><br>Produzir nos próprios ambientes da Veic — nenhuma locação externa.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">O processo deixa de ser sequência de números abstratos e passa a mostrar o que realmente acontece. O nível de cuidado visual das fotos comunica indiretamente a qualidade da produção audiovisual — o processo é parte do produto.</div>
+            <div class="impact-bar"><div class="impact-fill-m" style="width:72%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:50%;background:#EF9F27"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">3–4h no mesmo dia de shoot do Backstage + 2h de implementação</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Hero + Reel · Identidade — vídeo loop de bastidores</div>
+          <div class="item-problem">O hero não tem movimento real — o maior argumento de venda de uma produtora audiovisual é o próprio movimento, e o hero não usa isso</div>
+        </div>
+        <span class="prio prio-a">Alta — impacto máximo de percepção</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Briefing de produção</div>
+            <div class="dt"><strong>Vídeo loop de 8 a 12 segundos:</strong><br><br>Cenas sequenciadas (editar em loop suave com crossfade de 0.5s):<br>1. Rack focus — objeto em foco passa para rosto do diretor, câmera ao fundo<br>2. Câmera na mão seguindo sujeito — movimento cinematográfico, não publicitário<br>3. Monitor de campo mostrando imagem gravada<br>4. Luz de tungstênio aquecendo o ambiente — mão ajustando a luz<br><br>Sem texto, sem logo, sem áudio. Formato: MP4 H.264, 1280×720px mínimo, peso máximo 3MB. Pode ser gravado durante qualquer próxima produção de cliente.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">O visitante identifica "produtora de vídeo" em menos de 2 segundos, antes de qualquer leitura. É o único tipo de conteúdo que uma produtora audiovisual deveria usar para se apresentar — movimento real, não texto sobre movimento. Transforma a percepção de marca instantaneamente.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:100%"></div></div>
+          </div>
+          <div class="detail-cell full">
+            <div class="dl dl-ux">Usos no site</div>
+            <div class="dt"><ul><li>Hero — coluna direita do split layout 50/50 (desktop)</li><li>Hero — fundo full-bleed 55vh (mobile)</li><li>Reel — intercalado entre thumbnails como card de bastidores</li><li>CTA Final — opção de fundo em substituição à foto estática</li><li>LinkedIn / Instagram — o mesmo clipe serve como conteúdo orgânico de marca</li></ul></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:75%;background:#E24B4A"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">Produção oportunística no próximo set + 2h de edição do loop + 2h de implementação</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">CTA Final · Direção de arte — foto editorial de set</div>
+          <div class="item-problem">A opção de thumbnail do portfólio como fundo do CTA (Fase 2) é funcional mas não ideal — precisa de uma foto produzida especificamente para esse contexto</div>
+        </div>
+        <span class="prio prio-m">Média</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Briefing fotográfico</div>
+            <div class="dt"><strong>1 foto horizontal grande angular:</strong><br><br>Evento corporativo ou set — câmera profissional em primeiro plano (desfocada ou em foco), ação ao fundo (plateia, entrevistado, equipamento). Mínimo 1920×1080px. Tom noturno ou de set com iluminação de produção — dramático, não corporativo. Não usar flash frontal.<br><br>O objetivo é: uma cena que, com overlay de 78%, crie sensação de profissionalismo e escala antes de o visitante ler o CTA.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">A diferença entre um thumbnail de portfólio e uma foto produzida especificamente para o CTA é a intenção compositiva — a foto de set tem câmera em destaque e ação ao fundo, comunicando exatamente o serviço. Melhora de percepção de qualidade visual do site inteiro.</div>
+            <div class="impact-bar"><div class="impact-fill-m" style="width:65%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:30%;background:#EF9F27"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">Produzir no mesmo dia de shoot · 20 min de CSS para implementar</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-head" onclick="tog(this)">
+        <div class="item-meta">
+          <div class="item-section">Reel + Propósito · Storytelling — making of de 60s</div>
+          <div class="item-problem">A Veic não tem um vídeo sobre si mesma — produtora que não tem making of perde o argumento de venda mais poderoso que poderia ter</div>
+        </div>
+        <span class="prio prio-m">Média</span>
+        <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
+      </div>
+      <div class="item-body">
+        <div class="detail-grid">
+          <div class="detail-cell">
+            <div class="dl dl-sol">Briefing de produção</div>
+            <div class="dt"><strong>Making of institucional de 45–60 segundos:</strong><br><br>Mini-documentário em corte rápido: setup do set → operador em campo → diretor orientando → editor na timeline → cliente vendo resultado. Trilha de baixo impacto (não publicitária). Sem locução — imagens falam por si.<br><br>MP4 1920×1080px, com áudio. Versão vertical (9:16) derivada para Instagram/LinkedIn Reels.<br><br>Este vídeo é simultaneamente: conteúdo do site (seção Propósito), conteúdo de redes sociais e argumento de venda em reuniões.</div>
+          </div>
+          <div class="detail-cell">
+            <div class="dl dl-imp">Impacto esperado</div>
+            <div class="dt">O making of é o argumento de venda mais poderoso de uma produtora — porque o próprio making of é uma demonstração de competência. Uma empresa que faz vídeos e tem um making of impactante de si mesma prova que sabe fazer o que vende. Uso multiplataforma amplifica o ROI da produção.</div>
+            <div class="impact-bar"><div class="impact-fill-a" style="width:88%"></div></div>
+          </div>
+        </div>
+        <div class="axes-row" style="margin-top:12px"><div class="axis-label">Esforço</div><div class="axis-bar"><div class="axis-fill" style="width:80%;background:#E24B4A"></div></div></div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:3px">1 dia de shoot dedicado + 1–2 dias de edição — maior investimento, maior retorno a longo prazo</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     VISÃO GERAL
+═══════════════════════════════════ -->
+<div id="p-sum" class="pan">
+  <div class="summary-overview">
+    <div class="sum-card">
+      <div class="sum-num n1">9</div>
+      <div class="sum-lbl">Itens — Fase 1</div>
+      <div class="sum-sub">Sem produção nova · ~12h de dev</div>
+    </div>
+    <div class="sum-card">
+      <div class="sum-num n2">6</div>
+      <div class="sum-lbl">Itens — Fase 2</div>
+      <div class="sum-sub">Material existente · ~20h de dev</div>
+    </div>
+    <div class="sum-card">
+      <div class="sum-num n3">6</div>
+      <div class="sum-lbl">Itens — Fase 3</div>
+      <div class="sum-sub">Produção nova · 2–3 dias de shoot</div>
+    </div>
+    <div class="sum-card">
+      <div class="sum-num" style="color:var(--color-text-primary)">21</div>
+      <div class="sum-lbl">Total de melhorias</div>
+      <div class="sum-sub">Cobrindo todas as 10 dimensões</div>
     </div>
   </div>
 
-  <a class="whatsapp-float" href="https://wa.me/5531983335876" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
-  <script src="script.js"></script>
-</body>
-</html>
+  <div style="background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:16px">
+    <div style="padding:12px 14px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;gap:8px;align-items:center">
+      <i class="ti ti-layout-grid" style="font-size:16px;color:var(--color-text-secondary)" aria-hidden="true"></i>
+      <div style="font-size:13px;font-weight:500;color:var(--color-text-primary)">As 10 dimensões cobertas — onde cada fase atua</div>
+    </div>
+    <div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+      <div class="axes-row"><div class="axis-label" style="min-width:180px">Posicionamento de marca</div><div style="display:flex;gap:3px"><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#EEEDFE;color:#534AB7">F1</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#E1F5EE;color:#0F6E56">F2</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#FAEEDA;color:#854F0B">F3</span></div></div>
+      <div class="axes-row"><div class="axis-label" style="min-width:180px">UX / UI</div><div style="display:flex;gap:3px"><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#EEEDFE;color:#534AB7">F1</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#E1F5EE;color:#0F6E56">F2</span></div></div>
+      <div class="axes-row"><div class="axis-label" style="min-width:180px">Mobile first</div><div style="display:flex;gap:3px"><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#EEEDFE;color:#534AB7">F1</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#E1F5EE;color:#0F6E56">F2</span></div></div>
+      <div class="axes-row"><div class="axis-label" style="min-width:180px">Experiência cognitiva</div><div style="display:flex;gap:3px"><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#EEEDFE;color:#534AB7">F1</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#E1F5EE;color:#0F6E56">F2</span></div></div>
+      <div class="axes-row"><div class="axis-label" style="min-width:180px">Storytelling visual</div><div style="display:flex;gap:3px"><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#E1F5EE;color:#0F6E56">F2</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#FAEEDA;color:#854F0B">F3</span></div></div>
+      <div class="axes-row"><div class="axis-label" style="min-width:180px">Direção de arte</div><div style="display:flex;gap:3px"><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#EEEDFE;color:#534AB7">F1</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#FAEEDA;color:#854F0B">F3</span></div></div>
+      <div class="axes-row"><div class="axis-label" style="min-width:180px">Conversão</div><div style="display:flex;gap:3px"><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#EEEDFE;color:#534AB7">F1</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#E1F5EE;color:#0F6E56">F2</span></div></div>
+      <div class="axes-row"><div class="axis-label" style="min-width:180px">SEO</div><div style="display:flex;gap:3px"><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#EEEDFE;color:#534AB7">F1</span></div></div>
+      <div class="axes-row"><div class="axis-label" style="min-width:180px">Percepção de autoridade</div><div style="display:flex;gap:3px"><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#E1F5EE;color:#0F6E56">F2</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#FAEEDA;color:#854F0B">F3</span></div></div>
+      <div class="axes-row"><div class="axis-label" style="min-width:180px">Identidade de produtora</div><div style="display:flex;gap:3px"><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#EEEDFE;color:#534AB7">F1</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#E1F5EE;color:#0F6E56">F2</span><span style="font-size:10px;padding:2px 6px;border-radius:100px;background:#FAEEDA;color:#854F0B">F3</span></div></div>
+    </div>
+  </div>
+
+  <div style="background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:16px">
+    <div style="padding:12px 14px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;gap:8px;align-items:center">
+      <i class="ti ti-flame" style="font-size:16px;color:#A32D2D" aria-hidden="true"></i>
+      <div style="font-size:13px;font-weight:500;color:var(--color-text-primary)">Os 5 itens de maior impacto por esforço — começar por aqui</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1px">
+      <div style="padding:10px 14px;border-bottom:.5px solid var(--color-border-tertiary);display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center">
+        <div style="font-size:13px;font-weight:500;color:#A32D2D;min-width:20px">1</div>
+        <div><div style="font-size:13px;color:var(--color-text-primary)">CTA final com thumbnail de fundo</div><div style="font-size:11px;color:var(--color-text-tertiary)">Fase 2 · 20 minutos de CSS · última impressão do site</div></div>
+        <div style="display:flex;gap:4px;align-items:center"><span class="prio prio-a">Alta</span><span class="efr">20 min</span></div>
+      </div>
+      <div style="padding:10px 14px;border-bottom:.5px solid var(--color-border-tertiary);display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center">
+        <div style="font-size:13px;font-weight:500;color:#A32D2D;min-width:20px">2</div>
+        <div><div style="font-size:13px;color:var(--color-text-primary)">Subtítulo do hero → "Estratégia. Câmera. Resultado."</div><div style="font-size:11px;color:var(--color-text-tertiary)">Fase 1 · 5 minutos de HTML · posicionamento de marca</div></div>
+        <div style="display:flex;gap:4px;align-items:center"><span class="prio prio-a">Alta</span><span class="efr">5 min</span></div>
+      </div>
+      <div style="padding:10px 14px;border-bottom:.5px solid var(--color-border-tertiary);display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center">
+        <div style="font-size:13px;font-weight:500;color:#A32D2D;min-width:20px">3</div>
+        <div><div style="font-size:13px;color:var(--color-text-primary)">Hero mobile com thumbnail de fundo 55vh</div><div style="font-size:11px;color:var(--color-text-tertiary)">Fase 2 · 1h de CSS · maioria dos visitantes chega pelo mobile</div></div>
+        <div style="display:flex;gap:4px;align-items:center"><span class="prio prio-a">Alta</span><span class="efr">1h</span></div>
+      </div>
+      <div style="padding:10px 14px;border-bottom:.5px solid var(--color-border-tertiary);display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center">
+        <div style="font-size:13px;font-weight:500;color:#A32D2D;min-width:20px">4</div>
+        <div><div style="font-size:13px;color:var(--color-text-primary)">Frames do portfólio na seção O que Entregamos</div><div style="font-size:11px;color:var(--color-text-tertiary)">Fase 2 · 6h · maior impacto de conversão do site</div></div>
+        <div style="display:flex;gap:4px;align-items:center"><span class="prio prio-a">Alta</span><span class="efr">6h</span></div>
+      </div>
+      <div style="padding:10px 14px;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center">
+        <div style="font-size:13px;font-weight:500;color:#A32D2D;min-width:20px">5</div>
+        <div><div style="font-size:13px;color:var(--color-text-primary)">Sessão fotográfica de bastidores — 5 fotos para o grid Backstage</div><div style="font-size:11px;color:var(--color-text-tertiary)">Fase 3 · 1 dia · resolução do problema central de percepção</div></div>
+        <div style="display:flex;gap:4px;align-items:center"><span class="prio prio-a">Alta</span><span class="efr">1 dia</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:12px 14px;font-size:12px;color:var(--color-text-secondary);line-height:1.6">
+    <strong style="color:var(--color-text-primary);display:block;margin-bottom:6px">Princípio que orienta todo o plano</strong>
+    O problema central do site não é estético — é de gênero. O site está visualmente competente para uma consultoria de comunicação. Para uma produtora audiovisual, falta o material bruto que define o gênero: câmera, luz, set, rosto humano. A Fase 1 corrige estrutura e copy. A Fase 2 usa o que já existe para comunicar visualmente. A Fase 3 produz o que só uma produtora pode produzir sobre si mesma — e que nenhuma consultoria teria.
+  </div>
+</div>
+
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.pan').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('p-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+function tog(head){
+  const body=head.nextElementSibling;
+  const chev=head.querySelector('.chev');
+  const open=body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  if(chev)chev.classList.toggle('open',!open);
+}
+</script>
