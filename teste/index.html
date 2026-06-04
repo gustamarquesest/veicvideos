@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veic Vídeos V2 | Produtora Audiovisual</title>
-  <meta name="description" content="V2 funcional da Veic Vídeos: produtora audiovisual para negócios, eventos, presença digital, vendas e comunicação interna.">
+  <title>Veic Vídeos — Produtora Audiovisual</title>
+  <meta name="description" content="Produtora audiovisual para negócios e eventos. Vídeos com direção para apresentar, vender, treinar, registrar e transformar ações em ativos de comunicação.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Veic Vídeos">
+  <meta property="og:title" content="Veic Vídeos — Produtora Audiovisual">
+  <meta property="og:description" content="Vídeos para negócios e eventos, com diagnóstico, direção, captação e edição.">
+  <meta property="og:image" content="https://veicvideos.com/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -25,118 +30,54 @@
       <a href="#momentos">Momentos</a>
       <a href="#diagnostico">Diagnóstico</a>
       <a href="#processo">Processo</a>
-      <a class="nav-cta" href="https://wa.me/5531983335876" target="_blank" rel="noopener">Fale conosco</a>
+      <a class="nav-cta" href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener">Fale conosco</a>
     </nav>
   </header>
 
   <main id="top">
     <section class="hero section-dark">
-      <div class="hero-media" aria-label="Showreel placeholder">
-        <div class="video-placeholder video-placeholder-main" data-video="Showreel Veic Vídeos">
-          <span class="play-dot"></span>
-          <div class="scanline"></div>
-          <p>Showreel</p>
-        </div>
-      </div>
       <div class="hero-copy">
         <p class="eyebrow">Produtora audiovisual</p>
         <h1>Vídeos para negócios e eventos.</h1>
-        <p class="lead">Produção com direção para apresentar, vender, treinar, registrar e transformar ações em ativos de comunicação.</p>
+        <p class="lead">Produzimos vídeos com direção para apresentar empresas, vender melhor, treinar equipes, registrar eventos e transformar ações em ativos de comunicação.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#portfolio"><span aria-hidden="true">▶</span> Ver portfólio</a>
           <a class="btn btn-secondary" href="#diagnostico">Qual vídeo produzir?</a>
         </div>
       </div>
-      <div class="hero-strip" aria-label="Produções em destaque">
+      <button class="hero-player js-open-video" type="button" data-id="cPl8z5m_nwY" data-platform="youtube" data-orientation="horizontal" data-title="Case de Sucesso · Cineart">
+        <img src="https://img.youtube.com/vi/cPl8z5m_nwY/maxresdefault.jpg" alt="Frame do vídeo Case de Sucesso Cineart">
+        <span class="play-dot"></span>
+        <span class="hero-player-label">Case de sucesso · Cineart</span>
+      </button>
+      <div class="hero-strip" aria-label="Produções reais em destaque">
         <article>
           <span>Case de sucesso</span>
-          <strong>Cineart</strong>
+          <strong>Cineart · Meet Tecnologia</strong>
         </article>
         <article>
           <span>Anúncio de patrocínio</span>
           <strong>Betim Futebol</strong>
         </article>
         <article>
-          <span>Backstage + case</span>
-          <strong>Meet Tecnologia</strong>
+          <span>Registro de festival</span>
+          <strong>Mangalarga Marchador</strong>
         </article>
       </div>
     </section>
 
-    <section class="proof section-light" id="portfolio">
-      <div class="section-heading">
-        <p class="eyebrow">Trabalho primeiro</p>
-        <h2>Produções em destaque.</h2>
+    <section class="featured section-light" aria-labelledby="featured-title">
+      <div class="section-heading left">
+        <p class="eyebrow">Produções em destaque</p>
+        <h2 id="featured-title">A obra aparece antes da explicação.</h2>
       </div>
-      <div class="filter-row" role="tablist" aria-label="Filtrar portfólio">
-        <button class="filter active" type="button" data-filter="all">Todos</button>
-        <button class="filter" type="button" data-filter="cases">Cases</button>
-        <button class="filter" type="button" data-filter="ads">Anúncios</button>
-        <button class="filter" type="button" data-filter="eventos">Eventos</button>
-        <button class="filter" type="button" data-filter="interno">Interno</button>
-      </div>
-      <div class="work-grid">
-        <article class="work-card featured" data-category="cases">
-          <button class="media-thumb warm" type="button" data-video="Case de sucesso | Cineart">
-            <span class="play-dot"></span>
-          </button>
-          <div>
-            <p>Case de sucesso</p>
-            <h3>Cineart · Meet Tecnologia</h3>
-          </div>
-        </article>
-        <article class="work-card" data-category="ads">
-          <button class="media-thumb green" type="button" data-video="Anúncio de patrocínio | Betim Futebol">
-            <span class="play-dot"></span>
-          </button>
-          <div>
-            <p>Anúncio de patrocínio</p>
-            <h3>Betim Futebol</h3>
-          </div>
-        </article>
-        <article class="work-card" data-category="eventos">
-          <button class="media-thumb blue" type="button" data-video="Registro de festival | Mangalarga Marchador">
-            <span class="play-dot"></span>
-          </button>
-          <div>
-            <p>Registro do festival</p>
-            <h3>Mangalarga Marchador</h3>
-          </div>
-        </article>
-        <article class="work-card" data-category="cases">
-          <button class="media-thumb violet" type="button" data-video="Backstage + case | Grupo Avante">
-            <span class="play-dot"></span>
-          </button>
-          <div>
-            <p>Backstage + case</p>
-            <h3>Grupo Avante</h3>
-          </div>
-        </article>
-        <article class="work-card" data-category="interno">
-          <button class="media-thumb copper" type="button" data-video="Treinamento NR | Registro da ação">
-            <span class="play-dot"></span>
-          </button>
-          <div>
-            <p>Treinamento</p>
-            <h3>Registro da ação</h3>
-          </div>
-        </article>
-        <article class="work-card" data-category="ads">
-          <button class="media-thumb pink" type="button" data-video="Campanha | Conselho da Massa">
-            <span class="play-dot"></span>
-          </button>
-          <div>
-            <p>Campanha</p>
-            <h3>Conselho da Massa</h3>
-          </div>
-        </article>
-      </div>
+      <div class="featured-rail" id="featuredRail" aria-label="Vídeos em destaque"></div>
     </section>
 
     <section class="what section-dark">
       <div class="section-heading left">
-        <p class="eyebrow">O que produzimos</p>
-        <h2>Vídeo é o produto. O resto direciona a produção.</h2>
+        <p class="eyebrow">O que a Veic produz</p>
+        <h2>Vídeo é a entrega. A estratégia direciona a câmera.</h2>
       </div>
       <div class="type-grid">
         <article>
@@ -161,8 +102,8 @@
         </article>
         <article>
           <span>05</span>
-          <h3>Equipe</h3>
-          <p>Treinamentos, integração, processos e comunicação interna.</p>
+          <h3>Comunicação interna</h3>
+          <p>Treinamentos, integração, processos e endomarketing.</p>
         </article>
         <article>
           <span>06</span>
@@ -172,66 +113,71 @@
       </div>
     </section>
 
-    <section class="moments section-light" id="momentos">
+    <section class="portfolio section-light" id="portfolio">
       <div class="section-heading">
-        <p class="eyebrow">Vídeos para cada momento</p>
-        <h2>Escolha a etapa. Veja o formato.</h2>
+        <p class="eyebrow">Portfólio</p>
+        <h2>Trabalhos reais, organizados por função.</h2>
       </div>
-      <div class="moment-tabs" role="tablist" aria-label="Momentos de comunicação">
-        <button class="moment-tab active" type="button" data-moment="descoberta">Descoberta</button>
-        <button class="moment-tab" type="button" data-moment="apresentacao">Apresentação</button>
-        <button class="moment-tab" type="button" data-moment="conversao">Conversão</button>
-        <button class="moment-tab" type="button" data-moment="cultura">Cultura interna</button>
-      </div>
-      <div class="moment-panel">
-        <div class="moment-copy">
-          <p class="panel-kicker" id="moment-kicker">Aparecer para quem ainda não conhece</p>
-          <h3 id="moment-title">Descoberta</h3>
-          <p id="moment-desc">Vídeos curtos para chamar atenção, despertar curiosidade e gerar o primeiro interesse.</p>
-          <div class="pill-list" id="moment-pills"></div>
-        </div>
-        <button class="moment-frame" type="button" data-video="Exemplo do momento">
-          <span class="play-dot"></span>
-          <small id="moment-frame-label">Placeholder · Reel / anúncio</small>
-        </button>
+      <div class="filter-row" id="portfolioFilters" aria-label="Filtros do portfólio"></div>
+      <div class="work-grid" id="portfolioGrid" aria-live="polite"></div>
+      <div class="portfolio-more">
+        <button class="btn btn-secondary-dark" id="loadMore" type="button">Carregar mais vídeos</button>
       </div>
     </section>
 
-    <section class="diagnostic section-dark" id="diagnostico">
+    <section class="moments section-dark" id="momentos">
       <div class="section-heading left">
+        <p class="eyebrow">Mapa audiovisual</p>
+        <h2>Em cada momento, um tipo de vídeo.</h2>
+      </div>
+      <div class="moment-tabs" role="tablist" aria-label="Momentos de comunicação">
+        <button class="moment-tab active" type="button" data-moment="0">Descoberta</button>
+        <button class="moment-tab" type="button" data-moment="1">Apresentação</button>
+        <button class="moment-tab" type="button" data-moment="2">Consideração</button>
+        <button class="moment-tab" type="button" data-moment="3">Conversão</button>
+        <button class="moment-tab" type="button" data-moment="4">Fidelização</button>
+        <button class="moment-tab" type="button" data-moment="5">Cultura interna</button>
+      </div>
+      <div class="moment-panel">
+        <div class="moment-copy">
+          <p class="panel-kicker" id="momentKicker">Aparecer para quem ainda não conhece</p>
+          <h3 id="momentTitle">Descoberta</h3>
+          <p id="momentDesc"></p>
+          <div class="pill-list light-pills" id="momentPills"></div>
+          <p class="where" id="momentWhere"></p>
+        </div>
+        <div class="moment-examples" id="momentExamples"></div>
+      </div>
+    </section>
+
+    <section class="diagnostic section-light" id="diagnostico">
+      <div class="section-heading">
         <p class="eyebrow">Diagnóstico audiovisual</p>
         <h2>Qual vídeo faz sentido agora?</h2>
       </div>
       <div class="diagnostic-layout">
         <div class="need-list" aria-label="Desafios do negócio">
-          <button class="need active" type="button" data-need="demanda">Precisamos aparecer e gerar demanda</button>
-          <button class="need" type="button" data-need="presenca">Não temos presença digital consolidada</button>
-          <button class="need" type="button" data-need="autoridade">Queremos fortalecer autoridade</button>
-          <button class="need" type="button" data-need="vendas">Precisamos converter melhor</button>
-          <button class="need" type="button" data-need="interno">Precisamos alinhar a equipe</button>
-          <button class="need" type="button" data-need="eventos">Temos eventos para transformar em conteúdo</button>
+          <button class="need active" type="button" data-need="0">Precisamos aparecer para nossa audiência e gerar demanda</button>
+          <button class="need" type="button" data-need="1">Nossa empresa/projeto não tem presença digital consolidada</button>
+          <button class="need" type="button" data-need="2">Queremos fortalecer nosso posicionamento e autoridade</button>
+          <button class="need" type="button" data-need="3">Precisamos vender mais e converter melhor nossas oportunidades</button>
+          <button class="need" type="button" data-need="4">Queremos melhorar a experiência e fidelizar nossos consumidores</button>
+          <button class="need" type="button" data-need="5">Precisamos organizar a comunicação interna e nossa equipe</button>
+          <button class="need" type="button" data-need="6">Realizamos eventos e queremos transformá-los em ativos de comunicação</button>
         </div>
         <div class="recommendation">
           <p class="panel-kicker">Vídeos indicados</p>
-          <h3 id="rec-title">Anúncios e geração de demanda</h3>
-          <p id="rec-desc">Produções para ampliar alcance, atrair novas pessoas e criar oportunidades comerciais com mais consistência.</p>
-          <div class="rec-content">
-            <div>
-              <span>Formatos</span>
-              <div class="pill-list" id="rec-pills"></div>
-            </div>
-            <button class="rec-frame" type="button" data-video="Exemplo recomendado">
-              <span class="play-dot"></span>
-              <small id="rec-frame-label">Placeholder · Campanha</small>
-            </button>
-          </div>
+          <h3 id="recTitle">Anúncios e geração de demanda</h3>
+          <p id="recDesc"></p>
+          <div class="pill-list" id="recPills"></div>
+          <div class="rec-examples" id="recExamples"></div>
           <a class="btn btn-primary" href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Quero%20entender%20qual%20v%C3%ADdeo%20faz%20sentido%20para%20minha%20empresa." target="_blank" rel="noopener">Conversar sobre este projeto</a>
         </div>
       </div>
     </section>
 
-    <section class="process section-light" id="processo">
-      <div class="section-heading">
+    <section class="process section-dark" id="processo">
+      <div class="section-heading left">
         <p class="eyebrow">Produção com direção</p>
         <h2>Da intenção ao vídeo pronto.</h2>
       </div>
@@ -239,70 +185,68 @@
         <article>
           <span>01</span>
           <h3>Diagnóstico</h3>
-          <p>Entender objetivo, público e momento.</p>
+          <p>Entendemos o momento atual do negócio, objetivos e desafios de comunicação.</p>
         </article>
         <article>
           <span>02</span>
-          <h3>Mapa de vídeos</h3>
-          <p>Definir formatos e prioridades.</p>
+          <h3>Mapeamento</h3>
+          <p>Identificamos oportunidades de vídeo na jornada do cliente e na comunicação interna.</p>
         </article>
         <article>
           <span>03</span>
-          <h3>Direção</h3>
-          <p>Roteiro, condução e captação.</p>
+          <h3>Priorização</h3>
+          <p>Definimos quais vídeos geram mais impacto para o momento atual.</p>
         </article>
         <article>
           <span>04</span>
-          <h3>Edição</h3>
-          <p>Montagem, ritmo, identidade e entrega.</p>
+          <h3>Produção</h3>
+          <p>Planejamos, dirigimos, gravamos e editamos vídeos alinhados ao objetivo.</p>
         </article>
-      </div>
-      <div class="behind-scenes">
-        <button class="wide-frame" type="button" data-video="Bastidores da produção">
-          <span class="play-dot"></span>
-          <small>Placeholder · Bastidores / direção / edição</small>
-        </button>
+        <article>
+          <span>05</span>
+          <h3>Evolução</h3>
+          <p>A comunicação evolui conforme o crescimento e as novas demandas.</p>
+        </article>
       </div>
     </section>
 
-    <section class="landing-support section-dark">
+    <section class="landing-support section-light">
       <div class="support-copy">
         <p class="eyebrow">Complemento</p>
         <h2>Landing pages entram quando ajudam o vídeo.</h2>
-        <p>Quando a empresa precisa apresentar melhor seus serviços, concentrar uma oferta ou ser encontrada no Google, a página vira porta de entrada. A entrega principal continua sendo audiovisual.</p>
+        <p>Além da produção dos vídeos, a Veic pode desenvolver landing pages de apresentação para fortalecer presença digital, ser encontrada no Google e apresentar produtos e serviços de forma mais profissional.</p>
       </div>
-      <div class="support-device" aria-label="Placeholder de landing page com vídeo">
+      <div class="support-device">
         <div class="device-top"></div>
-        <div class="device-video"><span class="play-dot"></span></div>
-        <div class="device-lines">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <button class="device-video js-open-video" type="button" data-id="P8hNnOzTfTo" data-platform="youtube" data-orientation="horizontal" data-title="Apresentação de Serviços · UNE Internet">
+          <img src="https://img.youtube.com/vi/P8hNnOzTfTo/maxresdefault.jpg" alt="Frame de vídeo de apresentação de serviços">
+          <span class="play-dot"></span>
+        </button>
+        <div class="device-lines"><span></span><span></span><span></span></div>
       </div>
     </section>
 
     <section class="faq section-light">
       <div class="section-heading">
         <p class="eyebrow">Antes de produzir</p>
-        <h2>Perguntas rápidas.</h2>
+        <h2>Perguntas frequentes.</h2>
       </div>
       <div class="faq-list">
         <details>
           <summary>Quanto custa um vídeo?</summary>
-          <p>Cada projeto é orçado conforme objetivo, complexidade, formatos e quantidade de entregas.</p>
+          <p>Cada projeto é orçado individualmente conforme os objetivos do negócio, a complexidade da produção e os resultados esperados.</p>
         </details>
         <details>
-          <summary>Por onde começar?</summary>
-          <p>Pelo vídeo que resolve a necessidade mais urgente: apresentar, vender, treinar, registrar ou gerar demanda.</p>
+          <summary>Minha empresa precisa produzir todos esses vídeos?</summary>
+          <p>Não. Cada empresa possui um nível diferente de maturidade e necessidades diferentes. O papel da Veic é ajudar a identificar prioridades.</p>
         </details>
         <details>
-          <summary>Preciso ter experiência em câmera?</summary>
-          <p>Não. A Veic orienta clientes e equipes durante a gravação para transmitir a mensagem com naturalidade.</p>
+          <summary>Vocês também criam Landing Pages?</summary>
+          <p>Sim, quando a página ajuda a apresentar vídeos, fortalecer presença digital ou concentrar uma oferta. A entrega principal continua sendo audiovisual.</p>
         </details>
         <details>
-          <summary>Vocês atendem fora de Belo Horizonte?</summary>
-          <p>Sim. Projetos podem ser agendados em Minas Gerais e outras regiões do Brasil.</p>
+          <summary>Preciso ter experiência em frente às câmeras?</summary>
+          <p>Não. A Veic orienta clientes e equipes durante a gravação para transmitir a mensagem com naturalidade e segurança.</p>
         </details>
       </div>
     </section>
@@ -312,7 +256,7 @@
         <p class="eyebrow">Próximo take</p>
         <h2>Vamos entender qual vídeo faz sentido agora?</h2>
       </div>
-      <a class="btn btn-primary" href="https://wa.me/5531983335876" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      <a class="btn btn-primary" href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener">Chamar no WhatsApp</a>
     </section>
   </main>
 
@@ -320,12 +264,8 @@
     <div class="modal-backdrop"></div>
     <div class="modal-panel">
       <button class="modal-close" type="button" aria-label="Fechar">×</button>
-      <div class="modal-video">
-        <span class="play-dot"></span>
-        <div class="scanline"></div>
-      </div>
-      <h2 id="modal-title">Vídeo placeholder</h2>
-      <p>Área reservada para player real, showreel, frame do YouTube/Vimeo ou vídeo hospedado.</p>
+      <div class="modal-video-wrap" id="modalVideoWrap"></div>
+      <h2 id="modalTitle">Vídeo</h2>
     </div>
   </div>
 
