@@ -45,8 +45,8 @@
         </div>
       </div>
       <div class="hero-player hero-player-vertical" aria-label="Vídeo Qual é o diferencial">
-        <iframe src="https://www.youtube.com/embed/nrzURq_4LPk?autoplay=1&mute=1&loop=1&playlist=nrzURq_4LPk&controls=0&playsinline=1&rel=0&modestbranding=1" title="Qual é o diferencial" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-        <button class="hero-click js-open-video" type="button" data-id="nrzURq_4LPk" data-platform="youtube" data-orientation="vertical" data-title="Qual é o diferencial" aria-label="Abrir vídeo com som"></button>
+        <img src="https://img.youtube.com/vi/nrzURq_4LPk/maxresdefault.jpg" alt="Frame do vídeo Qual é o diferencial">
+        <button class="hero-click js-open-video" type="button" data-id="nrzURq_4LPk" data-platform="youtube" data-orientation="vertical" data-title="Qual é o diferencial" data-sound="true" aria-label="Abrir vídeo com som"></button>
         <span class="hero-sound-hint">Clique para ouvir</span>
         <span class="hero-player-label">Qual é o diferencial</span>
       </div>
@@ -138,7 +138,7 @@
         <p class="eyebrow">Mapa audiovisual</p>
         <h2>Em cada momento, um tipo de vídeo.</h2>
       </div>
-      <p class="drag-hint">Arraste para alternar as etapas</p>
+      <p class="drag-hint">Alterne entre as etapas</p>
       <div class="moment-tabs" role="tablist" aria-label="Momentos de comunicação">
         <button class="moment-tab active" type="button" data-moment="0">Descoberta</button>
         <button class="moment-tab" type="button" data-moment="1">Apresentação</button>
@@ -147,6 +147,7 @@
         <button class="moment-tab" type="button" data-moment="4">Fidelização</button>
         <button class="moment-tab" type="button" data-moment="5">Cultura interna</button>
       </div>
+      <div class="moment-dots" id="momentDots" aria-label="Indicadores das etapas"></div>
       <div class="moment-panel">
         <div class="moment-copy">
           <p class="panel-kicker" id="momentKicker">Aparecer para quem ainda não conhece</p>
@@ -163,10 +164,11 @@
       <div class="section-heading left">
         <p class="eyebrow">Diagnóstico audiovisual</p>
         <h2>Qual vídeo faz sentido agora?</h2>
+        <p class="drag-hint">Clique na solução que você precisa</p>
       </div>
       <div class="diagnostic-layout">
         <div class="need-list" aria-label="Desafios do negócio">
-          <button class="need active" type="button" data-need="0">Precisamos de mais clientes</button>
+          <button class="need" type="button" data-need="0">Precisamos de mais clientes</button>
           <button class="need" type="button" data-need="1">Precisamos nos apresentar bem e fácil no digital</button>
           <button class="need" type="button" data-need="2">Queremos fortalecer nosso posicionamento e autoridade</button>
           <button class="need" type="button" data-need="3">Precisamos vender mais e converter melhor nossas oportunidades</button>
