@@ -18,7 +18,7 @@
 <body>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Veic Vídeos">
-      <img class="brand-logo" src="assets/logo-principal.svg" alt="Veic Vídeos">
+      <img class="brand-logo" src="assets/logo-principal.png" alt="Veic Vídeos">
     </a>
     <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
       <span></span>
@@ -36,7 +36,7 @@
   <main id="top">
     <section class="hero section-dark">
       <div class="hero-copy">
-        <p class="eyebrow">Produtora audiovisual</p>
+        <p class="eyebrow section-label-xl">Produtora audiovisual</p>
         <h1>Vídeos para negócios e&nbsp;eventos.</h1>
         <p class="lead">Produzimos vídeos com direção para apresentar empresas, vender melhor, treinar equipes, registrar eventos e transformar ações em ativos de comunicação.</p>
         <div class="hero-actions">
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="hero-player hero-player-vertical" aria-label="Vídeo Qual é o diferencial">
-        <img src="https://img.youtube.com/vi/nrzURq_4LPk/maxresdefault.jpg" alt="Frame do vídeo Qual é o diferencial">
+        <iframe src="https://www.youtube.com/embed/nrzURq_4LPk?autoplay=1&mute=1&loop=1&playlist=nrzURq_4LPk&playsinline=1&controls=0&rel=0&modestbranding=1" title="Qual é o diferencial" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         <button class="hero-click js-open-video" type="button" data-id="nrzURq_4LPk" data-platform="youtube" data-orientation="vertical" data-title="Qual é o diferencial" data-sound="true" aria-label="Abrir vídeo com som"></button>
         <span class="hero-sound-hint">Clique para ouvir</span>
         <span class="hero-player-label">Qual é o diferencial</span>
@@ -68,7 +68,7 @@
 
     <section class="featured section-light" aria-labelledby="featured-title">
       <div class="section-heading left">
-        <p class="eyebrow">Produções em destaque</p>
+        <p class="eyebrow section-label-xl featured-label">Produções em destaque</p>
         <h2 id="featured-title">Conheça alguns projetos produzidos pela Veic Vídeos.</h2>
       </div>
       <div class="featured-wrap">
@@ -82,7 +82,7 @@
 
     <section class="what section-dark">
       <div class="section-heading left">
-        <p class="eyebrow">O que a Veic produz</p>
+        <p class="eyebrow section-label-xl">O que a Veic produz</p>
         <h2>Vídeo é a entrega. A estratégia direciona a câmera.</h2>
         <p class="section-intro">Cada organização tem um momento e desafios diferentes.</p>
       </div>
@@ -122,7 +122,7 @@
 
     <section class="portfolio section-light" id="portfolio">
       <div class="section-heading">
-        <p class="eyebrow">Portfólio</p>
+        <p class="eyebrow section-label-xl">Portfólio</p>
         <h2>Trabalhos reais, organizados por função.</h2>
       </div>
       <div class="portfolio-stage">
@@ -135,19 +135,21 @@
 
     <section class="moments section-dark" id="momentos">
       <div class="section-heading left">
-        <p class="eyebrow">Mapa audiovisual</p>
+        <p class="eyebrow section-label-xl">Mapa audiovisual</p>
         <h2>Em cada momento, um tipo de vídeo.</h2>
       </div>
       <p class="drag-hint">Alterne entre as etapas</p>
-      <div class="moment-tabs" role="tablist" aria-label="Momentos de comunicação">
-        <button class="moment-tab active" type="button" data-moment="0">Descoberta</button>
-        <button class="moment-tab" type="button" data-moment="1">Apresentação</button>
-        <button class="moment-tab" type="button" data-moment="2">Consideração</button>
-        <button class="moment-tab" type="button" data-moment="3">Conversão</button>
-        <button class="moment-tab" type="button" data-moment="4">Fidelização</button>
-        <button class="moment-tab" type="button" data-moment="5">Cultura interna</button>
+      <div class="moment-nav">
+        <div class="moment-tabs" role="tablist" aria-label="Momentos de comunicação">
+          <button class="moment-tab active" type="button" data-moment="0">Descoberta</button>
+          <button class="moment-tab" type="button" data-moment="1">Apresentação</button>
+          <button class="moment-tab" type="button" data-moment="2">Consideração</button>
+          <button class="moment-tab" type="button" data-moment="3">Conversão</button>
+          <button class="moment-tab" type="button" data-moment="4">Fidelização</button>
+          <button class="moment-tab" type="button" data-moment="5">Cultura interna</button>
+        </div>
+        <div class="moment-dots" id="momentDots" aria-label="Indicadores das etapas"></div>
       </div>
-      <div class="moment-dots" id="momentDots" aria-label="Indicadores das etapas"></div>
       <div class="moment-panel">
         <div class="moment-copy">
           <p class="panel-kicker" id="momentKicker">Aparecer para quem ainda não conhece</p>
@@ -162,7 +164,7 @@
 
     <section class="diagnostic section-dark" id="diagnostico">
       <div class="section-heading left">
-        <p class="eyebrow">Diagnóstico audiovisual</p>
+        <p class="eyebrow section-label-xl">Diagnóstico audiovisual</p>
         <h2>Qual vídeo faz sentido agora?</h2>
         <p class="drag-hint">Clique na solução que você precisa</p>
       </div>
@@ -194,7 +196,7 @@
 
     <section class="process section-dark" id="processo">
       <div class="section-heading left">
-        <p class="eyebrow">Produção com direção</p>
+        <p class="eyebrow section-label-xl">Produção com direção</p>
         <h2>Da intenção ao vídeo pronto.</h2>
       </div>
       <div class="process-rail">
@@ -244,7 +246,7 @@
 
     <section class="faq section-light">
       <div class="section-heading">
-        <p class="eyebrow">Antes de produzir</p>
+        <p class="eyebrow section-label-xl">Antes de produzir</p>
         <h2>Perguntas frequentes.</h2>
       </div>
       <div class="faq-list" id="faqList"></div>
