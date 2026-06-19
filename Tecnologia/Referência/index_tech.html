@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Vídeos para Empresas de Tecnologia | Veic Vídeos</title>
+  <meta name="description" content="Produzimos vídeos estratégicos para startups, SaaS, agências digitais e empresas de tecnologia. Comunicação com posicionamento, autoridade e resultado no digital." />
+  <meta name="keywords" content="vídeos para empresa de tecnologia, produção de vídeo startup, videomaker tech, vídeos para SaaS, produtora de vídeo Belo Horizonte, marketing em vídeo para tech, vídeos estratégicos startup BH" />
+  <meta name="author" content="Veic Vídeos" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#FFB600" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Impact&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────── */
+    :root {
+      --black:   #131210;
+      --cream:   #FEFBF3;
+      --gold:    #FFB600;
+      --gold-dk: #cc9200;
+      --gray:    #2a2924;
+      --gray2:   #3d3b34;
+
+      --ff-title: 'Impact', 'Arial Black', sans-serif;
+      --ff-body:  'Inter', sans-serif;
+      --ff-script:'Alex Brush', cursive;
+
+      --max: 1200px;
+      --radius: 4px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--ff-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--ff-body);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      font-family: var(--ff-body);
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      text-decoration: none;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn--gold {
+      background: var(--gold);
+      color: var(--black);
+      box-shadow: 0 4px 24px rgba(255,182,0,.35);
+    }
+    .btn--gold:hover {
+      background: #ffc51a;
+      box-shadow: 0 8px 32px rgba(255,182,0,.5);
+    }
+    .btn--outline {
+      background: transparent;
+      color: var(--cream);
+      border: 2px solid rgba(254,251,243,.3);
+    }
+    .btn--outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .btn--dark {
+      background: var(--black);
+      color: var(--cream);
+      box-shadow: 0 4px 24px rgba(19,18,16,.4);
+    }
+    .btn--dark:hover {
+      background: #1e1c18;
+      box-shadow: 0 8px 32px rgba(19,18,16,.6);
+    }
+    .btn--ghost-dark {
+      background: transparent;
+      color: var(--black);
+      border: 2px solid rgba(19,18,16,.3);
+    }
+    .btn--ghost-dark:hover { border-color: var(--black); }
+
+    /* ─── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.scrolled {
+      background: rgba(19,18,16,.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(255,182,0,.15);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .nav-logo svg { width: 36px; height: 36px; }
+    .nav-logo-text {
+      font-family: var(--ff-title);
+      font-size: 20px;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-cta { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle at center, rgba(255,182,0,.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-eyebrow { margin-bottom: 24px; }
+    .hero-title {
+      font-family: var(--ff-title);
+      font-size: clamp(44px, 6vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-title .line-gold { color: var(--gold); display: block; }
+    .hero-title .line-script {
+      font-family: var(--ff-script);
+      font-size: clamp(36px, 4.5vw, 60px);
+      color: var(--cream);
+      text-transform: none;
+      font-weight: normal;
+      display: block;
+      line-height: 1.2;
+      margin: 4px 0;
+    }
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(254,251,243,.7);
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* hero screen mockup */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .screen-stack {
+      position: relative;
+      width: 320px;
+      height: 460px;
+    }
+    .screen-card {
+      position: absolute;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(255,182,0,.25);
+      box-shadow: 0 24px 80px rgba(0,0,0,.8);
+    }
+    .screen-card:nth-child(1) {
+      width: 260px; height: 160px;
+      left: 0; top: 40px;
+      transform: rotate(-3deg);
+      z-index: 1;
+    }
+    .screen-card:nth-child(2) {
+      width: 280px; height: 175px;
+      right: 0; top: 0;
+      transform: rotate(2.5deg);
+      z-index: 2;
+      border-color: var(--gold);
+    }
+    .screen-card:nth-child(3) {
+      width: 270px; height: 165px;
+      left: 20px; top: 240px;
+      transform: rotate(-1deg);
+      z-index: 3;
+    }
+    .screen-inner {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 14px;
+      position: relative;
+    }
+    .screen-bg-1 { background: linear-gradient(135deg, #1a1a24 0%, #22223a 100%); }
+    .screen-bg-2 { background: linear-gradient(135deg, #1e1c18 0%, #2d2a22 100%); }
+    .screen-bg-3 { background: linear-gradient(135deg, #181e1a 0%, #1e2a1e 100%); }
+    .screen-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -60%);
+      width: 42px; height: 42px;
+      background: rgba(255,182,0,.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .screen-play svg { width: 16px; height: 16px; fill: var(--black); margin-left: 3px; }
+    .screen-icon {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 8px;
+      opacity: 0.55;
+    }
+    .screen-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .screen-label-sub {
+      font-size: 10px;
+      color: rgba(254,251,243,.55);
+      margin-top: 2px;
+    }
+
+    /* ─── PAIN ───────────────────────────────────────── */
+    .pain {
+      padding: 100px 0;
+      background: var(--cream);
+      color: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .pain::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gold);
+    }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .pain-title {
+      font-family: var(--ff-title);
+      font-size: clamp(32px, 4vw, 52px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .pain-title em { font-style: normal; color: var(--gold-dk); }
+    .pain-text {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(19,18,16,.75);
+      margin-bottom: 16px;
+    }
+    .pain-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .pain-list li { display: flex; gap: 14px; align-items: flex-start; }
+    .pain-list .icon {
+      width: 28px; height: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .pain-list .icon svg { width: 14px; height: 14px; fill: var(--black); }
+    .pain-list-label { font-weight: 700; font-size: 15px; color: var(--black); display: block; }
+    .pain-list-sub { font-size: 14px; color: rgba(19,18,16,.6); }
+
+    /* ─── PROPOSTA ───────────────────────────────────── */
+    .proposta {
+      padding: 120px 0;
+      background: var(--black);
+    }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-title {
+      font-family: var(--ff-title);
+      font-size: clamp(32px, 4.5vw, 56px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-top: 16px;
+    }
+    .section-title .gold { color: var(--gold); }
+    .section-sub {
+      margin-top: 16px;
+      font-size: 16px;
+      color: rgba(254,251,243,.6);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .card {
+      background: var(--gray);
+      border: 1px solid rgba(255,182,0,.1);
+      border-radius: 8px;
+      padding: 36px 28px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover { border-color: rgba(255,182,0,.5); transform: translateY(-4px); }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: left;
+    }
+    .card:hover::before { transform: scaleX(1); }
+    .card-num {
+      font-family: var(--ff-title);
+      font-size: 60px;
+      color: rgba(255,182,0,.12);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .card-icon { font-size: 32px; margin-bottom: 16px; }
+    .card-title { font-family: var(--ff-body); font-weight: 800; font-size: 18px; color: var(--cream); margin-bottom: 12px; }
+    .card-text { font-size: 14px; line-height: 1.7; color: rgba(254,251,243,.6); }
+
+    /* ─── VIDEOS ─────────────────────────────────────── */
+    .videos {
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--black) 0%, #1a1812 100%);
+    }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 56px;
+    }
+    .video-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      background: var(--gray2);
+      cursor: pointer;
+    }
+    .video-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .video-card:hover .video-thumb { transform: scale(1.05); }
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(19,18,16,.9) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px 16px;
+      transition: background 0.3s ease;
+    }
+    .video-card:hover .video-overlay {
+      background: linear-gradient(to top, rgba(19,18,16,.95) 0%, rgba(19,18,16,.3) 100%);
+    }
+    .video-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 56px; height: 56px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 0.85;
+    }
+    .video-play-btn svg { width: 20px; height: 20px; fill: var(--black); margin-left: 4px; }
+    .video-card:hover .video-play-btn { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    .video-title { font-weight: 700; font-size: 13px; color: var(--cream); line-height: 1.4; margin-bottom: 4px; }
+    .video-client { font-size: 11px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* Placeholder for videos */
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1e1c18 0%, #2d2a22 100%);
+      gap: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .video-placeholder-icon { font-size: 40px; opacity: 0.4; }
+    .video-placeholder-text { font-size: 11px; color: rgba(254,251,243,.3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* ─── PROOF ──────────────────────────────────────── */
+    .proof {
+      padding: 120px 0;
+      background: var(--cream);
+      color: var(--black);
+    }
+    .proof .section-title { color: var(--black); }
+    .proof .section-sub { color: rgba(19,18,16,.6); }
+    .proof-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 80px;
+      background: rgba(19,18,16,.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .proof-num-item { background: var(--cream); padding: 40px 32px; text-align: center; }
+    .proof-num {
+      font-family: var(--ff-title);
+      font-size: clamp(42px, 5vw, 64px);
+      color: var(--black);
+      line-height: 1;
+      display: block;
+    }
+    .proof-num span { color: var(--gold-dk); }
+    .proof-num-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(19,18,16,.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 8px;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border: 1px solid rgba(19,18,16,.08);
+      border-radius: 8px;
+      padding: 32px 28px;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      font-family: var(--ff-title);
+      font-size: 80px;
+      color: var(--gold);
+      opacity: 0.25;
+      position: absolute;
+      top: 8px; left: 20px;
+      line-height: 1;
+    }
+    .testimonial-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(19,18,16,.75);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 40px; height: 40px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-title);
+      font-size: 16px;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+    .testimonial-name { font-weight: 700; font-size: 14px; color: var(--black); }
+    .testimonial-role { font-size: 12px; color: rgba(19,18,16,.5); }
+
+    /* ─── POSICIONE-SE ───────────────────────────────── */
+    .posicione {
+      padding: 100px 0;
+      background: var(--gold);
+      color: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .posicione-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .posicione-title {
+      font-family: var(--ff-title);
+      font-size: clamp(36px, 5vw, 68px);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .posicione-title .gold { color: var(--black); }
+    .posicione-right { display: flex; flex-direction: column; align-items: center; }
+    .posicione-video-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 9 / 16;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(19,18,16,.35);
+    }
+    .posicione-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    .posicione-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.95);
+      width: 72px; height: 72px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      transition: transform 0.2s ease;
+      z-index: 2;
+    }
+    .posicione-video-wrap:hover .posicione-play-btn { transform: translate(-50%, -50%) scale(1.08); }
+    .posicione-video-wrap:hover .posicione-video-overlay { background: rgba(19,18,16,.15) !important; }
+
+    /* Placeholder for posicione video */
+    .posicione-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1e1c18 0%, #2d2a22 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .posicione-placeholder-icon { font-size: 48px; opacity: 0.4; }
+    .posicione-placeholder-text { font-size: 11px; color: rgba(254,251,243,.35); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-align: center; padding: 0 16px; }
+
+    /* ─── PROJETOS ───────────────────────────────────── */
+    .projetos {
+      padding: 120px 0;
+      background: var(--black);
+      color: var(--cream);
+      overflow: hidden;
+    }
+    .projetos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .projetos-title {
+      font-family: var(--ff-title);
+      font-size: clamp(32px, 4vw, 52px);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 24px;
+      margin-top: 16px;
+    }
+    .projetos-title .gold { color: var(--gold); }
+    .projetos-text { font-size: 16px; line-height: 1.7; color: rgba(254,251,243,.65); }
+    .projetos-tipos-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .projetos-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .proj-tag {
+      background: rgba(255,182,0,.1);
+      border: 1px solid rgba(255,182,0,.3);
+      color: var(--cream);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .proj-tag:hover { background: rgba(255,182,0,.2); border-color: var(--gold); }
+
+    /* ─── PROCESSO ───────────────────────────────────── */
+    .processo {
+      padding: 80px 0;
+      background: var(--black);
+      overflow: hidden;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 32px;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(10% + 8px);
+      right: calc(10% + 8px);
+      height: 2px;
+      background: linear-gradient(to right, var(--gold) 0%, rgba(255,182,0,.1) 100%);
+    }
+    .step { padding: 0 20px; text-align: center; }
+    .step-content { display: contents; }
+    .step-num {
+      width: 72px; height: 72px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-title);
+      font-size: 28px;
+      color: var(--black);
+      margin: 0 auto 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-title { font-weight: 800; font-size: 16px; color: var(--cream); margin-bottom: 10px; }
+    .step-text { font-size: 13px; line-height: 1.65; color: rgba(254,251,243,.5); }
+
+    /* ─── CTA ────────────────────────────────────────── */
+    .cta-section {
+      padding: 120px 0;
+      background: var(--gold);
+      color: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: 'VÍDEOS';
+      position: absolute;
+      font-family: var(--ff-title);
+      font-size: 220px;
+      font-weight: 900;
+      opacity: 0.08;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .cta-inner { position: relative; z-index: 1; text-align: center; }
+    .cta-script {
+      font-family: var(--ff-script);
+      font-size: clamp(28px, 4vw, 52px);
+      color: rgba(19,18,16,.7);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .cta-title {
+      font-family: var(--ff-title);
+      font-size: clamp(40px, 6vw, 80px);
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+    .cta-sub {
+      font-size: 17px;
+      color: rgba(19,18,16,.7);
+      margin-bottom: 48px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-contact-info {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(19,18,16,.6);
+    }
+    .cta-contact-info a { color: var(--black); font-weight: 600; }
+
+    /* ─── FAQ ────────────────────────────────────────── */
+    .faq { padding: 100px 0; background: var(--black); }
+    .faq-list { max-width: 760px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,182,0,.12);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-family: var(--ff-body);
+      font-weight: 700;
+      font-size: 16px;
+      text-align: left;
+      padding: 24px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--gold); }
+    .faq-arrow {
+      width: 24px; height: 24px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      fill: var(--gold);
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-answer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(254,251,243,.6);
+      padding-bottom: 24px;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: #0c0b09;
+      padding: 60px 0 32px;
+      border-top: 1px solid rgba(255,182,0,.1);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .footer-brand .nav-logo-text { font-size: 22px; margin-bottom: 10px; }
+    .footer-tagline { font-size: 13px; color: rgba(254,251,243,.4); max-width: 240px; line-height: 1.6; }
+    .footer-links { display: flex; gap: 60px; flex-wrap: wrap; }
+    .footer-col-title {
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 14px; color: rgba(254,251,243,.5); transition: color 0.15s; }
+    .footer-col ul li a:hover { color: var(--cream); }
+    .footer-bottom {
+      border-top: 1px solid rgba(254,251,243,.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 13px; color: rgba(254,251,243,.3); }
+    .footer-social { display: flex; gap: 12px; }
+    .social-btn {
+      width: 36px; height: 36px;
+      background: rgba(254,251,243,.06);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+    }
+    .social-btn:hover { background: var(--gold); }
+    .social-btn:hover svg { fill: var(--black); }
+    .social-btn svg { width: 16px; height: 16px; fill: rgba(254,251,243,.5); }
+
+    /* ─── WHATSAPP FLOAT ─────────────────────────────── */
+    .wpp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      width: 60px; height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: wpp-pulse 3s infinite;
+    }
+    .wpp-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,.6); }
+    .wpp-float svg { width: 30px; height: 30px; fill: white; }
+    @keyframes wpp-pulse {
+      0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,.4), 0 0 0 0 rgba(37,211,102,.3); }
+      50%       { box-shadow: 0 4px 24px rgba(37,211,102,.4), 0 0 0 12px rgba(37,211,102,0); }
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(1) { transition-delay: 0s; }
+    .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-cta .btn--outline,
+      .nav-instagram { display: none !important; }
+      .nav-cta .btn--gold { padding: 10px 18px; font-size: 13px; }
+      .hero { padding: 100px 0 60px; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin: 0 auto 40px; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { display: none; }
+      .pain-grid { grid-template-columns: 1fr; gap: 40px; }
+      .posicione { padding: 60px 0; }
+      .posicione-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; align-items: center; }
+      .posicione-right { align-items: center; }
+      .posicione-video-wrap { max-width: 220px; margin: 0 auto; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .projetos-grid { grid-template-columns: 1fr; gap: 40px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .proof-numbers { grid-template-columns: 1fr; }
+      .steps {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        margin-top: 24px;
+      }
+      .steps::before { display: none; }
+      .step {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        padding: 16px 0 !important;
+        border-bottom: 1px solid rgba(255,182,0,.12);
+        text-align: left !important;
+        width: 100% !important;
+      }
+      .step:last-child { border-bottom: none; }
+      .step-content { display: block !important; flex: 1; }
+      .step-num { width: 52px !important; height: 52px !important; font-size: 20px !important; flex-shrink: 0 !important; margin: 0 !important; }
+      .footer-inner { flex-direction: column; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      nav { padding: 10px 0; }
+      .hero { padding: 90px 0 50px; min-height: auto; }
+      .hero-title { font-size: clamp(36px, 10vw, 56px); }
+      .hero-sub { font-size: 15px; }
+      .hero-actions { flex-direction: column; align-items: center; gap: 12px; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .proposta { padding: 50px 0; }
+      .videos { padding: 50px 0; }
+      .videos-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .cta-section { padding: 70px 0; }
+      .cta-title { font-size: clamp(32px, 10vw, 56px); }
+      .cta-actions { flex-direction: column; align-items: center; gap: 12px; }
+      .cta-actions .btn { width: 100%; justify-content: center; }
+      .cta-section::before { font-size: 80px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-social { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" aria-label="Veic Vídeos">
+          <!-- Logo SVG mantido idêntico ao original -->
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="120" height="120" rx="16" fill="#FFB600"/>
+            <text x="14" y="78" font-family="Impact, sans-serif" font-size="62" fill="#131210" letter-spacing="-2">V</text>
+            <circle cx="88" cy="38" r="18" fill="#131210"/>
+            <polygon points="82,30 82,46 96,38" fill="#FFB600"/>
+          </svg>
+          <div class="nav-logo-text">Veic <span>VÍDEOS</span></div>
+        </a>
+        <div class="nav-cta">
+          <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener noreferrer" class="btn btn--outline nav-instagram" style="padding:10px 20px;font-size:13px;display:inline-flex;align-items:center;gap:7px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @veicvideos
+          </a>
+          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20empresa%20de%20tecnologia!" target="_blank" rel="noopener noreferrer" class="btn btn--gold" style="padding:10px 20px;font-size:13px;">Falar no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="tag">Vídeos para Startups &amp; Empresas de Tecnologia</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="line-gold">Sua Tech</span>
+            <span class="line-script">precisa ser vista</span>
+            COM AUTORIDADE
+          </h1>
+          <p class="hero-sub">
+            Produzimos vídeos estratégicos que posicionam startups, SaaS e empresas de tecnologia como referência no mercado — gerando confiança, autoridade e resultado no digital.
+          </p>
+          <div class="hero-actions">
+            <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20empresa%20de%20tecnologia!" target="_blank" rel="noopener noreferrer" class="btn btn--gold">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Quero vídeos para minha empresa
+            </a>
+            <a href="#videos" class="btn btn--outline">Ver produções</a>
+          </div>
+        </div>
+
+        <!-- Screen Mockup Visual -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="screen-stack">
+            <div class="screen-card">
+              <div class="screen-inner screen-bg-1">
+                <div class="screen-icon">💻</div>
+                <div class="screen-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="screen-label">Demo de Produto</div>
+                <div class="screen-label-sub">Institucional • SaaS</div>
+              </div>
+            </div>
+            <div class="screen-card">
+              <div class="screen-inner screen-bg-2">
+                <div class="screen-icon">🚀</div>
+                <div class="screen-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="screen-label">Pitch de Startup</div>
+                <div class="screen-label-sub">Institucional • Pitch Deck</div>
+              </div>
+            </div>
+            <div class="screen-card">
+              <div class="screen-inner screen-bg-3">
+                <div class="screen-icon">📱</div>
+                <div class="screen-play">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="screen-label">Case de Sucesso</div>
+                <div class="screen-label-sub">Short • LinkedIn</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PAIN ──────────────────────────────── -->
+  <section class="pain">
+    <div class="container">
+      <div class="pain-grid">
+        <div class="fade-up">
+          <h2 class="pain-title">Sua empresa resolve problemas <em>complexos.</em><br/>Mas o mercado sabe disso?</h2>
+          <p class="pain-text">Empresas de tecnologia constroem soluções incríveis — mas perdem clientes, investidores e talentos por não saber comunicar seu valor de forma clara e impactante.</p>
+          <p class="pain-text">Vídeos estratégicos transformam complexidade técnica em narrativa que conecta, convence e converte.</p>
+        </div>
+        <div class="fade-up">
+          <ul class="pain-list">
+            <li>
+              <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+              <div>
+                <span class="pain-list-label">Demonstração de produto</span>
+                <span class="pain-list-sub">Mostre o que seu software faz em menos de 90 segundos, com clareza e impacto.</span>
+              </div>
+            </li>
+            <li>
+              <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+              <div>
+                <span class="pain-list-label">Posicionamento de marca</span>
+                <span class="pain-list-sub">Construa autoridade no mercado tech e seja lembrado como referência.</span>
+              </div>
+            </li>
+            <li>
+              <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+              <div>
+                <span class="pain-list-label">Atração de clientes e investidores</span>
+                <span class="pain-list-sub">Vídeos que funcionam como apresentações profissionais 24h por dia.</span>
+              </div>
+            </li>
+            <li>
+              <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+              <div>
+                <span class="pain-list-label">Conteúdo para LinkedIn e redes sociais</span>
+                <span class="pain-list-sub">Geração de leads qualificados com conteúdo estratégico para o mercado B2B.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── POSICIONE-SE ──────────────────────── -->
+  <section class="posicione" id="posicione">
+    <div class="container">
+      <div class="posicione-grid">
+        <div class="posicione-left fade-up">
+          <h2 class="posicione-title">POSICIONE SUA TECH ATRAVÉS DE VÍDEOS <span class="gold">ESTRATÉGICOS</span></h2>
+        </div>
+        <div class="posicione-right fade-up">
+          <!-- Placeholder: substituir pelo ID do YouTube quando disponível -->
+          <div class="posicione-video-wrap" style="cursor:pointer;" id="posicione-wrap">
+            <div class="posicione-placeholder">
+              <div class="posicione-placeholder-icon">🎬</div>
+              <div class="posicione-placeholder-text">Vídeo de apresentação<br/>em breve</div>
+            </div>
+            <!-- Overlay escuro -->
+            <div style="position:absolute;inset:0;background:rgba(19,18,16,.0);transition:background .2s;" class="posicione-video-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── O QUE ENTREGAMOS ─────────────────── -->
+  <section class="proposta" id="proposta">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Nossos serviços</span>
+        <h2 class="section-title">O que <span class="gold">entregamos</span></h2>
+        <p class="section-sub">Vídeos pensados para cada etapa do funil de comunicação da sua empresa tech.</p>
+      </div>
+      <div class="cards-grid">
+        <div class="card fade-up">
+          <div class="card-num">01</div>
+          <div class="card-icon">🎯</div>
+          <div class="card-title">Vídeo Institucional</div>
+          <div class="card-text">Apresente sua empresa, cultura e proposta de valor de forma profissional. Ideal para site, pitch e LinkedIn. O cartão de visitas da sua marca em movimento.</div>
+        </div>
+        <div class="card fade-up">
+          <div class="card-num">02</div>
+          <div class="card-icon">💻</div>
+          <div class="card-title">Demo de Produto / SaaS</div>
+          <div class="card-text">Vídeos explicativos que mostram como seu software funciona com clareza e persuasão. Reduz ciclo de vendas e aumenta conversão em landing pages.</div>
+        </div>
+        <div class="card fade-up">
+          <div class="card-num">03</div>
+          <div class="card-icon">📊</div>
+          <div class="card-title">Cases de Sucesso</div>
+          <div class="card-text">Transforme resultados de clientes em prova social poderosa. Depoimentos e estudos de caso em vídeo geram confiança e aceleram decisões de compra.</div>
+        </div>
+        <div class="card fade-up">
+          <div class="card-num">04</div>
+          <div class="card-icon">🚀</div>
+          <div class="card-title">Conteúdo para Redes Sociais</div>
+          <div class="card-text">Shorts, Reels e conteúdos para LinkedIn pensados para o mercado B2B. Gere autoridade, alcance e leads qualificados de forma contínua.</div>
+        </div>
+        <div class="card fade-up">
+          <div class="card-num">05</div>
+          <div class="card-icon">📣</div>
+          <div class="card-title">Vídeos para Anúncios</div>
+          <div class="card-text">Criativos em vídeo otimizados para performance em Google Ads, LinkedIn Ads e Meta. Comunique seu diferencial nos primeiros 3 segundos.</div>
+        </div>
+        <div class="card fade-up">
+          <div class="card-num">06</div>
+          <div class="card-icon">🎤</div>
+          <div class="card-title">Eventos e Lançamentos</div>
+          <div class="card-text">Cobertura profissional de eventos corporativos, lançamentos de produto, hackathons e conferências. Conteúdo que prolonga o impacto do evento.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VIDEOS ───────────────────────────── -->
+  <section class="videos" id="videos">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Produções Veic Vídeos</span>
+        <h2 class="section-title">Veja o que<br/><span class="gold">já produzimos</span></h2>
+        <p class="section-sub">Clique em qualquer vídeo para assistir aqui mesmo.</p>
+      </div>
+
+      <!-- Modal de vídeo -->
+      <div id="video-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.88);align-items:center;justify-content:center;">
+        <div style="position:relative;width:100%;max-width:380px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.8);" id="modal-inner">
+          <iframe id="video-modal-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+        </div>
+        <button onclick="closeVideoModal()" style="position:fixed;top:20px;right:24px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:28px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);transition:background .2s;" onmouseover="this.style.background='rgba(255,182,0,.7)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">&times;</button>
+      </div>
+
+      <div class="videos-grid">
+        <!-- Slots para vídeos — substituir VIDEO_ID pelo ID real do YouTube -->
+        <div class="video-card fade-up" id="video-slot-1" data-video-id="VIDEO_ID_1">
+          <div class="video-placeholder">
+            <div class="video-placeholder-icon">🎬</div>
+            <div class="video-placeholder-text">Vídeo 1<br/>em breve</div>
+          </div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Demo de Produto</div>
+            <div class="video-client">Em breve</div>
+          </div>
+        </div>
+        <div class="video-card fade-up" id="video-slot-2" data-video-id="VIDEO_ID_2">
+          <div class="video-placeholder">
+            <div class="video-placeholder-icon">💻</div>
+            <div class="video-placeholder-text">Vídeo 2<br/>em breve</div>
+          </div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Institucional</div>
+            <div class="video-client">Em breve</div>
+          </div>
+        </div>
+        <div class="video-card fade-up" id="video-slot-3" data-video-id="VIDEO_ID_3">
+          <div class="video-placeholder">
+            <div class="video-placeholder-icon">🚀</div>
+            <div class="video-placeholder-text">Vídeo 3<br/>em breve</div>
+          </div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Case de Sucesso</div>
+            <div class="video-client">Em breve</div>
+          </div>
+        </div>
+        <div class="video-card fade-up" id="video-slot-4" data-video-id="VIDEO_ID_4">
+          <div class="video-placeholder">
+            <div class="video-placeholder-icon">📱</div>
+            <div class="video-placeholder-text">Vídeo 4<br/>em breve</div>
+          </div>
+          <div class="video-overlay">
+            <div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="video-title">Conteúdo Social</div>
+            <div class="video-client">Em breve</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROJETOS ──────────────────────────── -->
+  <section class="projetos" id="projetos">
+    <div class="container">
+      <div class="projetos-grid">
+        <div class="projetos-left fade-up">
+          <span class="tag">Tipos de projeto</span>
+          <h2 class="projetos-title">Para <span class="gold">todo tipo</span> de empresa tech</h2>
+          <p class="projetos-text" style="margin-bottom:32px;">Atendemos desde startups em estágio inicial buscando seu primeiro vídeo institucional até scale-ups com demanda de produção contínua para conteúdo e campanhas.</p>
+          <div class="projetos-tipos-label">Segmentos que atendemos</div>
+          <div class="projetos-tags">
+            <span class="proj-tag">Startups</span>
+            <span class="proj-tag">SaaS</span>
+            <span class="proj-tag">Agências Digitais</span>
+            <span class="proj-tag">Fintechs</span>
+            <span class="proj-tag">Healthtechs</span>
+            <span class="proj-tag">E-commerce</span>
+            <span class="proj-tag">Software Houses</span>
+            <span class="proj-tag">Consultorias Tech</span>
+            <span class="proj-tag">Empresas B2B</span>
+            <span class="proj-tag">Scale-ups</span>
+          </div>
+          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20v%C3%ADdeos%20para%20minha%20empresa%20de%20tecnologia!" target="_blank" rel="noopener noreferrer" class="btn btn--gold" style="margin-top:36px;">
+            Quero um orçamento
+          </a>
+        </div>
+        <div class="projetos-right fade-up">
+          <!-- Decorative grid of video thumbnails -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="aspect-ratio:9/16;background:linear-gradient(135deg,#1a1a24,#22223a);border-radius:12px;border:1px solid rgba(255,182,0,.15);display:flex;align-items:center;justify-content:center;font-size:40px;opacity:.6;">💻</div>
+            <div style="aspect-ratio:9/16;background:linear-gradient(135deg,#1e1c18,#2d2a22);border-radius:12px;border:1px solid rgba(255,182,0,.3);display:flex;align-items:center;justify-content:center;font-size:40px;opacity:.6;margin-top:24px;">🚀</div>
+            <div style="aspect-ratio:9/16;background:linear-gradient(135deg,#181e1a,#1e2a1e);border-radius:12px;border:1px solid rgba(255,182,0,.15);display:flex;align-items:center;justify-content:center;font-size:40px;opacity:.6;margin-top:-24px;">📊</div>
+            <div style="aspect-ratio:9/16;background:linear-gradient(135deg,#1e181a,#2a1e22);border-radius:12px;border:1px solid rgba(255,182,0,.15);display:flex;align-items:center;justify-content:center;font-size:40px;opacity:.6;">📱</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROOF ─────────────────────────────── -->
+  <section class="proof">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Resultados</span>
+        <h2 class="section-title">Números que <span style="color:var(--gold-dk)">falam</span></h2>
+      </div>
+      <div class="proof-numbers fade-up">
+        <div class="proof-num-item">
+          <span class="proof-num">50<span>+</span></span>
+          <div class="proof-num-label">Projetos entregues</div>
+        </div>
+        <div class="proof-num-item">
+          <span class="proof-num">3<span>M+</span></span>
+          <div class="proof-num-label">Visualizações geradas</div>
+        </div>
+        <div class="proof-num-item">
+          <span class="proof-num">100<span>%</span></span>
+          <div class="proof-num-label">Clientes satisfeitos</div>
+        </div>
+      </div>
+
+      <div class="testimonials-grid fade-up">
+        <div class="testimonial-card">
+          <p class="testimonial-text">A Veic entendeu nossa proposta de valor de uma forma que a gente mesmo tinha dificuldade de comunicar. O vídeo virou peça central do nosso pitch.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">C</div>
+            <div>
+              <div class="testimonial-name">Carlos Mendes</div>
+              <div class="testimonial-role">CEO · Startup de Logística</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Usamos o vídeo de demo no nosso LinkedIn Ads e a taxa de conversão triplicou. Valeu muito mais do que esperávamos.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">A</div>
+            <div>
+              <div class="testimonial-name">Ana Lima</div>
+              <div class="testimonial-role">Head de Marketing · SaaS B2B</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Profissionalismo do início ao fim. Roteiro, gravação, edição — tudo alinhado com a identidade que queríamos transmitir.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div>
+              <div class="testimonial-name">Rafael Costa</div>
+              <div class="testimonial-role">Fundador · Agência Digital</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROCESSO ──────────────────────────── -->
+  <section class="processo" id="processo">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Como funciona</span>
+        <h2 class="section-title">Do briefing ao <span class="gold">vídeo final</span></h2>
+        <p class="section-sub">Um processo claro, ágil e pensado para o ritmo das empresas de tecnologia.</p>
+      </div>
+      <div class="steps fade-up">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Briefing & Estratégia</div>
+            <div class="step-text">Entendemos seus objetivos, público-alvo e posicionamento de marca para definir a melhor abordagem.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Roteiro</div>
+            <div class="step-text">Desenvolvemos o roteiro e storyboard alinhados à linguagem do mercado tech e ao tom da sua marca.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Gravação</div>
+            <div class="step-text">Produção profissional com direção especializada. Captamos o que importa com precisão técnica e cuidado criativo.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <div class="step-title">Edição</div>
+            <div class="step-text">Pós-produção completa: corte, motion, trilha e legendas. Cada detalhe alinhado ao objetivo do vídeo.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <div class="step-title">Entrega</div>
+            <div class="step-text">Entregamos nos formatos ideais para cada plataforma — LinkedIn, Instagram, site, apresentações e anúncios.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ───────────────────────────────── -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="tag">Dúvidas frequentes</span>
+        <h2 class="section-title">Perguntas <span class="gold">frequentes</span></h2>
+      </div>
+      <div class="faq-list fade-up">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Quanto tempo leva para produzir um vídeo?
+            <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>O prazo varia conforme o tipo e complexidade do projeto. Vídeos de redes sociais costumam ser entregues em 7 a 10 dias úteis. Vídeos institucionais ou demos de produto têm prazo médio de 15 a 20 dias úteis a partir da aprovação do roteiro.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Vocês produzem vídeos para empresas de outros estados?
+            <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! Para gravações presenciais, atendemos BH, região metropolitana e viajamos a trabalho para outras cidades mediante orçamento. Para demos de produto ou conteúdos que não exigem gravação presencial, atendemos empresas de todo o Brasil de forma remota.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Precisamos ter um roteiro pronto para contratar?
+            <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Não. O desenvolvimento do roteiro faz parte do nosso processo. Você nos conta os objetivos, o público e o que quer comunicar — nós traduzimos isso em uma narrativa estratégica e eficaz para o seu vídeo.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Como funciona o processo de aprovação?
+            <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Trabalhamos com etapas de aprovação claras: roteiro, corte bruto e versão final. Em cada fase você pode dar feedback antes de avançarmos, garantindo que o resultado final esteja 100% alinhado com sua expectativa.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Vocês entregam versões para diferentes plataformas?
+            <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Sim. Entregamos nos formatos e proporções ideais para cada canal: horizontal (16:9) para site e YouTube, vertical (9:16) para Reels, Shorts e Stories, e quadrado (1:1) para feed do LinkedIn e Instagram. Sem custo adicional dentro do escopo contratado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA FINAL ─────────────────────────── -->
+  <section class="cta-section" id="contato">
+    <div class="container">
+      <div class="cta-inner">
+        <span class="cta-script">pronto para crescer?</span>
+        <h2 class="cta-title">Sua empresa merece<br/>ser vista assim</h2>
+        <p class="cta-sub">Vamos conversar sobre seus objetivos e criar vídeos que posicionam sua empresa tech como referência no mercado.</p>
+        <div class="cta-actions">
+          <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20empresa%20de%20tecnologia!" target="_blank" rel="noopener noreferrer" class="btn btn--dark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Falar no WhatsApp
+          </a>
+          <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener noreferrer" class="btn btn--ghost-dark">Ver nosso Instagram</a>
+        </div>
+        <div class="cta-contact-info">
+          <a href="https://wa.me/5531983335876" target="_blank" rel="noopener noreferrer">(31) 98333-5876</a>
+          <span>· Atendimento via WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo-text" style="font-family:'Impact',sans-serif;font-size:20px;margin-bottom:8px;">Veic <span style="color:var(--gold)">VÍDEOS</span></div>
+          <p class="footer-tagline">Produzimos vídeos estratégicos que transmitem posicionamento e autoridade para empresas de tecnologia.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col-title">Navegação</div>
+            <ul>
+              <li><a href="#proposta">O que entregamos</a></li>
+              <li><a href="#videos">Produções</a></li>
+              <li><a href="#processo">Como funciona</a></li>
+              <li><a href="#faq">Perguntas frequentes</a></li>
+              <li><a href="#contato">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Contato</div>
+            <ul>
+              <li><a href="https://wa.me/5531983335876" target="_blank" rel="noopener noreferrer">(31) 98333-5876</a></li>
+              <li><a href="https://instagram.com/veicvideos" target="_blank" rel="noopener noreferrer">@veicvideos</a></li>
+              <li><a href="https://veicvideos.com" target="_blank" rel="noopener noreferrer">veicvideos.com</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Veic Vídeos. Todos os direitos reservados.</span>
+        <div class="footer-social">
+          <a href="https://instagram.com/veicvideos" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/5531983335876" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Flutuante -->
+  <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Vi%20a%20apresenta%C3%A7%C3%A3o%20de%20voc%C3%AAs%20e%20tenho%20interesse%20em%20produzir%20v%C3%ADdeos%20para%20minha%20empresa%20de%20tecnologia!" target="_blank" rel="noopener noreferrer" class="wpp-float" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.123 1.522 5.862L.057 23.882l6.18-1.445A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.741-.523-5.29-1.433l-.379-.223-3.927.918.96-3.818-.246-.393A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+
+  <script>
+    // Modal de vídeo
+    const videoModal = document.getElementById('video-modal');
+    const videoModalIframe = document.getElementById('video-modal-iframe');
+    const modalInner = document.getElementById('modal-inner');
+
+    function openVideoModal(videoId, isShort) {
+      var short = (isShort === undefined) ? true : isShort;
+      if (short) {
+        modalInner.style.maxWidth = '380px';
+        modalInner.style.aspectRatio = '9/16';
+      } else {
+        modalInner.style.maxWidth = '860px';
+        modalInner.style.aspectRatio = '16/9';
+      }
+      videoModalIframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+      videoModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+      videoModal.style.display = 'none';
+      videoModalIframe.src = '';
+      document.body.style.overflow = '';
+    }
+
+    videoModal.addEventListener('click', function(e) {
+      if (e.target === videoModal) closeVideoModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+
+    // Configurar cliques nos video slots
+    document.querySelectorAll('.video-card[data-video-id]').forEach(function(card) {
+      var videoId = card.getAttribute('data-video-id');
+      if (videoId && videoId !== 'VIDEO_ID_1' && videoId !== 'VIDEO_ID_2' && videoId !== 'VIDEO_ID_3' && videoId !== 'VIDEO_ID_4') {
+        card.addEventListener('click', function() { openVideoModal(videoId); });
+      }
+    });
+
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Intersection Observer fade-up
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+  </script>
+
+</body>
+</html>
