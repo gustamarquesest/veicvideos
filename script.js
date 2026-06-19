@@ -1,4 +1,4 @@
-const SITE_ASSET_VERSION = "20260620-final";
+const SITE_ASSET_VERSION = "20260619-pages-fix";
 
 const AnalyticsManager = (() => {
   let initialized = false;
