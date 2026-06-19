@@ -1,0 +1,2568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veic Vídeos — Produtora de Vídeos Estratégicos | veicvideos.com</title>
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Veic Vídeos" />
+<meta property="og:title" content="Veic Vídeos — Produtora de Vídeos Estratégicos | veicvideos.com" />
+<meta property="og:description" content="Produzimos vídeos estratégicos que valorizam a imagem do seu negócio. Posicionamento com autoridade e identidade visual que converte." />
+<meta property="og:image" content="https://veicvideos.com/og-image.png" />
+<meta property="og:image:width" content="1000" />
+<meta property="og:image:height" content="1000" />
+<meta property="og:image:alt" content="Veic Vídeos — Produtora de Vídeos Estratégicos" />
+<meta property="og:url" content="https://veicvideos.com/" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Veic Vídeos — Produtora de Vídeos Estratégicos | veicvideos.com" />
+<meta name="twitter:description" content="Produzimos vídeos estratégicos que valorizam a imagem do seu negócio. Posicionamento com autoridade e identidade visual que converte." />
+<meta name="twitter:image" content="https://veicvideos.com/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #131210;
+    --cream: #FEFBF3;
+    --yellow: #FFB600;
+    --yellow-dark: #CC9200;
+    --gray-mid: #2a2820;
+    --gray-light: #1e1c1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAVIGATION */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(19,18,16,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,182,0,0.15);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo svg { width: 32px; height: auto; }
+
+  .logo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+  }
+
+  .logo-text span { color: var(--yellow); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: rgba(254,251,243,0.7);
+    text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover { color: var(--yellow); }
+
+  .nav-cta {
+    background: var(--yellow) !important;
+    color: var(--black) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--yellow-dark) !important; color: var(--black) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-isotipo {
+    position: absolute; right: -6%; top: 50%; transform: translateY(-50%);
+    width: 52%; opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .hero-content { max-width: 680px; position: relative; z-index: 2; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,182,0,0.12);
+    border: 1px solid rgba(255,182,0,0.3);
+    color: var(--yellow);
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 100px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--yellow); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+  }
+
+  h1 {
+    font-family: Impact, 'Inter', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px var(--black);
+    paint-order: stroke fill;
+  }
+
+  h1 .accent { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+
+  .hero-sub {
+    font-size: 1.15rem; color: rgba(254,251,243,0.65);
+    line-height: 1.7; margin-bottom: 2.5rem;
+    max-width: 520px;
+    font-weight: 400;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--yellow); color: var(--black);
+    padding: 1rem 2rem; border-radius: 4px;
+    font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; display: inline-flex;
+    align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+
+  .btn-secondary {
+    color: var(--cream); padding: 1rem 2rem;
+    border: 1px solid rgba(254,251,243,0.2);
+    border-radius: 4px; font-weight: 500; font-size: 0.95rem;
+    text-decoration: none; display: inline-flex;
+    align-items: center; gap: 8px;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+
+  .btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,182,0,0.15);
+  }
+
+  .stat-item { display: flex; flex-direction: column; }
+
+  .stat-num {
+    font-family: Impact, sans-serif;
+    font-size: 2.2rem; color: var(--yellow);
+    line-height: 1; font-weight: 900;
+  }
+
+  .stat-label {
+    font-size: 0.78rem; color: rgba(254,251,243,0.5);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  /* VIDEO REEL BANNER */
+  .reel-section {
+    padding: 5rem 0;
+    background: var(--gray-light);
+    border-top: 1px solid rgba(255,182,0,0.1);
+    border-bottom: 1px solid rgba(255,182,0,0.1);
+    overflow: hidden;
+  }
+
+  .reel-label {
+    text-align: center;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 2.5rem;
+  }
+
+  .video-scroll-track {
+    display: flex; gap: 1rem;
+    animation: scroll-left 45s linear infinite;
+    width: max-content;
+  }
+
+  .video-scroll-track:hover { animation-play-state: paused; }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .video-thumb {
+    flex-shrink: 0;
+    border-radius: 8px; overflow: hidden;
+    position: relative; cursor: pointer;
+    border: 1px solid rgba(255,182,0,0.1);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .video-thumb:hover { border-color: var(--yellow); transform: scale(1.03); }
+
+  .video-thumb.vertical { width: 196px; height: 350px; }
+  .video-thumb.horizontal { width: 434px; height: 245px; }
+
+  .video-thumb-inner {
+    width: 100%; height: 100%;
+    background: var(--gray-mid);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+
+  .thumb-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(19,18,16,0.85) 0%, rgba(19,18,16,0.2) 40%, transparent 65%);
+    display: flex; align-items: flex-end; padding: 14px 16px;
+    transition: background 0.3s;
+  }
+
+  .video-thumb:hover .thumb-overlay {
+    background: linear-gradient(to top, rgba(19,18,16,0.92) 0%, rgba(19,18,16,0.35) 45%, transparent 70%);
+  }
+
+  .thumb-play {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 62px; height: 62px;
+    background: rgba(255,182,0,0.92);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 1;
+    transition: transform 0.25s, background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(255,182,0,0.35);
+    z-index: 3;
+  }
+
+  .video-thumb:hover .thumb-play {
+    transform: translate(-50%,-50%) scale(1.12);
+    background: var(--yellow);
+    box-shadow: 0 6px 28px rgba(255,182,0,0.55);
+  }
+
+  .thumb-play svg { width: 22px; fill: var(--black); margin-left: 4px; }
+
+  .thumb-info {
+    position: relative; z-index: 3;
+    display: flex; flex-direction: column; gap: 3px;
+    width: 100%;
+  }
+
+  .thumb-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem; color: var(--cream);
+    font-weight: 700; line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+  }
+
+  .thumb-sublabel {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem; color: var(--yellow);
+    font-weight: 700; line-height: 1.2;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+  }
+
+  .thumb-niche {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--yellow); color: var(--black);
+    font-size: 0.6rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 3px 8px; border-radius: 3px;
+    z-index: 3;
+  }
+
+  /* ABOUT / PROPÓSITO */
+  .purpose-section {
+    padding: 7rem 4rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center; max-width: 1400px; margin: 0 auto;
+  }
+
+  /* PROPÓSITO YELLOW WRAPPER */
+  .purpose-wrapper {
+    background: var(--yellow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .purpose-wrapper .section-eyebrow {
+    color: rgba(19,18,16,0.55);
+  }
+
+  .purpose-wrapper h2 {
+    color: var(--black);
+    -webkit-text-stroke: 0px;
+    paint-order: fill;
+  }
+
+  .purpose-wrapper h2 .accent {
+    color: var(--black);
+    -webkit-text-stroke: 0px;
+  }
+
+  .purpose-wrapper .body-text {
+    color: rgba(19,18,16,0.75);
+  }
+
+  .purpose-wrapper .purpose-card {
+    background: rgba(254,251,243,0.18);
+    border: 1px solid rgba(254,251,243,0.35);
+  }
+
+  .purpose-wrapper .purpose-card h4 {
+    color: var(--black);
+  }
+
+  .purpose-wrapper .purpose-card p {
+    color: rgba(19,18,16,0.65);
+  }
+
+  .purpose-wrapper .purpose-card-icon {
+    background: rgba(254,251,243,0.25);
+  }
+
+  .purpose-wrapper .purpose-card-icon svg {
+    fill: var(--black);
+  }
+
+  /* Phone mockup player */
+  .phone-mockup {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+
+  .phone-shell {
+    background: #131210;
+    border-radius: 36px;
+    padding: 14px;
+    box-shadow:
+      0 0 0 2px #2a2820,
+      0 30px 80px rgba(0,0,0,0.45),
+      0 8px 24px rgba(0,0,0,0.3);
+    position: relative;
+  }
+
+  .phone-notch {
+    width: 80px; height: 26px;
+    background: #131210;
+    border-radius: 0 0 16px 16px;
+    margin: 0 auto 6px;
+    position: relative; z-index: 2;
+  }
+
+  .phone-screen {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 9/16;
+    position: relative;
+    background: #000;
+  }
+
+  .phone-screen iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: none;
+    pointer-events: none;
+  }
+
+  .phone-screen-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.25);
+    cursor: pointer;
+    transition: background 0.25s;
+    z-index: 2;
+  }
+
+  .phone-screen-overlay:hover { background: rgba(0,0,0,0.1); }
+
+  .phone-play-btn {
+    width: 64px; height: 64px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    margin-bottom: 14px;
+  }
+
+  .phone-screen-overlay:hover .phone-play-btn {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.5);
+  }
+
+  .phone-play-btn svg { width: 22px; fill: var(--black); margin-left: 4px; }
+
+  .phone-video-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem; font-weight: 700;
+    color: var(--yellow);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.2rem;
+  }
+
+  h2 {
+    font-family: Impact, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1; letter-spacing: -0.01em;
+    color: var(--cream); margin-bottom: 1.5rem;
+    -webkit-text-stroke: 2px var(--black);
+    paint-order: stroke fill;
+  }
+
+  h2 .accent { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+
+  .body-text {
+    font-size: 1.05rem; color: rgba(254,251,243,0.65);
+    line-height: 1.8; margin-bottom: 1.5rem;
+  }
+
+  .purpose-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: var(--gray-light);
+    border-radius: 8px;
+    border: 1px solid rgba(255,182,0,0.15);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .purpose-visual-isotipo {
+    width: 60%; opacity: 0.12;
+  }
+
+  .purpose-cards {
+    display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem;
+  }
+
+  .purpose-card {
+    background: rgba(255,182,0,0.06);
+    border: 1px solid rgba(255,182,0,0.15);
+    border-radius: 8px; padding: 1.2rem 1.5rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+
+  .purpose-card-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: rgba(255,182,0,0.15);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .purpose-card-icon svg { width: 20px; fill: var(--yellow); }
+
+  .purpose-card h4 {
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 4px;
+  }
+
+  .purpose-card p {
+    font-size: 0.84rem; color: rgba(254,251,243,0.55); line-height: 1.5;
+  }
+
+  /* PORTFOLIO SECTION */
+  .portfolio-section {
+    padding: 7rem 4rem;
+    background: var(--gray-light);
+  }
+
+  .section-header {
+    display: flex; align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+
+  .filter-tabs {
+    display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+  }
+
+  .filter-tab {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(254,251,243,0.15);
+    color: rgba(254,251,243,0.55);
+    border-radius: 100px;
+    font-size: 0.8rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  .filter-tab:hover,
+  .filter-tab.active {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: var(--black);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .portfolio-item {
+    border-radius: 8px; overflow: hidden;
+    position: relative; cursor: pointer;
+    background: var(--gray-mid);
+    border: 1px solid rgba(255,182,0,0.08);
+    transition: border-color 0.2s, transform 0.2s;
+    group: true;
+    align-self: start;
+  }
+
+  .portfolio-item:hover { border-color: var(--yellow); transform: translateY(-4px); }
+
+  .portfolio-item.item-vertical { grid-row: span 2; }
+
+  .portfolio-thumb {
+    background: var(--gray-mid);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .portfolio-item.item-vertical .portfolio-thumb { aspect-ratio: 9/16; }
+
+  .portfolio-thumb-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1e1c1a 0%, #2a2820 100%);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .portfolio-thumb-bg svg { width: 40%; opacity: 0.1; }
+
+  .play-btn-large {
+    position: absolute;
+    width: 56px; height: 56px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+    z-index: 2;
+  }
+
+  .portfolio-item:hover .play-btn-large { transform: scale(1.12); background: var(--yellow-dark); }
+
+  .play-btn-large svg { width: 20px; fill: var(--black); margin-left: 4px; }
+
+  .portfolio-meta {
+    padding: 0.75rem 1rem;
+  }
+
+  .portfolio-tags {
+    display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px; border-radius: 3px;
+  }
+
+  .tag-type {
+    background: rgba(255,182,0,0.15);
+    color: var(--yellow);
+    border: 1px solid rgba(255,182,0,0.3);
+  }
+
+  .tag-niche {
+    background: rgba(254,251,243,0.07);
+    color: rgba(254,251,243,0.5);
+    border: 1px solid rgba(254,251,243,0.1);
+  }
+
+  .portfolio-title {
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--cream); line-height: 1.3;
+  }
+
+  .portfolio-client {
+    font-size: 0.72rem; color: rgba(254,251,243,0.4);
+    margin-top: 3px;
+  }
+
+  /* PROCESS */
+  .process-section {
+    padding: 7rem 4rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .process-steps {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem;
+    margin-top: 4rem;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 32px; left: calc(10% + 16px); right: calc(10% + 16px);
+    height: 1px; background: rgba(255,182,0,0.3);
+  }
+
+  .process-step { text-align: center; position: relative; }
+
+  .step-num {
+    width: 64px; height: 64px;
+    background: rgba(255,182,0,0.1);
+    border: 1px solid rgba(255,182,0,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: Impact, sans-serif;
+    font-size: 1.6rem; color: var(--yellow);
+    position: relative; z-index: 1;
+    transition: background 0.2s;
+  }
+
+  .process-step:hover .step-num {
+    background: var(--yellow); color: var(--black);
+  }
+
+  .step-title {
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  .step-desc {
+    font-size: 0.84rem; color: rgba(254,251,243,0.5);
+    line-height: 1.6;
+  }
+
+  /* BACKSTAGE */
+  .backstage-section {
+    padding: 7rem 4rem;
+    background: var(--gray-light);
+  }
+
+  .backstage-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .backstage-item {
+    border-radius: 8px; overflow: hidden;
+    background: var(--gray-mid);
+    border: 1px solid rgba(255,182,0,0.08);
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .backstage-item:hover { border-color: rgba(255,182,0,0.4); }
+
+  .backstage-item.large { grid-row: span 2; aspect-ratio: 3/4; }
+  .backstage-item.medium { aspect-ratio: 4/3; }
+
+  .backstage-placeholder {
+    width: 100%; height: 100%; min-height: 200px;
+    background: linear-gradient(135deg, #1e1c1a 0%, #2a2820 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+  }
+
+  .backstage-placeholder svg { width: 36px; opacity: 0.2; fill: var(--cream); }
+
+  .backstage-placeholder span {
+    font-size: 0.72rem; color: rgba(254,251,243,0.2);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 8rem 4rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(255,182,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 { margin-bottom: 1.2rem; }
+
+  .cta-section .body-text {
+    max-width: 520px; margin: 0 auto 3rem;
+  }
+
+  .cta-contact {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: rgba(255,182,0,0.08);
+    border: 1px solid rgba(255,182,0,0.2);
+    border-radius: 8px; padding: 1rem 2rem;
+    margin-top: 2rem;
+    font-size: 0.9rem; color: rgba(254,251,243,0.5);
+  }
+
+  .cta-contact strong { color: var(--cream); }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 4rem;
+    border-top: 1px solid rgba(255,182,0,0.1);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+
+  .footer-links a {
+    color: rgba(254,251,243,0.35);
+    text-decoration: none; font-size: 0.82rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--yellow); }
+
+  .footer-copy {
+    font-size: 0.8rem; color: rgba(254,251,243,0.25);
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.85);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s;
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+  .modal-box {
+    background: var(--gray-mid);
+    border: 1px solid rgba(255,182,0,0.2);
+    border-radius: 12px; overflow: hidden;
+    width: 90%; max-width: 900px;
+    transform: scale(0.95); transition: transform 0.25s;
+  }
+
+  .modal-overlay.active .modal-box { transform: scale(1); }
+
+  .modal-box.vertical-modal { max-width: 420px; }
+
+  .modal-video { position: relative; width: 100%; }
+  .modal-video.h16x9 { aspect-ratio: 16/9; }
+  .modal-video.h9x16 { aspect-ratio: 9/16; }
+
+  .modal-video iframe {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    border: none;
+  }
+
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem; z-index: 10;
+    width: 36px; height: 36px;
+    background: rgba(19,18,16,0.8);
+    border: 1px solid rgba(255,182,0,0.3);
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cream); font-size: 1.2rem;
+    transition: background 0.2s;
+  }
+
+  .modal-close:hover { background: var(--yellow); color: var(--black); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    h1 { font-size: 3rem; }
+    .hero-stats { gap: 2rem; }
+    .purpose-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .portfolio-section, .backstage-section, .process-section { padding: 4rem 1.5rem; }
+    .process-steps { grid-template-columns: repeat(3, 1fr); }
+    .process-steps::before { display: none; }
+    .backstage-grid { grid-template-columns: 1fr 1fr; }
+    .backstage-item.large { grid-row: span 1; aspect-ratio: 4/3; }
+    .cta-section { padding: 5rem 1.5rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .phone-mockup { width: 220px; }
+  }
+
+  /* HAMBURGER MOBILE MENU */
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 4px;
+  }
+  .hamburger span {
+    width: 22px; height: 2px;
+    background: var(--cream); border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none; position: fixed;
+    top: 65px; left: 0; right: 0;
+    background: rgba(19,18,16,0.98);
+    border-bottom: 1px solid rgba(255,182,0,0.15);
+    padding: 1.5rem 2rem; z-index: 199;
+    flex-direction: column; gap: 1rem;
+    backdrop-filter: blur(16px);
+  }
+  .mobile-menu a {
+    color: rgba(254,251,243,0.7); text-decoration: none;
+    font-size: 1rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,182,0,0.08);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--yellow); }
+  .mobile-menu.open { display: flex; }
+
+  /* PROJETOS responsive */
+  @media (max-width: 900px) {
+    .projetos-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    nav { padding: 1rem 1.5rem; }
+    .hamburger { display: flex; }
+    .nav-links { display: none !important; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 2.6rem; }
+    .hero { padding: 5rem 1.2rem 3rem; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+  }
+  /* CAROUSEL */
+  #portfolioSlides {
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  /* Slide com horizontal: grid 4 colunas (span2 + 1 + 1 não caberia, então horizontal fica span 2 em 4 cols com 2V) */
+  .carousel-slide {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+    box-sizing: border-box;
+    align-items: start;
+  }
+
+  /* Slide só com verticais: flex centralizado */
+  .carousel-slide--flex {
+    display: flex !important;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  /* Vertical cards dentro do flex: largura igual a 1/5 (mesmo tamanho do grid de 5 colunas) */
+  .carousel-slide--flex .portfolio-item {
+    flex: 0 0 calc((100% - 4 * 1.25rem) / 5);
+    max-width: calc((100% - 4 * 1.25rem) / 5);
+  }
+
+  /* Horizontal cards span 2 columns */
+  #portfolioSlides .portfolio-item.item-horizontal {
+    grid-column: span 2;
+  }
+
+  /* Remove item-vertical span behavior inside carousel */
+  #portfolioSlides .portfolio-item.item-vertical {
+    grid-row: span 1 !important;
+  }
+
+  @media (max-width: 1100px) {
+    .carousel-slide { grid-template-columns: repeat(4,1fr) !important; }
+    .carousel-slide--flex .portfolio-item { flex: 0 0 calc((100% - 3 * 1.25rem) / 4) !important; max-width: calc((100% - 3 * 1.25rem) / 4) !important; }
+  }
+  /* Mobile: 1 vídeo por slide, centralizado, tamanho razoável */
+  @media (max-width: 900px) {
+    #carouselPrev { left: 4px !important; width: 36px !important; height: 36px !important; z-index: 10; }
+    #carouselNext { right: 4px !important; width: 36px !important; height: 36px !important; z-index: 10; }
+    .carousel-slide,
+    .carousel-slide--flex {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: flex-start !important;
+      gap: 0 !important;
+    }
+    .carousel-slide .portfolio-item,
+    .carousel-slide--flex .portfolio-item {
+      flex: 0 0 72% !important;
+      max-width: 72% !important;
+    }
+  }
+  @media (max-width: 480px) {
+    .carousel-slide .portfolio-item,
+    .carousel-slide--flex .portfolio-item {
+      flex: 0 0 82% !important;
+      max-width: 82% !important;
+    }
+  }
+
+  /* ─── FAQ ─────────────────────────────────────── */
+  .faq-section {
+    padding: 7rem 4rem;
+    background: var(--cream);
+    color: var(--black);
+  }
+
+  .faq-section .section-eyebrow { color: var(--yellow-dark); }
+
+  .faq-section h2 {
+    color: var(--black);
+    -webkit-text-stroke: 0px;
+    paint-order: fill;
+    margin-bottom: 0.5rem;
+  }
+
+  .faq-section h2 .accent {
+    color: var(--yellow-dark);
+    -webkit-text-stroke: 0px;
+  }
+
+  .faq-section .body-text {
+    color: rgba(19,18,16,0.6);
+    margin-bottom: 0;
+  }
+
+  .faq-header {
+    max-width: 1100px;
+    margin: 0 auto 3rem;
+  }
+
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(19,18,16,0.1);
+  }
+
+  .faq-item {
+    background: white;
+    border: none;
+    border-bottom: 1px solid rgba(19,18,16,0.08);
+    padding: 28px 28px;
+    transition: background 0.2s;
+  }
+
+  .faq-item:last-child { border-bottom: none; }
+
+  .faq-item[open] { background: #fffdf6; }
+
+  .faq-item summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-item summary::after {
+    content: '+';
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--black);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 900;
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .faq-item[open] summary::after {
+    content: '−';
+    transform: rotate(0deg);
+  }
+
+  .faq-item[open] summary { margin-bottom: 14px; }
+
+  .faq-answer {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: rgba(19,18,16,0.65);
+    padding-right: 46px;
+  }
+
+  .faq-answer a {
+    color: var(--yellow-dark);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  /* ══════════════════════════════════════════════════
+     ESTILOS COPIADOS DO TECH_2 (prefixo t2-)
+     ══════════════════════════════════════════════════ */
+
+  /* variáveis locais para o bloco t2 */
+  :root {
+    --t2-black: #131210;
+    --t2-cream: #FEFBF3;
+    --t2-gold:  #FFB600;
+    --t2-gold-dk: #CC9200;
+    --t2-gray:  #1e1c18;
+    --t2-max:   1200px;
+    --t2-ff-title: Impact, 'Arial Narrow', Arial, sans-serif;
+    --t2-ff-body:  'Inter', system-ui, sans-serif;
+  }
+
+  .t2-container {
+    width: 100%;
+    max-width: var(--t2-max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .t2-tag {
+    display: inline-block;
+    background: var(--t2-gold);
+    color: var(--t2-black);
+    font-family: var(--t2-ff-body);
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+  }
+
+  .t2-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-family: var(--t2-ff-body);
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    text-decoration: none;
+    border: none;
+  }
+  .t2-btn:hover { transform: translateY(-2px); }
+  .t2-btn--gold {
+    background: var(--t2-gold);
+    color: var(--t2-black);
+    box-shadow: 0 4px 24px rgba(255,182,0,.35);
+  }
+  .t2-btn--gold:hover {
+    background: #ffc51a;
+    box-shadow: 0 8px 32px rgba(255,182,0,.5);
+  }
+
+  .t2-section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .t2-section-title {
+    font-family: var(--t2-ff-title);
+    font-size: clamp(32px, 4.5vw, 56px);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-top: 16px;
+    color: var(--t2-cream);
+  }
+  .t2-gold { color: var(--t2-gold); }
+  .t2-section-sub {
+    margin-top: 16px;
+    font-size: 16px;
+    color: rgba(254,251,243,.6);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* PROJETOS */
+  .t2-projetos {
+    padding: 120px 0;
+    background: var(--t2-black);
+    color: var(--t2-cream);
+    overflow: hidden;
+  }
+  .t2-projetos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .t2-projetos-title {
+    font-family: var(--t2-ff-title);
+    font-size: clamp(32px, 4vw, 52px);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 24px;
+    margin-top: 16px;
+    color: var(--t2-cream);
+  }
+  .t2-projetos-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(254,251,243,.65);
+  }
+  .t2-projetos-tipos-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--t2-gold);
+    margin-bottom: 20px;
+  }
+  .t2-projetos-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .t2-proj-tag {
+    background: rgba(255,182,0,.1);
+    border: 1px solid rgba(255,182,0,.3);
+    color: var(--t2-cream);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .t2-proj-tag:hover {
+    background: rgba(255,182,0,.2);
+    border-color: var(--t2-gold);
+  }
+
+  /* PROCESSO */
+  .t2-processo {
+    padding: 80px 0;
+    background: var(--t2-black);
+    overflow: hidden;
+  }
+  .t2-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 32px;
+  }
+  .t2-steps::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: calc(12.5% + 8px);
+    right: calc(12.5% + 8px);
+    height: 2px;
+    background: linear-gradient(to right, var(--t2-gold) 0%, rgba(255,182,0,.1) 100%);
+  }
+  .t2-steps-5 {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+  .t2-steps-5::before {
+    left: calc(10% + 8px);
+    right: calc(10% + 8px);
+  }
+  .t2-step {
+    padding: 0 20px;
+    text-align: center;
+  }
+  .t2-step-content { display: contents; }
+  .t2-step-num {
+    width: 72px; height: 72px;
+    background: var(--t2-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--t2-ff-title);
+    font-size: 28px;
+    color: var(--t2-black);
+    margin: 0 auto 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .t2-step-title {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--t2-cream);
+    margin-bottom: 10px;
+  }
+  .t2-step-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(254,251,243,.5);
+  }
+
+  /* FAQ */
+  .t2-faq-section {
+    padding: 100px 0;
+    background: var(--t2-cream);
+    color: var(--t2-black);
+  }
+  .t2-faq-section .t2-section-header { text-align: center; }
+  .t2-faq-section .t2-section-title { color: var(--t2-black); -webkit-text-stroke: 0; paint-order: fill; }
+  .t2-faq-section .t2-section-sub { color: rgba(19,18,16,.6); }
+  .t2-faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(19,18,16,.08);
+  }
+  .t2-faq-item {
+    background: white;
+    border: none;
+    border-bottom: 1px solid rgba(19,18,16,.08);
+    border-radius: 0;
+    padding: 28px 24px;
+  }
+  .t2-faq-item:last-child { border-bottom: none; }
+  .t2-faq-question {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--t2-black);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .t2-faq-answer {
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(19,18,16,.7);
+  }
+  .t2-faq-item summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+  }
+  .t2-faq-item summary::-webkit-details-marker { display: none; }
+  .t2-faq-item summary::after {
+    content: '+';
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--t2-gold);
+    color: var(--t2-black);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .t2-faq-item[open] summary::after { content: '-'; }
+  .t2-faq-item summary.t2-faq-question { margin-bottom: 0; }
+  .t2-faq-item[open] summary.t2-faq-question { margin-bottom: 12px; }
+  .t2-faq-answer a {
+    color: var(--t2-gold-dk);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  /* RESPONSIVO t2 */
+  @media (max-width: 900px) {
+    .t2-projetos { padding: 48px 0; }
+    .t2-projetos-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .t2-processo { padding: 48px 0; }
+    .t2-steps, .t2-steps-5 {
+      grid-template-columns: 1fr !important;
+    }
+    .t2-steps::before { display: none; }
+    .t2-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      text-align: left;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,182,0,.1);
+    }
+    .t2-step:last-child { border-bottom: none; }
+    .t2-step-content { display: block; flex: 1; padding-top: 10px; }
+    .t2-step-num { width: 44px !important; height: 44px !important; font-size: 18px !important; flex-shrink: 0; margin: 0; }
+    .t2-faq-section { padding: 4rem 1.5rem; }
+    .t2-container { padding: 0 16px; }
+  }
+
+  /* ── O QUE ENTREGAMOS ───────────────────────────── */
+  .veic-proposta-section {
+    padding: 7rem 4rem;
+    background: var(--black);
+  }
+  .veic-proposta-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .veic-proposta-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .veic-proposta-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+  .veic-proposta-title {
+    font-family: Impact, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    -webkit-text-stroke: 2px var(--black);
+    paint-order: stroke fill;
+  }
+  .veic-proposta-gold { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+  .veic-proposta-sub {
+    font-size: 1rem;
+    color: rgba(254,251,243,0.6);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .veic-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .veic-card {
+    background: var(--gray-mid);
+    border: 1px solid rgba(255,182,0,0.1);
+    border-radius: 8px;
+    padding: 2.2rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .veic-card:hover {
+    border-color: rgba(255,182,0,0.5);
+    transform: translateY(-4px);
+  }
+  .veic-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .veic-card:hover::before { transform: scaleX(1); }
+  .veic-card-num {
+    font-family: Impact, sans-serif;
+    font-size: 3.5rem;
+    color: rgba(255,182,0,0.1);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .veic-card-icon { margin-bottom: 1rem; }
+  .veic-card-title {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+  }
+  .veic-card-text {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: rgba(254,251,243,0.6);
+  }
+
+  /* ── PROJETOS AUDIOVISUAIS ──────────────────────── */
+  .veic-projetos-section {
+    padding: 7rem 4rem;
+    background: var(--black);
+    border-top: 1px solid rgba(255,182,0,0.1);
+  }
+  .veic-projetos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .veic-projetos-header {
+    margin-bottom: 2.5rem;
+  }
+  .veic-projetos-tag {
+    display: inline-block;
+    background: transparent;
+    color: var(--yellow);
+    border: 1px solid var(--yellow);
+    font-weight: 800;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+  }
+  .veic-projetos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .veic-projetos-title {
+    font-family: Impact, sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    -webkit-text-stroke: 2px var(--black);
+    paint-order: stroke fill;
+  }
+  .veic-projetos-gold { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+  .veic-projetos-text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(254,251,243,0.65);
+    margin-bottom: 0.5rem;
+  }
+  .veic-btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--yellow);
+    color: var(--black);
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .veic-btn-gold:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+  .veic-projetos-tipos-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--yellow);
+    margin-bottom: 1.25rem;
+  }
+  .veic-projetos-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .veic-proj-tag {
+    background: rgba(255,182,0,0.08);
+    border: 1px solid rgba(255,182,0,0.25);
+    color: var(--cream);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .veic-proj-tag:hover {
+    background: rgba(255,182,0,0.18);
+    border-color: var(--yellow);
+  }
+
+  /* ── DESENVOLVIMENTO DO PROJETO ─────────────────── */
+  .veic-processo-section {
+    padding: 7rem 4rem;
+    background: var(--black);
+    border-top: 1px solid rgba(255,182,0,0.1);
+  }
+  .veic-processo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .veic-processo-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .veic-processo-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+  .veic-processo-title {
+    font-family: Impact, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    -webkit-text-stroke: 2px var(--black);
+    paint-order: stroke fill;
+  }
+  .veic-processo-gold { color: var(--yellow); -webkit-text-stroke: 2px var(--black); }
+  .veic-processo-sub {
+    font-size: 1rem;
+    color: rgba(254,251,243,0.6);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .veic-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 1rem;
+  }
+  .veic-steps::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: calc(10% + 8px);
+    right: calc(10% + 8px);
+    height: 2px;
+    background: linear-gradient(to right, var(--yellow) 0%, rgba(255,182,0,0.1) 100%);
+  }
+  .veic-step {
+    padding: 0 1.25rem;
+    text-align: center;
+  }
+  .veic-step-content { display: block; }
+  .veic-step-num {
+    width: 72px; height: 72px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Impact, sans-serif;
+    font-size: 1.6rem;
+    color: var(--black);
+    margin: 0 auto 1.75rem;
+    position: relative;
+    z-index: 1;
+  }
+  .veic-step-title {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--cream);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .veic-step-text {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: rgba(254,251,243,0.5);
+  }
+
+  @media (max-width: 1100px) {
+    .veic-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .veic-steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .veic-steps::before { display: none; }
+  }
+  @media (max-width: 900px) {
+    .veic-proposta-section,
+    .veic-projetos-section,
+    .veic-processo-section { padding: 4rem 1.5rem; }
+    .veic-cards-grid { grid-template-columns: 1fr; }
+    .veic-projetos-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .veic-steps { grid-template-columns: 1fr; }
+    .veic-step { text-align: left; display: flex; gap: 1.25rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid rgba(255,182,0,0.1); }
+    .veic-step:last-child { border-bottom: none; }
+    .veic-step-num { flex-shrink: 0; margin: 0; width: 52px; height: 52px; font-size: 1.3rem; }
+    .veic-step-content { flex: 1; padding-top: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">
+    <svg viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
+    </svg>
+    <span class="logo-text">Veic <span>VÍDEOS</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#proposta">O que Entregamos</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
+  </ul>
+  <div class="hamburger" id="hamburguer" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#portfolio" onclick="toggleMobileMenu()">Portfólio</a>
+  <a href="#proposta" onclick="toggleMobileMenu()">O que Entregamos</a>
+  <a href="#processo" onclick="toggleMobileMenu()">Processo</a>
+  <a href="#contato" onclick="toggleMobileMenu()" style="color:var(--yellow);border-bottom:none;">Fale Conosco</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-bg-isotipo" viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-badge">Produtora de Vídeos Estratégicos</div>
+    <h1>Revele<br>Sua <span class="accent">Marca</span><br>no Digital</h1>
+    <p class="hero-sub">Produzimos vídeos estratégicos que valorizam a imagem do seu negócio. Posicionamento com autoridade e identidade visual que converte.</p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Ver Portfólio
+      </a>
+      <a href="#contato" class="btn-secondary">Solicitar Orçamento →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEO REEL BANNER -->
+<section class="reel-section">
+  <p class="reel-label">● Produções em Destaque</p>
+  <div style="overflow: hidden;">
+    <div class="video-scroll-track" id="scrollTrack">
+
+      <!-- 1. VERTICAL — Shorts rsau38g08H0 -->
+      <div class="video-thumb vertical" onclick="openModal('rsau38g08H0','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/rsau38g08H0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Anúncio de Patrocínio</span>
+              <span class="thumb-sublabel">Betim Futebol</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. HORIZONTAL — YouTube cPl8z5m_nwY -->
+      <div class="video-thumb horizontal" onclick="openModal('cPl8z5m_nwY','horizontal','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/cPl8z5m_nwY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Case de Sucesso</span>
+              <span class="thumb-sublabel">Cineart</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. VERTICAL — Shorts t3HKRTObtrU -->
+      <div class="video-thumb vertical" onclick="openModal('t3HKRTObtrU','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/t3HKRTObtrU/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Backstage + Case de Sucesso</span>
+              <span class="thumb-sublabel">Cineart · Meet Tecnologia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. HORIZONTAL — YouTube P8hNnOzTfTo -->
+      <div class="video-thumb horizontal" onclick="openModal('P8hNnOzTfTo','horizontal','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/P8hNnOzTfTo/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Explicando produto/Serviço</span>
+              <span class="thumb-sublabel">Site · Landing Page</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. VERTICAL — Shorts t2jOdfkf1n0 -->
+      <div class="video-thumb vertical" onclick="openModal('t2jOdfkf1n0','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/t2jOdfkf1n0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Campanha de Marketing</span>
+              <span class="thumb-sublabel">Betim Vs Cruzeiro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. HORIZONTAL — YouTube CgfEWgE_8Aw -->
+      <div class="video-thumb horizontal" onclick="openModal('CgfEWgE_8Aw','horizontal','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/CgfEWgE_8Aw/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Case de Sucesso</span>
+              <span class="thumb-sublabel">Biologistica · Meet Tecnologia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. VERTICAL — YouTube jeY8AvM-iUY (player horizontal mas vídeo vertical) -->
+      <div class="video-thumb vertical" onclick="openModal('jeY8AvM-iUY','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/jeY8AvM-iUY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Treinamento NR</span>
+              <span class="thumb-sublabel">Registro da Ação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. HORIZONTAL — YouTube AVlMyYiXCCk -->
+      <div class="video-thumb horizontal" onclick="openModal('AVlMyYiXCCk','horizontal','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/AVlMyYiXCCk/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Case de Sucesso</span>
+              <span class="thumb-sublabel">Grupo Avante · Meet Tecnologia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. VERTICAL — Shorts zpbKSZBjGB8 -->
+      <div class="video-thumb vertical" onclick="openModal('zpbKSZBjGB8','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/zpbKSZBjGB8/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Campanha</span>
+              <span class="thumb-sublabel">Conselho da Massa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEW. VERTICAL — Vimeo 1195816891 Mangalarga Marchador -->
+      <div class="video-thumb vertical" id="vimeo-thumb-1195816891" onclick="openModal('1195816891','vertical','vimeo')">
+        <div class="video-thumb-inner">
+          <img id="vimeo-img-1195816891" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;">
+          <div id="vimeo-placeholder-1195816891" style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 57.34 67.13" style="width:40%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+          </div>
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Mangalarga Marchador</span>
+              <span class="thumb-sublabel">Festival</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. VERTICAL — Vimeo 1194588209 (player horizontal mas vídeo vertical) -->
+      <div class="video-thumb vertical" id="vimeo-thumb-1194588209" onclick="openModal('1194588209','vertical','vimeo')">
+        <div class="video-thumb-inner">
+          <img id="vimeo-img-1194588209" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;">
+          <div id="vimeo-placeholder-1194588209" style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 57.34 67.13" style="width:40%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+          </div>
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Marcos Catarina</span>
+              <span class="thumb-sublabel">Dia dos Namorados</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. VERTICAL — Shorts MI6pCyYpMlc -->
+      <div class="video-thumb vertical" onclick="openModal('MI6pCyYpMlc','vertical','youtube')">
+        <div class="video-thumb-inner">
+          <img src="https://img.youtube.com/vi/MI6pCyYpMlc/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay">
+            <div class="thumb-info">
+              <span class="thumb-label">Confiber · Cacau Show</span>
+              <span class="thumb-sublabel">Sorteio Páscoa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== DUPLICATAS PARA LOOP INFINITO ===== -->
+      <div class="video-thumb vertical" onclick="openModal('rsau38g08H0','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/rsau38g08H0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Vídeo Institucional</span><span class="thumb-sublabel">Short · YouTube</span></div></div></div></div>
+      <div class="video-thumb horizontal" onclick="openModal('cPl8z5m_nwY','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/cPl8z5m_nwY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Vídeo Corporativo</span><span class="thumb-sublabel">Horizontal · YouTube</span></div></div></div></div>
+      <div class="video-thumb vertical" onclick="openModal('t3HKRTObtrU','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/t3HKRTObtrU/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Conteúdo Social</span><span class="thumb-sublabel">Short · YouTube</span></div></div></div></div>
+      <div class="video-thumb horizontal" onclick="openModal('P8hNnOzTfTo','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/P8hNnOzTfTo/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Vídeo Estratégico</span><span class="thumb-sublabel">Horizontal · YouTube</span></div></div></div></div>
+      <div class="video-thumb vertical" onclick="openModal('t2jOdfkf1n0','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/t2jOdfkf1n0/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Case de Sucesso</span><span class="thumb-sublabel">Short · YouTube</span></div></div></div></div>
+      <div class="video-thumb horizontal" onclick="openModal('CgfEWgE_8Aw','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/CgfEWgE_8Aw/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Produção Completa</span><span class="thumb-sublabel">Horizontal · YouTube</span></div></div></div></div>
+      <div class="video-thumb vertical" onclick="openModal('jeY8AvM-iUY','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/jeY8AvM-iUY/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Identidade de Marca</span><span class="thumb-sublabel">Vertical · YouTube</span></div></div></div></div>
+      <div class="video-thumb horizontal" onclick="openModal('AVlMyYiXCCk','horizontal','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/AVlMyYiXCCk/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Vídeo Comercial</span><span class="thumb-sublabel">Horizontal · YouTube</span></div></div></div></div>
+      <div class="video-thumb vertical" onclick="openModal('zpbKSZBjGB8','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/zpbKSZBjGB8/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Reels & Stories</span><span class="thumb-sublabel">Short · YouTube</span></div></div></div></div>
+      <div class="video-thumb vertical" onclick="openModal('1194588209','vertical','vimeo')"><div class="video-thumb-inner"><img id="vimeo-img-dup-1194588209" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;"><div id="vimeo-placeholder-dup-1194588209" style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 57.34 67.13" style="width:40%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg></div><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Produção Veic</span><span class="thumb-sublabel">Vertical · Vimeo</span></div></div></div></div>
+      <div class="video-thumb vertical" onclick="openModal('MI6pCyYpMlc','vertical','youtube')"><div class="video-thumb-inner"><img src="https://img.youtube.com/vi/MI6pCyYpMlc/maxresdefault.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><div class="thumb-info"><span class="thumb-label">Motion & Edição</span><span class="thumb-sublabel">Short · YouTube</span></div></div></div></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROPÓSITO -->
+<div class="purpose-wrapper">
+<section class="purpose-section">
+  <div>
+    <p class="section-eyebrow">Quem Somos</p>
+    <h2>Posicionamento<br><span class="accent">com Propósito</span></h2>
+    <p class="body-text">Nosso propósito é produzir vídeos estratégicos que valorizam a imagem de negócios, profissionais e projetos que precisam comunicar com <strong>autoridade e posicionamento</strong>.</p>
+    <p class="body-text">Não fazemos apenas vídeos bonitos. Entendemos a sua marca e criamos conteúdo que faz o seu negócio ser reconhecido no digital.</p>
+    <div class="purpose-cards">
+      <div class="purpose-card">
+        <div class="purpose-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <h4>Estratégia antes da câmera</h4>
+          <p>Planejamos cada vídeo para que ele trabalhe pelos seus objetivos de negócio, não só para parecer bonito.</p>
+        </div>
+      </div>
+      <div class="purpose-card">
+        <div class="purpose-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 013 1.18 2 2 0 015 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        </div>
+        <div>
+          <h4>Identidade visual em movimento</h4>
+          <p>Cada produção carrega a essência da sua marca: cores, linguagem, tom de voz e posicionamento únicos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phone mockup com o Short -->
+  <div style="display:flex;align-items:center;justify-content:center;">
+    <div class="phone-mockup">
+      <div class="phone-shell">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <img src="https://img.youtube.com/vi/nrzURq_4LPk/maxresdefault.jpg" alt="Qual é o diferencial" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div class="phone-screen-overlay" onclick="openModal('nrzURq_4LPk','vertical','youtube')">
+            <div class="phone-play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <span class="phone-video-label">Qual é o Diferencial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- O QUE ENTREGAMOS -->
+<section class="veic-proposta-section" id="proposta">
+  <div class="veic-proposta-container">
+    <div class="veic-proposta-header">
+      <span class="veic-proposta-tag">Nossos Serviços</span>
+      <h2 class="veic-proposta-title">O que <span class="veic-proposta-gold">Entregamos</span></h2>
+      <p class="veic-proposta-sub">Vídeos pensados para cada etapa do funil de comunicação do seu negócio.</p>
+    </div>
+    <div class="veic-cards-grid">
+      <div class="veic-card">
+        <div class="veic-card-num">01</div>
+        <div class="veic-card-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="#FFB600" stroke-width="1.8"/>
+            <path d="M12 7v5l3 3" stroke="#FFB600" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 3.5C9 3.5 10.5 2 12 2s3 1.5 3 1.5" stroke="#FFB600" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="2" fill="#FFB600"/>
+          </svg>
+        </div>
+        <div class="veic-card-title">Vídeo Institucional</div>
+        <p class="veic-card-text">Apresente sua empresa, cultura e proposta de valor de forma profissional. Ideal para site, pitch e LinkedIn. O cartão de visitas da sua marca em movimento.</p>
+      </div>
+      <div class="veic-card">
+        <div class="veic-card-num">02</div>
+        <div class="veic-card-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="4" width="20" height="14" rx="2" stroke="#FFB600" stroke-width="1.8"/>
+            <path d="M8 20h8M12 18v2" stroke="#FFB600" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M10 9l5 3-5 3V9z" fill="#FFB600"/>
+          </svg>
+        </div>
+        <div class="veic-card-title">Demo de Produto / SaaS</div>
+        <p class="veic-card-text">Vídeos explicativos que mostram como seu software funciona com clareza e persuasão. Reduz ciclo de vendas e aumenta conversão em landing pages.</p>
+      </div>
+      <div class="veic-card">
+        <div class="veic-card-num">03</div>
+        <div class="veic-card-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" stroke="#FFB600" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="veic-card-title">Cases de Sucesso</div>
+        <p class="veic-card-text">Transforme resultados de clientes em prova social poderosa. Depoimentos e estudos de caso em vídeo geram confiança e aceleram decisões de compra.</p>
+      </div>
+      <div class="veic-card">
+        <div class="veic-card-num">04</div>
+        <div class="veic-card-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#FFB600" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="veic-card-title">Conteúdo para Redes Sociais</div>
+        <p class="veic-card-text">Shorts, Reels e conteúdos para LinkedIn pensados para o mercado B2B. Gere autoridade, alcance e leads qualificados de forma contínua.</p>
+      </div>
+      <div class="veic-card">
+        <div class="veic-card-num">05</div>
+        <div class="veic-card-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="#FFB600" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="veic-card-title">Vídeos para Anúncios</div>
+        <p class="veic-card-text">Criativos em vídeo otimizados para performance em Google Ads, LinkedIn Ads e Meta. Comunique seu diferencial nos primeiros 3 segundos.</p>
+      </div>
+      <div class="veic-card">
+        <div class="veic-card-num">06</div>
+        <div class="veic-card-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 20H7a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z" stroke="#FFB600" stroke-width="1.8"/>
+            <path d="M9 8h6M9 12h6M9 16h4" stroke="#FFB600" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="19" cy="6" r="3" fill="#FFB600"/>
+            <path d="M18 6l.8.8L21 5" stroke="#131210" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="veic-card-title">Eventos e Lançamentos</div>
+        <p class="veic-card-text">Cobertura profissional de eventos corporativos, lançamentos de produto, hackathons e conferências. Conteúdo que prolonga o impacto do evento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <div class="section-header">
+    <div>
+      <p class="section-eyebrow">Trabalhos</p>
+      <h2>Portfólio</h2>
+    </div>
+    <a href="https://www.instagram.com/veicvideos" class="btn-secondary" style="white-space:nowrap">Ver Instagram →</a>
+  </div>
+
+  <!-- Filtros por TIPO -->
+  <div class="filter-tabs" id="type-filters">
+    <button class="filter-tab active" data-type="todos">Todos</button>
+    <button class="filter-tab" data-type="curto">Curto / Reels</button>
+    <button class="filter-tab" data-type="cases">Cases de Sucesso</button>
+    <button class="filter-tab" data-type="institucional">Institucional</button>
+    <button class="filter-tab" data-type="backstage">Backstage</button>
+  </div>
+
+  <!-- CAROUSEL WRAPPER -->
+  <div style="position:relative;margin-top:2.5rem;padding:0 7.5%;" id="portfolioCarouselWrap">
+    <button id="carouselPrev" onclick="carouselNav(-1)" aria-label="Anterior" style="position:absolute;left:calc(-24px);top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:var(--yellow);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,182,0,0.35);transition:background 0.2s;" onmouseover="this.style.background='#CC9200'" onmouseout="this.style.background='#FFB600'">
+      <svg width="20" fill="none" stroke="#131210" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button id="carouselNext" onclick="carouselNav(1)" aria-label="Proximo" style="position:absolute;right:calc(-24px);top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:50%;background:var(--yellow);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,182,0,0.35);transition:background 0.2s;" onmouseover="this.style.background='#CC9200'" onmouseout="this.style.background='#FFB600'">
+      <svg width="20" fill="none" stroke="#131210" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div id="portfolioSlides" style="overflow:hidden;border-radius:8px;"></div>
+    <div id="carouselDots" style="display:flex;justify-content:center;gap:8px;margin-top:1.5rem;flex-wrap:wrap;"></div>
+  </div>
+
+  <!-- hidden grid ref -->
+  <div class="portfolio-grid" id="portfolioGrid" style="display:none;"></div>
+</section>
+
+<!-- PROJETOS AUDIOVISUAIS -->
+<section class="t2-projetos" id="projetos">
+  <div class="t2-container">
+    <div class="t2-section-header" style="margin-bottom:48px;">
+      <span class="t2-tag" style="background:transparent;color:#FFB600;border:1px solid #FFB600;">Forma de trabalho</span>
+    </div>
+    <div class="t2-projetos-grid">
+      <div class="t2-projetos-left">
+        <h2 class="t2-projetos-title">Desenvolvemos projetos<br/><span class="t2-gold">Audiovisuais</span></h2>
+        <p class="t2-projetos-text">Desenvolvemos projetos de comunicação em vídeo conforme a necessidade de cada cliente. Cada projeto é orçado individualmente, com estratégia personalizada, conforme demanda.</p>
+        <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener noreferrer" class="t2-btn t2-btn--gold" style="margin-top:32px;">Solicitar Orçamento via WhatsApp</a>
+      </div>
+      <div class="t2-projetos-right">
+        <div class="t2-projetos-tipos-label">Tipos de Projeto</div>
+        <div class="t2-projetos-tags">
+          <span class="t2-proj-tag">Ações</span>
+          <span class="t2-proj-tag">Anúncios</span>
+          <span class="t2-proj-tag">Apresentação Profissional</span>
+          <span class="t2-proj-tag">Campanhas</span>
+          <span class="t2-proj-tag">Cases de Sucesso</span>
+          <span class="t2-proj-tag">Comerciais</span>
+          <span class="t2-proj-tag">Divulgação</span>
+          <span class="t2-proj-tag">Eventos</span>
+          <span class="t2-proj-tag">Feiras</span>
+          <span class="t2-proj-tag">Institucionais</span>
+          <span class="t2-proj-tag">Redes Sociais</span>
+          <span class="t2-proj-tag">Vitrine no Instagram</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="t2-processo" id="processo">
+  <div class="t2-container">
+    <div class="t2-section-header">
+      <span class="t2-tag">Como funciona</span>
+      <h2 class="t2-section-title">Desenvolvimento<br/><span class="t2-gold">do projeto</span></h2>
+      <p class="t2-section-sub">Um processo simples e transparente, do início ao fim.</p>
+    </div>
+    <div class="t2-steps t2-steps-5">
+      <div class="t2-step">
+        <div class="t2-step-num">01</div>
+        <div class="t2-step-content">
+          <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Levantamento</h3></div>
+          <p class="t2-step-text">Levantamos a demanda de comunicação, objetivos e público da sua marca.</p>
+        </div>
+      </div>
+      <div class="t2-step">
+        <div class="t2-step-num">02</div>
+        <div class="t2-step-content">
+          <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Direção de Roteiro</h3></div>
+          <p class="t2-step-text">Direcionamos a elaboração de roteiro de gravação para resultar em uma comunicação assertiva.</p>
+        </div>
+      </div>
+      <div class="t2-step">
+        <div class="t2-step-num">03</div>
+        <div class="t2-step-content">
+          <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Gravação com Direção</h3></div>
+          <p class="t2-step-text">Gravamos com direção cuidadosa e orientação em cada cena.</p>
+        </div>
+      </div>
+      <div class="t2-step">
+        <div class="t2-step-num">04</div>
+        <div class="t2-step-content">
+          <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Edição</h3></div>
+          <p class="t2-step-text">Edição que transmite a mensagem dentro do tom de comunicação necessário conforme o objetivo do vídeo.</p>
+        </div>
+      </div>
+      <div class="t2-step">
+        <div class="t2-step-num">05</div>
+        <div class="t2-step-content">
+          <div class="t2-step-title"><h3 style="font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Entrega do Vídeo</h3></div>
+          <p class="t2-step-text">Entrega nos formatos ideais para cada plataforma, prontos para publicar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="t2-faq-section" id="faq" aria-labelledby="t2-faq-title">
+  <div class="t2-container">
+    <div class="t2-section-header">
+      <span class="t2-tag">Dúvidas frequentes</span>
+      <h2 class="t2-section-title" id="t2-faq-title">Perguntas<br/><span class="t2-gold">Frequentes</span></h2>
+      <p class="t2-section-sub">Tudo que você precisa saber antes de iniciar seu projeto de vídeo.</p>
+    </div>
+    <div class="t2-faq-grid">
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Quanto custa um vídeo?</summary>
+        <p class="t2-faq-answer">Cada projeto é orçado individualmente conforme o tipo de vídeo, complexidade da produção e demanda de comunicação. Não trabalhamos com pacotes fechados — a estratégia é personalizada para a sua empresa. <a href="https://wa.me/5531983335876?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20or%C3%A7amento%20de%20v%C3%ADdeos!" target="_blank" rel="noopener noreferrer">Solicite um orçamento pelo WhatsApp</a> e receba uma proposta sem compromisso.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Quais tipos de vídeo vocês produzem?</summary>
+        <p class="t2-faq-answer">Produzimos vídeos comerciais, institucionais, para redes sociais (Reels, Shorts, TikTok), campanhas, anúncios pagos, cases de sucesso, vídeos de evento, feiras, vitrine no Instagram e apresentações profissionais — sempre com estratégia alinhada à identidade da sua marca.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Vocês atendem fora de Belo Horizonte?</summary>
+        <p class="t2-faq-answer">Sim. Atendemos Belo Horizonte, região metropolitana, além de outras cidades de Minas Gerais e todo o Brasil, mediante reserva de data na agenda. Entre em contato para verificar a disponibilidade para a sua cidade.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Como é o processo de produção do vídeo?</summary>
+        <p class="t2-faq-answer">O processo passa por 5 etapas: levantamento da demanda e objetivos, direção de roteiro para comunicação assertiva, gravação com orientação de cena, edição alinhada ao tom de comunicação e entrega nos formatos ideais para cada plataforma digital.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Preciso ter experiência em frente à câmera?</summary>
+        <p class="t2-faq-answer">Não. Nossa produção inclui direção e orientação em cada cena. Trabalhamos com o cliente ou comunicador para garantir que a performance transmita a mensagem certa, mesmo que seja a primeira vez na frente das câmeras.</p>
+      </details>
+      <details class="t2-faq-item">
+        <summary class="t2-faq-question">Em quanto tempo fica pronto o vídeo?</summary>
+        <p class="t2-faq-answer">O prazo varia conforme o tipo e a complexidade do projeto. Após o levantamento inicial, apresentamos um cronograma claro com datas de gravação, edição e entrega. O processo é transparente do início ao fim.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <p class="section-eyebrow">Vamos Trabalhar Juntos?</p>
+  <h2>Pronto Para<br><span class="accent">Revelar Sua Marca?</span></h2>
+  <p class="body-text">Entre em contato e vamos conversar sobre como posicionar seu negócio no digital com vídeos estratégicos que realmente funcionam.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="https://wa.me/5531983335876" class="btn-primary" target="_blank">
+      <svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://www.instagram.com/veicvideos" class="btn-secondary" target="_blank">Instagram @veicvideos →</a>
+  </div>
+  <div class="cta-contact">
+    <span>📞</span>
+    <span><strong>(31) 98333-5876</strong> · Atendimento via WhatsApp</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="nav-logo" href="#">
+    <svg width="28" viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
+    </svg>
+    <span class="logo-text">Veic <span>VÍDEOS</span></span>
+  </a>
+  <ul class="footer-links">
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#proposta">O que Entregamos</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Veic Vídeos</p>
+</footer>
+
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5531983335876" target="_blank" title="Falar no WhatsApp"
+   style="position:fixed;bottom:24px;right:24px;z-index:500;width:56px;height:56px;
+          background:#25D366;border-radius:50%;display:flex;align-items:center;
+          justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);
+          transition:transform 0.2s;text-decoration:none;"
+   onmouseover="this.style.transform='scale(1.1)'"
+   onmouseout="this.style.transform='scale(1)'">
+  <svg width="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="videoModal" onclick="closeModalOnOverlay(event)">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-video" id="modalVideo">
+      <iframe id="modalIframe" src="" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mobile menu
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.style.borderBottomColor = 'rgba(255,182,0,0.25)';
+    } else {
+      nav.style.borderBottomColor = 'rgba(255,182,0,0.15)';
+    }
+  });
+
+  // ─── PORTFOLIO CAROUSEL ──────────────────────────────────────────────
+  // All videos by type (shuffled within each category)
+  const allVideos = {
+    curto: [
+      {id:'oDRUYh7xOBs',p:'youtube',o:'vertical',type:'curto'},{id:'aC_lpOFyDJE',p:'youtube',o:'vertical',type:'curto'},
+      {id:'9jIKnhQFhbg',p:'youtube',o:'vertical',type:'curto'},{id:'SIpWQ_e89oo',p:'youtube',o:'vertical',type:'curto'},
+      {id:'1pbQqkS5EyU',p:'youtube',o:'vertical',type:'curto'},{id:'EzVojjz2TwU',p:'youtube',o:'vertical',type:'curto'},
+      {id:'gdJzWobbouw',p:'youtube',o:'vertical',type:'curto'},{id:'4uQWPJ84uNk',p:'youtube',o:'vertical',type:'curto'},
+      {id:'gjDVDluYpII',p:'youtube',o:'vertical',type:'curto'},{id:'PodfSqi6ru8',p:'youtube',o:'vertical',type:'curto'},
+      {id:'26-R6P5IGpA',p:'youtube',o:'vertical',type:'curto'},{id:'4Hn9ngjpB6w',p:'youtube',o:'vertical',type:'curto'},
+      {id:'XbhVd3a0sEI',p:'youtube',o:'vertical',type:'curto'},{id:'0qOjey-rtsI',p:'youtube',o:'vertical',type:'curto'},
+      {id:'7GOJkl2N4kI',p:'youtube',o:'vertical',type:'curto'},{id:'Q-Gt_kSUTEE',p:'youtube',o:'vertical',type:'curto'},
+      {id:'3lea5v3Jhmg',p:'youtube',o:'vertical',type:'curto'},{id:'HU5pbfJ5aJk',p:'youtube',o:'vertical',type:'curto'},
+      {id:'18b-G4JqoV0',p:'youtube',o:'vertical',type:'curto'},{id:'j1H5zRoC-qk',p:'youtube',o:'vertical',type:'curto'},
+      {id:'nXqTs0U-fPU',p:'youtube',o:'vertical',type:'curto'},{id:'JzY1JbbS7x4',p:'youtube',o:'vertical',type:'curto'},
+      {id:'CO2o8s_k3D4',p:'youtube',o:'vertical',type:'curto'},{id:'G4q5jUkg8VE',p:'youtube',o:'vertical',type:'curto'},
+      {id:'y368nZZESHs',p:'youtube',o:'vertical',type:'curto'},{id:'4J12L2Xlvh8',p:'youtube',o:'vertical',type:'curto'},
+      {id:'MI6pCyYpMlc',p:'youtube',o:'vertical',type:'curto'},{id:'utxuE5nihsA',p:'youtube',o:'vertical',type:'curto'},
+      {id:'QhdlzY4eoos',p:'youtube',o:'vertical',type:'curto'},{id:'ELgs8RaBxm8',p:'youtube',o:'vertical',type:'curto'},
+      {id:'C3Atq_Dytb0',p:'youtube',o:'vertical',type:'curto'},{id:'EgfQkzmAc5M',p:'youtube',o:'vertical',type:'curto'},
+      {id:'D0D6BRfgWcI',p:'youtube',o:'vertical',type:'curto'},{id:'9eZazmXiRJo',p:'youtube',o:'vertical',type:'curto'},
+      {id:'zBBKTTKwJBQ',p:'youtube',o:'vertical',type:'curto'},{id:'KXf_GURp9lE',p:'youtube',o:'vertical',type:'curto'},
+      {id:'Ncg0eyN_OcM',p:'youtube',o:'vertical',type:'curto'},{id:'0xETMgu7rqQ',p:'youtube',o:'vertical',type:'curto'},
+      {id:'3jOBzTjl9Lc',p:'youtube',o:'vertical',type:'curto'},{id:'-h53nPnf3JQ',p:'youtube',o:'vertical',type:'curto'},
+      {id:'4F6CzKbNvZc',p:'youtube',o:'vertical',type:'curto'},{id:'A9WNZacvW50',p:'youtube',o:'vertical',type:'curto'},
+      {id:'Qun6ERFAS4I',p:'youtube',o:'vertical',type:'curto'},{id:'2xP77y-P4A8',p:'youtube',o:'vertical',type:'curto'},
+      {id:'zpbKSZBjGB8',p:'youtube',o:'vertical',type:'curto'},{id:'eHGZho9cy_w',p:'youtube',o:'vertical',type:'curto'},
+      {id:'1195816891',p:'vimeo',o:'vertical',type:'curto'},{id:'1196948372',p:'vimeo',o:'vertical',type:'curto'}
+    ],
+    cases: [
+      {id:'fAzmIuYKra0',p:'youtube',o:'horizontal',type:'cases'},{id:'BgJzvmtNZP4',p:'youtube',o:'horizontal',type:'cases'},
+      {id:'cPl8z5m_nwY',p:'youtube',o:'horizontal',type:'cases'},{id:'P8hNnOzTfTo',p:'youtube',o:'horizontal',type:'cases'},
+      {id:'AVlMyYiXCCk',p:'youtube',o:'horizontal',type:'cases'},{id:'CgfEWgE_8Aw',p:'youtube',o:'horizontal',type:'cases'}
+    ],
+    institucional: [
+      {id:'xI9-k8Al18Y',p:'youtube',o:'vertical',type:'institucional'},{id:'t2jOdfkf1n0',p:'youtube',o:'vertical',type:'institucional'},
+      {id:'BRhNBATj9Z0',p:'youtube',o:'vertical',type:'institucional'},{id:'1196950750',p:'vimeo',o:'vertical',type:'institucional'}
+    ],
+    backstage: [
+      {id:'t3HKRTObtrU',p:'youtube',o:'vertical',type:'backstage'},{id:'hX0tfTg9-Vw',p:'youtube',o:'vertical',type:'backstage'}
+    ]
+  };
+
+  // Combine all for "todos"
+  function getVideos(type) {
+    if (type === 'todos') {
+      // Interleave all categories
+      const all = [];
+      const cats = Object.values(allVideos);
+      const maxLen = Math.max(...cats.map(a=>a.length));
+      for(let i=0;i<maxLen;i++){cats.forEach(cat=>{if(i<cat.length)all.push(cat[i]);});}
+      return all;
+    }
+    return allVideos[type] || [];
+  }
+
+  let currentSlide = 0;
+  let activeType = 'todos';
+  let carouselTimer = null;
+  let currentVideos = [];
+  let isAnimating = false;
+  let slideGroups = [];
+
+  const TYPE_LABELS = {
+    curto: 'Curto / Reels', cases: 'Case de Sucesso',
+    institucional: 'Institucional', backstage: 'Backstage'
+  };
+
+  /*
+   * buildSlideGroups: divide vídeos em grupos (slides) de uma linha só.
+   * Grid de 5 colunas (horizontal = span 2, vertical = span 1):
+   *   - 1H + 3V  = 2+1+1+1 = 5 cols  → grid cheio, sem sobra
+   *   - 2H + 1V  = 2+2+1   = 5 cols  → grid cheio, sem sobra
+   *   - 4V       = flex centralizado, largura 1/5 por card
+   *   - Sobras   = flex centralizado
+   */
+  function buildSlideGroups(videos) {
+    const groups = [];
+    const verts  = videos.filter(v => v.o === 'vertical');
+    const horizs = videos.filter(v => v.o === 'horizontal');
+    let vi = 0, hi = 0;
+
+    while (vi < verts.length || hi < horizs.length) {
+      const rv = verts.length  - vi;
+      const rh = horizs.length - hi;
+
+      if (rh > 0 && rv >= 3) {
+        // 1 horizontal + 3 verticais = 5 colunas — grid cheio
+        groups.push({ items: [horizs[hi++], verts[vi++], verts[vi++], verts[vi++]], flex: false });
+      } else if (rh >= 2 && rv >= 1) {
+        // 2 horizontais + 1 vertical = 5 colunas — grid cheio
+        groups.push({ items: [horizs[hi++], horizs[hi++], verts[vi++]], flex: false });
+      } else if (rv >= 4 && rh === 0) {
+        // 4 verticais — flex centralizado, cards com largura 1/5 (igual ao grid)
+        groups.push({ items: [verts[vi++], verts[vi++], verts[vi++], verts[vi++]], flex: true });
+      } else {
+        // sobras — flex centralizado
+        const leftover = [];
+        while (hi < horizs.length) leftover.push(horizs[hi++]);
+        while (vi < verts.length)  leftover.push(verts[vi++]);
+        if (leftover.length) groups.push({ items: leftover, flex: true });
+      }
+    }
+    return groups;
+  }
+
+  function buildThumb(v) {
+    const isVimeo = v.p === 'vimeo';
+    const isVert = v.o === 'vertical';
+    const thumbUrl = isVimeo ? '' : `https://img.youtube.com/vi/${v.id}/maxresdefault.jpg`;
+    const platformLabel = isVimeo ? 'Vimeo' : (isVert ? 'Short' : 'YouTube');
+    const typeLabel = TYPE_LABELS[v.type] || platformLabel;
+
+    const imgContent = isVimeo
+      ? `<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 57.34 67.13" style="width:38%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg></div>`
+      : `<img src="${thumbUrl}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy">`;
+
+    return `<div class="portfolio-item${isVert ? '' : ' item-horizontal'}" ${isVimeo?`data-vimeo-id="${v.id}"`:''}  onclick="openModal('${v.id}','${v.o}','${v.p}')" style="cursor:pointer;">
+      <div class="portfolio-thumb" style="aspect-ratio:${isVert?'9/16':'16/9'}; position:relative; background:var(--gray-mid);">
+        <div class="portfolio-thumb-bg">${imgContent}</div>
+        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="portfolio-meta">
+        <div class="portfolio-tags">
+          <span class="tag tag-type">${typeLabel}</span>
+          <span class="tag tag-niche">${platformLabel}</span>
+        </div>
+        <p class="portfolio-title">${isVimeo ? 'Produção Veic' : (isVert ? 'Short · Vertical' : 'Vídeo · Horizontal')}</p>
+      </div>
+    </div>`;
+  }
+
+  function isMobile() { return window.innerWidth <= 900; }
+
+  function renderCarousel() {
+    currentVideos = getVideos(activeType);
+
+    // No mobile: 1 vídeo por slide
+    if (isMobile()) {
+      slideGroups = currentVideos.map(v => ({ items: [v], flex: true }));
+    } else {
+      slideGroups = buildSlideGroups(currentVideos);
+    }
+
+    const totalSlides = slideGroups.length;
+    if(currentSlide >= totalSlides) currentSlide = 0;
+
+    const slidesEl = document.getElementById('portfolioSlides');
+
+    let html = `<div class="carousel-track" id="carouselTrack" style="transition:none;transform:translateX(-${currentSlide * 100}%);">`;
+    slideGroups.forEach(group => {
+      const cls = group.flex ? 'carousel-slide carousel-slide--flex' : 'carousel-slide';
+      html += `<div class="${cls}">`;
+      group.items.forEach(v => { html += buildThumb(v); });
+      html += `</div>`;
+    });
+    html += `</div>`;
+    slidesEl.innerHTML = html;
+
+    requestAnimationFrame(() => {
+      const track = document.getElementById('carouselTrack');
+      if(track) track.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    });
+
+    updateDots(totalSlides);
+    loadVimeoThumbsForSlide();
+    resetTimer();
+  }
+
+  // Re-renderizar ao redimensionar (portrait <-> landscape)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { currentSlide = 0; renderCarousel(); }, 200);
+  });
+
+  function updateDots(totalSlides) {
+    const dotsEl = document.getElementById('carouselDots');
+    let dots = '';
+    for(let s=0; s<totalSlides; s++){
+      dots += `<button onclick="goToSlide(${s})" aria-label="Slide ${s+1}" style="width:${s===currentSlide?'28px':'10px'};height:10px;border-radius:5px;border:none;background:${s===currentSlide?'var(--yellow)':'rgba(255,182,0,0.25)'};cursor:pointer;transition:all 0.3s;padding:0;"></button>`;
+    }
+    dotsEl.innerHTML = dots;
+  }
+
+  function slideTo(index) {
+    if(isAnimating) return;
+    const totalSlides = slideGroups.length;
+    currentSlide = (index + totalSlides) % totalSlides;
+    const track = document.getElementById('carouselTrack');
+    if(track) {
+      isAnimating = true;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      setTimeout(() => { isAnimating = false; }, 470);
+    }
+    updateDots(totalSlides);
+    loadVimeoThumbsForSlide();
+  }
+
+  function loadVimeoThumbsForSlide() {
+    const track = document.getElementById('carouselTrack');
+    if(!track) return;
+    const slides = track.querySelectorAll('.carousel-slide');
+    const visibleSlide = slides[currentSlide];
+    if(!visibleSlide) return;
+    visibleSlide.querySelectorAll('[data-vimeo-id]').forEach(function(el){
+      const vid = el.getAttribute('data-vimeo-id');
+      if(el.getAttribute('data-loaded')) return;
+      el.setAttribute('data-loaded','1');
+      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/'+vid+'&width=400')
+        .then(r=>r.json()).then(data=>{
+          const bg = el.querySelector('.portfolio-thumb-bg');
+          if(bg){bg.innerHTML=`<img src="${data.thumbnail_url}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">`;}
+        }).catch(()=>{});
+    });
+  }
+
+  function goToSlide(n) {
+    slideTo(n);
+    resetTimer();
+  }
+
+  function carouselNav(dir) {
+    const totalSlides = slideGroups.length;
+    slideTo((currentSlide + dir + totalSlides) % totalSlides);
+    resetTimer();
+  }
+
+  function resetTimer() {
+    if(carouselTimer) clearInterval(carouselTimer);
+    carouselTimer = setInterval(()=>{ carouselNav(1); }, 3000);
+  }
+
+  // Pause on hover
+  document.addEventListener('DOMContentLoaded', function(){
+    const wrap = document.getElementById('portfolioCarouselWrap');
+    if(wrap){
+      wrap.addEventListener('mouseenter',()=>{ if(carouselTimer) clearInterval(carouselTimer); });
+      wrap.addEventListener('mouseleave',()=>{ resetTimer(); });
+    }
+
+    // Filter tabs
+    document.querySelectorAll('[data-type]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeType = btn.dataset.type;
+        currentSlide = 0;
+        renderCarousel();
+      });
+    });
+
+    // Initial render
+    renderCarousel();
+
+    // Load Vimeo thumbnails for reel banner
+    [['1194588209',['vimeo-img-1194588209'],['vimeo-placeholder-1194588209'],['vimeo-img-dup-1194588209'],['vimeo-placeholder-dup-1194588209']],
+     ['1195816891',['vimeo-img-1195816891'],['vimeo-placeholder-1195816891']]].forEach(function(item){
+      const vimeoId = item[0];
+      const imgIds = item[1]; const placeholderIds = item[2];
+      const dupImgIds = item[3]||[]; const dupPlaceholderIds = item[4]||[];
+      fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/'+vimeoId+'&width=400')
+        .then(r=>r.json()).then(data=>{
+          var thumbUrl = data.thumbnail_url;
+          [...imgIds,...dupImgIds].forEach(function(id){
+            var img = document.getElementById(id);
+            if(img){img.src=thumbUrl;img.style.display='';}
+          });
+          [...placeholderIds,...dupPlaceholderIds].forEach(function(id){
+            var el = document.getElementById(id);
+            if(el) el.style.display='none';
+          });
+        }).catch(function(){});
+    });
+  });
+
+  // Modal
+  function openModal(videoId, orientation, platform) {
+    const modal = document.getElementById('videoModal');
+    const modalBox = document.getElementById('modalBox');
+    const modalVideo = document.getElementById('modalVideo');
+    const iframe = document.getElementById('modalIframe');
+
+    if (platform === 'vimeo') {
+      iframe.src = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+    } else {
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    }
+
+    modalVideo.className = 'modal-video ' + (orientation === 'vertical' ? 'h9x16' : 'h16x9');
+    modalBox.className = 'modal-box' + (orientation === 'vertical' ? ' vertical-modal' : '');
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('videoModal');
+    modal.classList.remove('active');
+    document.getElementById('modalIframe').src = '';
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOnOverlay(e) {
+    if (e.target === document.getElementById('videoModal')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+</body>
+</html>

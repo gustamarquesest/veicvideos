@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veic Vídeos — Posicione Sua Marca no Digital</title>
+<meta name="description" content="Produtora de vídeos estratégicos para bares, cervejarias, choperias e marcas que querem se posicionar no digital com autoridade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#131210;--cream:#FEFBF3;--yellow:#FFB600;--ydark:#CC9200;
+  --g1:#1e1c1a;--g2:#2a2820;--g3:#3a3830;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:'Inter',sans-serif;overflow-x:hidden}
+::selection{background:var(--yellow);color:var(--black)}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--yellow);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 4rem;display:flex;align-items:center;justify-content:space-between;background:rgba(19,18,16,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,182,0,0.12);transition:all 0.3s}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo svg{width:28px;height:auto}
+.nav-logo-text{font-size:1.05rem;font-weight:700;color:var(--cream);letter-spacing:-0.01em}
+.nav-logo-text span{color:var(--yellow)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{color:rgba(254,251,243,0.65);text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--yellow)}
+.nav-cta{background:var(--yellow)!important;color:var(--black)!important;padding:0.5rem 1.2rem;border-radius:4px;font-weight:700!important}
+.nav-cta:hover{background:var(--ydark)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:24px;height:2px;background:var(--cream);border-radius:2px;transition:all 0.3s}
+.mobile-menu{display:none;position:fixed;top:65px;left:0;right:0;background:rgba(19,18,16,0.98);border-bottom:1px solid rgba(255,182,0,0.15);padding:1.5rem 2rem;z-index:199;flex-direction:column;gap:1rem}
+.mobile-menu a{color:rgba(254,251,243,0.7);text-decoration:none;font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;padding:0.5rem 0;border-bottom:1px solid rgba(255,182,0,0.08);transition:color 0.2s}
+.mobile-menu a:hover{color:var(--yellow)}
+.mobile-menu.open{display:flex}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 4rem 4rem;gap:3rem;position:relative;overflow:hidden}
+.hero-left{position:relative;z-index:2;max-width:600px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,182,0,0.12);border:1px solid rgba(255,182,0,0.3);color:var(--yellow);font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:1.8rem}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--yellow);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* STROKE TEXT effect */
+h1,.stroke-text{
+  font-family:Impact,'Inter',sans-serif;
+  font-size:clamp(3.5rem,7vw,6rem);
+  font-weight:900;line-height:0.92;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+  color:var(--cream);
+  -webkit-text-stroke:2px var(--black);
+  paint-order:stroke fill;
+  margin-bottom:1.5rem
+}
+h1 .accent,.stroke-text .accent{color:var(--yellow);-webkit-text-stroke:2px var(--black)}
+h2.stroke-text{font-size:clamp(2.2rem,4.5vw,4rem);margin-bottom:1.2rem}
+
+.hero-sub{font-size:1.05rem;color:rgba(254,251,243,0.65);line-height:1.75;margin-bottom:2rem;max-width:500px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-prim{background:var(--yellow);color:var(--black);padding:0.9rem 1.8rem;border-radius:4px;font-weight:700;font-size:0.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background 0.2s,transform 0.15s;border:none;cursor:pointer;font-family:inherit}
+.btn-prim:hover{background:var(--ydark);transform:translateY(-2px)}
+.btn-sec{color:var(--cream);padding:0.9rem 1.8rem;border:1px solid rgba(254,251,243,0.2);border-radius:4px;font-weight:500;font-size:0.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+.btn-sec:hover{border-color:var(--yellow);color:var(--yellow);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,182,0,0.15);flex-wrap:wrap}
+.stat-num{font-family:Impact,sans-serif;font-size:2.2rem;color:var(--yellow);line-height:1;-webkit-text-stroke:1.5px var(--black)}
+.stat-lbl{font-size:0.7rem;color:rgba(254,251,243,0.45);text-transform:uppercase;letter-spacing:0.05em;margin-top:3px}
+
+/* HERO RIGHT — mosaic */
+.hero-right{position:relative;height:100%;min-height:500px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:10px}
+.hm-item{border-radius:8px;overflow:hidden;cursor:pointer;position:relative;border:1px solid rgba(255,182,0,0.1);transition:border-color 0.2s,transform 0.2s;animation:fadeInUp 0.6s ease forwards;opacity:0}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hm-item:hover{border-color:var(--yellow);transform:scale(1.02)}
+.hm-item.v{grid-row:span 2}
+.hm-item.h{grid-column:span 1}
+.hm-item img{width:100%;height:100%;object-fit:cover;display:block}
+.hm-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:rgba(255,182,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.hm-item:hover .hm-play{opacity:1}
+.hm-play svg{width:16px;fill:var(--black);margin-left:3px}
+
+/* REEL BANNER */
+.reel-section{padding:4rem 0;background:var(--g1);border-top:1px solid rgba(255,182,0,0.1);border-bottom:1px solid rgba(255,182,0,0.1);overflow:hidden}
+.reel-label{text-align:center;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--yellow);margin-bottom:2rem}
+.reel-track-wrap{overflow:hidden}
+.reel-track{display:flex;gap:10px;width:max-content;animation:scrollLeft 60s linear infinite;align-items:center}
+.reel-track:hover{animation-play-state:paused}
+@keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.vbt{flex-shrink:0;border-radius:8px;overflow:hidden;cursor:pointer;position:relative;border:1px solid rgba(255,182,0,0.1);transition:border-color 0.2s,transform 0.15s}
+.vbt:hover{border-color:var(--yellow);transform:scale(1.04)}
+.vbt img{width:100%;height:100%;object-fit:cover;display:block;background:var(--g2)}
+.vbt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34px;height:34px;background:rgba(255,182,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.vbt:hover .vbt-play{opacity:1}
+.vbt-play svg{width:12px;fill:var(--black);margin-left:2px}
+
+/* SECTIONS shared */
+.section{padding:7rem 4rem}
+.section.dark{background:var(--g1)}
+.section-inner{max-width:1300px;margin:0 auto}
+.eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:1rem}
+.body-text{font-size:1.05rem;color:rgba(254,251,243,0.65);line-height:1.8;margin-bottom:1.2rem}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
+
+/* PURPOSE */
+.purpose-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.purpose-card{background:rgba(255,182,0,0.06);border:1px solid rgba(255,182,0,0.15);border-radius:8px;padding:1.2rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem}
+.pc-icon{width:40px;height:40px;flex-shrink:0;background:rgba(255,182,0,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.pc-title{font-size:0.92rem;font-weight:700;color:var(--cream);margin-bottom:4px}
+.pc-desc{font-size:0.82rem;color:rgba(254,251,243,0.55);line-height:1.5}
+.purpose-visual{aspect-ratio:4/3;background:var(--g1);border-radius:8px;border:1px solid rgba(255,182,0,0.12);overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.purpose-visual svg{width:55%;opacity:0.09}
+
+/* LANDING PAGE CARDS */
+.lp-section{padding:6rem 4rem;background:var(--g1)}
+.lp-tabs{display:flex;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.lp-tab{padding:0.45rem 1.2rem;background:transparent;border:1px solid rgba(254,251,243,0.15);color:rgba(254,251,243,0.5);border-radius:100px;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:inherit;text-transform:uppercase;letter-spacing:0.05em}
+.lp-tab.active,.lp-tab:hover{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
+.lp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.lp-card{display:flex;align-items:center;gap:1rem;background:rgba(255,182,0,0.05);border:1px solid rgba(255,182,0,0.12);border-radius:8px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--cream);transition:all 0.2s}
+.lp-card:hover{background:rgba(255,182,0,0.1);border-color:var(--yellow);transform:translateY(-3px)}
+.lp-card-icon{font-size:1.6rem;flex-shrink:0}
+.lp-card-title{font-size:0.95rem;font-weight:700;margin-bottom:2px}
+.lp-card-sub{font-size:0.75rem;color:rgba(254,251,243,0.4)}
+.lp-card-arrow{margin-left:auto;color:var(--yellow);font-size:1.1rem;flex-shrink:0}
+
+/* PORTFOLIO */
+.filter-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.8rem}
+.ftab{padding:5px 14px;background:transparent;border:1px solid rgba(254,251,243,0.15);color:rgba(254,251,243,0.5);border-radius:100px;font-size:0.72rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:inherit;text-transform:uppercase;letter-spacing:0.05em}
+.ftab.active,.ftab:hover{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
+.filter-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(254,251,243,0.28);margin:1.2rem 0 0.6rem}
+.port-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:2rem}
+.pi{border-radius:8px;overflow:hidden;cursor:pointer;background:var(--g2);border:1px solid rgba(255,182,0,0.08);transition:all 0.2s}
+.pi:hover{border-color:var(--yellow);transform:translateY(-4px)}
+.pi.item-v{grid-row:span 2}
+.pi-thumb{aspect-ratio:16/9;background:var(--g2);position:relative;overflow:hidden}
+.pi.item-v .pi-thumb{aspect-ratio:9/16}
+.pi-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s}
+.pi:hover .pi-thumb img{transform:scale(1.05)}
+.pi-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.2s,background 0.2s}
+.pi:hover .pi-play{transform:translate(-50%,-50%) scale(1.1);background:var(--ydark)}
+.pi-play svg{width:18px;fill:var(--black);margin-left:4px}
+.pi-meta{padding:14px 18px}
+.pi-tags{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.tag-t{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:2px 7px;border-radius:3px;background:rgba(255,182,0,0.15);color:var(--yellow);border:1px solid rgba(255,182,0,0.25)}
+.tag-n{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:2px 7px;border-radius:3px;background:rgba(254,251,243,0.07);color:rgba(254,251,243,0.45);border:1px solid rgba(254,251,243,0.1)}
+.pi-title{font-size:0.88rem;font-weight:600;color:var(--cream);line-height:1.3}
+
+/* PROCESS */
+.proc-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;margin-top:3.5rem;position:relative}
+.proc-steps::before{content:'';position:absolute;top:31px;left:calc(10% + 16px);right:calc(10% + 16px);height:1px;background:rgba(255,182,0,0.2)}
+.proc-step{text-align:center}
+.proc-num{width:62px;height:62px;background:rgba(255,182,0,0.08);border:1px solid rgba(255,182,0,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:Impact,sans-serif;font-size:1.4rem;color:var(--yellow);position:relative;z-index:1;transition:all 0.2s;-webkit-text-stroke:1px var(--black)}
+.proc-step:hover .proc-num{background:var(--yellow);color:var(--black)}
+.proc-title{font-size:0.8rem;font-weight:700;color:var(--cream);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.proc-desc{font-size:0.78rem;color:rgba(254,251,243,0.45);line-height:1.55}
+
+/* PROJETOS */
+.projetos-box{background:rgba(255,182,0,0.06);border:1px solid rgba(255,182,0,0.2);border-radius:12px;padding:2.5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:3rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.2rem}
+.proj-tag{background:rgba(255,182,0,0.12);border:1px solid rgba(255,182,0,0.25);color:var(--yellow);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:5px 12px;border-radius:100px}
+
+/* CTA */
+.cta-section{padding:8rem 4rem;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,182,0,0.07) 0%,transparent 65%);pointer-events:none}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:2.5rem 0 1.5rem}
+.contact-box{display:inline-flex;align-items:center;gap:12px;background:rgba(255,182,0,0.08);border:1px solid rgba(255,182,0,0.18);border-radius:8px;padding:1rem 2rem;font-size:0.9rem;color:rgba(254,251,243,0.5);text-decoration:none;transition:all 0.2s;margin-top:0.5rem}
+.contact-box:hover{background:rgba(255,182,0,0.14);border-color:rgba(255,182,0,0.4);color:var(--cream)}
+.contact-box strong{color:var(--cream)}
+
+/* FOOTER */
+footer{padding:2.5rem 4rem;border-top:1px solid rgba(255,182,0,0.1);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-links{display:flex;gap:1.8rem;list-style:none}
+.footer-links a{color:rgba(254,251,243,0.3);text-decoration:none;font-size:0.78rem;transition:color 0.2s}
+.footer-links a:hover{color:var(--yellow)}
+.footer-copy{font-size:0.75rem;color:rgba(254,251,243,0.2)}
+
+/* MODAL */
+.vmodal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s;backdrop-filter:blur(10px)}
+.vmodal.on{opacity:1;pointer-events:all}
+.vmodal-box{background:var(--g2);border:1px solid rgba(255,182,0,0.2);border-radius:12px;overflow:hidden;width:92%;max-width:900px;transform:scale(0.95);transition:transform 0.25s;position:relative}
+.vmodal.on .vmodal-box{transform:scale(1)}
+.vmodal-box.vert{max-width:400px}
+.vmodal-vid{position:relative;width:100%}
+.vmodal-vid.h169{aspect-ratio:16/9}
+.vmodal-vid.h916{aspect-ratio:9/16}
+.vmodal-vid iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.vmodal-close{position:absolute;top:12px;right:12px;z-index:10;width:34px;height:34px;background:rgba(19,18,16,0.85);border:1px solid rgba(255,182,0,0.3);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--cream);font-size:1.1rem;transition:all 0.2s;font-family:sans-serif}
+.vmodal-close:hover{background:var(--yellow);color:var(--black)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;padding:6rem 2rem 3rem}
+  .hero-right{display:none}
+  .purpose-grid{grid-template-columns:1fr;gap:3rem}
+  .purpose-visual{display:none}
+  .proc-steps{grid-template-columns:repeat(3,1fr)}
+  .proc-steps::before{display:none}
+  .projetos-box{grid-template-columns:1fr;gap:2rem;padding:2rem}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .section,.lp-section,.cta-section{padding:4.5rem 1.5rem}
+  h1,.stroke-text{font-size:clamp(2.8rem,10vw,4rem)}
+  h2.stroke-text{font-size:clamp(2rem,8vw,2.8rem)}
+  .hero{padding:5.5rem 1.5rem 3rem}
+  .hero-stats{gap:1.5rem}
+  .proc-steps{grid-template-columns:repeat(2,1fr)}
+  footer{flex-direction:column;align-items:center;text-align:center;padding:2rem 1.5rem}
+  .footer-links{flex-wrap:wrap;justify-content:center}
+  .lp-grid{grid-template-columns:1fr}
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+  .pi.item-v{grid-row:span 1}
+  .pi.item-v .pi-thumb{aspect-ratio:9/16}
+}
+@media(max-width:480px){
+  .port-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column}
+  .btn-prim,.btn-sec{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="/"><svg viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg"><path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+    <span class="nav-logo-text">Veic <span>VÍDEOS</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#nichos">Nichos</a></li>
+    <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
+  </ul>
+  <div class="hamburger" id="hamburguer" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#portfolio" onclick="toggleMenu()">Portfólio</a>
+  <a href="#processo" onclick="toggleMenu()">Processo</a>
+  <a href="#nichos" onclick="toggleMenu()">Nichos</a>
+  <a href="#contato" onclick="toggleMenu()" style="color:var(--yellow)">Fale Conosco</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Produtora de Vídeos Estratégicos</div>
+    <h1>Revele<br>Sua <span class="accent">Marca</span><br>no Digital</h1>
+    <p class="hero-sub">Produzimos vídeos estratégicos que valorizam a imagem do seu negócio. Posicionamento com autoridade e identidade visual que converte.</p>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-prim">
+        <svg width="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Ver Portfólio
+      </a>
+      <a href="https://wa.me/5531983335876" class="btn-sec" target="_blank">Solicitar Orçamento →</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">60+</div><div class="stat-lbl">Vídeos Produzidos</div></div>
+      <div><div class="stat-num">20+</div><div class="stat-lbl">Clientes Atendidos</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-lbl">Estratégicos</div></div>
+    </div>
+  </div>
+  <div class="hero-right" id="heroMosaic">
+    <div class="hm-item v" style="animation-delay:0.0s" onclick="openVid('G4q5jUkg8VE','v')" ><img src="https://i.ytimg.com/vi/G4q5jUkg8VE/mqdefault.jpg" alt="" loading="lazy"><div class="hm-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="hm-item v" style="animation-delay:0.3s" onclick="openVid('-h53nPnf3JQ','v')" ><img src="https://i.ytimg.com/vi/-h53nPnf3JQ/mqdefault.jpg" alt="" loading="lazy"><div class="hm-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="hm-item v" style="animation-delay:0.6s" onclick="openVid('XbhVd3a0sEI','v')" ><img src="https://i.ytimg.com/vi/XbhVd3a0sEI/mqdefault.jpg" alt="" loading="lazy"><div class="hm-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="hm-item h" style="animation-delay:0.8999999999999999s" onclick="openVid('cPl8z5m_nwY','h')" ><img src="https://i.ytimg.com/vi/cPl8z5m_nwY/mqdefault.jpg" alt="" loading="lazy"><div class="hm-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="hm-item v" style="animation-delay:1.2s" onclick="openVid('BRhNBATj9Z0','v')" ><img src="https://i.ytimg.com/vi/BRhNBATj9Z0/mqdefault.jpg" alt="" loading="lazy"><div class="hm-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="hm-item v" style="animation-delay:1.5s" onclick="openVid('KXf_GURp9lE','v')" ><img src="https://i.ytimg.com/vi/KXf_GURp9lE/mqdefault.jpg" alt="" loading="lazy"><div class="hm-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  </div>
+</section>
+
+<!-- REEL BANNER -->
+<section class="reel-section">
+  <p class="reel-label">● Produções em Destaque</p>
+  <div class="reel-track-wrap">
+    <div class="reel-track" id="reelTrack">
+      <div class="vbt v" onclick="openVid('aC_lpOFyDJE','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/aC_lpOFyDJE/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('utxuE5nihsA','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/utxuE5nihsA/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('zBBKTTKwJBQ','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/zBBKTTKwJBQ/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('CgfEWgE_8Aw','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/CgfEWgE_8Aw/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('4uQWPJ84uNk','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/4uQWPJ84uNk/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('rsau38g08H0','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/rsau38g08H0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('JzY1JbbS7x4','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/JzY1JbbS7x4/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('cPl8z5m_nwY','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/cPl8z5m_nwY/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('N3ZLbZR2ovA','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/N3ZLbZR2ovA/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('Qun6ERFAS4I','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/Qun6ERFAS4I/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('L9hhJ9Hu2oU','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/L9hhJ9Hu2oU/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('fAzmIuYKra0','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/fAzmIuYKra0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('j1H5zRoC-qk','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/j1H5zRoC-qk/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('9eZazmXiRJo','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/9eZazmXiRJo/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('-LvgSUH4OH4','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/-LvgSUH4OH4/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('AVlMyYiXCCk','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/AVlMyYiXCCk/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('qYRte1Mt9jM','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/qYRte1Mt9jM/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('eHGZho9cy_w','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/eHGZho9cy_w/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('dJL_pAwhvps','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/dJL_pAwhvps/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('BgJzvmtNZP4','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/BgJzvmtNZP4/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('3lea5v3Jhmg','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/3lea5v3Jhmg/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('G4q5jUkg8VE','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/G4q5jUkg8VE/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('4J12L2Xlvh8','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/4J12L2Xlvh8/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('P8hNnOzTfTo','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/P8hNnOzTfTo/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('QhdlzY4eoos','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/QhdlzY4eoos/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('BRhNBATj9Z0','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/BRhNBATj9Z0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('VksVlziNrU4','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/VksVlziNrU4/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('SIpWQ_e89oo','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/SIpWQ_e89oo/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('PodfSqi6ru8','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/PodfSqi6ru8/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('t2jOdfkf1n0','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/t2jOdfkf1n0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('26-R6P5IGpA','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/26-R6P5IGpA/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('hX0tfTg9-Vw','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/hX0tfTg9-Vw/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('XbhVd3a0sEI','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/XbhVd3a0sEI/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('18b-G4JqoV0','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/18b-G4JqoV0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('ELgs8RaBxm8','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/ELgs8RaBxm8/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('xI9-k8Al18Y','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/xI9-k8Al18Y/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('t3HKRTObtrU','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/t3HKRTObtrU/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('0xETMgu7rqQ','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/0xETMgu7rqQ/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('zpbKSZBjGB8','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/zpbKSZBjGB8/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('EgfQkzmAc5M','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/EgfQkzmAc5M/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('CO2o8s_k3D4','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/CO2o8s_k3D4/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('gjDVDluYpII','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/gjDVDluYpII/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('9jIKnhQFhbg','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/9jIKnhQFhbg/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('MI6pCyYpMlc','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/MI6pCyYpMlc/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('ini1PUoaSTI','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/ini1PUoaSTI/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('E7Ruf-ZoUFM','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/E7Ruf-ZoUFM/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('D0D6BRfgWcI','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/D0D6BRfgWcI/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('4Hn9ngjpB6w','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/4Hn9ngjpB6w/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('y368nZZESHs','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/y368nZZESHs/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('A9WNZacvW50','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/A9WNZacvW50/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('3jOBzTjl9Lc','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/3jOBzTjl9Lc/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('AcNuxjEbP5c','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/AcNuxjEbP5c/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('Pkgus5EzQuM','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/Pkgus5EzQuM/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('KXf_GURp9lE','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/KXf_GURp9lE/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('oDRUYh7xOBs','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/oDRUYh7xOBs/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('C3Atq_Dytb0','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/C3Atq_Dytb0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('7GOJkl2N4kI','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/7GOJkl2N4kI/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('4F6CzKbNvZc','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/4F6CzKbNvZc/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('Ncg0eyN_OcM','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/Ncg0eyN_OcM/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('Svwf71aB5AE','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/Svwf71aB5AE/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('0qOjey-rtsI','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/0qOjey-rtsI/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('Q-Gt_kSUTEE','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/Q-Gt_kSUTEE/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('HU5pbfJ5aJk','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/HU5pbfJ5aJk/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('nXqTs0U-fPU','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/nXqTs0U-fPU/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('-h53nPnf3JQ','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/-h53nPnf3JQ/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('2xP77y-P4A8','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/2xP77y-P4A8/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('1pbQqkS5EyU','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/1pbQqkS5EyU/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      <div class="vbt v" onclick="openVid('aC_lpOFyDJE','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/aC_lpOFyDJE/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('utxuE5nihsA','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/utxuE5nihsA/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('zBBKTTKwJBQ','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/zBBKTTKwJBQ/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('CgfEWgE_8Aw','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/CgfEWgE_8Aw/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('4uQWPJ84uNk','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/4uQWPJ84uNk/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('rsau38g08H0','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/rsau38g08H0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('JzY1JbbS7x4','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/JzY1JbbS7x4/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('cPl8z5m_nwY','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/cPl8z5m_nwY/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('N3ZLbZR2ovA','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/N3ZLbZR2ovA/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('Qun6ERFAS4I','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/Qun6ERFAS4I/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('L9hhJ9Hu2oU','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/L9hhJ9Hu2oU/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('fAzmIuYKra0','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/fAzmIuYKra0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('j1H5zRoC-qk','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/j1H5zRoC-qk/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('9eZazmXiRJo','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/9eZazmXiRJo/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('-LvgSUH4OH4','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/-LvgSUH4OH4/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('AVlMyYiXCCk','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/AVlMyYiXCCk/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('qYRte1Mt9jM','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/qYRte1Mt9jM/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('eHGZho9cy_w','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/eHGZho9cy_w/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('dJL_pAwhvps','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/dJL_pAwhvps/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('BgJzvmtNZP4','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/BgJzvmtNZP4/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('3lea5v3Jhmg','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/3lea5v3Jhmg/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('G4q5jUkg8VE','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/G4q5jUkg8VE/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('4J12L2Xlvh8','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/4J12L2Xlvh8/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt h" onclick="openVid('P8hNnOzTfTo','h')" style="width:290px;height:163px"><img src="https://i.ytimg.com/vi/P8hNnOzTfTo/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('QhdlzY4eoos','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/QhdlzY4eoos/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('BRhNBATj9Z0','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/BRhNBATj9Z0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('VksVlziNrU4','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/VksVlziNrU4/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('SIpWQ_e89oo','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/SIpWQ_e89oo/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('PodfSqi6ru8','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/PodfSqi6ru8/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('t2jOdfkf1n0','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/t2jOdfkf1n0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('26-R6P5IGpA','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/26-R6P5IGpA/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('hX0tfTg9-Vw','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/hX0tfTg9-Vw/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('XbhVd3a0sEI','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/XbhVd3a0sEI/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('18b-G4JqoV0','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/18b-G4JqoV0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('ELgs8RaBxm8','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/ELgs8RaBxm8/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('xI9-k8Al18Y','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/xI9-k8Al18Y/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('t3HKRTObtrU','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/t3HKRTObtrU/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('0xETMgu7rqQ','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/0xETMgu7rqQ/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('zpbKSZBjGB8','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/zpbKSZBjGB8/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('EgfQkzmAc5M','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/EgfQkzmAc5M/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('CO2o8s_k3D4','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/CO2o8s_k3D4/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('gjDVDluYpII','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/gjDVDluYpII/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('9jIKnhQFhbg','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/9jIKnhQFhbg/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('MI6pCyYpMlc','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/MI6pCyYpMlc/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('ini1PUoaSTI','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/ini1PUoaSTI/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('E7Ruf-ZoUFM','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/E7Ruf-ZoUFM/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('D0D6BRfgWcI','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/D0D6BRfgWcI/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('4Hn9ngjpB6w','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/4Hn9ngjpB6w/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('y368nZZESHs','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/y368nZZESHs/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('A9WNZacvW50','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/A9WNZacvW50/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('3jOBzTjl9Lc','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/3jOBzTjl9Lc/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('AcNuxjEbP5c','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/AcNuxjEbP5c/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('Pkgus5EzQuM','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/Pkgus5EzQuM/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('KXf_GURp9lE','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/KXf_GURp9lE/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('oDRUYh7xOBs','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/oDRUYh7xOBs/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('C3Atq_Dytb0','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/C3Atq_Dytb0/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('7GOJkl2N4kI','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/7GOJkl2N4kI/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('4F6CzKbNvZc','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/4F6CzKbNvZc/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('Ncg0eyN_OcM','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/Ncg0eyN_OcM/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('Svwf71aB5AE','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/Svwf71aB5AE/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('0qOjey-rtsI','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/0qOjey-rtsI/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('Q-Gt_kSUTEE','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/Q-Gt_kSUTEE/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('HU5pbfJ5aJk','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/HU5pbfJ5aJk/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('nXqTs0U-fPU','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/nXqTs0U-fPU/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('-h53nPnf3JQ','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/-h53nPnf3JQ/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('2xP77y-P4A8','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/2xP77y-P4A8/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div><div class="vbt v" onclick="openVid('1pbQqkS5EyU','v')" style="width:130px;height:232px"><img src="https://i.ytimg.com/vi/1pbQqkS5EyU/mqdefault.jpg" alt="" loading="lazy"><div class="vbt-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPÓSITO -->
+<section class="section" id="sobre">
+  <div class="section-inner">
+    <div class="purpose-grid">
+      <div>
+        <p class="eyebrow">Quem Somos</p>
+        <h2 class="stroke-text">Posicionamento<br>com <span class="accent">Propósito</span></h2>
+        <p class="body-text">Nosso propósito é produzir vídeos estratégicos que valorizam a imagem de negócios, profissionais e projetos que precisam comunicar com <strong>autoridade e posicionamento</strong>.</p>
+        <p class="body-text">Não fazemos apenas vídeos bonitos. Entendemos a sua marca e criamos conteúdo que faz o seu negócio ser reconhecido no digital.</p>
+        <div class="purpose-card"><div class="pc-icon">🎯</div><div><p class="pc-title">Estratégia antes da câmera</p><p class="pc-desc">Planejamos cada vídeo para que ele trabalhe pelos seus objetivos de negócio, não só para parecer bonito.</p></div></div>
+        <div class="purpose-card"><div class="pc-icon">✨</div><div><p class="pc-title">Identidade visual em movimento</p><p class="pc-desc">Cada produção carrega a essência da sua marca: cores, linguagem, tom de voz e posicionamento únicos.</p></div></div>
+      </div>
+      <div class="purpose-visual">
+        <svg viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg"><path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+        <p style="position:absolute;bottom:16px;font-size:10px;color:rgba(254,251,243,0.2);text-transform:uppercase;letter-spacing:0.1em">@veicvideos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFÓLIO -->
+<section class="section dark" id="portfolio">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Trabalhos</p>
+        <h2 class="stroke-text">Portfólio</h2>
+      </div>
+      <a href="https://www.instagram.com/veicvideos" class="btn-sec" target="_blank" style="white-space:nowrap">Ver Instagram →</a>
+    </div>
+    <p class="filter-label">Tipo de Vídeo</p>
+    <div class="filter-row" id="fType">
+      <button class="ftab active" data-type="todos">Todos</button>
+      <button class="ftab" data-type="reels">Reels / Short</button>
+      <button class="ftab" data-type="institucional">Institucional</button>
+      <button class="ftab" data-type="horizontal">Horizontal</button>
+    </div>
+    <p class="filter-label">Nicho</p>
+    <div class="filter-row" id="fNiche">
+      <button class="ftab active" data-niche="todos">Todos</button>
+      <button class="ftab" data-niche="cervejaria">Cervejaria</button>
+      <button class="ftab" data-niche="bar">Bar</button>
+      <button class="ftab" data-niche="gastronomia">Gastronomia</button>
+      <button class="ftab" data-niche="marca-pessoal">Marca Pessoal</button>
+    </div>
+    <div class="port-grid" id="portGrid">
+      <div class="pi item-v" data-type="reels" data-niche="cervejaria" onclick="openVid('XbhVd3a0sEI','v')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/XbhVd3a0sEI/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Reels</span><span class="tag-n">Nicho</span></div><p class="pi-title">Produção #1</p></div>
+</div><div class="pi item-v" data-type="reels" data-niche="cervejaria" onclick="openVid('-h53nPnf3JQ','v')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/-h53nPnf3JQ/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Reels</span><span class="tag-n">Nicho</span></div><p class="pi-title">Produção #2</p></div>
+</div><div class="pi item-v" data-type="reels" data-niche="cervejaria" onclick="openVid('3jOBzTjl9Lc','v')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/3jOBzTjl9Lc/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Reels</span><span class="tag-n">Nicho</span></div><p class="pi-title">Produção #3</p></div>
+</div><div class="pi item-v" data-type="reels" data-niche="cervejaria" onclick="openVid('G4q5jUkg8VE','v')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/G4q5jUkg8VE/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Reels</span><span class="tag-n">Nicho</span></div><p class="pi-title">Produção #4</p></div>
+</div><div class="pi item-v" data-type="reels" data-niche="cervejaria" onclick="openVid('BRhNBATj9Z0','v')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/BRhNBATj9Z0/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Reels</span><span class="tag-n">Nicho</span></div><p class="pi-title">Produção #5</p></div>
+</div><div class="pi item-v" data-type="reels" data-niche="cervejaria" onclick="openVid('KXf_GURp9lE','v')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/KXf_GURp9lE/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Reels</span><span class="tag-n">Nicho</span></div><p class="pi-title">Produção #6</p></div>
+</div><div class="pi item-v" data-type="reels" data-niche="cervejaria" onclick="openVid('4F6CzKbNvZc','v')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/4F6CzKbNvZc/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Reels</span><span class="tag-n">Nicho</span></div><p class="pi-title">Produção #7</p></div>
+</div><div class="pi item-v" data-type="reels" data-niche="cervejaria" onclick="openVid('2xP77y-P4A8','v')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/2xP77y-P4A8/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Reels</span><span class="tag-n">Nicho</span></div><p class="pi-title">Produção #8</p></div>
+</div><div class="pi item-h" data-type="institucional" data-niche="bar" onclick="openVid('cPl8z5m_nwY','h')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/cPl8z5m_nwY/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Horizontal</span><span class="tag-n">Marca</span></div><p class="pi-title">Produção Horizontal</p></div>
+</div><div class="pi item-h" data-type="institucional" data-niche="bar" onclick="openVid('CgfEWgE_8Aw','h')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/CgfEWgE_8Aw/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Horizontal</span><span class="tag-n">Marca</span></div><p class="pi-title">Produção Horizontal</p></div>
+</div><div class="pi item-h" data-type="institucional" data-niche="bar" onclick="openVid('AVlMyYiXCCk','h')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/AVlMyYiXCCk/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Horizontal</span><span class="tag-n">Marca</span></div><p class="pi-title">Produção Horizontal</p></div>
+</div><div class="pi item-h" data-type="institucional" data-niche="bar" onclick="openVid('fAzmIuYKra0','h')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/fAzmIuYKra0/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Horizontal</span><span class="tag-n">Marca</span></div><p class="pi-title">Produção Horizontal</p></div>
+</div><div class="pi item-h" data-type="institucional" data-niche="bar" onclick="openVid('BgJzvmtNZP4','h')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/BgJzvmtNZP4/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Horizontal</span><span class="tag-n">Marca</span></div><p class="pi-title">Produção Horizontal</p></div>
+</div><div class="pi item-h" data-type="institucional" data-niche="bar" onclick="openVid('P8hNnOzTfTo','h')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/P8hNnOzTfTo/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Horizontal</span><span class="tag-n">Marca</span></div><p class="pi-title">Produção Horizontal</p></div>
+</div><div class="pi item-v" data-type="institucional" data-niche="marca-pessoal" onclick="openVidV('IyW8TcNd8SI')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/IyW8TcNd8SI/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Vertical Longo</span><span class="tag-n">Marca Pessoal</span></div><p class="pi-title">Vídeo Vertical</p></div>
+</div><div class="pi item-v" data-type="institucional" data-niche="marca-pessoal" onclick="openVidV('Urj3M9vlg54')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/Urj3M9vlg54/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Vertical Longo</span><span class="tag-n">Marca Pessoal</span></div><p class="pi-title">Vídeo Vertical</p></div>
+</div><div class="pi item-v" data-type="institucional" data-niche="marca-pessoal" onclick="openVidV('jeY8AvM-iUY')">
+  <div class="pi-thumb"><img src="https://i.ytimg.com/vi/jeY8AvM-iUY/mqdefault.jpg" alt="" loading="lazy"><div class="pi-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+  <div class="pi-meta"><div class="pi-tags"><span class="tag-t">Vertical Longo</span><span class="tag-n">Marca Pessoal</span></div><p class="pi-title">Vídeo Vertical</p></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- NICHOS / LANDING PAGES -->
+<section class="lp-section" id="nichos">
+  <div class="section-inner">
+    <p class="eyebrow">Especialidades</p>
+    <h2 class="stroke-text" style="margin-bottom:0.5rem">Para o seu <span class="accent">Segmento</span></h2>
+    <p class="body-text" style="margin-bottom:2rem">Criamos vídeos estratégicos para nichos específicos. Clique no seu segmento para ver produções e serviços personalizados.</p>
+    <div class="lp-tabs">
+      <button class="lp-tab active" onclick="showLPTab('nicho')">Por Nicho</button>
+      <button class="lp-tab" onclick="showLPTab('tipo')">Por Tipo de Vídeo</button>
+    </div>
+    <div class="lp-grid" id="lpNicho"><a href="/cervejarias" class="lp-card">
+  <div class="lp-card-icon">🍺</div>
+  <div><h3 class="lp-card-title">Cervejarias</h3>
+  <p class="lp-card-sub">Ver produções e serviços</p></div>
+  <span class="lp-card-arrow">→</span>
+</a><a href="/bares" class="lp-card">
+  <div class="lp-card-icon">🥃</div>
+  <div><h3 class="lp-card-title">Bares</h3>
+  <p class="lp-card-sub">Ver produções e serviços</p></div>
+  <span class="lp-card-arrow">→</span>
+</a><a href="/choperias" class="lp-card">
+  <div class="lp-card-icon">🍻</div>
+  <div><h3 class="lp-card-title">Choperias</h3>
+  <p class="lp-card-sub">Ver produções e serviços</p></div>
+  <span class="lp-card-arrow">→</span>
+</a><a href="/gastronomia" class="lp-card">
+  <div class="lp-card-icon">🍽️</div>
+  <div><h3 class="lp-card-title">Gastronomia</h3>
+  <p class="lp-card-sub">Ver produções e serviços</p></div>
+  <span class="lp-card-arrow">→</span>
+</a><a href="/marca-pessoal" class="lp-card">
+  <div class="lp-card-icon">🎯</div>
+  <div><h3 class="lp-card-title">Marca Pessoal</h3>
+  <p class="lp-card-sub">Ver produções e serviços</p></div>
+  <span class="lp-card-arrow">→</span>
+</a></div>
+    <div class="lp-grid" id="lpTipo" style="display:none"><a href="/reels" class="lp-card">
+  <div class="lp-card-icon">📱</div>
+  <div><h3 class="lp-card-title">Reels e Shorts</h3>
+  <p class="lp-card-sub">Ver exemplos e orçar</p></div>
+  <span class="lp-card-arrow">→</span>
+</a><a href="/institucional" class="lp-card">
+  <div class="lp-card-icon">🏢</div>
+  <div><h3 class="lp-card-title">Vídeo Institucional</h3>
+  <p class="lp-card-sub">Ver exemplos e orçar</p></div>
+  <span class="lp-card-arrow">→</span>
+</a><a href="/produto" class="lp-card">
+  <div class="lp-card-icon">📦</div>
+  <div><h3 class="lp-card-title">Vídeo de Produto</h3>
+  <p class="lp-card-sub">Ver exemplos e orçar</p></div>
+  <span class="lp-card-arrow">→</span>
+</a><a href="/eventos" class="lp-card">
+  <div class="lp-card-icon">🎉</div>
+  <div><h3 class="lp-card-title">Cobertura de Eventos</h3>
+  <p class="lp-card-sub">Ver exemplos e orçar</p></div>
+  <span class="lp-card-arrow">→</span>
+</a><a href="/case-de-sucesso" class="lp-card">
+  <div class="lp-card-icon">🏆</div>
+  <div><h3 class="lp-card-title">Case de Sucesso</h3>
+  <p class="lp-card-sub">Ver exemplos e orçar</p></div>
+  <span class="lp-card-arrow">→</span>
+</a></div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="section" id="processo">
+  <div class="section-inner">
+    <p class="eyebrow">Como Trabalhamos</p>
+    <h2 class="stroke-text">Do Briefing ao <span class="accent">Resultado</span></h2>
+    <div class="proc-steps">
+      <div class="proc-step"><div class="proc-num">01</div><p class="proc-title">Levantamento</p><p class="proc-desc">Levantamos a demanda de comunicação, objetivos e público da sua marca.</p></div>
+      <div class="proc-step"><div class="proc-num">02</div><p class="proc-title">Direção de Roteiro</p><p class="proc-desc">Criamos o roteiro e a estratégia de conteúdo alinhados à identidade da marca.</p></div>
+      <div class="proc-step"><div class="proc-num">03</div><p class="proc-title">Gravação com Direção</p><p class="proc-desc">Gravamos com equipamento profissional e direção cuidadosa de cada cena e performance.</p></div>
+      <div class="proc-step"><div class="proc-num">04</div><p class="proc-title">Edição</p><p class="proc-desc">Edição profissional com motion, legendas, trilha e identidade visual da marca.</p></div>
+      <div class="proc-step"><div class="proc-num">05</div><p class="proc-title">Entrega do Vídeo</p><p class="proc-desc">Entrega nos formatos ideais para cada plataforma, prontos para publicar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS E CAMPANHAS -->
+<section class="section dark">
+  <div class="section-inner">
+    <p class="eyebrow">Forma de Trabalho</p>
+    <h2 class="stroke-text">Trabalhamos por <span class="accent">Projetos</span></h2>
+    <div class="projetos-box">
+      <div>
+        <p class="body-text">Desenvolvemos projetos completos de comunicação em vídeo conforme a necessidade de cada cliente. Cada projeto é orçado individualmente, com estratégia personalizada.</p>
+        <p class="body-text">Não vendemos "pacotes fechados" — entregamos o que a sua marca realmente precisa.</p>
+        <a href="https://wa.me/5531983335876" class="btn-prim" style="margin-top:1rem;display:inline-flex" target="_blank">Solicitar Orçamento via WhatsApp</a>
+      </div>
+      <div>
+        <p style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(254,251,243,0.4);margin-bottom:1rem">Tipos de projeto</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Campanhas</span>
+          <span class="proj-tag">Anúncios</span>
+          <span class="proj-tag">Posicionamento</span>
+          <span class="proj-tag">Eventos</span>
+          <span class="proj-tag">Ações</span>
+          <span class="proj-tag">Feiras</span>
+          <span class="proj-tag">Case de Sucesso</span>
+          <span class="proj-tag">Institucional</span>
+          <span class="proj-tag">Reels Estratégicos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <div class="section-inner" style="max-width:700px">
+    <p class="eyebrow">Vamos Trabalhar Juntos?</p>
+    <h2 class="stroke-text">Pronto Para<br><span class="accent">Revelar Sua Marca?</span></h2>
+    <p class="body-text" style="max-width:500px;margin:0 auto 0.5rem">Entre em contato e vamos conversar sobre como posicionar seu negócio no digital com vídeos estratégicos que realmente funcionam.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/5531983335876" class="btn-prim" target="_blank">
+        <svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://www.instagram.com/veicvideos" class="btn-sec" target="_blank">@veicvideos →</a>
+    </div>
+    <a href="https://wa.me/5531983335876" class="contact-box" target="_blank">
+      📞 <strong>(31) 98333-5876</strong> · Atendimento via WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="nav-logo" href="/"><svg viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg"><path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg><span class="nav-logo-text">Veic <span>VÍDEOS</span></span></a>
+  <ul class="footer-links">
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#nichos">Nichos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Veic Vídeos · veicvideos.com</p>
+</footer>
+
+<!-- MODAL -->
+<div class="vmodal" id="vmodal" onclick="closeModalOverlay(event)">
+  <div class="vmodal-box" id="vmodalBox">
+    <button class="vmodal-close" onclick="closeModal()">✕</button>
+    <div class="vmodal-vid" id="vmodalVid">
+      <iframe id="vmodalIframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5531983335876" target="_blank" style="position:fixed;bottom:24px;right:24px;z-index:500;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  <svg width="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',function(){
+  document.getElementById('navbar').style.borderBottomColor=window.scrollY>50?'rgba(255,182,0,0.25)':'rgba(255,182,0,0.12)';
+});
+
+// Mobile menu
+function toggleMenu(){
+  var m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+
+// LP tabs
+function showLPTab(tab){
+  document.getElementById('lpNicho').style.display=tab==='nicho'?'grid':'none';
+  document.getElementById('lpTipo').style.display=tab==='tipo'?'grid':'none';
+  document.querySelectorAll('.lp-tab').forEach(function(b,i){
+    b.classList.toggle('active',(tab==='nicho'&&i===0)||(tab==='tipo'&&i===1));
+  });
+}
+
+// Portfolio filters
+var aType='todos',aNiche='todos';
+document.getElementById('fType').addEventListener('click',function(e){
+  if(!e.target.dataset.type)return;
+  document.querySelectorAll('#fType .ftab').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');aType=e.target.dataset.type;filterPort();
+});
+document.getElementById('fNiche').addEventListener('click',function(e){
+  if(!e.target.dataset.niche)return;
+  document.querySelectorAll('#fNiche .ftab').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');aNiche=e.target.dataset.niche;filterPort();
+});
+function filterPort(){
+  document.querySelectorAll('#portGrid .pi').forEach(function(el){
+    var mt=aType==='todos'||el.dataset.type===aType;
+    var mn=aNiche==='todos'||el.dataset.niche===aNiche;
+    el.style.display=(mt&&mn)?'':'none';
+  });
+}
+
+// Modal
+function openVid(id,orient){
+  var box=document.getElementById('vmodalBox');
+  var vid=document.getElementById('vmodalVid');
+  document.getElementById('vmodalIframe').src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';
+  vid.className='vmodal-vid '+(orient==='v'||orient==='vertical'?'h916':'h169');
+  box.className='vmodal-box'+(orient==='v'||orient==='vertical'?' vert':'');
+  document.getElementById('vmodal').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function openVidV(id){openVid(id,'v');}
+function closeModal(){
+  document.getElementById('vmodal').classList.remove('on');
+  document.getElementById('vmodalIframe').src='';
+  document.body.style.overflow='';
+}
+function closeModalOverlay(e){if(e.target===document.getElementById('vmodal'))closeModal();}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>

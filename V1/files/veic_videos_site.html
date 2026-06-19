@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veic Vídeos — Posicione-se no Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #131210;
+    --cream: #FEFBF3;
+    --yellow: #FFB600;
+    --yellow-dark: #CC9200;
+    --gray-mid: #2a2820;
+    --gray-light: #1e1c1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAVIGATION */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(19,18,16,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,182,0,0.15);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo svg { width: 32px; height: auto; }
+
+  .logo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+  }
+
+  .logo-text span { color: var(--yellow); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: rgba(254,251,243,0.7);
+    text-decoration: none;
+    font-size: 0.875rem; font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover { color: var(--yellow); }
+
+  .nav-cta {
+    background: var(--yellow) !important;
+    color: var(--black) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--yellow-dark) !important; color: var(--black) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-isotipo {
+    position: absolute; right: -6%; top: 50%; transform: translateY(-50%);
+    width: 52%; opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .hero-content { max-width: 680px; position: relative; z-index: 2; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,182,0,0.12);
+    border: 1px solid rgba(255,182,0,0.3);
+    color: var(--yellow);
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 100px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--yellow); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+  }
+
+  h1 {
+    font-family: Impact, 'Inter', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  h1 .accent { color: var(--yellow); }
+
+  .hero-sub {
+    font-size: 1.15rem; color: rgba(254,251,243,0.65);
+    line-height: 1.7; margin-bottom: 2.5rem;
+    max-width: 520px;
+    font-weight: 400;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--yellow); color: var(--black);
+    padding: 1rem 2rem; border-radius: 4px;
+    font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; display: inline-flex;
+    align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+
+  .btn-secondary {
+    color: var(--cream); padding: 1rem 2rem;
+    border: 1px solid rgba(254,251,243,0.2);
+    border-radius: 4px; font-weight: 500; font-size: 0.95rem;
+    text-decoration: none; display: inline-flex;
+    align-items: center; gap: 8px;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+
+  .btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,182,0,0.15);
+  }
+
+  .stat-item { display: flex; flex-direction: column; }
+
+  .stat-num {
+    font-family: Impact, sans-serif;
+    font-size: 2.2rem; color: var(--yellow);
+    line-height: 1; font-weight: 900;
+  }
+
+  .stat-label {
+    font-size: 0.78rem; color: rgba(254,251,243,0.5);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  /* VIDEO REEL BANNER */
+  .reel-section {
+    padding: 5rem 0;
+    background: var(--gray-light);
+    border-top: 1px solid rgba(255,182,0,0.1);
+    border-bottom: 1px solid rgba(255,182,0,0.1);
+    overflow: hidden;
+  }
+
+  .reel-label {
+    text-align: center;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 2.5rem;
+  }
+
+  .video-scroll-track {
+    display: flex; gap: 1rem;
+    animation: scroll-left 30s linear infinite;
+    width: max-content;
+  }
+
+  .video-scroll-track:hover { animation-play-state: paused; }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .video-thumb {
+    flex-shrink: 0;
+    border-radius: 8px; overflow: hidden;
+    position: relative; cursor: pointer;
+    border: 1px solid rgba(255,182,0,0.1);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .video-thumb:hover { border-color: var(--yellow); transform: scale(1.03); }
+
+  .video-thumb.vertical { width: 140px; height: 250px; }
+  .video-thumb.horizontal { width: 310px; height: 175px; }
+
+  .video-thumb-inner {
+    width: 100%; height: 100%;
+    background: var(--gray-mid);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+
+  .thumb-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(19,18,16,0.8) 0%, transparent 50%);
+    display: flex; align-items: flex-end; padding: 10px;
+  }
+
+  .thumb-play {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 40px; height: 40px;
+    background: rgba(255,182,0,0.9);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.2s;
+  }
+
+  .video-thumb:hover .thumb-play { opacity: 1; }
+
+  .thumb-play svg { width: 16px; fill: var(--black); margin-left: 3px; }
+
+  .thumb-label {
+    font-size: 0.7rem; color: var(--cream);
+    font-weight: 600; line-height: 1.2;
+  }
+
+  .thumb-niche {
+    position: absolute; top: 8px; left: 8px;
+    background: var(--yellow); color: var(--black);
+    font-size: 0.6rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 2px 7px; border-radius: 3px;
+  }
+
+  /* ABOUT / PROPÓSITO */
+  .purpose-section {
+    padding: 7rem 4rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center; max-width: 1400px; margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.2rem;
+  }
+
+  h2 {
+    font-family: Impact, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1; letter-spacing: -0.01em;
+    color: var(--cream); margin-bottom: 1.5rem;
+  }
+
+  h2 .accent { color: var(--yellow); }
+
+  .body-text {
+    font-size: 1.05rem; color: rgba(254,251,243,0.65);
+    line-height: 1.8; margin-bottom: 1.5rem;
+  }
+
+  .purpose-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: var(--gray-light);
+    border-radius: 8px;
+    border: 1px solid rgba(255,182,0,0.15);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .purpose-visual-isotipo {
+    width: 60%; opacity: 0.12;
+  }
+
+  .purpose-cards {
+    display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem;
+  }
+
+  .purpose-card {
+    background: rgba(255,182,0,0.06);
+    border: 1px solid rgba(255,182,0,0.15);
+    border-radius: 8px; padding: 1.2rem 1.5rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+
+  .purpose-card-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: rgba(255,182,0,0.15);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .purpose-card-icon svg { width: 20px; fill: var(--yellow); }
+
+  .purpose-card h4 {
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 4px;
+  }
+
+  .purpose-card p {
+    font-size: 0.84rem; color: rgba(254,251,243,0.55); line-height: 1.5;
+  }
+
+  /* PORTFOLIO SECTION */
+  .portfolio-section {
+    padding: 7rem 4rem;
+    background: var(--gray-light);
+  }
+
+  .section-header {
+    display: flex; align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+
+  .filter-tabs {
+    display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+  }
+
+  .filter-tab {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(254,251,243,0.15);
+    color: rgba(254,251,243,0.55);
+    border-radius: 100px;
+    font-size: 0.8rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  .filter-tab:hover,
+  .filter-tab.active {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: var(--black);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .portfolio-item {
+    border-radius: 8px; overflow: hidden;
+    position: relative; cursor: pointer;
+    background: var(--gray-mid);
+    border: 1px solid rgba(255,182,0,0.08);
+    transition: border-color 0.2s, transform 0.2s;
+    group: true;
+  }
+
+  .portfolio-item:hover { border-color: var(--yellow); transform: translateY(-4px); }
+
+  .portfolio-item.item-vertical { grid-row: span 2; }
+
+  .portfolio-thumb {
+    aspect-ratio: 16/9;
+    background: var(--gray-mid);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .portfolio-item.item-vertical .portfolio-thumb { aspect-ratio: 9/16; }
+
+  .portfolio-thumb-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1e1c1a 0%, #2a2820 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .portfolio-thumb-bg svg { width: 40%; opacity: 0.1; }
+
+  .play-btn-large {
+    position: absolute;
+    width: 56px; height: 56px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+    z-index: 2;
+  }
+
+  .portfolio-item:hover .play-btn-large { transform: scale(1.12); background: var(--yellow-dark); }
+
+  .play-btn-large svg { width: 20px; fill: var(--black); margin-left: 4px; }
+
+  .portfolio-meta {
+    padding: 1rem 1.25rem;
+  }
+
+  .portfolio-tags {
+    display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px; border-radius: 3px;
+  }
+
+  .tag-type {
+    background: rgba(255,182,0,0.15);
+    color: var(--yellow);
+    border: 1px solid rgba(255,182,0,0.3);
+  }
+
+  .tag-niche {
+    background: rgba(254,251,243,0.07);
+    color: rgba(254,251,243,0.5);
+    border: 1px solid rgba(254,251,243,0.1);
+  }
+
+  .portfolio-title {
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--cream); line-height: 1.3;
+  }
+
+  .portfolio-client {
+    font-size: 0.8rem; color: rgba(254,251,243,0.4);
+    margin-top: 4px;
+  }
+
+  /* PROCESS */
+  .process-section {
+    padding: 7rem 4rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+    margin-top: 4rem;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 32px; left: calc(12.5% + 20px); right: calc(12.5% + 20px);
+    height: 1px; background: rgba(255,182,0,0.3);
+  }
+
+  .process-step { text-align: center; position: relative; }
+
+  .step-num {
+    width: 64px; height: 64px;
+    background: rgba(255,182,0,0.1);
+    border: 1px solid rgba(255,182,0,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: Impact, sans-serif;
+    font-size: 1.6rem; color: var(--yellow);
+    position: relative; z-index: 1;
+    transition: background 0.2s;
+  }
+
+  .process-step:hover .step-num {
+    background: var(--yellow); color: var(--black);
+  }
+
+  .step-title {
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--cream); margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  .step-desc {
+    font-size: 0.84rem; color: rgba(254,251,243,0.5);
+    line-height: 1.6;
+  }
+
+  /* BACKSTAGE */
+  .backstage-section {
+    padding: 7rem 4rem;
+    background: var(--gray-light);
+  }
+
+  .backstage-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .backstage-item {
+    border-radius: 8px; overflow: hidden;
+    background: var(--gray-mid);
+    border: 1px solid rgba(255,182,0,0.08);
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .backstage-item:hover { border-color: rgba(255,182,0,0.4); }
+
+  .backstage-item.large { grid-row: span 2; aspect-ratio: 3/4; }
+  .backstage-item.medium { aspect-ratio: 4/3; }
+
+  .backstage-placeholder {
+    width: 100%; height: 100%; min-height: 200px;
+    background: linear-gradient(135deg, #1e1c1a 0%, #2a2820 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+  }
+
+  .backstage-placeholder svg { width: 36px; opacity: 0.2; fill: var(--cream); }
+
+  .backstage-placeholder span {
+    font-size: 0.72rem; color: rgba(254,251,243,0.2);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 8rem 4rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(255,182,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 { margin-bottom: 1.2rem; }
+
+  .cta-section .body-text {
+    max-width: 520px; margin: 0 auto 3rem;
+  }
+
+  .cta-contact {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: rgba(255,182,0,0.08);
+    border: 1px solid rgba(255,182,0,0.2);
+    border-radius: 8px; padding: 1rem 2rem;
+    margin-top: 2rem;
+    font-size: 0.9rem; color: rgba(254,251,243,0.5);
+  }
+
+  .cta-contact strong { color: var(--cream); }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 4rem;
+    border-top: 1px solid rgba(255,182,0,0.1);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+
+  .footer-links a {
+    color: rgba(254,251,243,0.35);
+    text-decoration: none; font-size: 0.82rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--yellow); }
+
+  .footer-copy {
+    font-size: 0.8rem; color: rgba(254,251,243,0.25);
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.85);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s;
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+  .modal-box {
+    background: var(--gray-mid);
+    border: 1px solid rgba(255,182,0,0.2);
+    border-radius: 12px; overflow: hidden;
+    width: 90%; max-width: 900px;
+    transform: scale(0.95); transition: transform 0.25s;
+  }
+
+  .modal-overlay.active .modal-box { transform: scale(1); }
+
+  .modal-box.vertical-modal { max-width: 420px; }
+
+  .modal-video { position: relative; width: 100%; }
+  .modal-video.h16x9 { aspect-ratio: 16/9; }
+  .modal-video.h9x16 { aspect-ratio: 9/16; }
+
+  .modal-video iframe {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    border: none;
+  }
+
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem; z-index: 10;
+    width: 36px; height: 36px;
+    background: rgba(19,18,16,0.8);
+    border: 1px solid rgba(255,182,0,0.3);
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cream); font-size: 1.2rem;
+    transition: background 0.2s;
+  }
+
+  .modal-close:hover { background: var(--yellow); color: var(--black); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    h1 { font-size: 3rem; }
+    .hero-stats { gap: 2rem; }
+    .purpose-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .portfolio-section, .backstage-section, .process-section { padding: 4rem 1.5rem; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-steps::before { display: none; }
+    .backstage-grid { grid-template-columns: 1fr 1fr; }
+    .backstage-item.large { grid-row: span 1; aspect-ratio: 4/3; }
+    .cta-section { padding: 5rem 1.5rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem 1.5rem; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">
+    <svg viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
+    </svg>
+    <span class="logo-text">Veic <span>VÍDEOS</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#backstage">Backstage</a></li>
+    <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-bg-isotipo" viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-badge">Produtora de Vídeos Estratégicos</div>
+    <h1>Revele<br>Sua <span class="accent">Marca</span><br>no Digital</h1>
+    <p class="hero-sub">Produzimos vídeos estratégicos que valorizam a imagem do seu negócio. Posicionamento com autoridade e identidade visual que converte.</p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Ver Portfólio
+      </a>
+      <a href="#contato" class="btn-secondary">Solicitar Orçamento →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">50+</span>
+        <span class="stat-label">Vídeos Produzidos</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">20+</span>
+        <span class="stat-label">Clientes Atendidos</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Estratégicos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO REEL BANNER -->
+<section class="reel-section">
+  <p class="reel-label">● Produções em Destaque</p>
+  <div style="overflow: hidden;">
+    <div class="video-scroll-track" id="scrollTrack">
+      <!-- Duplicate for infinite scroll -->
+      <div class="video-thumb vertical" onclick="openModal('VIDEO_ID_1','vertical')">
+        <div class="video-thumb-inner">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 57.34 67.13" style="width:40%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+          </div>
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay"><span class="thumb-label">Cervejaria Brumanus</span></div>
+          <span class="thumb-niche">Cervejaria</span>
+        </div>
+      </div>
+      <div class="video-thumb horizontal" onclick="openModal('VIDEO_ID_2','horizontal')">
+        <div class="video-thumb-inner">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#2a2820,#1e1c1a);display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 57.34 67.13" style="width:25%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+          </div>
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay"><span class="thumb-label">Institucional Bar Exemplo</span></div>
+          <span class="thumb-niche">Bar</span>
+        </div>
+      </div>
+      <div class="video-thumb vertical" onclick="openModal('VIDEO_ID_3','vertical')">
+        <div class="video-thumb-inner">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820);display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 57.34 67.13" style="width:40%;opacity:0.08;fill:#FFB600"><path d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+          </div>
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay"><span class="thumb-label">Choperia Artesanal</span></div>
+          <span class="thumb-niche">Choperia</span>
+        </div>
+      </div>
+      <div class="video-thumb horizontal" onclick="openModal('VIDEO_ID_4','horizontal')">
+        <div class="video-thumb-inner">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#2a2820,#1e1c1a)"></div>
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay"><span class="thumb-label">Gastronomia Premium</span></div>
+          <span class="thumb-niche">Gastronomia</span>
+        </div>
+      </div>
+      <div class="video-thumb vertical" onclick="openModal('VIDEO_ID_5','vertical')">
+        <div class="video-thumb-inner">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820)"></div>
+          <div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div class="thumb-overlay"><span class="thumb-label">Marca Pessoal Chef</span></div>
+          <span class="thumb-niche">Marca Pessoal</span>
+        </div>
+      </div>
+      <!-- Duplicados para loop -->
+      <div class="video-thumb vertical"><div class="video-thumb-inner"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820)"></div><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><span class="thumb-label">Cervejaria Brumanus</span></div><span class="thumb-niche">Cervejaria</span></div></div>
+      <div class="video-thumb horizontal"><div class="video-thumb-inner"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#2a2820,#1e1c1a)"></div><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><span class="thumb-label">Institucional Bar</span></div><span class="thumb-niche">Bar</span></div></div>
+      <div class="video-thumb vertical"><div class="video-thumb-inner"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820)"></div><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><span class="thumb-label">Choperia Artesanal</span></div><span class="thumb-niche">Choperia</span></div></div>
+      <div class="video-thumb horizontal"><div class="video-thumb-inner"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#2a2820,#1e1c1a)"></div><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><span class="thumb-label">Gastronomia Premium</span></div><span class="thumb-niche">Gastronomia</span></div></div>
+      <div class="video-thumb vertical"><div class="video-thumb-inner"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#1e1c1a,#2a2820)"></div><div class="thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="thumb-overlay"><span class="thumb-label">Marca Pessoal</span></div><span class="thumb-niche">Marca Pessoal</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPÓSITO -->
+<section class="purpose-section">
+  <div>
+    <p class="section-eyebrow">Quem Somos</p>
+    <h2>Posicionamento<br><span class="accent">com Propósito</span></h2>
+    <p class="body-text">Nosso propósito é produzir vídeos estratégicos que valorizam a imagem de negócios, profissionais e projetos que precisam comunicar com <strong>autoridade e posicionamento</strong>.</p>
+    <p class="body-text">Não fazemos apenas vídeos bonitos. Entendemos a sua marca e criamos conteúdo que faz o seu negócio ser reconhecido no digital.</p>
+    <div class="purpose-cards">
+      <div class="purpose-card">
+        <div class="purpose-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <h4>Estratégia antes da câmera</h4>
+          <p>Planejamos cada vídeo para que ele trabalhe pelos seus objetivos de negócio, não só para parecer bonito.</p>
+        </div>
+      </div>
+      <div class="purpose-card">
+        <div class="purpose-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 013 1.18 2 2 0 015 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        </div>
+        <div>
+          <h4>Identidade visual em movimento</h4>
+          <p>Cada produção carrega a essência da sua marca: cores, linguagem, tom de voz e posicionamento únicos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="purpose-visual">
+    <svg class="purpose-visual-isotipo" viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
+    </svg>
+    <div style="position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;">
+      <p style="font-size:0.72rem;color:rgba(254,251,243,0.3);text-align:center;text-transform:uppercase;letter-spacing:0.1em;">@veicvideos</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <div class="section-header">
+    <div>
+      <p class="section-eyebrow">Trabalhos</p>
+      <h2>Portfólio</h2>
+    </div>
+    <a href="https://www.instagram.com/veicvideos" class="btn-secondary" style="white-space:nowrap">Ver Instagram →</a>
+  </div>
+
+  <!-- Filtros por TIPO -->
+  <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(254,251,243,0.3);margin-bottom:0.8rem;">Tipo de Vídeo</p>
+  <div class="filter-tabs" id="type-filters">
+    <button class="filter-tab active" data-type="todos">Todos</button>
+    <button class="filter-tab" data-type="institucional">Institucional</button>
+    <button class="filter-tab" data-type="produto">Produto</button>
+    <button class="filter-tab" data-type="reels">Reels / Short</button>
+    <button class="filter-tab" data-type="evento">Evento</button>
+    <button class="filter-tab" data-type="marca-pessoal">Marca Pessoal</button>
+  </div>
+
+  <!-- Filtros por NICHO -->
+  <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(254,251,243,0.3);margin-bottom:0.8rem;margin-top:1.2rem;">Nicho</p>
+  <div class="filter-tabs" id="niche-filters">
+    <button class="filter-tab active" data-niche="todos">Todos</button>
+    <button class="filter-tab" data-niche="cervejaria">Cervejaria</button>
+    <button class="filter-tab" data-niche="bar">Bar</button>
+    <button class="filter-tab" data-niche="choperia">Choperia</button>
+    <button class="filter-tab" data-niche="gastronomia">Gastronomia</button>
+    <button class="filter-tab" data-niche="marca-pessoal">Marca Pessoal</button>
+  </div>
+
+  <div class="portfolio-grid" id="portfolioGrid" style="margin-top:2.5rem;">
+    <!-- Item vertical -->
+    <div class="portfolio-item item-vertical" data-type="reels" data-niche="cervejaria" onclick="openModal('VIDEO_ID_1','vertical')">
+      <div class="portfolio-thumb">
+        <div class="portfolio-thumb-bg">
+          <svg viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg"><path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/></svg>
+        </div>
+        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="portfolio-meta">
+        <div class="portfolio-tags">
+          <span class="tag tag-type">Reels</span>
+          <span class="tag tag-niche">Cervejaria</span>
+        </div>
+        <p class="portfolio-title">Rótulos de Chopp APA Brumanus</p>
+        <p class="portfolio-client">Cervejaria Brumanus</p>
+      </div>
+    </div>
+
+    <!-- Item horizontal -->
+    <div class="portfolio-item" data-type="institucional" data-niche="bar" onclick="openModal('VIDEO_ID_2','horizontal')">
+      <div class="portfolio-thumb">
+        <div class="portfolio-thumb-bg"></div>
+        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="portfolio-meta">
+        <div class="portfolio-tags">
+          <span class="tag tag-type">Institucional</span>
+          <span class="tag tag-niche">Bar</span>
+        </div>
+        <p class="portfolio-title">Apresentação Institucional</p>
+        <p class="portfolio-client">Bar Exemplo</p>
+      </div>
+    </div>
+
+    <div class="portfolio-item" data-type="produto" data-niche="cervejaria" onclick="openModal('VIDEO_ID_3','horizontal')">
+      <div class="portfolio-thumb">
+        <div class="portfolio-thumb-bg"></div>
+        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="portfolio-meta">
+        <div class="portfolio-tags">
+          <span class="tag tag-type">Produto</span>
+          <span class="tag tag-niche">Cervejaria</span>
+        </div>
+        <p class="portfolio-title">Session IPA no preço da Pilsen</p>
+        <p class="portfolio-client">Cervejaria Brumanus</p>
+      </div>
+    </div>
+
+    <div class="portfolio-item item-vertical" data-type="reels" data-niche="gastronomia" onclick="openModal('VIDEO_ID_4','vertical')">
+      <div class="portfolio-thumb">
+        <div class="portfolio-thumb-bg"></div>
+        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="portfolio-meta">
+        <div class="portfolio-tags">
+          <span class="tag tag-type">Reels</span>
+          <span class="tag tag-niche">Gastronomia</span>
+        </div>
+        <p class="portfolio-title">Gastronomia Brumadinho</p>
+        <p class="portfolio-client">Restaurante Exemplo</p>
+      </div>
+    </div>
+
+    <div class="portfolio-item" data-type="evento" data-niche="cervejaria" onclick="openModal('VIDEO_ID_5','horizontal')">
+      <div class="portfolio-thumb">
+        <div class="portfolio-thumb-bg"></div>
+        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="portfolio-meta">
+        <div class="portfolio-tags">
+          <span class="tag tag-type">Evento</span>
+          <span class="tag tag-niche">Cervejaria</span>
+        </div>
+        <p class="portfolio-title">Dia dos Namorados Brumanus</p>
+        <p class="portfolio-client">Cervejaria Brumanus</p>
+      </div>
+    </div>
+
+    <div class="portfolio-item" data-type="marca-pessoal" data-niche="marca-pessoal" onclick="openModal('VIDEO_ID_6','horizontal')">
+      <div class="portfolio-thumb">
+        <div class="portfolio-thumb-bg"></div>
+        <div class="play-btn-large"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="portfolio-meta">
+        <div class="portfolio-tags">
+          <span class="tag tag-type">Marca Pessoal</span>
+          <span class="tag tag-niche">Marca Pessoal</span>
+        </div>
+        <p class="portfolio-title">Posicionamento Digital</p>
+        <p class="portfolio-client">Cliente Exemplo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="process-section" id="processo">
+  <p class="section-eyebrow">Como Trabalhamos</p>
+  <h2>Do Briefing<br>ao <span class="accent">Resultado</span></h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <p class="step-title">Briefing</p>
+      <p class="step-desc">Entendemos sua marca, objetivos e público antes de ligar qualquer câmera.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <p class="step-title">Roteiro</p>
+      <p class="step-desc">Criamos a estratégia de conteúdo e o roteiro alinhado à identidade da marca.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <p class="step-title">Produção</p>
+      <p class="step-desc">Gravamos com equipamento profissional e direção cuidadosa de cada cena.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <p class="step-title">Entrega</p>
+      <p class="step-desc">Edição, revisão e entrega dos vídeos otimizados para cada plataforma.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BACKSTAGE -->
+<section class="backstage-section" id="backstage">
+  <p class="section-eyebrow">Por Trás das Câmeras</p>
+  <h2>Bastidores<br>das <span class="accent">Produções</span></h2>
+  <div class="backstage-grid">
+    <div class="backstage-item large">
+      <div class="backstage-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Foto de Backstage</span>
+      </div>
+    </div>
+    <div class="backstage-item medium">
+      <div class="backstage-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Equipamento / Setup</span>
+      </div>
+    </div>
+    <div class="backstage-item medium">
+      <div class="backstage-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Equipe em Ação</span>
+      </div>
+    </div>
+    <div class="backstage-item medium">
+      <div class="backstage-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Gravação no Local</span>
+      </div>
+    </div>
+    <div class="backstage-item medium">
+      <div class="backstage-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Pós-produção</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <p class="section-eyebrow">Vamos Trabalhar Juntos?</p>
+  <h2>Pronto Para<br><span class="accent">Revelar Sua Marca?</span></h2>
+  <p class="body-text">Entre em contato e vamos conversar sobre como posicionar seu negócio no digital com vídeos estratégicos que realmente funcionam.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="https://wa.me/5531989736847" class="btn-primary" target="_blank">
+      <svg width="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://www.instagram.com/veicvideos" class="btn-secondary" target="_blank">Instagram @veicvideos →</a>
+  </div>
+  <div class="cta-contact">
+    <span>📞</span>
+    <span><strong>(31) 98973-6847</strong> · Atendimento via WhatsApp</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="nav-logo" href="#">
+    <svg width="28" viewBox="0 0 57.34 67.13" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#FFB600" d="M57.34,33.51c0,1.21-.39,2.09-.56,2.42-.39.78-.96,1.45-1.69,1.95l-14.73,9.47c-.1.06-.22.03-.28-.07l-.48-.8c-1.43-2.38-.74-5.52,1.54-6.97l8.4-5.37c.39-.25.38-.85-.02-1.09l-13.44-7.87c-.65-.38-1.46.12-1.46.91v21.41c0,1.99-1.09,3.84-2.78,4.71l-10.25,5.25c-1.72.88-3.75.64-5.27-.67-1.17-1.02-1.79-2.59-1.79-4.19V12.54c0-.57-.3-1.09-.78-1.35l-6.92-3.72c-.42-.23-.92.1-.92.6v50.43c0,.65.66,1.04,1.18.71l4.29-2.75c.56-.36,1.27.06,1.29.75l.04,1.62c.07,2.49-1.12,4.83-3.12,6.14l-2.25,1.47c-.66.43-1.41.69-2.19.7C2.14,67.2,0,64.71,0,61.89V5.39C0,3.75.64,2.16,1.85,1.15,3.39-.15,5.43-.35,7.14.57l10.62,5.71c1.66.89,2.71,2.71,2.71,4.69v39.57c0,.23.22.38.42.28l7.13-3.65c.41-.21.67-.65.67-1.13v-23.34c0-1.97.94-3.85,2.57-4.79,1.48-.86,3.24-.86,4.73.02l18.81,11.02c.39.23,1.21.78,1.82,1.84.62,1.07.71,2.13.71,2.72Z"/>
+    </svg>
+    <span class="logo-text">Veic <span>VÍDEOS</span></span>
+  </a>
+  <ul class="footer-links">
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#backstage">Backstage</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Veic Vídeos</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="videoModal" onclick="closeModalOnOverlay(event)">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-video" id="modalVideo">
+      <iframe id="modalIframe" src="" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.style.borderBottomColor = 'rgba(255,182,0,0.25)';
+    } else {
+      nav.style.borderBottomColor = 'rgba(255,182,0,0.15)';
+    }
+  });
+
+  // Portfolio filtering
+  let activeType = 'todos';
+  let activeNiche = 'todos';
+
+  document.querySelectorAll('[data-type]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeType = btn.dataset.type;
+      filterPortfolio();
+    });
+  });
+
+  document.querySelectorAll('[data-niche]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-niche]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeNiche = btn.dataset.niche;
+      filterPortfolio();
+    });
+  });
+
+  function filterPortfolio() {
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      const matchType = activeType === 'todos' || item.dataset.type === activeType;
+      const matchNiche = activeNiche === 'todos' || item.dataset.niche === activeNiche;
+      item.style.display = (matchType && matchNiche) ? '' : 'none';
+    });
+  }
+
+  // Modal
+  function openModal(videoId, orientation) {
+    const modal = document.getElementById('videoModal');
+    const modalBox = document.getElementById('modalBox');
+    const modalVideo = document.getElementById('modalVideo');
+    const iframe = document.getElementById('modalIframe');
+
+    // Replace VIDEO_ID_X with real YouTube ID
+    const youtubeId = videoId; // e.g. 'dQw4w9WgXcQ'
+    iframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+
+    modalVideo.className = 'modal-video ' + (orientation === 'vertical' ? 'h9x16' : 'h16x9');
+    modalBox.className = 'modal-box' + (orientation === 'vertical' ? ' vertical-modal' : '');
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('videoModal');
+    modal.classList.remove('active');
+    document.getElementById('modalIframe').src = '';
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOnOverlay(e) {
+    if (e.target === document.getElementById('videoModal')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+</body>
+</html>
