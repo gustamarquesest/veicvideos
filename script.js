@@ -1,4 +1,4 @@
-const SITE_ASSET_VERSION = "20260619-pages-fix";
+const SITE_ASSET_VERSION = "20260619-youtube-poster";
 
 const AnalyticsManager = (() => {
   let initialized = false;
@@ -382,6 +382,7 @@ const faqToggle = document.querySelector("#faqToggle");
 const modal = document.querySelector(".modal");
 const modalTitle = document.querySelector("#modalTitle");
 const modalVideoWrap = document.querySelector("#modalVideoWrap");
+const modalDirectLink = document.querySelector("#modalDirectLink");
 const modalClose = document.querySelector(".modal-close");
 const modalBackdrop = document.querySelector(".modal-backdrop");
 
@@ -1111,10 +1112,16 @@ loadYouTubeApi();
 
 function openVideo({ id, platform, orientation, title, sound = false, sourceElement = null, track = true }) {
   const isVimeo = platform === "vimeo";
+  const directUrl = isVimeo ? `https://vimeo.com/${id}` : `https://www.youtube.com/watch?v=${id}`;
   if (track && window.AnalyticsManager) {
     window.AnalyticsManager.trackVideoOpen(sourceElement, { id, platform, orientation, title });
   }
   modalTitle.textContent = title || "Vídeo Veic";
+  if (modalDirectLink) {
+    modalDirectLink.href = directUrl;
+    modalDirectLink.textContent = isVimeo ? "Abrir direto no Vimeo" : "Abrir direto no YouTube";
+    modalDirectLink.classList.add("is-visible");
+  }
   modalVideoWrap.className = `modal-video-wrap ${orientation === "horizontal" ? "horizontal" : "vertical"}`;
   modalVideoWrap.innerHTML = "";
   modal.classList.add("is-open");
@@ -1168,6 +1175,10 @@ function closeVideo() {
   modal.setAttribute("aria-hidden", "true");
   body.classList.remove("modal-open");
   modalVideoWrap.innerHTML = "";
+  if (modalDirectLink) {
+    modalDirectLink.classList.remove("is-visible");
+    modalDirectLink.removeAttribute("href");
+  }
 }
 
 navToggle.addEventListener("click", () => {

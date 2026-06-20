@@ -342,6 +342,10 @@ h3,
   pointer-events: none;
 }
 
+.hero-poster {
+  object-position: center;
+}
+
 .hero-player::after {
   display: block;
   background:
@@ -683,7 +687,7 @@ h3,
   position: relative;
   background:
     linear-gradient(rgba(254,251,243,.58), rgba(254,251,243,.62)),
-    url("assets/capa.jpeg?v=20260619-pages-fix") center / cover no-repeat;
+    url("assets/capa.jpeg?v=20260619-youtube-poster") center / cover no-repeat;
 }
 
 .portfolio {
@@ -1571,6 +1575,24 @@ details p {
   border: 0;
 }
 
+.modal-direct-link {
+  display: none;
+  width: fit-content;
+  margin: 14px auto 0;
+  padding: 10px 16px;
+  border: 1px solid rgba(255,184,0,.45);
+  border-radius: 999px;
+  color: var(--gold);
+  font-size: .84rem;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.modal-direct-link.is-visible {
+  display: inline-flex;
+}
+
 .modal-panel h2 {
   margin-top: 18px;
   font-size: clamp(1.6rem, 6vw, 3rem);
@@ -1871,17 +1893,6 @@ details p {
     width: min(78vw, calc(64svh * 9 / 16), 340px);
     min-height: 0;
     margin: 0 auto;
-  }
-
-  .hero-player-vertical .hero-loop-video {
-    inset: auto;
-    top: 0;
-    left: 50%;
-    height: 100%;
-    width: 100%;
-    max-width: none;
-    transform: translateX(-50%) scale(1.16);
-    transform-origin: top center;
   }
 
   .hero-strip {
