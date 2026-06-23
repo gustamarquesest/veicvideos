@@ -2257,3 +2257,310 @@ details p {
   outline: 0 !important;
   box-shadow: 0 15px 34px rgba(19,18,16,.2) !important;
 }
+
+.diagnostico-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.diagnostico-nav .btn {
+  min-height: 42px;
+  padding: 0 16px;
+  font-size: .78rem;
+}
+
+.diagnostico-hero {
+  padding-top: 120px;
+  padding-bottom: 34px;
+}
+
+.diagnostico-shell {
+  display: grid;
+  gap: 22px;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.diagnostico-copy h1 {
+  max-width: 780px;
+  font-size: clamp(3.2rem, 14vw, 8rem);
+}
+
+.diagnostico-copy .lead {
+  max-width: 720px;
+}
+
+.time-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  margin-top: 22px;
+  padding: 0 14px;
+  border: 1px solid rgba(255,182,0,.36);
+  border-radius: 999px;
+  color: var(--gold);
+  background: rgba(255,182,0,.08);
+  font-size: .82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.diagnostico-aside {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.04);
+}
+
+.diagnostico-aside span {
+  color: var(--gold);
+  font-size: .74rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.diagnostico-aside p {
+  margin: -6px 0 8px;
+  color: rgba(254,251,243,.78);
+  line-height: 1.35;
+}
+
+.diagnostico-form-section {
+  padding-top: 36px;
+}
+
+.diagnostico-form {
+  display: grid;
+  gap: 18px;
+  width: min(940px, 100%);
+  margin: 0 auto;
+}
+
+.form-heading {
+  display: grid;
+  gap: 12px;
+  padding-bottom: 10px;
+}
+
+.form-heading h2 {
+  max-width: 780px;
+  font-size: clamp(2.25rem, 9vw, 5.6rem);
+}
+
+.form-heading p:not(.eyebrow) {
+  max-width: 680px;
+  margin: 0;
+  color: rgba(254,251,243,.72);
+  line-height: 1.55;
+}
+
+.form-card,
+.form-submit-card {
+  min-width: 0;
+  margin: 0;
+  padding: clamp(18px, 4vw, 30px);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025)),
+    #181713;
+}
+
+.form-card legend {
+  padding: 0 8px;
+  color: var(--gold);
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.form-grid,
+.choice-grid,
+.choice-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+}
+
+.form-field label,
+.form-question {
+  margin: 0;
+  color: var(--cream);
+  font-size: .92rem;
+  font-weight: 900;
+}
+
+.form-field label span {
+  color: var(--muted);
+  font-size: .72rem;
+  text-transform: uppercase;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 13px 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--radius);
+  color: var(--cream);
+  background: rgba(0,0,0,.24);
+  font: inherit;
+  outline: none;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 138px;
+  line-height: 1.45;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(254,251,243,.38);
+}
+
+.form-field input:focus-visible,
+.form-field textarea:focus-visible,
+.choice-card:has(input:focus-visible),
+.submit-diagnostico:focus-visible,
+.diagnostico-nav .btn:focus-visible {
+  outline: 3px solid rgba(255,182,0,.42);
+  outline-offset: 3px;
+  border-color: var(--gold);
+}
+
+.form-field input[aria-invalid="true"],
+.form-field textarea[aria-invalid="true"],
+.choice-card:has(input[aria-invalid="true"]) {
+  border-color: rgba(255,112,91,.72);
+}
+
+.field-error {
+  min-height: 18px;
+  margin: 0;
+  color: #ffb09f;
+  font-size: .78rem;
+  line-height: 1.25;
+}
+
+.choice-grid,
+.choice-stack {
+  margin-top: 14px;
+  gap: 10px;
+}
+
+.choice-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  padding: 12px 14px 12px 46px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: var(--radius);
+  color: rgba(254,251,243,.78);
+  background: rgba(0,0,0,.18);
+  cursor: pointer;
+}
+
+.choice-card input {
+  position: absolute;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+}
+
+.choice-card span {
+  font-size: .9rem;
+  line-height: 1.25;
+}
+
+.choice-card:has(input:checked) {
+  color: var(--cream);
+  border-color: rgba(255,182,0,.68);
+  background: rgba(255,182,0,.11);
+}
+
+.split-choice {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.form-submit-card {
+  display: grid;
+  gap: 14px;
+  align-items: center;
+}
+
+.form-status {
+  margin: 0;
+  color: rgba(254,251,243,.72);
+  line-height: 1.45;
+}
+
+.submit-diagnostico {
+  width: 100%;
+  min-height: 56px;
+  font-size: .96rem;
+}
+
+@media (min-width: 760px) {
+  .diagnostico-shell {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: end;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-field-wide {
+    grid-column: 1 / -1;
+  }
+
+  .choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .split-choice {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-submit-card {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .submit-diagnostico {
+    width: auto;
+    min-width: 240px;
+  }
+}
+
+@media (max-width: 759px) {
+  .diagnostico-nav .btn-secondary {
+    display: none;
+  }
+
+  .diagnostico-nav .btn {
+    min-height: 40px;
+    padding: 0 14px;
+  }
+
+  .diagnostico-hero {
+    padding-top: 108px;
+  }
+
+  .diagnostico-copy h1 {
+    overflow-wrap: anywhere;
+  }
+}
