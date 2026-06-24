@@ -1,4 +1,4 @@
-const SITE_ASSET_VERSION = "20260619-youtube-poster";
+const SITE_ASSET_VERSION = "20260623-form-hidden";
 
 const AnalyticsManager = (() => {
   let initialized = false;

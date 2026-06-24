@@ -1,4 +1,7 @@
 const VEIC_WHATSAPP_NUMBER = "5531983335876";
+// Cole aqui a URL publicada do Google Apps Script Web App quando a planilha estiver pronta.
+// Enquanto estiver com o placeholder abaixo, o formulário apenas abrirá o WhatsApp.
+const GOOGLE_SCRIPT_WEB_APP_URL = "COLE_AQUI_A_URL_DO_APPS_SCRIPT";
 const FORM_NAME = "Diagnóstico Inicial de Projeto";
 
 const form = document.querySelector("#diagnosticLeadForm");
@@ -25,6 +28,17 @@ function getCheckedValues(name) {
 
 function getFieldValue(name) {
   return form.elements[name]?.value.trim() || "";
+}
+
+function getUtmParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utm_source: params.get("utm_source") || "",
+    utm_medium: params.get("utm_medium") || "",
+    utm_campaign: params.get("utm_campaign") || "",
+    utm_term: params.get("utm_term") || "",
+    utm_content: params.get("utm_content") || "",
+  };
 }
 
 function setFieldError(field, message = "") {
@@ -115,6 +129,52 @@ function pushLeadEvents(data) {
   window.dataLayer.push({ event: "lead_form", ...payload });
 }
 
+function buildSheetPayload(data) {
+  return {
+    submitted_at: new Date().toISOString(),
+    nome: data.nome,
+    empresa: data.empresa,
+    whatsapp: data.whatsapp,
+    email: data.email,
+    site_instagram: data.siteInstagram,
+    selected_services: data.selectedServices,
+    main_goal: data.mainGoal,
+    references: data.references,
+    deadline: data.deadline,
+    contact_preference: data.contactPreference,
+    page_path: window.location.pathname || "/diagnostico.html",
+    page_location: window.location.href,
+    ...getUtmParams(),
+  };
+}
+
+async function sendLeadToGoogleSheets(data) {
+  if (!GOOGLE_SCRIPT_WEB_APP_URL || GOOGLE_SCRIPT_WEB_APP_URL === "COLE_AQUI_A_URL_DO_APPS_SCRIPT") {
+    return { ok: false, skipped: true, reason: "Apps Script URL não configurada." };
+  }
+
+  const request = fetch(GOOGLE_SCRIPT_WEB_APP_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8",
+    },
+    body: JSON.stringify(buildSheetPayload(data)),
+    keepalive: true,
+  });
+
+  const timeout = new Promise((_, reject) => {
+    window.setTimeout(() => reject(new Error("Tempo de envio para planilha excedido.")), 2200);
+  });
+
+  try {
+    await Promise.race([request, timeout]);
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, skipped: false, reason: error.message };
+  }
+}
+
 phoneInput?.addEventListener("input", () => {
   phoneInput.value = formatBrazilPhone(phoneInput.value);
   setFieldError(phoneInput, "");
@@ -153,9 +213,20 @@ form?.addEventListener("submit", (event) => {
     contactPreference: validation.contactPreference,
   };
 
+  const sheetResultPromise = sendLeadToGoogleSheets(data);
   pushLeadEvents(data);
   const message = encodeURIComponent(buildMessage(data));
   const url = `https://wa.me/${VEIC_WHATSAPP_NUMBER}?text=${message}`;
   statusMessage.textContent = "Tudo certo. Abrindo WhatsApp com seu diagnóstico preenchido.";
   window.open(url, "_blank", "noopener");
+
+  sheetResultPromise.then((sheetResult) => {
+    if (sheetResult.ok) {
+      statusMessage.textContent = "Diagnóstico enviado e registrado. O WhatsApp já foi aberto.";
+      return;
+    }
+    statusMessage.textContent = sheetResult.skipped
+      ? "WhatsApp aberto. A integração com planilha ainda está aguardando a URL do Apps Script."
+      : "WhatsApp aberto. Não consegui registrar na planilha agora, mas a conversa não foi bloqueada.";
+  });
 });
