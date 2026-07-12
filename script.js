@@ -1,4 +1,4 @@
-const SITE_ASSET_VERSION = "20260711-google-reviews-1";
+const SITE_ASSET_VERSION = "20260712-google-reviews-refine-1";
 
 const AnalyticsManager = (() => {
   let initialized = false;
@@ -370,56 +370,56 @@ const GOOGLE_REVIEWS = [
   {
     name: "Paulo Braik",
     rating: 5,
-    image: "assets/reviews/review-paulo-braik.webp",
+    image: "assets/reviews/review-paulo-braik.png",
     source: "Google",
     text: "Em um mercado onde muitos apenas cumprem contrato, Gustavo e Grazi se destacam por vestir a camisa do cliente. O nível de comprometimento, disponibilidade e preocupação genuína com os resultados é algo raro de encontrar. Desde as gravações até a construção das estratégias de marketing, tudo é conduzido com muito profissionalismo, criatividade e atenção aos detalhes. Diversas vezes entregaram além do combinado, contribuindo com insights e ações que fizeram diferença real para o nosso negócio. Mais do que fornecedores, se tornaram parceiros estratégicos. Recomendo de olhos fechados.",
   },
   {
     name: "Natalia Oliveira",
     rating: 5,
-    image: "assets/reviews/review-natalia-oliveira.webp",
+    image: "assets/reviews/review-natalia-oliveira.png",
     source: "Google",
     text: "A Veic Vídeos é uma empresa super comprometida com o que faz. Eles entregam ótimos resultados. Fazer qualquer trabalho com eles é ter a certeza que você vai sair satisfeito.",
   },
   {
     name: "Cristina Ribeiro",
     rating: 5,
-    image: "assets/reviews/review-cristina-ribeiro.webp",
+    image: "assets/reviews/review-cristina-ribeiro.png",
     source: "Google",
     text: "Empresa competente, criativa, que atua com muito cuidado nos detalhes e atenção máxima ao que precisa ser feito. Além disso, é uma parceira muito sólida, sempre disposta a ajudar e apoiar em todo o processo, com uma disponibilidade fora do comum. Só tenho elogios a fazer à VEIC. Super recomendo. Quem contratar vai fazer uma escolha excelente e ter uma experiência muito acima do esperado.",
   },
   {
     name: "Marisa",
     rating: 5,
-    image: "assets/reviews/review-marisa.webp",
+    image: "assets/reviews/review-marisa.png",
     source: "Google",
     text: "Excelente empresa! Fui muito bem atendido desde o primeiro contato. A equipe é extremamente profissional, atenciosa e comprometida com a qualidade dos serviços prestados. O atendimento é rápido, transparente e sempre buscando a melhor solução para o cliente. Recomendo a todos que procuram confiança, competência e um serviço de alta qualidade. Parabéns a toda a equipe pelo excelente trabalho!",
   },
   {
     name: "Tatiana Botelho",
     rating: 5,
-    image: "assets/reviews/review-tatiana-botelho.webp",
+    image: "assets/reviews/review-tatiana-botelho.png",
     source: "Google",
     text: "A comunicação é aberta e transparente, a honestidade está presente em todo o processo, a criatividade faz toda a diferença e a pontualidade é impecável. Mesmo eu estando nos Estados Unidos, eles fazem tudo acontecer de forma organizada e eficiente, tornando a distância um detalhe. Foi uma experiência muito positiva e recomendo a empresa com toda a confiança.",
   },
   {
     name: "Brumanus",
     rating: 5,
-    image: "assets/reviews/review-brumanus.webp",
+    image: "assets/reviews/review-brumanus.png",
     source: "Google",
     text: "Excelente trabalho! O Gustavo e a Grazi prestaram um serviço de produção digital de altíssima qualidade para a Brumanus. Profissional competente, atencioso e comprometido com a entrega. Ficamos muito satisfeitos com o resultado e recomendamos seus serviços com total confiança!",
   },
   {
     name: "Mauro Satter",
     rating: 5,
-    image: "assets/reviews/review-mauro-satter.webp",
+    image: "assets/reviews/review-mauro-satter.png",
     source: "Google",
     text: "Das melhores possíveis!! Equipe competente e que não somente vende um serviço, mas sim, presta um serviço com toda maestria... sucesso!",
   },
   {
     name: "Wanderson Souza",
     rating: 5,
-    image: "assets/reviews/review-wanderson-souza.webp",
+    image: "assets/reviews/review-wanderson-souza.png",
     source: "Google",
     text: "Contamos com o trabalho da Veic Videos já há quase 2 anos. As entregas são excelentes, sempre nos atendem da melhor maneira possível. Muito atenciosos e com foco no resultado. São realmente parceiros do nosso negócio. Indico com toda certeza.",
   },
@@ -787,7 +787,6 @@ function reviewImageUrl(path = "") {
 }
 
 function getGoogleReviewsCardsPerSlide() {
-  if (window.matchMedia("(min-width: 1120px)").matches) return 3;
   if (window.matchMedia("(min-width: 760px)").matches) return 2;
   return 1;
 }
@@ -803,12 +802,11 @@ function makeGoogleReviewGroups() {
 
 function googleReviewCard(review, index) {
   const initials = getReviewInitials(review.name);
-  const isLong = review.text.length > 210;
   const safeName = escapeHtml(review.name);
   const safeText = escapeHtml(review.text);
   const safeImage = escapeHtml(reviewImageUrl(review.image));
   return `
-    <article class="google-review-card ${isLong ? "has-long-text" : ""}" data-review-card>
+    <article class="google-review-card" data-review-card>
       <div class="google-review-top">
         <div class="google-review-avatar is-fallback" data-initials="${initials}">
           <span aria-hidden="true">${initials}</span>
@@ -821,7 +819,6 @@ function googleReviewCard(review, index) {
       </div>
       <div class="google-review-stars" aria-label="${review.rating} de 5 estrelas"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
       <p class="google-review-text" id="googleReviewText${index}">${safeText}</p>
-      ${isLong ? `<button class="google-review-more" type="button" aria-expanded="false" aria-controls="googleReviewText${index}">Ler mais</button>` : ""}
     </article>
   `;
 }
@@ -931,16 +928,6 @@ function setupGoogleReviewsCarousel() {
     if (!dot) return;
     stopGoogleReviewsCarousel({ userPaused: true });
     goToGoogleReviewsSlide(Number(dot.dataset.reviewSlide));
-  });
-
-  googleReviewsCarousel.addEventListener("click", (event) => {
-    const readMore = event.target.closest(".google-review-more");
-    if (!readMore) return;
-    stopGoogleReviewsCarousel({ userPaused: true });
-    const card = readMore.closest(".google-review-card");
-    const isExpanded = card?.classList.toggle("is-expanded");
-    readMore.setAttribute("aria-expanded", String(Boolean(isExpanded)));
-    readMore.textContent = isExpanded ? "Ler menos" : "Ler mais";
   });
 
   googleReviewsLink?.addEventListener("click", trackGoogleReviewsClick);
