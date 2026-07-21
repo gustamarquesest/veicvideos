@@ -1,4 +1,5 @@
 const SITE_ASSET_VERSION = "20260721-seo-indexacao-1";
+const GOOGLE_REVIEWS_LINK_PLACEHOLDER = "COLE_AQUI_O_LINK_DAS_AVALIACOES_DO_GOOGLE";
 
 const portfolioDetailPages = {
   cPl8z5m_nwY: "portfolio/video-apresentacao-cineart.html",
@@ -374,6 +375,65 @@ const recommendations = [
   },
 ];
 
+const GOOGLE_REVIEWS = [
+  {
+    name: "Paulo Braik",
+    rating: 5,
+    image: "assets/reviews/review-paulo-braik.png",
+    source: "Google",
+    text: "Em um mercado onde muitos apenas cumprem contrato, Gustavo e Grazi se destacam por vestir a camisa do cliente. O nível de comprometimento, disponibilidade e preocupação genuína com os resultados é algo raro de encontrar. Desde as gravações até a construção das estratégias de marketing, tudo é conduzido com muito profissionalismo, criatividade e atenção aos detalhes. Diversas vezes entregaram além do combinado, contribuindo com insights e ações que fizeram diferença real para o nosso negócio. Mais do que fornecedores, se tornaram parceiros estratégicos. Recomendo de olhos fechados.",
+  },
+  {
+    name: "Natalia Oliveira",
+    rating: 5,
+    image: "assets/reviews/review-natalia-oliveira.png",
+    source: "Google",
+    text: "A Veic Vídeos é uma empresa super comprometida com o que faz. Eles entregam ótimos resultados. Fazer qualquer trabalho com eles é ter a certeza que você vai sair satisfeito.",
+  },
+  {
+    name: "Cristina Ribeiro",
+    rating: 5,
+    image: "assets/reviews/review-cristina-ribeiro.png",
+    source: "Google",
+    text: "Empresa competente, criativa, que atua com muito cuidado nos detalhes e atenção máxima ao que precisa ser feito. Além disso, é uma parceira muito sólida, sempre disposta a ajudar e apoiar em todo o processo, com uma disponibilidade fora do comum. Só tenho elogios a fazer à VEIC. Super recomendo. Quem contratar vai fazer uma escolha excelente e ter uma experiência muito acima do esperado.",
+  },
+  {
+    name: "Marisa",
+    rating: 5,
+    image: "assets/reviews/review-marisa.png",
+    source: "Google",
+    text: "Excelente empresa! Fui muito bem atendido desde o primeiro contato. A equipe é extremamente profissional, atenciosa e comprometida com a qualidade dos serviços prestados. O atendimento é rápido, transparente e sempre buscando a melhor solução para o cliente. Recomendo a todos que procuram confiança, competência e um serviço de alta qualidade. Parabéns a toda a equipe pelo excelente trabalho!",
+  },
+  {
+    name: "Tatiana Botelho",
+    rating: 5,
+    image: "assets/reviews/review-tatiana-botelho.png",
+    source: "Google",
+    text: "A comunicação é aberta e transparente, a honestidade está presente em todo o processo, a criatividade faz toda a diferença e a pontualidade é impecável. Mesmo eu estando nos Estados Unidos, eles fazem tudo acontecer de forma organizada e eficiente, tornando a distância um detalhe. Foi uma experiência muito positiva e recomendo a empresa com toda a confiança.",
+  },
+  {
+    name: "Brumanus",
+    rating: 5,
+    image: "assets/reviews/review-brumanus.png",
+    source: "Google",
+    text: "Excelente trabalho! O Gustavo e a Grazi prestaram um serviço de produção digital de altíssima qualidade para a Brumanus. Profissional competente, atencioso e comprometido com a entrega. Ficamos muito satisfeitos com o resultado e recomendamos seus serviços com total confiança!",
+  },
+  {
+    name: "Mauro Satter",
+    rating: 5,
+    image: "assets/reviews/review-mauro-satter.png",
+    source: "Google",
+    text: "Das melhores possíveis!! Equipe competente e que não somente vende um serviço, mas sim, presta um serviço com toda maestria... sucesso!",
+  },
+  {
+    name: "Wanderson Souza",
+    rating: 5,
+    image: "assets/reviews/review-wanderson-souza.png",
+    source: "Google",
+    text: "Contamos com o trabalho da Veic Videos já há quase 2 anos. As entregas são excelentes, sempre nos atendem da melhor maneira possível. Muito atenciosos e com foco no resultado. São realmente parceiros do nosso negócio. Indico com toda certeza.",
+  },
+];
+
 const body = document.body;
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelectorAll(".site-nav a");
@@ -385,6 +445,11 @@ const portfolioCarousel = document.querySelector("#portfolioCarousel");
 const portfolioDots = document.querySelector("#portfolioDots");
 const portfolioPrev = document.querySelector("#portfolioPrev");
 const portfolioNext = document.querySelector("#portfolioNext");
+const googleReviewsCarousel = document.querySelector("#googleReviewsCarousel");
+const googleReviewsDots = document.querySelector("#googleReviewsDots");
+const googleReviewsPrev = document.querySelector("#googleReviewsPrev");
+const googleReviewsNext = document.querySelector("#googleReviewsNext");
+const googleReviewsLink = document.querySelector("#googleReviewsLink");
 const momentDots = document.querySelector("#momentDots");
 const faqList = document.querySelector("#faqList");
 const faqToggle = document.querySelector("#faqToggle");
@@ -420,6 +485,10 @@ let portfolioDragLastY = 0;
 let portfolioPointerId = null;
 let portfolioPointerTarget = null;
 let suppressPortfolioClick = false;
+let googleReviewsSlideIndex = 0;
+let googleReviewsTimer = null;
+let googleReviewsCardsPerSlide = 1;
+let googleReviewsUserPaused = false;
 let mobileDiagnosticCloseTimer = null;
 let youtubeApiPromise = null;
 let activeYoutubePlayer = null;
@@ -724,6 +793,177 @@ function escapeHtml(value = "") {
     .replace(/'/g, "&#039;");
 }
 
+function getReviewInitials(name = "") {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (!parts.length) return "GV";
+  return parts.slice(0, 2).map((part) => part[0]).join("").toUpperCase();
+}
+
+function reviewImageUrl(path = "") {
+  return `${path}?v=${SITE_ASSET_VERSION}`;
+}
+
+function getGoogleReviewsCardsPerSlide() {
+  if (window.matchMedia("(min-width: 760px)").matches) return 2;
+  return 1;
+}
+
+function makeGoogleReviewGroups() {
+  const cardsPerSlide = getGoogleReviewsCardsPerSlide();
+  const groups = [];
+  for (let i = 0; i < GOOGLE_REVIEWS.length; i += cardsPerSlide) {
+    groups.push(GOOGLE_REVIEWS.slice(i, i + cardsPerSlide));
+  }
+  return groups;
+}
+
+function googleReviewCard(review, index) {
+  const initials = getReviewInitials(review.name);
+  const safeName = escapeHtml(review.name);
+  const safeText = escapeHtml(review.text);
+  const safeImage = escapeHtml(reviewImageUrl(review.image));
+  const ratingLabel = `${review.rating}/5`;
+  return `
+    <article class="google-review-card" data-review-card>
+      <div class="google-review-top">
+        <div class="google-review-avatar is-fallback" data-initials="${initials}">
+          <span aria-hidden="true">${initials}</span>
+          <img src="${safeImage}" alt="Foto de ${safeName}, avaliação no Google" width="300" height="300" loading="lazy" decoding="async">
+        </div>
+        <div class="google-review-name">
+          <h3>${safeName}</h3>
+          <small>Avaliação no ${escapeHtml(review.source)}</small>
+        </div>
+      </div>
+      <div class="google-review-stars" aria-label="${review.rating} de 5 estrelas">
+        <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <small>${ratingLabel}</small>
+      </div>
+      <p class="google-review-text" id="googleReviewText${index}">${safeText}</p>
+    </article>
+  `;
+}
+
+function renderGoogleReviews() {
+  if (!googleReviewsCarousel || !googleReviewsDots) return;
+  googleReviewsCardsPerSlide = getGoogleReviewsCardsPerSlide();
+  const groups = makeGoogleReviewGroups();
+  googleReviewsSlideIndex = Math.min(googleReviewsSlideIndex, groups.length - 1);
+
+  googleReviewsCarousel.innerHTML = `
+    <div class="google-reviews-track" style="transform: translateX(-${googleReviewsSlideIndex * 100}%);">
+      ${groups.map((group, groupIndex) => `
+        <div class="google-reviews-slide" data-review-slide="${groupIndex}">
+          ${group.map((review, reviewIndex) => googleReviewCard(review, groupIndex * googleReviewsCardsPerSlide + reviewIndex)).join("")}
+        </div>
+      `).join("")}
+    </div>
+  `;
+
+  googleReviewsDots.innerHTML = groups.map((_, index) => `
+    <button class="google-reviews-dot ${index === googleReviewsSlideIndex ? "active" : ""}" type="button" data-review-slide="${index}" aria-label="Ver avaliações ${index + 1}"></button>
+  `).join("");
+
+  googleReviewsCarousel.querySelectorAll(".google-review-avatar img").forEach((image) => {
+    image.addEventListener("load", () => {
+      image.closest(".google-review-avatar")?.classList.remove("is-fallback");
+    }, { once: true });
+    image.addEventListener("error", () => {
+      image.remove();
+    }, { once: true });
+  });
+}
+
+function goToGoogleReviewsSlide(index) {
+  if (!googleReviewsCarousel || !googleReviewsDots) return;
+  const total = makeGoogleReviewGroups().length;
+  googleReviewsSlideIndex = (index + total) % total;
+  const track = googleReviewsCarousel.querySelector(".google-reviews-track");
+  if (track) {
+    track.style.transform = `translateX(-${googleReviewsSlideIndex * 100}%)`;
+    track.querySelector(`[data-review-slide="${googleReviewsSlideIndex}"]`)?.querySelectorAll(".google-review-card").forEach((card) => {
+      card.classList.add("revealed");
+    });
+  }
+  googleReviewsDots.querySelectorAll(".google-reviews-dot").forEach((dot, dotIndex) => {
+    dot.classList.toggle("active", dotIndex === googleReviewsSlideIndex);
+  });
+}
+
+function stopGoogleReviewsCarousel({ userPaused = false } = {}) {
+  window.clearInterval(googleReviewsTimer);
+  googleReviewsTimer = null;
+  if (userPaused) googleReviewsUserPaused = true;
+}
+
+function startGoogleReviewsCarousel() {
+  if (!googleReviewsCarousel || window.matchMedia("(prefers-reduced-motion: reduce)").matches || googleReviewsUserPaused) return;
+  window.clearInterval(googleReviewsTimer);
+  googleReviewsTimer = window.setInterval(() => {
+    goToGoogleReviewsSlide(googleReviewsSlideIndex + 1);
+  }, 5000);
+}
+
+function trackGoogleReviewsClick(event) {
+  if (!googleReviewsLink) return;
+  const link = googleReviewsLink.getAttribute("href") || "";
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "click_google_reviews",
+    event_name: "click_google_reviews",
+    section_name: "Avaliações",
+    button_text: googleReviewsLink.textContent.trim(),
+    destination_url: link,
+    page_path: window.location.pathname,
+  });
+  if (link === GOOGLE_REVIEWS_LINK_PLACEHOLDER) {
+    event.preventDefault();
+  }
+}
+
+function setupGoogleReviewsCarousel() {
+  if (!googleReviewsCarousel || !googleReviewsDots) return;
+
+  googleReviewsCarousel.addEventListener("mouseenter", () => stopGoogleReviewsCarousel());
+  googleReviewsCarousel.addEventListener("mouseleave", () => startGoogleReviewsCarousel());
+  googleReviewsCarousel.addEventListener("focusin", () => stopGoogleReviewsCarousel());
+
+  googleReviewsCarousel.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    stopGoogleReviewsCarousel({ userPaused: true });
+    goToGoogleReviewsSlide(googleReviewsSlideIndex + (event.key === "ArrowRight" ? 1 : -1));
+  });
+
+  googleReviewsPrev?.addEventListener("click", () => {
+    stopGoogleReviewsCarousel({ userPaused: true });
+    goToGoogleReviewsSlide(googleReviewsSlideIndex - 1);
+  });
+
+  googleReviewsNext?.addEventListener("click", () => {
+    stopGoogleReviewsCarousel({ userPaused: true });
+    goToGoogleReviewsSlide(googleReviewsSlideIndex + 1);
+  });
+
+  googleReviewsDots.addEventListener("click", (event) => {
+    const dot = event.target.closest(".google-reviews-dot");
+    if (!dot) return;
+    stopGoogleReviewsCarousel({ userPaused: true });
+    goToGoogleReviewsSlide(Number(dot.dataset.reviewSlide));
+  });
+
+  googleReviewsLink?.addEventListener("click", trackGoogleReviewsClick);
+
+  window.addEventListener("resize", () => {
+    const nextCardsPerSlide = getGoogleReviewsCardsPerSlide();
+    if (nextCardsPerSlide === googleReviewsCardsPerSlide) return;
+    renderGoogleReviews();
+    goToGoogleReviewsSlide(0);
+  });
+
+  startGoogleReviewsCarousel();
+}
+
 function renderPills(target, pills) {
   target.innerHTML = pills.map((pill) => `<span>${pill}</span>`).join("");
 }
@@ -858,7 +1098,8 @@ function renderFaq() {
 function setupRevealAnimations() {
   const typeCards = document.querySelectorAll(".type-grid article");
   const processCards = document.querySelectorAll(".process-rail article");
-  const cards = [...typeCards, ...processCards];
+  const reviewCards = document.querySelectorAll(".google-review-card");
+  const cards = [...typeCards, ...processCards, ...reviewCards];
   if (!("IntersectionObserver" in window)) {
     cards.forEach((card) => card.classList.add("revealed"));
     return;
@@ -1343,6 +1584,8 @@ animateFeatured();
 renderPortfolio();
 setupPortfolioDrag();
 startPortfolioCarousel();
+renderGoogleReviews();
+setupGoogleReviewsCarousel();
 renderMoment(0);
 renderRecommendation(0);
 if (window.matchMedia("(min-width: 760px)").matches) {
