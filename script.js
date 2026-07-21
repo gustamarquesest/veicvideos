@@ -1,5 +1,4 @@
 const SITE_ASSET_VERSION = "20260721-seo-indexacao-1";
-const GOOGLE_REVIEWS_LINK_PLACEHOLDER = "COLE_AQUI_O_LINK_DAS_AVALIACOES_DO_GOOGLE";
 
 const portfolioDetailPages = {
   cPl8z5m_nwY: "portfolio/video-apresentacao-cineart.html",
@@ -916,7 +915,7 @@ function trackGoogleReviewsClick(event) {
     destination_url: link,
     page_path: window.location.pathname,
   });
-  if (link === GOOGLE_REVIEWS_LINK_PLACEHOLDER) {
+  if (!link || link === "#") {
     event.preventDefault();
   }
 }
