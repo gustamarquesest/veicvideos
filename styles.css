@@ -623,6 +623,216 @@ h3,
   line-height: 1.15;
 }
 
+.video-card-copy {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.video-detail-link {
+  width: fit-content;
+  color: var(--gold);
+  font-size: .74rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.video-detail-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.portfolio-detail-page {
+  background: var(--night);
+}
+
+.portfolio-detail-main {
+  overflow: visible;
+}
+
+.portfolio-detail-hero {
+  padding: 132px 0 64px;
+  border-bottom: 1px solid var(--line);
+  background: var(--night);
+}
+
+.portfolio-detail-inner,
+.portfolio-detail-info-inner,
+.portfolio-detail-footer-inner {
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.portfolio-detail-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
+  gap: 36px;
+  align-items: center;
+}
+
+.portfolio-detail-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.portfolio-detail-copy h1 {
+  max-width: 840px;
+  margin: 0;
+  color: var(--cream);
+  font-family: "Archivo Black", Impact, "Arial Black", sans-serif;
+  font-size: 4.8rem;
+  line-height: .9;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.portfolio-detail-copy .lead {
+  max-width: 660px;
+  margin: 0;
+}
+
+.portfolio-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.portfolio-detail-video {
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(255,182,0,.24);
+  border-radius: var(--radius);
+  background: #000;
+  box-shadow: 0 24px 72px rgba(0,0,0,.3);
+}
+
+.portfolio-detail-video.is-vertical {
+  width: min(380px, 100%);
+  justify-self: center;
+  aspect-ratio: 9 / 16;
+}
+
+.portfolio-detail-video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.portfolio-detail-info {
+  padding: 56px 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.portfolio-detail-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.portfolio-detail-info article,
+.portfolio-detail-thumb {
+  margin: 0;
+  padding: 22px;
+  border: 1px solid var(--dark-line);
+  border-radius: var(--radius);
+  background: rgba(19,18,16,.03);
+}
+
+.portfolio-detail-info span,
+.portfolio-detail-thumb figcaption {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.portfolio-detail-info p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.portfolio-detail-thumb img {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+.portfolio-detail-footer {
+  padding: 46px 0 64px;
+  border-top: 1px solid var(--line);
+  background: var(--night);
+}
+
+.portfolio-detail-footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.portfolio-detail-footer p {
+  max-width: 620px;
+  margin: 0;
+  color: rgba(254,251,243,.78);
+  line-height: 1.45;
+}
+
+@media (max-width: 980px) {
+  .portfolio-detail-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-detail-copy h1 {
+    font-size: 3.6rem;
+  }
+
+  .portfolio-detail-video.is-vertical {
+    justify-self: start;
+  }
+
+  .portfolio-detail-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-detail-hero {
+    padding: 112px 0 44px;
+  }
+
+  .portfolio-detail-copy h1 {
+    font-size: 2.55rem;
+  }
+
+  .portfolio-detail-actions .btn,
+  .portfolio-detail-footer .btn {
+    width: 100%;
+  }
+
+  .portfolio-detail-video.is-vertical {
+    width: min(310px, 100%);
+    justify-self: center;
+  }
+
+  .portfolio-detail-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-detail-footer-inner {
+    align-items: stretch;
+  }
+}
+
 .featured-rail .video-card-tag {
   display: inline-flex;
   width: fit-content;
@@ -687,7 +897,7 @@ h3,
   position: relative;
   background:
     linear-gradient(rgba(254,251,243,.58), rgba(254,251,243,.62)),
-    url("assets/capa.jpeg?v=20260711-google-reviews-1") center / cover no-repeat;
+    url("assets/capa.jpeg?v=20260720-seo-video-1") center / cover no-repeat;
 }
 
 .portfolio {

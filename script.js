@@ -1,4 +1,13 @@
-const SITE_ASSET_VERSION = "20260711-google-reviews-1";
+const SITE_ASSET_VERSION = "20260720-seo-video-1";
+const GOOGLE_REVIEWS_LINK_PLACEHOLDER = "COLE_AQUI_O_LINK_DAS_AVALIACOES_DO_GOOGLE";
+
+const portfolioDetailPages = {
+  cPl8z5m_nwY: "portfolio/video-apresentacao-cineart.html",
+  AVlMyYiXCCk: "portfolio/case-grupo-avante-meet-tecnologia.html",
+  BgJzvmtNZP4: "portfolio/video-evento-circuito-cultural-barreiro.html",
+  aC_lpOFyDJE: "portfolio/video-produto-confiber.html",
+  rsau38g08H0: "portfolio/video-anuncio-betim-futebol.html",
+};
 
 const AnalyticsManager = (() => {
   let initialized = false;
@@ -585,13 +594,20 @@ function videoButton(video, className = "video-card-media") {
   `;
 }
 
+function videoDetailLink(video) {
+  const detailUrl = portfolioDetailPages[video.id];
+  if (!detailUrl) return "";
+  return `<a class="video-detail-link" href="${detailUrl}" aria-label="Ver detalhes do projeto ${video.title}">Ver detalhes do projeto</a>`;
+}
+
 function card(video, extraClass = "") {
   return `
     <article class="video-card ${video.o === "horizontal" ? "horizontal" : ""} ${extraClass}">
       ${videoButton(video)}
-      <div>
+      <div class="video-card-copy">
         <span class="video-card-tag">${video.tag}</span>
         <h3 class="video-card-title">${video.title}</h3>
+        ${videoDetailLink(video)}
       </div>
     </article>
   `;
@@ -732,9 +748,10 @@ function renderPortfolio() {
           ${block.map((video) => `
             <article class="work-card ${video.o === "horizontal" ? "horizontal" : ""}">
               ${videoButton(video)}
-              <div>
+              <div class="video-card-copy">
                 <span class="video-card-tag">${video.tag}</span>
                 <h3 class="video-card-title">${video.title}</h3>
+                ${videoDetailLink(video)}
               </div>
             </article>
           `).join("")}
@@ -897,7 +914,7 @@ function trackGoogleReviewsClick(event) {
     destination_url: link,
     page_path: window.location.pathname,
   });
-  if (link === "COLE_AQUI_O_LINK_DAS_AVALIACOES_DO_GOOGLE") {
+  if (link === GOOGLE_REVIEWS_LINK_PLACEHOLDER) {
     event.preventDefault();
   }
 }
