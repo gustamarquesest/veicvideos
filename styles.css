@@ -652,52 +652,75 @@ h3,
   overflow: visible;
 }
 
+.portfolio-detail-top {
+  width: min(1120px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 28px 0 14px;
+}
+
+.portfolio-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(254,251,243,.82);
+  font-size: .82rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.portfolio-back-link:hover,
+.portfolio-back-link:focus-visible {
+  color: var(--gold);
+}
+
 .portfolio-detail-hero {
-  padding: 132px 0 64px;
-  border-bottom: 1px solid var(--line);
+  padding: 30px 0 34px;
+  border-bottom: 0;
   background: var(--night);
 }
 
 .portfolio-detail-inner,
 .portfolio-detail-info-inner,
 .portfolio-detail-footer-inner {
-  width: min(1180px, calc(100% - 36px));
+  width: min(1120px, calc(100% - 36px));
   margin: 0 auto;
 }
 
 .portfolio-detail-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
-  gap: 36px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 26px;
+  align-items: start;
 }
 
 .portfolio-detail-copy {
   display: grid;
-  gap: 18px;
+  max-width: 780px;
+  gap: 14px;
 }
 
 .portfolio-detail-copy h1 {
-  max-width: 840px;
+  max-width: 760px;
   margin: 0;
   color: var(--cream);
   font-family: "Archivo Black", Impact, "Arial Black", sans-serif;
-  font-size: 4.8rem;
-  line-height: .9;
+  font-size: clamp(2.35rem, 6vw, 5.2rem);
+  line-height: .92;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .portfolio-detail-copy .lead {
-  max-width: 660px;
+  max-width: 680px;
   margin: 0;
+  color: rgba(254,251,243,.78);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.55;
 }
 
 .portfolio-detail-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 10px;
+  display: none;
 }
 
 .portfolio-detail-video {
@@ -711,7 +734,7 @@ h3,
 }
 
 .portfolio-detail-video.is-vertical {
-  width: min(380px, 100%);
+  width: min(460px, 100%);
   justify-self: center;
   aspect-ratio: 9 / 16;
 }
@@ -723,24 +746,31 @@ h3,
 }
 
 .portfolio-detail-info {
-  padding: 56px 0;
-  background: var(--paper);
-  color: var(--ink);
+  padding: 0 0 18px;
+  background: var(--night);
+  color: var(--cream);
 }
 
 .portfolio-detail-info-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 22px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .portfolio-detail-info article,
 .portfolio-detail-thumb {
   margin: 0;
-  padding: 22px;
-  border: 1px solid var(--dark-line);
-  border-radius: var(--radius);
-  background: rgba(19,18,16,.03);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.portfolio-detail-thumb {
+  display: none;
 }
 
 .portfolio-detail-info span,
@@ -756,7 +786,7 @@ h3,
 
 .portfolio-detail-info p {
   margin: 0;
-  color: var(--ink);
+  color: rgba(254,251,243,.82);
   font-size: 1rem;
   line-height: 1.45;
 }
@@ -767,8 +797,8 @@ h3,
 }
 
 .portfolio-detail-footer {
-  padding: 46px 0 64px;
-  border-top: 1px solid var(--line);
+  padding: 12px 0 62px;
+  border-top: 0;
   background: var(--night);
 }
 
@@ -787,34 +817,38 @@ h3,
   line-height: 1.45;
 }
 
+.portfolio-detail-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.portfolio-detail-footer .btn-primary {
+  color: var(--gold);
+  background: transparent;
+  border-color: rgba(255,182,0,.42);
+}
+
 @media (max-width: 980px) {
-  .portfolio-detail-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .portfolio-detail-copy h1 {
-    font-size: 3.6rem;
-  }
-
-  .portfolio-detail-video.is-vertical {
-    justify-self: start;
-  }
-
   .portfolio-detail-info-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 640px) {
+  .portfolio-detail-top {
+    padding-top: 22px;
+  }
+
   .portfolio-detail-hero {
-    padding: 112px 0 44px;
+    padding: 22px 0 28px;
   }
 
   .portfolio-detail-copy h1 {
-    font-size: 2.55rem;
+    font-size: 2.45rem;
   }
 
-  .portfolio-detail-actions .btn,
   .portfolio-detail-footer .btn {
     width: 100%;
   }
