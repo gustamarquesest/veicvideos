@@ -1,4 +1,4 @@
-const SITE_ASSET_VERSION = "20260720-seo-video-1";
+const SITE_ASSET_VERSION = "20260721-seo-indexacao-1";
 const GOOGLE_REVIEWS_LINK_PLACEHOLDER = "COLE_AQUI_O_LINK_DAS_AVALIACOES_DO_GOOGLE";
 
 const portfolioDetailPages = {
@@ -497,48 +497,48 @@ const tapMoveLimit = 10;
 
 const faqItems = [
   {
-    q: "Quanto custa um vídeo?",
-    a: "Cada projeto é orçado individualmente conforme os objetivos do negócio, a complexidade da produção e os resultados esperados. Antes de propor uma solução, buscamos entender o momento da empresa e quais vídeos geram mais impacto para sua comunicação.",
+    q: "Qual produtora de vídeo contratar em BH?",
+    a: "Procure uma produtora que entenda o objetivo comercial do vídeo, direcione a captação e entregue materiais úteis para site, redes sociais, anúncios, WhatsApp e eventos. A Veic Vídeos atua em Belo Horizonte com produção audiovisual para negócios.",
   },
   {
-    q: "Quais problemas os vídeos podem ajudar a resolver no meu negócio?",
-    a: "Os vídeos podem fortalecer presença digital, apresentar a empresa de forma profissional, explicar produtos e serviços, facilitar o trabalho comercial, gerar confiança, produzir conteúdo para Instagram, YouTube e LinkedIn, integrar colaboradores, reduzir dúvidas recorrentes e melhorar a experiência do cliente.",
+    q: "A Veic Vídeos atende empresas em Belo Horizonte?",
+    a: "Sim. Atendemos empresas em Belo Horizonte, região metropolitana, outras cidades de Minas Gerais e projetos no Brasil mediante agendamento prévio.",
   },
   {
     q: "Quais tipos de vídeo a Veic Vídeos produz?",
-    a: "Produzimos vídeos institucionais, apresentação de produtos e serviços, conteúdo para redes sociais, cases de sucesso, vídeos comerciais, VSL, anúncios, treinamentos, integração de colaboradores, tutoriais, onboarding, vídeos para experiência do cliente, eventos, feiras e ações corporativas.",
+    a: "Produzimos vídeos de apresentação de negócio, vídeo institucional, produtos e serviços, anúncios, conteúdos, depoimentos, cases de sucesso, vídeos para RH, comunicação interna e cobertura de eventos corporativos e culturais.",
   },
   {
-    q: "O que significa estruturar a comunicação através do vídeo?",
-    a: "Significa identificar quais vídeos fazem sentido para o momento atual da empresa e para cada etapa da jornada do cliente ou da comunicação interna. Nem toda empresa precisa dos mesmos vídeos; por isso buscamos entender a realidade do negócio antes de definir prioridades.",
+    q: "Vocês produzem vídeos para anúncios?",
+    a: "Sim. Criamos vídeos para campanhas, anúncios, reels, shorts e peças de divulgação com mensagem direta e formato adequado para o canal de distribuição.",
   },
   {
-    q: "Minha empresa precisa produzir todos esses vídeos?",
-    a: "Não. Cada empresa possui um nível diferente de maturidade e necessidades diferentes de comunicação. Algumas precisam começar apresentando produtos e serviços, outras precisam gerar demanda, fortalecer vendas, treinar equipes ou melhorar a experiência do cliente.",
+    q: "Vocês produzem vídeo institucional ou vídeo de apresentação?",
+    a: "Sim. Produzimos vídeos institucionais e vídeos de apresentação para explicar a empresa, seus diferenciais, produtos, serviços e contexto de atuação.",
   },
   {
-    q: "Vocês também criam Landing Pages?",
-    a: "Sim. Além da produção dos vídeos, também desenvolvemos landing pages de apresentação para empresas que desejam fortalecer presença digital, ser encontradas no Google e apresentar produtos e serviços de forma mais profissional. A entrega principal continua sendo audiovisual.",
+    q: "Vocês fazem cobertura de eventos corporativos?",
+    a: "Sim. Registramos eventos corporativos, feiras, encontros, ações internas e festivais culturais para gerar conteúdo de divulgação, memória e relacionamento.",
+  },
+  {
+    q: "Vocês produzem vídeos para RH e comunicação interna?",
+    a: "Sim. Produzimos vídeos para integração, treinamentos, comunicados internos, endomarketing, processos e cultura organizacional.",
+  },
+  {
+    q: "Quanto custa produzir um vídeo para empresa?",
+    a: "O investimento depende do objetivo, formato, duração, número de vídeos, complexidade da gravação e edição. Antes do orçamento, entendemos o momento da empresa e a função do vídeo.",
+  },
+  {
+    q: "Como saber qual vídeo minha empresa precisa primeiro?",
+    a: "O primeiro passo é mapear o desafio principal: apresentar melhor a empresa, vender mais, gerar confiança, treinar equipe, divulgar um produto ou registrar um evento. A partir disso, priorizamos o vídeo com maior impacto.",
   },
   {
     q: "Minha empresa ainda não produz vídeos. Por onde começar?",
-    a: "Na maioria dos casos, recomendamos começar pelos vídeos que ajudam a apresentar a empresa, seus produtos, serviços e diferenciais. Muitas empresas ainda dependem de explicações repetitivas, catálogos ou PDFs; nesses casos, uma landing page com vídeos de apresentação pode ser um bom primeiro passo.",
-  },
-  {
-    q: "Como funciona o processo de trabalho?",
-    a: "Nosso processo acontece em cinco etapas: Diagnóstico, Mapeamento, Priorização, Produção com Direção e Evolução. Assim, cada vídeo nasce com uma função clara dentro da comunicação do negócio.",
+    a: "Na maioria dos casos, recomendamos começar pelo vídeo que ajuda a apresentar a empresa, seus produtos, serviços e diferenciais com clareza.",
   },
   {
     q: "Preciso ter experiência em frente às câmeras?",
-    a: "Não. Orientamos clientes e equipes durante toda a gravação para que consigam transmitir sua mensagem com naturalidade e segurança, mesmo sem experiência anterior.",
-  },
-  {
-    q: "Vocês atendem fora de Belo Horizonte?",
-    a: "Sim. Atendemos Belo Horizonte, região metropolitana, outras cidades de Minas Gerais e projetos em todo o Brasil mediante agendamento prévio.",
-  },
-  {
-    q: "Em quanto tempo os vídeos ficam prontos?",
-    a: "O prazo varia conforme o tipo de projeto, quantidade de vídeos e complexidade da produção. Após o diagnóstico inicial, apresentamos um cronograma claro com etapas de gravação, edição e entrega.",
+    a: "Não. Orientamos clientes e equipes durante toda a gravação para que consigam transmitir sua mensagem com naturalidade e segurança.",
   },
 ];
 
