@@ -203,17 +203,21 @@ const manualThumbs = {
 };
 
 const featuredVideos = [
-  { id: "rsau38g08H0", p: "youtube", o: "vertical", tag: "Anúncio de Patrocínio", title: "Betim Futebol" },
   { id: "cPl8z5m_nwY", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Cineart" },
-  { id: "t3HKRTObtrU", p: "youtube", o: "vertical", tag: "Backstage + Case de Sucesso", title: "Cineart · Meet Tecnologia" },
-  { id: "AVlMyYiXCCk", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Grupo Avante · Meet Tecnologia" },
+  { id: "rsau38g08H0", p: "youtube", o: "vertical", tag: "Anúncio de Patrocínio", title: "Betim Futebol" },
   { id: "t2jOdfkf1n0", p: "youtube", o: "vertical", tag: "Campanha de Marketing", title: "Betim Vs Cruzeiro" },
-  { id: "CgfEWgE_8Aw", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Biologistica · Meet Tecnologia" },
   { id: "jeY8AvM-iUY", p: "youtube", o: "vertical", tag: "Treinamento NR", title: "Registro da ação" },
   { id: "zpbKSZBjGB8", p: "youtube", o: "vertical", tag: "Campanha", title: "Conselho da Massa" },
+  { id: "AVlMyYiXCCk", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Grupo Avante · Meet Tecnologia" },
   { id: "1195816891", p: "vimeo", o: "vertical", tag: "Registro do Festival", title: "Mangalarga Marchador" },
   { id: "1194588209", p: "vimeo", o: "vertical", tag: "Divulgação Dia dos Namorados", title: "Marcos Catarina canta Vander Lee" },
   { id: "MI6pCyYpMlc", p: "youtube", o: "vertical", tag: "Anúncio de Promoção", title: "Confiber · Cacau Show" },
+  { id: "f-1-GuYiWyw", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Tour no Barreiro" },
+  { id: "CgfEWgE_8Aw", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Biologistica · Meet Tecnologia" },
+  { id: "4aslnOTzXpk", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "ROTA IUS Edição Mineração" },
+  { id: "cIyIuvIzV0g", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Minas Canta Vander Lee" },
+  { id: "qnQ3ddtiaXE", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Loja do Galo" },
+  { id: "5WfArSZJtqQ", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Projeto Aula de Violino" },
 ];
 
 const allVideos = [
@@ -559,7 +563,6 @@ function card(video, extraClass = "") {
       <div class="video-card-copy">
         <span class="video-card-tag">${video.tag}</span>
         <h3 class="video-card-title">${video.title}</h3>
-        ${videoDetailLink(video)}
       </div>
     </article>
   `;
