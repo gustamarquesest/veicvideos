@@ -204,20 +204,20 @@ const manualThumbs = {
 };
 
 const featuredVideos = [
-  { id: "cPl8z5m_nwY", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Cineart" },
+  { id: "cPl8z5m_nwY", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Cineart - Meet Tecnologia" },
   { id: "rsau38g08H0", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Betim Futebol" },
-  { id: "f-1-GuYiWyw", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Tour no Barreiro" },
+  { id: "f-1-GuYiWyw", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Aniversário do Barreiro Passeio Turístico no Barreiro" },
   { id: "t2jOdfkf1n0", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Betim Vs Cruzeiro" },
   { id: "C3Atq_Dytb0", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Mês das Mães" },
   { id: "AVlMyYiXCCk", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Grupo Avante · Meet Tecnologia" },
   { id: "zpbKSZBjGB8", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Conselho da Massa" },
-  { id: "1195816891", p: "vimeo", o: "vertical", tag: "Minidocumentário", title: "Mangalarga Marchador" },
-  { id: "1224267195", p: "vimeo", o: "vertical", tag: "Minidocumentário", title: "ROTA IUS Edição Mineração" },
+  { id: "1195816891", p: "vimeo", o: "vertical", tag: "Minidocumentário", title: "Festival Nacional da Música Sertaneja Mangalarga Marchador" },
+  { id: "1224267195", p: "vimeo", o: "vertical", tag: "Minidocumentário", title: "Seminário Rota Ius Edição Mineração" },
   { id: "1194588209", p: "vimeo", o: "vertical", tag: "Campanha Publicitária", title: "Marcos Catarina canta Vander Lee" },
   { id: "CgfEWgE_8Aw", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Biologistica · Meet Tecnologia" },
   { id: "MI6pCyYpMlc", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Confiber · Cacau Show" },
-  { id: "cIyIuvIzV0g", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Minas Canta Vander Lee" },
-  { id: "qnQ3ddtiaXE", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Loja do Galo" },
+  { id: "cIyIuvIzV0g", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Aniversário do Barreiro Minas Canta Vander Lee" },
+  { id: "qnQ3ddtiaXE", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Confiber - Loja do Galo" },
   { id: "5WfArSZJtqQ", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Projeto Aula de Violino" },
 ];
 
@@ -416,6 +416,7 @@ const modalVideoWrap = document.querySelector("#modalVideoWrap");
 const modalDirectLink = document.querySelector("#modalDirectLink");
 const modalClose = document.querySelector(".modal-close");
 const modalBackdrop = document.querySelector(".modal-backdrop");
+let activeVideoUrlId = null;
 
 let portfolioSlideIndex = 0;
 let portfolioTimer = null;
@@ -663,6 +664,7 @@ function setupFeaturedDrag() {
           title: trigger.dataset.title,
           sound: true,
           sourceElement: trigger,
+          syncUrl: true,
         });
         window.setTimeout(() => { suppressFeaturedClick = false; }, 180);
       }
@@ -1333,12 +1335,68 @@ function loadYouTubeApi() {
 
 loadYouTubeApi();
 
-function openVideo({ id, platform, orientation, title, sound = false, sourceElement = null, track = true }) {
+function featuredVideoById(id) {
+  return featuredVideos.find((video) => video.id === id) || null;
+}
+
+function videoTitle(video) {
+  return `${video.tag} · ${video.title}`;
+}
+
+function videoUrlWithParam(id) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("video", id);
+  return url;
+}
+
+function videoUrlWithoutParam() {
+  const url = new URL(window.location.href);
+  url.searchParams.delete("video");
+  return url;
+}
+
+function syncVideoUrl(id) {
+  if (!id || !window.history?.pushState) return;
+  const url = new URL(window.location.href);
+  if (url.searchParams.get("video") === id) {
+    activeVideoUrlId = id;
+    return;
+  }
+  window.history.pushState({ ...(window.history.state || {}), videoModal: true, videoId: id }, "", videoUrlWithParam(id));
+  activeVideoUrlId = id;
+}
+
+function clearVideoUrl() {
+  if (!window.history?.replaceState) return;
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has("video")) return;
+  window.history.replaceState({ ...(window.history.state || {}), videoModal: false, videoId: null }, "", videoUrlWithoutParam());
+  activeVideoUrlId = null;
+}
+
+function openVideoFromUrl() {
+  const id = new URL(window.location.href).searchParams.get("video");
+  const video = id ? featuredVideoById(id) : null;
+  if (!video) return false;
+  openVideo({
+    id: video.id,
+    platform: video.p,
+    orientation: video.o,
+    title: videoTitle(video),
+    sound: true,
+    track: false,
+    syncUrl: false,
+  });
+  activeVideoUrlId = video.id;
+  return true;
+}
+function openVideo({ id, platform, orientation, title, sound = false, sourceElement = null, track = true, syncUrl = false }) {
   const isVimeo = platform === "vimeo";
   const directUrl = isVimeo ? `https://vimeo.com/${id}` : `https://www.youtube.com/watch?v=${id}`;
   if (track && window.AnalyticsManager) {
     window.AnalyticsManager.trackVideoOpen(sourceElement, { id, platform, orientation, title });
   }
+  if (syncUrl) syncVideoUrl(id);
   modalTitle.textContent = title || "Vídeo Veic";
   if (modalDirectLink) {
     modalDirectLink.href = directUrl;
@@ -1389,7 +1447,8 @@ function openVideo({ id, platform, orientation, title, sound = false, sourceElem
   });
 }
 
-function closeVideo() {
+function closeVideo({ syncUrl = true } = {}) {
+  if (syncUrl) clearVideoUrl();
   if (activeYoutubePlayer?.destroy) {
     try { activeYoutubePlayer.destroy(); } catch (error) {}
     activeYoutubePlayer = null;
@@ -1447,6 +1506,7 @@ document.addEventListener("click", (event) => {
       title: videoTrigger.dataset.title,
       sound: true,
       sourceElement: videoTrigger,
+      syncUrl: Boolean(videoTrigger.closest(".featured-marquee")),
     });
     return;
   }
@@ -1534,6 +1594,12 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeVideo();
 });
 
+window.addEventListener("popstate", () => {
+  if (openVideoFromUrl()) return;
+  if (modal.classList.contains("is-open")) closeVideo({ syncUrl: false });
+  activeVideoUrlId = null;
+});
+
 renderFeatured();
 setupFeaturedDrag();
 animateFeatured();
@@ -1551,3 +1617,4 @@ renderFaq();
 setupRevealAnimations();
 setupMomentMobileWheel();
 AnalyticsManager.init();
+openVideoFromUrl();
