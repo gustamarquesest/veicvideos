@@ -189,6 +189,7 @@ const manualThumbs = {
   t2jOdfkf1n0: "assets/thumbs/thumb-02-t2jOdfkf1n0.png.jpeg",
   1196950750: "assets/thumbs/thumb-03-1196950750.png.jpeg",
   1195816891: "assets/thumbs/thumb-17-1196948372.png.jpeg",
+  1224267195: "assets/thumbs/thumb-rota-ius-edicao-mineracao-1224267195.png",
   1194588209: "assets/thumbs/thumb-05-1194588209.png.jpeg",
   rsau38g08H0: "assets/thumbs/thumb-06-rsau38g08H0.png.jpeg",
   cPl8z5m_nwY: "assets/thumbs/thumb-07-cPl8z5m_nwY.png.jpeg",
