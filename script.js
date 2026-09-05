@@ -211,7 +211,7 @@ const featuredVideos = [
   { id: "AVlMyYiXCCk", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Grupo Avante · Meet Tecnologia" },
   { id: "zpbKSZBjGB8", p: "youtube", o: "vertical", tag: "Campanha", title: "Conselho da Massa" },
   { id: "1195816891", p: "vimeo", o: "vertical", tag: "Registro do Festival", title: "Mangalarga Marchador" },
-  { id: "4aslnOTzXpk", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "ROTA IUS Edição Mineração" },
+  { id: "1224267195", p: "vimeo", o: "vertical", tag: "Minidocumentário", title: "ROTA IUS Edição Mineração" },
   { id: "1194588209", p: "vimeo", o: "vertical", tag: "Divulgação Dia dos Namorados", title: "Marcos Catarina canta Vander Lee" },
   { id: "CgfEWgE_8Aw", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Biologistica · Meet Tecnologia" },
   { id: "MI6pCyYpMlc", p: "youtube", o: "vertical", tag: "Anúncio de Promoção", title: "Confiber · Cacau Show" },
