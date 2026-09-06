@@ -2495,6 +2495,24 @@ details p {
   cursor: pointer;
 }
 
+.modal-nav {
+  position: absolute;
+  top: 40%;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--night);
+  color: var(--gold);
+  font-size: 1.8rem;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.modal-nav-prev { left: 4px; }
+.modal-nav-next { right: 4px; }
+.modal-nav:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
 .modal-video-wrap {
   position: relative;
   overflow: hidden;

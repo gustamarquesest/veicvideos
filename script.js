@@ -185,13 +185,20 @@ const fixedYoutubeThumbs = {
 };
 
 const manualThumbs = {
+  "AVlMyYiXCCk": "assets/thumbs/thumb-grupo-avante-AVlMyYiXCCk.png",
+  "zpbKSZBjGB8": "assets/thumbs/thumb-conselho-massa-zpbKSZBjGB8.png",
+  "f-1-GuYiWyw": "assets/thumbs/thumb-tour-barreiro-f-1-GuYiWyw.png",
+  "5WfArSZJtqQ": "assets/thumbs/thumb-aula-violino-5WfArSZJtqQ.png",
+  "qnQ3ddtiaXE": "assets/thumbs/thumb-loja-galo-qnQ3ddtiaXE.png",
+  "cIyIuvIzV0g": "assets/thumbs/thumb-minas-canta-cIyIuvIzV0g.png",
+  "MI6pCyYpMlc": "assets/thumbs/thumb-cacau-show-MI6pCyYpMlc.png",
   gdJzWobbouw: "assets/thumbs/thumb-01-gdJzWobbouw.png.jpeg",
   t2jOdfkf1n0: "assets/thumbs/thumb-02-t2jOdfkf1n0.png.jpeg",
   1196950750: "assets/thumbs/thumb-03-1196950750.png.jpeg",
   1195816891: "assets/thumbs/thumb-17-1196948372.png.jpeg",
-  1224267195: "assets/thumbs/thumb-rota-ius-edicao-mineracao-1224267195.png",
+  "1224267195": "assets/thumbs/thumb-rota-ius-1224267195-print-7.png",
   1194588209: "assets/thumbs/thumb-05-1194588209.png.jpeg",
-  rsau38g08H0: "assets/thumbs/thumb-06-rsau38g08H0.png.jpeg",
+  "rsau38g08H0": "assets/thumbs/thumb-betim-rsau38g08H0.png",
   cPl8z5m_nwY: "assets/thumbs/thumb-07-cPl8z5m_nwY.png.jpeg",
   t3HKRTObtrU: "assets/thumbs/thumb-08-t3HKRTObtrU.png.jpeg",
   CgfEWgE_8Aw: "assets/thumbs/thumb-10-CgfEWgE_8Aw.png.jpeg",
@@ -207,7 +214,7 @@ const featuredVideos = [
   { id: "cPl8z5m_nwY", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Cineart - Meet Tecnologia" },
   { id: "rsau38g08H0", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Betim Futebol" },
   { id: "f-1-GuYiWyw", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Aniversário do Barreiro Passeio Turístico no Barreiro" },
-  { id: "t2jOdfkf1n0", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Betim Vs Cruzeiro" },
+  { id: "Lh0dqk9DdqI", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Aniversário do Barreiro Standup Thiago Carmona" },
   { id: "C3Atq_Dytb0", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Mês das Mães" },
   { id: "AVlMyYiXCCk", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Grupo Avante · Meet Tecnologia" },
   { id: "zpbKSZBjGB8", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Conselho da Massa" },
@@ -417,6 +424,10 @@ const modalDirectLink = document.querySelector("#modalDirectLink");
 const modalClose = document.querySelector(".modal-close");
 const modalBackdrop = document.querySelector(".modal-backdrop");
 let activeVideoUrlId = null;
+let activeFeaturedId = null;
+let videoOpenSequence = 0;
+const modalPrev = document.querySelector("#modalPrev");
+const modalNext = document.querySelector("#modalNext");
 
 let portfolioSlideIndex = 0;
 let portfolioTimer = null;
@@ -1386,11 +1397,19 @@ function openVideoFromUrl() {
     sound: true,
     track: false,
     syncUrl: false,
+    featured: true,
   });
   activeVideoUrlId = video.id;
   return true;
 }
-function openVideo({ id, platform, orientation, title, sound = false, sourceElement = null, track = true, syncUrl = false }) {
+function openVideo({ id, platform, orientation, title, sound = false, sourceElement = null, track = true, syncUrl = false, featured = false }) {
+  const sequence = ++videoOpenSequence;
+  activeFeaturedId = (featured || syncUrl) && featuredVideoById(id) ? id : null;
+  modalPrev.hidden = modalNext.hidden = !activeFeaturedId;
+  if (activeYoutubePlayer?.destroy) {
+    try { activeYoutubePlayer.destroy(); } catch (error) {}
+    activeYoutubePlayer = null;
+  }
   const isVimeo = platform === "vimeo";
   const directUrl = isVimeo ? `https://vimeo.com/${id}` : `https://www.youtube.com/watch?v=${id}`;
   if (track && window.AnalyticsManager) {
@@ -1416,7 +1435,7 @@ function openVideo({ id, platform, orientation, title, sound = false, sourceElem
 
   modalVideoWrap.innerHTML = `<div id="modalYoutubePlayer"></div>`;
   loadYouTubeApi().then(() => {
-    if (!modal.classList.contains("is-open")) return;
+    if (!modal.classList.contains("is-open") || sequence !== videoOpenSequence) return;
     if (activeYoutubePlayer?.destroy) activeYoutubePlayer.destroy();
     activeYoutubePlayer = new YT.Player("modalYoutubePlayer", {
       videoId: id,
@@ -1448,6 +1467,9 @@ function openVideo({ id, platform, orientation, title, sound = false, sourceElem
 }
 
 function closeVideo({ syncUrl = true } = {}) {
+  videoOpenSequence++;
+  activeFeaturedId = null;
+  modalPrev.hidden = modalNext.hidden = true;
   if (syncUrl) clearVideoUrl();
   if (activeYoutubePlayer?.destroy) {
     try { activeYoutubePlayer.destroy(); } catch (error) {}
@@ -1532,12 +1554,12 @@ function bindFeaturedArrow(button, direction) {
 bindFeaturedArrow(featuredLeft, -1);
 bindFeaturedArrow(featuredRight, 1);
 
-portfolioPrev.addEventListener("click", () => {
+portfolioPrev?.addEventListener("click", () => {
   goToPortfolioSlide(portfolioSlideIndex - 1);
   startPortfolioCarousel();
 });
 
-portfolioNext.addEventListener("click", () => {
+portfolioNext?.addEventListener("click", () => {
   goToPortfolioSlide(portfolioSlideIndex + 1);
   startPortfolioCarousel();
 });
@@ -1588,10 +1610,25 @@ faqToggle.addEventListener("click", () => {
   renderFaq();
 });
 
+function navigateFeaturedVideo(direction) {
+  if (!modal.classList.contains("is-open") || !activeFeaturedId) return;
+  const index = featuredVideos.findIndex(video => video.id === activeFeaturedId);
+  const video = featuredVideos[(index + direction + featuredVideos.length) % featuredVideos.length];
+  openVideo({ id: video.id, platform: video.p, orientation: video.o,
+    title: videoTitle(video), sound: true, syncUrl: true });
+}
+
+modalPrev.addEventListener("click", () => navigateFeaturedVideo(-1));
+modalNext.addEventListener("click", () => navigateFeaturedVideo(1));
 modalClose.addEventListener("click", closeVideo);
 modalBackdrop.addEventListener("click", closeVideo);
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeVideo();
+  if (!activeFeaturedId || event.target.closest("input, textarea, select, [contenteditable]")) return;
+  if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+    event.preventDefault();
+    navigateFeaturedVideo(event.key === "ArrowLeft" ? -1 : 1);
+  }
 });
 
 window.addEventListener("popstate", () => {
@@ -1603,9 +1640,11 @@ window.addEventListener("popstate", () => {
 renderFeatured();
 setupFeaturedDrag();
 animateFeatured();
-renderPortfolio();
-setupPortfolioDrag();
-startPortfolioCarousel();
+if (portfolioCarousel) {
+  renderPortfolio();
+  setupPortfolioDrag();
+  startPortfolioCarousel();
+}
 renderGoogleReviews();
 setupGoogleReviewsCarousel();
 renderMoment(0);
