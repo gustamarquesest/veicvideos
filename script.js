@@ -185,6 +185,7 @@ const fixedYoutubeThumbs = {
 };
 
 const manualThumbs = {
+  Lh0dqk9DdqI: "assets/thumbs/thumb-thiago-carmona-Lh0dqk9DdqI.png",
   "AVlMyYiXCCk": "assets/thumbs/thumb-grupo-avante-AVlMyYiXCCk.png",
   "zpbKSZBjGB8": "assets/thumbs/thumb-conselho-massa-zpbKSZBjGB8.png",
   "f-1-GuYiWyw": "assets/thumbs/thumb-tour-barreiro-f-1-GuYiWyw.png",
