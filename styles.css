@@ -505,6 +505,14 @@ h3,
   line-height: 1.28;
 }
 
+.hero-strip small {
+  display: block;
+  margin-top: 12px;
+  color: rgba(254,251,243,.72);
+  font-size: .78rem;
+  line-height: 1.45;
+}
+
 .hero-strip span,
 .video-card-tag,
 .process-rail span,
@@ -2649,6 +2657,10 @@ details p {
     grid-column: 1;
     grid-row: 3;
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-strip-wide {
+    grid-column: 1 / -1;
   }
 
   .hero-strip-title {

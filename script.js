@@ -257,8 +257,8 @@ const moments = [
     stage: "Apresentação",
     kicker: "Explicar quem é a empresa",
     desc: "Vídeos para apresentar a empresa, produtos, serviços e diferenciais com clareza.",
-    videos: ["Vídeo institucional", "Apresentação da empresa", "Produtos e serviços", "Demonstrações", "Landing Page com vídeo"],
-    where: "Site · Landing Page · WhatsApp · Apresentações comerciais · YouTube",
+    videos: ["Vídeo institucional", "Apresentação da empresa", "Produtos e serviços", "Demonstrações"],
+    where: "Site · WhatsApp · Apresentações comerciais · YouTube",
     examples: ["AVlMyYiXCCk", "aC_lpOFyDJE", "oDRUYh7xOBs"],
   },
   {
@@ -266,7 +266,7 @@ const moments = [
     kicker: "Gerar confiança e reduzir objeções",
     desc: "Cases, depoimentos e conteúdo de valor ajudam o cliente a confiar antes de decidir.",
     videos: ["Cases de sucesso", "Depoimentos", "Conteúdo educativo", "Autoridade", "Resultados alcançados"],
-    where: "Site · Instagram · YouTube · LinkedIn · Landing Page · E-mail",
+    where: "Site · Instagram · YouTube · LinkedIn · E-mail",
     examples: ["cPl8z5m_nwY", "CgfEWgE_8Aw", "fAzmIuYKra0"],
   },
   {
@@ -274,7 +274,7 @@ const moments = [
     kicker: "Facilitar a decisão de compra",
     desc: "Vídeos comerciais objetivos, propostas em vídeo e VSLs ajudam a eliminar a última resistência.",
     videos: ["VSL", "Vídeos comerciais", "Convite para demo", "Ofertas especiais", "Recuperação de leads"],
-    where: "WhatsApp · E-mail · Landing Page · Apresentações comerciais",
+    where: "WhatsApp · E-mail · Apresentações comerciais",
     examples: ["SIpWQ_e89oo", "3lea5v3Jhmg", "Q-Gt_kSUTEE"],
   },
   {
@@ -299,13 +299,13 @@ const recommendations = [
   {
     title: "Anúncios e geração de demanda",
     desc: "Vídeos para atrair pessoas certas e gerar oportunidades comerciais.",
-    pills: ["Anúncios Google Ads", "Anúncios Meta Ads", "Campanhas promocionais", "Demonstrações", "Landing Page com vídeo", "Lançamentos", "Produtos e serviços", "Teasers de impacto", "Vídeo institucional", "Vídeos para WhatsApp"],
+    pills: ["Anúncios Google Ads", "Anúncios Meta Ads", "Campanhas promocionais", "Demonstrações", "Lançamentos", "Produtos e serviços", "Teasers de impacto", "Vídeo institucional", "Vídeos para WhatsApp"],
     examples: ["rsau38g08H0", "Q-Gt_kSUTEE", "zpbKSZBjGB8"],
   },
   {
-    title: "Apresentação e presença digital",
+    title: "Apresentação e confiança",
     desc: "Vídeos para explicar quem é a empresa e facilitar o primeiro contato.",
-    pills: ["Apresentação da Equipe", "Apresentação do Negócio", "Bastidores / cultura", "Demonstrações", "Diferenciais", "Landing Page com vídeo", "Missão, visão, valores", "Produtos e serviços", "Soluções", "Vídeo institucional", "Vídeos para WhatsApp"],
+    pills: ["Apresentação da Equipe", "Apresentação do Negócio", "Bastidores / cultura", "Demonstrações", "Diferenciais", "Missão, visão, valores", "Produtos e serviços", "Soluções", "Vídeo institucional", "Vídeos para WhatsApp"],
     examples: ["AVlMyYiXCCk", "oDRUYh7xOBs", "aC_lpOFyDJE"],
   },
   {
