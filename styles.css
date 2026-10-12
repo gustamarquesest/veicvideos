@@ -505,6 +505,36 @@ h3,
   line-height: 1.28;
 }
 
+.hero-strip-summary {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.28;
+}
+
+.hero-strip-card.is-expanded .hero-strip-summary {
+  display: block;
+}
+
+.hero-strip-toggle {
+  margin: 8px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--gold);
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hero-strip-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
 .hero-strip small {
   display: block;
   margin-top: 12px;

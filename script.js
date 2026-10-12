@@ -1604,6 +1604,14 @@ document.addEventListener("click", (event) => {
   if (event.target.closest(".mobile-recommendation-close")) {
     closeMobileRecommendation({ animate: true });
   }
+
+  const heroStripToggle = event.target.closest(".hero-strip-toggle");
+  if (heroStripToggle) {
+    const card = heroStripToggle.closest(".hero-strip-card");
+    const isExpanded = card.classList.toggle("is-expanded");
+    heroStripToggle.setAttribute("aria-expanded", String(isExpanded));
+    heroStripToggle.textContent = isExpanded ? "Ver menos" : "Ver mais...";
+  }
 });
 
 faqToggle.addEventListener("click", () => {
