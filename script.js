@@ -186,7 +186,7 @@ const fixedYoutubeThumbs = {
 
 const manualThumbs = {
   Lh0dqk9DdqI: "assets/thumbs/thumb-thiago-carmona-Lh0dqk9DdqI.png",
-  "AVlMyYiXCCk": "assets/thumbs/thumb-grupo-avante-AVlMyYiXCCk.png",
+  "945mVTSGSxo": "assets/thumbs/thumb-grupo-avante-945mVTSGSxo.png",
   "zpbKSZBjGB8": "assets/thumbs/thumb-conselho-massa-zpbKSZBjGB8.png",
   "f-1-GuYiWyw": "assets/thumbs/thumb-tour-barreiro-f-1-GuYiWyw.png",
   "5WfArSZJtqQ": "assets/thumbs/thumb-aula-violino-5WfArSZJtqQ.png",
@@ -217,7 +217,7 @@ const featuredVideos = [
   { id: "f-1-GuYiWyw", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Aniversário do Barreiro Passeio Turístico no Barreiro" },
   { id: "Lh0dqk9DdqI", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Aniversário do Barreiro Standup Thiago Carmona" },
   { id: "C3Atq_Dytb0", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Mês das Mães" },
-  { id: "AVlMyYiXCCk", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Grupo Avante · Meet Tecnologia" },
+  { id: "945mVTSGSxo", p: "youtube", o: "vertical", tag: "Fortalecimento de Marca", title: "Grupo Avante · Meet Tecnologia" },
   { id: "zpbKSZBjGB8", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Conselho da Massa" },
   { id: "1195816891", p: "vimeo", o: "vertical", tag: "Minidocumentário", title: "Festival Nacional da Música Sertaneja Mangalarga Marchador" },
   { id: "1224267195", p: "vimeo", o: "vertical", tag: "Minidocumentário", title: "Seminário Rota Ius Edição Mineração" },
@@ -259,7 +259,7 @@ const moments = [
     desc: "Vídeos para apresentar a empresa, produtos, serviços e diferenciais com clareza.",
     videos: ["Vídeo institucional", "Apresentação da empresa", "Produtos e serviços", "Demonstrações"],
     where: "Site · WhatsApp · Apresentações comerciais · YouTube",
-    examples: ["AVlMyYiXCCk", "aC_lpOFyDJE", "oDRUYh7xOBs"],
+    examples: ["945mVTSGSxo", "aC_lpOFyDJE", "oDRUYh7xOBs"],
   },
   {
     stage: "Consideração",
@@ -306,7 +306,7 @@ const recommendations = [
     title: "Apresentação e confiança",
     desc: "Vídeos para explicar quem é a empresa e facilitar o primeiro contato.",
     pills: ["Apresentação da Equipe", "Apresentação do Negócio", "Bastidores / cultura", "Demonstrações", "Diferenciais", "Missão, visão, valores", "Produtos e serviços", "Soluções", "Vídeo institucional", "Vídeos para WhatsApp"],
-    examples: ["AVlMyYiXCCk", "oDRUYh7xOBs", "aC_lpOFyDJE"],
+    examples: ["945mVTSGSxo", "oDRUYh7xOBs", "aC_lpOFyDJE"],
   },
   {
     title: "Autoridade e conteúdo",
