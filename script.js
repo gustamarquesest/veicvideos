@@ -1607,7 +1607,7 @@ document.addEventListener("click", (event) => {
 
   const heroStripToggle = event.target.closest(".hero-strip-toggle");
   if (heroStripToggle) {
-    const card = heroStripToggle.closest(".hero-strip-card");
+    const card = heroStripToggle.closest(".hero-strip-card, .hero-strip-wide");
     const isExpanded = card.classList.toggle("is-expanded");
     heroStripToggle.setAttribute("aria-expanded", String(isExpanded));
     heroStripToggle.textContent = isExpanded ? "Ver menos" : "Ver mais...";

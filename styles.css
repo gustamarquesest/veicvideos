@@ -516,12 +516,16 @@ h3,
   line-height: 1.28;
 }
 
-.hero-strip-wide strong {
-  font-weight: 400;
+.hero-strip-wide .hero-strip-summary {
+  display: block;
 }
 
 .hero-strip-card.is-expanded .hero-strip-summary {
   display: block;
+}
+
+.hero-strip-wide .hero-strip-toggle {
+  display: none;
 }
 
 .hero-strip-toggle {
@@ -2948,6 +2952,19 @@ details p {
   .hero-strip article {
     min-width: 0;
     overflow-wrap: normal;
+  }
+
+  .hero-strip-wide .hero-strip-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+  }
+
+  .hero-strip-wide.is-expanded .hero-strip-summary {
+    display: block;
+  }
+
+  .hero-strip-wide .hero-strip-toggle {
+    display: inline-block;
   }
 
   .featured-rail {
