@@ -215,7 +215,7 @@ const featuredVideos = [
   { id: "cPl8z5m_nwY", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Cineart - Meet Tecnologia" },
   { id: "rsau38g08H0", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Betim Futebol" },
   { id: "f-1-GuYiWyw", p: "youtube", o: "vertical", tag: "Minidocumentário", title: "Aniversário do Barreiro Passeio Turístico no Barreiro" },
-  { id: "1235948131", p: "vimeo", o: "vertical", tag: "Vídeo Conceitual", title: "Meet Tecnologia | Suporte Técnico" },
+  { id: "1235948131", p: "vimeo", o: "vertical", tag: "Vídeo Conceitual", title: "Suporte Técnico" },
   { id: "C3Atq_Dytb0", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Mês das Mães" },
   { id: "AVlMyYiXCCk", p: "youtube", o: "horizontal", tag: "Case de Sucesso", title: "Grupo Avante · Meet Tecnologia" },
   { id: "zpbKSZBjGB8", p: "youtube", o: "vertical", tag: "Campanha Publicitária", title: "Conselho da Massa" },
