@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#131210">
+  <title>Briefing | Veic Vídeos</title>
+  <meta name="description" content="Conte sobre o negócio e fale das suas ideias para o seu próximo projeto audiovisual com a Veic Vídeos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/briefing/briefing.css?v=20261016-briefing-1">
+</head>
+<body>
+  <div class="briefing-shell">
+    <header class="briefing-header">
+      <a class="brand" href="/" aria-label="Voltar para a página inicial da Veic Vídeos">
+        <img src="/briefing/assets/logo-veic-amarelo-branco.png" alt="Veic Vídeos" width="1341" height="269">
+      </a>
+      <p>Briefing de projeto</p>
+    </header>
+
+    <main>
+      <section class="briefing-intro" aria-labelledby="briefing-title">
+        <img class="intro-mark mark-white" src="/briefing/assets/marca-branca.webp" alt="" aria-hidden="true">
+        <img class="intro-mark mark-gold" src="/briefing/assets/isotipo-amarelo.webp" alt="" aria-hidden="true">
+        <p class="kicker">BRIEFING</p>
+        <h1 id="briefing-title">Vamos dar forma<br>à sua ideia.</h1>
+        <p>Conte sobre o negócio e fale das suas ideias.</p>
+      </section>
+
+      <div class="progress-wrap" aria-label="Progresso do briefing">
+        <ol class="progress-steps">
+          <li class="is-active" data-progress="1"><span>01</span><strong>Visão Geral</strong></li>
+          <li data-progress="2"><span>02</span><strong>Identidade da Marca</strong></li>
+          <li data-progress="3"><span>03</span><strong>Definindo Objetivos</strong></li>
+        </ol>
+      </div>
+
+      <form id="briefingForm" action="https://formsubmit.co/comercial@veicvideos.com" method="POST">
+        <input type="hidden" name="_subject" value="Novo briefing recebido | Veic Vídeos">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_replyto" id="replyTo">
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="Nome completo" id="finalContactName">
+        <input type="hidden" name="E-mail de contato" id="finalContactEmail">
+        <input type="hidden" name="WhatsApp" id="finalContactPhone">
+
+        <section class="form-step is-active" data-step="1" aria-labelledby="step1-title">
+          <div class="section-heading"><span>01</span><div><h2 id="step1-title">Visão geral do cliente</h2><p>O que, por que, quem, quando e onde?</p></div></div>
+          <div class="question"><label for="clientName"><span>1</span>Nome do cliente</label><input id="clientName" name="01 - Nome do cliente" type="text" autocomplete="organization" required></div>
+          <div class="question"><label for="what"><span>2</span>O <em>QUE</em> você faz? Qual serviço ou produto vende?</label><textarea id="what" name="02 - O que faz / produto ou serviço" required></textarea></div>
+          <div class="question"><label for="why"><span>3</span><em>POR QUE</em> você faz o que faz? Quais a missão e os valores da empresa? Seus diferenciais e transformação que quer causar para seus clientes?</label><textarea id="why" name="03 - Por que faz / missão, valores e diferenciais" required></textarea></div>
+          <div class="question"><label for="audience"><span>4</span><em>QUEM</em> é o seu público? Comente sexo, faixa etária, dados demográficos, classe social e descrição da persona.</label><textarea id="audience" name="04 - Público / persona" required></textarea></div>
+          <div class="question"><label for="when"><span>5</span><em>QUANDO</em> esse trabalho precisará ser feito? Existe alguma data, evento, sazonalidade ou acontecimento especial?</label><textarea id="when" name="05 - Quando / datas e sazonalidades" required></textarea></div>
+          <div class="question"><label for="where"><span>6</span><em>ONDE</em> acontecerá a produção?</label><textarea id="where" name="06 - Onde acontecerá a produção" required></textarea></div>
+          <div class="form-actions end"><button class="button button-primary" type="button" data-next>Próxima etapa <span aria-hidden="true">→</span></button></div>
+        </section>
+
+        <section class="form-step" data-step="2" aria-labelledby="step2-title" hidden>
+          <div class="section-heading"><span>02</span><div><h2 id="step2-title">Identidade da marca</h2><p>O que faz sua marca ser reconhecida?</p></div></div>
+          <div class="question"><label for="brandAssets"><span>7</span>Possui manual da marca, logotipo, tipografia e paleta de cores?</label><p class="field-help">Anote aqui os arquivos que você pode enviar ou insira um link para baixar.</p><textarea id="brandAssets" name="07 - Arquivos e referências de marca" required></textarea></div>
+          <fieldset class="question option-question"><legend><span>8</span>Com qual personalidade você mais se identifica?</legend><p class="field-help">Marque apenas uma opção.</p><div class="chip-options" data-other-group="personality">
+            <label><input type="radio" name="08 - Personalidade da marca" value="Aventureira" required><span>Aventureira</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Divertida"><span>Divertida</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Séria"><span>Séria</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Corporativa"><span>Corporativa</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Inovadora"><span>Inovadora</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Criativa"><span>Criativa</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Clássica"><span>Clássica</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Tradicional"><span>Tradicional</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Sofisticada"><span>Sofisticada</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Acessível"><span>Acessível</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Técnica"><span>Técnica</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Rebelde"><span>Rebelde</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Minimalista"><span>Minimalista</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Tecnológica"><span>Tecnológica</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Alegre"><span>Alegre</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Espiritual"><span>Espiritual</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Bem-estar"><span>Bem-estar</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Infantil"><span>Infantil</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Familiar"><span>Familiar</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Amigável"><span>Amigável</span></label><label><input type="radio" name="08 - Personalidade da marca" value="Disruptiva"><span>Disruptiva</span></label><label class="other-option"><input type="radio" name="08 - Personalidade da marca" value="Outro"><span>Outro</span><input class="other-input" id="personalityOther" name="08 - Personalidade - Outro" type="text" disabled aria-label="Outra personalidade"></label>
+          </div></fieldset>
+          <fieldset class="question option-question"><legend><span>9</span>Qual o posicionamento da sua marca?</legend><p class="field-help">Marque apenas uma opção.</p><div class="chip-options" data-other-group="positioning">
+            <label><input type="radio" name="09 - Posicionamento da marca" value="Luxuoso" required><span>Luxuoso</span></label><label><input type="radio" name="09 - Posicionamento da marca" value="Premium"><span>Premium</span></label><label><input type="radio" name="09 - Posicionamento da marca" value="Popular/Acessível"><span>Popular/Acessível</span></label><label><input type="radio" name="09 - Posicionamento da marca" value="Sustentável"><span>Sustentável</span></label><label><input type="radio" name="09 - Posicionamento da marca" value="Artesanal"><span>Artesanal</span></label><label class="other-option"><input type="radio" name="09 - Posicionamento da marca" value="Outro"><span>Outro</span><input class="other-input" id="positioningOther" name="09 - Posicionamento - Outro" type="text" disabled aria-label="Outro posicionamento"></label>
+          </div></fieldset>
+          <fieldset class="question option-question visual-question"><legend><span>10</span>Qual estilo visual você mais se identifica?</legend><p class="field-help">Marque apenas uma opção.</p><div class="visual-options" data-other-group="visual">
+            <label><input type="radio" name="10 - Estilo visual" value="Minimalista" required><img src="/briefing/assets/referencia-minimalista.png" alt="Referência visual minimalista"><span>Minimalista</span></label><label><input type="radio" name="10 - Estilo visual" value="Futurista"><img src="/briefing/assets/referencia-futurista.png" alt="Referência visual futurista"><span>Futurista</span></label><label><input type="radio" name="10 - Estilo visual" value="Fashion"><img src="/briefing/assets/referencia-fashion.png" alt="Referência visual fashion"><span>Fashion</span></label><label><input type="radio" name="10 - Estilo visual" value="Vintage"><img src="/briefing/assets/referencia-vintage.png" alt="Referência visual vintage"><span>Vintage</span></label><label><input type="radio" name="10 - Estilo visual" value="Rústico"><img src="/briefing/assets/referencia-rustico.png" alt="Referência visual rústica"><span>Rústico</span></label><label><input type="radio" name="10 - Estilo visual" value="Clássico/Tradicional"><img src="/briefing/assets/referencia-classico.png" alt="Referência visual clássico e tradicional"><span>Clássico/Tradicional</span></label><label><input type="radio" name="10 - Estilo visual" value="Corporativo"><img src="/briefing/assets/referencia-corporativo.png" alt="Referência visual corporativa"><span>Corporativo</span></label><label><input type="radio" name="10 - Estilo visual" value="Pop/Moderno"><img src="/briefing/assets/referencia-pop-moderno.png" alt="Referência visual pop e moderna"><span>Pop/Moderno</span></label><label><input type="radio" name="10 - Estilo visual" value="Luxo/Elegante"><img src="/briefing/assets/referencia-luxo-elegante.png" alt="Referência visual luxo e elegante"><span>Luxo/Elegante</span></label><label><input type="radio" name="10 - Estilo visual" value="Aventureiro"><img src="/briefing/assets/referencia-aventureiro.png" alt="Referência visual aventureira"><span>Aventureiro</span></label><label class="visual-other"><input type="radio" name="10 - Estilo visual" value="Outro"><span>Outro</span><input class="other-input" id="visualOther" name="10 - Estilo visual - Outro" type="text" disabled aria-label="Outro estilo visual"></label>
+          </div></fieldset>
+          <div class="form-actions"><button class="button button-secondary" type="button" data-prev><span aria-hidden="true">←</span> Voltar</button><button class="button button-primary" type="button" data-next>Próxima etapa <span aria-hidden="true">→</span></button></div>
+        </section>
+
+        <section class="form-step" data-step="3" aria-labelledby="step3-title" hidden>
+          <div class="section-heading"><span>03</span><div><h2 id="step3-title">Definindo objetivos</h2><p>O que precisa acontecer com este projeto?</p></div></div>
+          <div class="question"><label for="businessChallenges"><span>11</span>Quais os principais <em>DESAFIOS</em> que você está enfrentando em seu negócio?</label><textarea id="businessChallenges" name="11 - Desafios do negócio" required></textarea></div>
+          <div class="question"><label for="communicationChallenges"><span>12</span>Quais <em>DESAFIOS</em> você enfrenta de comunicação com seu público?</label><textarea id="communicationChallenges" name="12 - Desafios de comunicação" required></textarea></div>
+          <div class="question"><label for="desiredAction"><span>13</span>Qual ação você gostaria que seu público tomasse após assistir nossas produções?</label><textarea id="desiredAction" name="13 - Ação desejada" required></textarea></div>
+          <div class="question"><label for="desiredImage"><span>14</span>Qual a imagem que você gostaria que seu público tivesse sobre sua empresa?</label><textarea id="desiredImage" name="14 - Imagem desejada da empresa" required></textarea></div>
+          <div class="form-actions" id="step3Actions"><button class="button button-secondary" type="button" data-prev><span aria-hidden="true">←</span> Voltar</button><button class="button button-primary" type="button" id="reviewButton">Revisar briefing <span aria-hidden="true">→</span></button></div>
+          <section class="review-panel" id="reviewPanel" hidden aria-labelledby="review-title" tabindex="-1"><div class="review-heading"><div><p class="kicker">REVISÃO FINAL</p><h3 id="review-title">Confira suas respostas</h3></div><button class="text-button" type="button" id="editReview">Editar respostas</button></div><div class="review-content" id="reviewContent"></div><p class="privacy-note">Seus dados serão utilizados exclusivamente para analisar este briefing e entrar em contato sobre o projeto.</p><p class="submit-note">Ao enviar, o FormSubmit processará a solicitação. Na primeira utilização, a confirmação do destinatário em <strong>comercial@veicvideos.com</strong> é necessária para ativar o recebimento.</p><div class="form-actions"><button class="button button-secondary" type="button" id="backFromReview"><span aria-hidden="true">←</span> Voltar</button><button class="button button-primary" type="submit">Enviar briefing <span aria-hidden="true">→</span></button></div></section>
+        </section>
+      </form>
+    </main>
+    <footer class="briefing-footer"><img src="/briefing/assets/logo-veic-amarelo-preto.png" alt="Veic Vídeos" width="1341" height="269"><p>Veic Vídeos · <a href="https://www.instagram.com/veicvideos" target="_blank" rel="noopener">@veicvideos</a></p></footer>
+  </div>
+
+  <div class="entry-overlay" id="entryOverlay" role="dialog" aria-modal="true" aria-labelledby="entryTitle">
+    <div class="entry-card" id="identityPanel"><img src="/briefing/assets/logo-veic-amarelo-branco.png" alt="Veic Vídeos" width="1341" height="269"><p class="kicker">ANTES DE COMEÇAR</p><h2 id="entryTitle">Vamos nos conhecer?</h2><p>Preencha seus dados para iniciarmos o briefing. Eles só serão enviados ao concluir o formulário.</p><form id="identityForm" novalidate><label for="contactName">Nome completo<input id="contactName" type="text" autocomplete="name" required></label><label for="contactEmail">E-mail<input id="contactEmail" type="email" autocomplete="email" inputmode="email" required></label><label for="contactPhone">WhatsApp com DDD<input id="contactPhone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(31) 99999-9999" maxlength="15" required></label><p class="form-error" id="identityError" role="alert" hidden></p><button class="button button-primary wide" type="submit">Continuar <span aria-hidden="true">→</span></button></form></div>
+    <div class="entry-card welcome-card" id="welcomePanel" hidden><img src="/briefing/assets/isotipo-amarelo.webp" alt="" aria-hidden="true"><p class="kicker">TUDO CERTO</p><h2>Parabéns!</h2><p>Você está prestes a idealizar um projeto importante para a comunicação da sua marca. Vamos juntos cuidar da sua identidade e promovê-la?</p><button class="button button-primary wide" type="button" id="startBriefing">😁 Vamos Nessa!</button></div>
+  </div>
+  <script src="/briefing/briefing.js?v=20261016-briefing-1" defer></script>
+</body>
+</html>
