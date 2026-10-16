@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/briefing/briefing.css?v=20261016-briefing-1">
+  <link rel="stylesheet" href="/briefing/briefing.css?v=20261016-briefing-2">
 </head>
 <body>
   <div class="briefing-shell">
@@ -88,9 +88,9 @@
   </div>
 
   <div class="entry-overlay" id="entryOverlay" role="dialog" aria-modal="true" aria-labelledby="entryTitle">
-    <div class="entry-card" id="identityPanel"><img src="/briefing/assets/logo-veic-amarelo-branco.png" alt="Veic Vídeos" width="1341" height="269"><p class="kicker">ANTES DE COMEÇAR</p><h2 id="entryTitle">Vamos nos conhecer?</h2><p>Preencha seus dados para iniciarmos o briefing. Eles só serão enviados ao concluir o formulário.</p><form id="identityForm" novalidate><label for="contactName">Nome completo<input id="contactName" type="text" autocomplete="name" required></label><label for="contactEmail">E-mail<input id="contactEmail" type="email" autocomplete="email" inputmode="email" required></label><label for="contactPhone">WhatsApp com DDD<input id="contactPhone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(31) 99999-9999" maxlength="15" required></label><p class="form-error" id="identityError" role="alert" hidden></p><button class="button button-primary wide" type="submit">Continuar <span aria-hidden="true">→</span></button></form></div>
+    <div class="entry-card" id="identityPanel"><img src="/briefing/assets/logo-veic-amarelo-branco.png" alt="Veic Vídeos" width="1341" height="269"><p class="kicker">ANTES DE COMEÇAR</p><h2 id="entryTitle">Vamos nos conhecer?</h2><p>Ao clicar em Continuar, seus dados serão enviados para analisarmos seu interesse no projeto e entrarmos em contato sobre esta solicitação, mesmo que o briefing não seja finalizado. Eles não serão usados para comunicações promocionais.</p><form id="identityForm" novalidate><label for="contactName">Nome completo<input id="contactName" name="Nome completo" type="text" autocomplete="name" required></label><label for="contactEmail">E-mail<input id="contactEmail" name="E-mail de contato" type="email" autocomplete="email" inputmode="email" required></label><label for="contactPhone">WhatsApp com DDD<input id="contactPhone" name="WhatsApp" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(31) 99999-9999" maxlength="15" required></label><input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="form-error" id="identityError" role="alert" hidden></p><button class="button button-primary wide" id="identitySubmit" type="submit">Continuar <span aria-hidden="true">→</span></button><button class="text-button entry-skip" id="continueWithoutCapture" type="button" hidden>Continuar sem enviar agora</button></form></div>
     <div class="entry-card welcome-card" id="welcomePanel" hidden><img src="/briefing/assets/isotipo-amarelo.webp" alt="" aria-hidden="true"><p class="kicker">TUDO CERTO</p><h2>Parabéns!</h2><p>Você está prestes a idealizar um projeto importante para a comunicação da sua marca. Vamos juntos cuidar da sua identidade e promovê-la?</p><button class="button button-primary wide" type="button" id="startBriefing">😁 Vamos Nessa!</button></div>
   </div>
-  <script src="/briefing/briefing.js?v=20261016-briefing-1" defer></script>
+  <script src="/briefing/briefing.js?v=20261016-briefing-2" defer></script>
 </body>
 </html>

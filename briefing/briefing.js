@@ -5,6 +5,8 @@
   const identityPanel = document.querySelector('#identityPanel');
   const welcomePanel = document.querySelector('#welcomePanel');
   const identityError = document.querySelector('#identityError');
+  const identitySubmit = document.querySelector('#identitySubmit');
+  const continueWithoutCapture = document.querySelector('#continueWithoutCapture');
   const steps = [...document.querySelectorAll('.form-step')];
   const progress = [...document.querySelectorAll('[data-progress]')];
   const reviewPanel = document.querySelector('#reviewPanel');
@@ -22,6 +24,7 @@
     replyTo: document.querySelector('#replyTo')
   };
   let activeStep = 1;
+  let isCapturingIdentity = false;
 
   const digitsOnly = value => value.replace(/\D/g, '').slice(0, 11);
   const formatPhone = value => {
@@ -43,7 +46,47 @@
     finalContact.replyTo.value = contact.email.value.trim();
   }
 
-  identityForm.addEventListener('submit', event => {
+  function showWelcome() {
+    identityPanel.hidden = true;
+    welcomePanel.hidden = false;
+    welcomePanel.querySelector('button').focus();
+  }
+
+  function setIdentityMessage(element, message) {
+    element.textContent = message;
+    element.hidden = !message;
+  }
+
+  async function captureIdentity(name, email, phone) {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 10000);
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/comercial@veicvideos.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          'Nome completo': name,
+          'E-mail de contato': email,
+          'WhatsApp': phone,
+          '_subject': 'Novos dados capturados | Veic Vídeos',
+          '_template': 'table',
+          '_replyto': email,
+          '_honey': identityForm.querySelector('[name="_honey"]').value,
+          '_url': `${window.location.origin}/briefing`
+        }),
+        signal: controller.signal
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result || (result.success !== true && result.success !== 'true')) throw new Error('FormSubmit did not confirm the capture.');
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
+
+  identityForm.addEventListener('submit', async event => {
     event.preventDefault();
     const name = contact.name.value.trim();
     const email = contact.email.value.trim();
@@ -53,15 +96,33 @@
     else if (!contact.email.checkValidity()) message = 'Informe um e-mail válido.';
     else if (phoneLength < 10 || phoneLength > 11) message = 'Informe um WhatsApp válido com DDD.';
     if (message) {
-      identityError.textContent = message;
-      identityError.hidden = false;
+      setIdentityMessage(identityError, message);
       return;
     }
-    identityError.hidden = true;
+    if (isCapturingIdentity) return;
+    isCapturingIdentity = true;
+    identitySubmit.disabled = true;
+    identitySubmit.setAttribute('aria-busy', 'true');
+    identitySubmit.firstChild.textContent = 'Registrando dados ';
+    setIdentityMessage(identityError, '');
     setContactFields();
-    identityPanel.hidden = true;
-    welcomePanel.hidden = false;
-    welcomePanel.querySelector('button').focus();
+    try {
+      await captureIdentity(name, email, contact.phone.value.trim());
+      showWelcome();
+    } catch {
+      setIdentityMessage(identityError, 'Não foi possível registrar seus dados agora. Tente novamente ou siga para o briefing; ao concluí-lo, seus dados serão enviados junto das respostas.');
+      continueWithoutCapture.hidden = false;
+    } finally {
+      isCapturingIdentity = false;
+      identitySubmit.disabled = false;
+      identitySubmit.removeAttribute('aria-busy');
+      identitySubmit.firstChild.textContent = 'Continuar ';
+    }
+  });
+
+  continueWithoutCapture.addEventListener('click', () => {
+    setContactFields();
+    showWelcome();
   });
 
   document.querySelector('#startBriefing').addEventListener('click', () => {
